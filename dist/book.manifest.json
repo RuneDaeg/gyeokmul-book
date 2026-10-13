@@ -1,0 +1,8 @@
+{
+  "name": "프로젝트:격물 첫 화면",
+  "version": 1,
+  "entry": "index.html",
+  "book": "7845d798-58b0-421b-aae1-cb4e5d8463d6",
+  "description": "격물치지 붓글씨 표지와 차례, 최근 글, 쓰는 사람들을 보여 주는 첫 화면",
+  "permissions": ["book.get", "indexes.list", "entries.list", "people.list", "open.index", "open.piece", "open.profile", "ui.resize", "ui.notify"]
+}

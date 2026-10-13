@@ -1,0 +1,218 @@
+:root {
+  --ink: #12151c;
+  --ink-2: #1a1e27;
+  --line: rgba(240, 232, 214, 0.07);
+  --paper: #efe8d6;
+  --paper-dim: #b9b3a4;
+  --muted: #8a8f9c;
+  --seal: #d4553a;
+  --seal-glow: rgba(212, 85, 58, 0.35);
+  --card: rgba(255, 255, 255, 0.035);
+  --card-hover: rgba(255, 255, 255, 0.07);
+  --serif: "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+  --sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.cover {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 28px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.cover.is-ready { opacity: 1; }
+
+/* 표지 */
+.hero {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--ink-2);
+  border: 1px solid rgba(240, 232, 214, 0.08);
+}
+.hero-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.hero-text {
+  padding: 4px 24px 22px;
+  border-top: 1px solid rgba(240, 232, 214, 0.06);
+  padding-top: 18px;
+}
+.call-no {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.hero h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(26px, 6vw, 38px);
+  letter-spacing: -0.01em;
+}
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--paper-dim);
+  font-size: 15px;
+}
+
+/* 격물치지 */
+.motto {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 28px 4px 8px;
+}
+.motto-han {
+  margin: 0;
+  writing-mode: vertical-rl;
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: 0.25em;
+  padding: 10px 6px;
+  color: #fff3ee;
+  background: var(--seal);
+  border-radius: 6px;
+  box-shadow: 0 0 18px var(--seal-glow);
+}
+.motto-ko {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--paper);
+  word-break: keep-all;
+}
+
+/* 블록 */
+.block { margin-top: 30px; }
+.block h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+}
+.seal {
+  display: inline-grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 5px;
+  background: var(--seal);
+  color: #fff3ee;
+  font-size: 14px;
+}
+
+button.row {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid rgba(240, 232, 214, 0.06);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+button.row:hover { background: var(--card-hover); }
+button.row:active { transform: scale(0.99); }
+button.row:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+
+.toc, .pieces, .people {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.toc-no {
+  font-family: var(--serif);
+  color: var(--seal);
+  font-size: 15px;
+  min-width: 22px;
+}
+.toc-label { flex: 1; font-size: 16px; }
+.toc-count { color: var(--muted); font-size: 13px; }
+
+.piece-main { flex: 1; min-width: 0; }
+.piece-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.piece-meta { display: block; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+.tag {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  border: 1px solid rgba(212, 85, 58, 0.5);
+  color: #f0a08e;
+  white-space: nowrap;
+}
+
+.people { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--ink-2);
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  color: var(--paper-dim);
+}
+.person-name { display: block; font-weight: 600; font-size: 15px; }
+.person-role { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 34px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(240, 232, 214, 0.08);
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 480px) {
+  .cover { padding: 16px 16px 22px; }
+  .hero-text { padding: 14px 16px 16px; }
+  .motto-han { font-size: 18px; }
+  .motto-ko { font-size: 14.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover, button.row { transition: none; }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>프로젝트:격물</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="cover" id="cover" aria-busy="true">
+    <section class="hero">
+      <img class="hero-art" src="art.png" alt="격물치지(格物致知) 붓글씨 표지 그림">
+      <div class="hero-text">
+        <p class="call-no" id="callNo">200-003</p>
+        <h1 id="title">프로젝트:격물</h1>
+        <p class="subtitle" id="subtitle">수학, 과학 교과 수업 및 문항 그림 제작 앱</p>
+      </div>
+    </section>
+
+    <section class="motto">
+      <p class="motto-han" aria-hidden="true">格物致知</p>
+      <p class="motto-ko">사물을 끝까지 따져 앎에 이른다.<br>
+        수업에 필요한 그림을, 선생님이 직접 정확하게 그릴 수 있도록.</p>
+    </section>
+
+    <section class="block">
+      <h2><span class="seal" aria-hidden="true">目</span>차례</h2>
+      <ol class="toc" id="toc"></ol>
+    </section>
+
+    <section class="block" id="recentBlock" hidden>
+      <h2><span class="seal" aria-hidden="true">新</span>최근 실린 글</h2>
+      <ul class="pieces" id="recent"></ul>
+    </section>
+
+    <section class="block" id="peopleBlock" hidden>
+      <h2><span class="seal" aria-hidden="true">人</span>쓰는 사람들</h2>
+      <ul class="people" id="people"></ul>
+    </section>
+
+    <footer class="foot">
+      <span>청구기호 <b id="footCallNo">200-003</b></span>
+      <span id="mode"></span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
