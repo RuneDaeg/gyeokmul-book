@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>격물치지</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="gk" id="cover" aria-busy="true">
+
+    <!-- 대문: 왼쪽 격물(남색 설계도) · 오른쪽 치지(한지 옛 지도) · 가운데 위 현판 -->
+    <section class="stage" id="stage" data-focus="" aria-label="격물치지">
+      <header class="plaque">
+        <h1 class="title" aria-label="격물치지">
+          <span class="enso" aria-hidden="true">{{ENSO}}</span>
+          <span class="stroke" aria-hidden="true"></span>
+          <span class="brush" aria-hidden="true">{{BRUSH}}</span>
+          <span class="seal" aria-hidden="true">{{SEAL}}</span>
+        </h1>
+        <p class="tag"><span class="beta">베타 테스트</span><b>그림을 쉽게</b><span class="tag-text">시험지·학습지 그림을 고르고 고치고 바로 붙여 넣기</span></p>
+      </header>
+
+      <div class="split">
+        <article class="side gyeok" data-side="gyeok" aria-labelledby="gyeok-name">
+          <div class="world" aria-hidden="true">{{GYEOK_WORLD}}</div>
+          <div class="side-in">
+            <div class="side-head">
+              <span class="glyph" aria-hidden="true">{{GYEOK_GLYPH}}</span>
+              <h2 class="side-name" id="gyeok-name"><b>격물</b><span>수학·과학</span></h2>
+            </div>
+            <ul class="subjects" aria-label="격물 교과">{{GYEOK_SUBJECTS}}</ul>
+            <button type="button" class="side-go" id="goGyeok" hidden>격물 이야기 읽기<span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+
+        <article class="side chiji" data-side="chiji" aria-labelledby="chiji-name">
+          <div class="world" aria-hidden="true">{{CHIJI_WORLD}}</div>
+          <div class="side-in">
+            <div class="side-head">
+              <span class="glyph" aria-hidden="true">{{CHIJI_GLYPH}}</span>
+              <h2 class="side-name" id="chiji-name"><b>치지</b><span>역사·지리·사회·윤리</span></h2>
+            </div>
+            <ul class="subjects" aria-label="치지 교과">{{CHIJI_SUBJECTS}}</ul>
+            <button type="button" class="side-go" id="goChiji" hidden>치지 이야기 읽기<span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 한지 쪽: 책 소개 · 실린 글 · 쓰는 사람들 -->
+    <section class="paper">
+      <div class="motto">
+        <p class="motto-han" aria-hidden="true">格物致知</p>
+        <p class="motto-ko">사물을 끝까지 따져 앎에 이른다.<br>
+          <b>격물</b>은 수학·과학, <b>치지</b>는 역사·지리·사회·윤리 그림을 만들어요.
+          수업에 필요한 그림을 선생님이 직접, 정확하게.</p>
+      </div>
+
+      <div class="block" id="recentBlock" hidden>
+        <h2 class="block-title"><span class="block-seal" aria-hidden="true">冊</span>책에 실린 글</h2>
+        <ul class="pieces" id="recent"></ul>
+      </div>
+
+      <div class="block" id="peopleBlock" hidden>
+        <h2 class="block-title"><span class="block-seal" aria-hidden="true">人</span>함께 만드는 사람들</h2>
+        <ul class="people" id="people"></ul>
+      </div>
+
+      <footer class="foot">
+        <span id="bookName">프로젝트:격물</span>
+        <span>청구기호 <b id="callNo">200-003</b><span id="mode"></span></span>
+      </footer>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

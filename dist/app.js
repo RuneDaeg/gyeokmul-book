@@ -50,18 +50,10 @@ const bridge = (() => {
 // 도름스 밖(로컬, 미리보기 링크)에서 열었을 때 쓰는 예시 데이터
 const SAMPLE = {
   book: { title: "프로젝트:격물", subtitle: "수학, 과학 교과 수업 및 문항 그림 제작 앱", callNumber: "200-003" },
-  indexes: [
-    { key: "cover", label: "표지", module: "cover" },
-    { key: "essays", label: "격물치지", module: "essays" },
-    { key: "essays-2", label: "수작(Sujak)", module: "essays" },
-    { key: "flow", label: "이어짐", module: "flow" },
-    { key: "requests", label: "요청함", module: "requests" },
-    { key: "people", label: "쓰는 사람들", module: "people" },
-  ],
   entries: [
-    { key: "a", index: "essays", kind: "free", title: "Project: 격물", author: "Rune", dorms: 1, comments: 0, createdAt: "2026-10-13T15:50:03Z" },
-    { key: "b", index: "essays", kind: "free", title: "Project: 치지", author: "Rune", dorms: 1, comments: 0, createdAt: "2026-10-13T15:57:26Z" },
-    { key: "c", index: "essays-2", kind: "app", title: "수학 그림 그리기 SuJak", author: "McKay", dorms: 13, comments: 5, createdAt: "2026-10-09T09:16:18Z" },
+    { key: "board_post:a", index: "essays", kind: "free", title: "Project: 격물", author: "Rune", dorms: 1, comments: 0, createdAt: "2026-10-13T15:50:03Z" },
+    { key: "board_post:b", index: "essays", kind: "free", title: "Project: 치지", author: "Rune", dorms: 1, comments: 0, createdAt: "2026-10-13T15:57:26Z" },
+    { key: "app:c", index: "essays-2", kind: "app", title: "수학 그림 그리기 SuJak", author: "McKay", dorms: 13, comments: 5, createdAt: "2026-10-09T09:16:18Z" },
   ],
   people: [
     { userId: null, name: "Rune", role: "owner", pieces: 2 },
@@ -93,37 +85,60 @@ function act(method, params) {
   if (bridge.live) bridge.call(method, params).catch(() => {});
 }
 
-function render({ book, indexes, entries, people }) {
+// 별 반짝임 시차 (인라인 style 대신 data-d 에 적어 둔 값을 씀)
+function startStars() {
+  for (const star of document.querySelectorAll(".gw-star[data-d]")) {
+    star.style.animationDelay = star.dataset.d;
+  }
+}
+
+// 마우스를 올린 세계가 넓어진다 (대문과 같은 움직임)
+function watchFocus() {
+  const stage = $("stage");
+  const sides = [...stage.querySelectorAll(".side")];
+  for (const side of sides) {
+    side.addEventListener("pointerenter", (e) => {
+      if (e.pointerType !== "mouse") return;
+      stage.dataset.focus = side.dataset.side;
+      for (const s of sides) s.classList.toggle("on", s === side);
+    });
+  }
+  stage.addEventListener("pointerleave", () => {
+    stage.dataset.focus = "";
+    for (const s of sides) s.classList.remove("on");
+  });
+}
+
+// "Project: 격물", "Project: 치지" 글이 있으면 각 세계에서 바로 열 수 있게
+function linkStory(button, entry) {
+  if (!entry) return;
+  button.hidden = false;
+  button.disabled = !bridge.live;
+  button.onclick = () => act("open.piece", { key: entry.key });
+}
+
+function render({ book, entries, people }) {
   if (book) {
-    $("title").textContent = book.title || "프로젝트:격물";
-    $("subtitle").textContent = book.subtitle || "";
+    $("bookName").textContent = book.title || "프로젝트:격물";
     $("callNo").textContent = book.callNumber || "";
-    $("footCallNo").textContent = book.callNumber || "";
   }
 
-  const counts = {};
-  for (const e of entries) counts[e.index] = (counts[e.index] || 0) + 1;
-
-  const chapters = indexes.filter((i) => i.module !== "cover");
-  $("toc").replaceChildren(...chapters.map((idx, n) => el("li", null,
-    el("button", { className: "row", type: "button", onclick: () => act("open.index", { key: idx.key }) },
-      el("span", { className: "toc-no", textContent: String(n + 2).padStart(2, "0") }),
-      el("span", { className: "toc-label", textContent: idx.label }),
-      counts[idx.key] ? el("span", { className: "toc-count", textContent: `${counts[idx.key]}편` }) : null,
-    ),
-  )));
+  const chiji = entries.find((e) => /치지/.test(e.title || "") && !/격물/.test(e.title || ""));
+  const gyeok = entries.find((e) => /격물/.test(e.title || "") && !/치지/.test(e.title || ""));
+  linkStory($("goGyeok"), gyeok);
+  linkStory($("goChiji"), chiji);
 
   const recent = [...entries]
     .sort((a, b) => (Date.parse(b.createdAt) || 0) - (Date.parse(a.createdAt) || 0))
-    .slice(0, 4);
+    .slice(0, 5);
   $("recentBlock").hidden = recent.length === 0;
   $("recent").replaceChildren(...recent.map((p) => el("li", null,
-    el("button", { className: "row", type: "button", onclick: () => act("open.piece", { key: p.key }) },
+    el("button", { className: "row", type: "button", disabled: !bridge.live, onclick: () => act("open.piece", { key: p.key }) },
       el("span", { className: "piece-main" },
         el("span", { className: "piece-title", textContent: p.title || "제목 없음" }),
         el("span", { className: "piece-meta", textContent: [p.author, formatDate(p.createdAt), `도름 ${p.dorms ?? 0}`].filter(Boolean).join(" · ") }),
       ),
-      el("span", { className: "tag", textContent: KIND_LABEL[p.kind] || "글" }),
+      el("span", { className: `kind ${p.kind === "app" ? "app" : ""}`.trim(), textContent: KIND_LABEL[p.kind] || "글" }),
     ),
   )));
 
@@ -134,7 +149,12 @@ function render({ book, indexes, entries, people }) {
       : el("span", { className: "avatar", textContent: (person.name || "?").slice(0, 1) });
     const role = person.faceNote || (person.role === "owner" ? "책을 여는 분" : "글이 실린 분");
     return el("li", null,
-      el("button", { className: "row", type: "button", onclick: () => person.userId && act("open.profile", { userId: person.userId }) },
+      el("button", {
+        className: "row",
+        type: "button",
+        disabled: !bridge.live || !person.userId,
+        onclick: () => act("open.profile", { userId: person.userId }),
+      },
         avatar,
         el("span", null,
           el("span", { className: "person-name", textContent: person.name }),
@@ -146,7 +166,7 @@ function render({ book, indexes, entries, people }) {
 
   $("mode").textContent = bridge.live ? "" : "미리보기 (예시 데이터)";
   const cover = $("cover");
-  cover.classList.add("is-ready");
+  cover.classList.add("is-ready", "play");
   cover.removeAttribute("aria-busy");
 }
 
@@ -166,17 +186,19 @@ function watchHeight() {
 
 async function loadLive() {
   await bridge.call("ready");
-  const [bookRes, indexes, entries, people] = await Promise.all([
+  const [bookRes, entries, people] = await Promise.all([
     bridge.call("book.get"),
-    bridge.call("indexes.list"),
     bridge.call("entries.list"),
     bridge.call("people.list"),
   ]);
-  return { book: bookRes && bookRes.book, indexes, entries, people };
+  return { book: bookRes && bookRes.book, entries, people };
 }
 
 async function main() {
   bridge.hello();
+  startStars();
+  watchFocus();
+
   const live = await Promise.race([
     bridge.connected,
     new Promise((resolve) => setTimeout(() => resolve(false), 1500)),
