@@ -1,0 +1,812 @@
+<!--
+title: 고급 물리학 Ⅳ 현대 물리
+short: 현대 물리
+file: 04-modern-physics.html
+desc: 가속 좌표계와 관성력, 특수·일반 상대성 이론, 양자역학의 수립, 상보성과 불확정성, 무한 퍼텐셜 상자, 반도체 띠 이론과 나노 물리
+-->
+<section class="slide cover">
+  <div class="sl">
+    <p class="kicker">고급 물리학 · 2022 개정 · Ⅳ</p>
+    <h2>현대 물리</h2>
+    <p class="sub">관성력에서 출발해 시간과 공간을 다시 보는 상대성 이론, 그리고 빛과 물질의 이중성에서 반도체까지 이어지는 양자역학을 다룹니다.</p>
+    <p class="meta">[12고물04-01] 관성력 · [12고물04-02] 상대성 이론 · 양자역학의 수립 · [12고물04-04] 상보성과 불확정성 · [12고물04-05] 퍼텐셜 상자, 띠 이론, 나노 물리</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">단원 구성</p><h2>이 단원에서 할 일</h2></header>
+    <div class="body cols">
+      <ol>
+        <li><strong>가속 좌표계와 관성력</strong>: 직선 가속계, 회전 좌표계</li>
+        <li><strong>특수 상대성 이론</strong>: 탄생 배경, 두 가정, 동시성·시간 지연·길이 수축, 로런츠 변환, 질량-에너지</li>
+        <li><strong>일반 상대성 이론</strong> (정성적): 등가 원리, 빛의 휨, 중력에 의한 시간 지연, 블랙홀, 중력파</li>
+        <li><strong>양자역학의 수립</strong>: 흑체 복사, 광전 효과, 콤프턴 효과, 물질파, 보어 모형과 수소 스펙트럼</li>
+        <li><strong>상보성과 불확정성</strong>, 파동 함수와 슈뢰딩거 방정식</li>
+        <li><strong>무한 퍼텐셜 상자</strong>, 터널 효과, <strong>반도체 띠 이론과 나노 물리</strong></li>
+      </ol>
+      <div class="box def"><span class="tag">성취기준 해설</span>
+        <p>특수 상대성 이론의 탄생 배경과 기본 가정, 결과를 상세히 서술하고, 일반 상대성 이론에 대해서는 정성적인 의미를 설명한다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">IV-1</span>
+    <h2>가속 좌표계와 관성력</h2>
+    <p class="std">[12고물04-01] 가속 좌표계에서 물체의 운동을 관성력을 이용하여 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">관성계와 비관성계</p><h2>가속하는 관찰자는 '가짜 힘'을 더해야 한다</h2></header>
+    <div class="body cols">
+      <div>
+        <p><strong>관성 좌표계</strong>: 알짜힘이 0인 물체가 정지 또는 등속 직선 운동을 하는 기준계. 뉴턴 법칙이 그대로 성립합니다.</p>
+        <p><strong>비관성 좌표계</strong>: 관성계에 대해 가속하는 기준계. 이 안의 관찰자가 뉴턴 법칙을 쓰려면 <em class="term">관성력</em>을 더해야 합니다.</p>
+        <div class="eq">$$\sum\vec F_{실제} + \vec F_{관성} = m\vec a',\qquad \vec F_{관성} = -m\vec A$$</div>
+        <p class="small">$\vec A$: 기준계의 가속도, $\vec a'$: 그 기준계에서 본 물체의 가속도. 관성력에는 반작용이 없습니다. 상호작용이 아니기 때문입니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">가속하는 버스의 손잡이</span>
+        <p>버스가 가속도 $A$ 로 출발하면 손잡이 줄이 뒤로 $\theta$ 만큼 기웁니다.</p>
+        <p><strong>밖(관성계)</strong>: 장력의 수평 성분이 손잡이를 가속시킨다. $T\sin\theta = mA$, $T\cos\theta = mg$</p>
+        <p><strong>안(버스)</strong>: 손잡이는 정지. 장력, 중력, 뒤쪽 관성력 $mA$ 가 평형을 이룬다.</p>
+        <p>두 관점 모두 $\tan\theta = A/g$ 입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">관성력의 예</p><h2>엘리베이터와 회전 좌표계</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">엘리베이터의 겉보기 무게</span>
+        <p>위쪽 가속도 $A$ 이면 저울 눈금 $N = m(g + A)$, 아래쪽이면 $m(g - A)$.</p>
+        <p>자유 낙하하면 $A = g$ 라 $N = 0$: 무중력 상태. 국제 우주 정거장도 지구 둘레를 자유 낙하하는 중입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">회전 좌표계</span>
+        <p><strong>원심력</strong> $m\omega^2r$, 회전축에서 바깥쪽: 회전하는 놀이 기구, 세탁기 탈수, 원심 분리기.</p>
+        <p><strong>코리올리 힘</strong> $-2m\vec\omega\times\vec v'$: 회전계에서 <strong>움직이는</strong> 물체에만 작용합니다. 북반구에서는 운동 방향의 오른쪽으로 휩니다.</p>
+        <p class="small">저기압으로 빨려 드는 공기가 오른쪽으로 휘어 북반구 태풍은 시계 반대 방향으로 돕니다. 서울(위도 37.5°)의 푸코 진자는 약 39시간에 진동면이 한 바퀴 돕니다.</p>
+      </div>
+      <aside class="note">관성력 단원은 2015 자료에 한 줄(상대성 이론 p2)만 있던 것을 2022 성취기준에 맞춰 확장했습니다. 일반 상대성 이론의 등가 원리로 이어집니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">IV-2</span>
+    <h2>특수 상대성 이론</h2>
+    <p class="std">[12고물04-02] 특수 상대성 이론의 탄생 배경, 기본 가정과 그 결과</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">탄생 배경 · 1</p><h2>갈릴레이 변환과 맥스웰 방정식의 충돌</h2></header>
+    <div class="body cols">
+      <div>
+        <p>기준계 S′ 이 S 에 대해 $+x$ 방향으로 속력 $v$ 로 움직이면, 뉴턴 역학은 시간이 모든 관찰자에게 같다고 보고</p>
+        <div class="eq">$$x' = x - vt,\quad t' = t,\quad u' = u - v$$</div>
+        <p>가속도가 같으므로 뉴턴 법칙은 모든 관성계에서 같은 꼴입니다 (갈릴레이의 상대성 원리).</p>
+      </div>
+      <div class="box warn"><span class="tag">문제</span>
+        <p>맥스웰 방정식에서 나온 빛의 속력 $c = 1/\sqrt{\mu_0\varepsilon_0}$ 에는 기준계가 들어 있지 않습니다. 갈릴레이 변환이 옳다면 움직이는 관찰자에게 빛은 $c - v$ 로 보여야 합니다.</p>
+        <p>19세기 물리학자들은 빛을 실어 나르는 매질 '에테르'에 대해서만 $c$ 라고 생각하고, 지구가 에테르 속을 지나가는 속도를 재려 했습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">탄생 배경 · 2</p><h2>마이컬슨-몰리 실험 (1887)</h2></header>
+    <div class="body cols">
+      <div>
+        <p>광학 단원의 마이컬슨 간섭계를 돌려, 두 팔이 에테르 바람과 나란할 때와 수직일 때의 무늬를 비교했습니다.</p>
+        <div class="eq">$$\text{예상 무늬 이동}\approx\frac{2Lv^2}{\lambda c^2} = \frac{2(11\ \text{m})(3.0\times10^4\ \text{m/s})^2}{(500\ \text{nm})(3.0\times10^8\ \text{m/s})^2} = 0.44$$</div>
+        <p>장치는 0.01 무늬까지 잴 수 있었지만 이동은 나타나지 않았습니다.</p>
+      </div>
+      <div class="box def"><span class="tag">해석</span>
+        <p>당시에는 로런츠-피츠제럴드 수축처럼 에테르를 살리려는 가설도 나왔습니다. 실험 하나만으로 에테르가 없다고 '증명'된 것은 아닙니다.</p>
+        <p>아인슈타인(1905)은 에테르를 아예 가정하지 않고, <strong>광속은 모든 관성계에서 같다</strong>는 것을 출발점으로 삼았습니다. 그러면 이 결과는 당연한 것이 됩니다.</p>
+      </div>
+      <aside class="note">기존 상대론 p27의 "무늬 이동 없음 ⇒ 빛에는 매질이 없다!"는 비약이라 위처럼 고쳤습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">두 가정</p><h2>특수 상대성 이론의 출발점</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">1 · 상대성 원리</span>
+        <p>모든 관성 좌표계에서 물리 법칙은 같은 꼴이다. 역학뿐 아니라 전자기학을 포함한 모든 법칙에 적용됩니다.</p>
+      </div>
+      <div class="box def"><span class="tag">2 · 광속 불변 원리</span>
+        <p>진공에서 빛의 속력은 광원이나 관찰자의 운동과 관계없이 모든 관성계에서 $c = 299\,792\,458$ m/s 로 같다.</p>
+      </div>
+      <p>두 가정을 함께 받아들이면 '시간은 모두에게 같다'는 생각을 버려야 합니다. 이어지는 결과는 모두 이 두 줄에서 나옵니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">결과 · 1</p><h2>동시성의 상대성</h2></header>
+    <div class="body cols">
+      <div>
+        <p>달리는 기차의 앞과 뒤에 번개가 친다. 땅 위의 관찰자 O는 기차 가운데와 마주 선 순간 두 빛을 동시에 받습니다. 두 사건은 O에게 <strong>동시</strong>입니다.</p>
+        <p>기차 가운데의 관찰자 O′ 은 앞쪽으로 움직이고 있어 앞에서 온 빛을 먼저 받습니다. 두 빛 모두 속력 $c$ 이고 O′ 에게서 같은 거리에서 출발했으므로, O′ 은 <strong>앞의 번개가 먼저</strong> 쳤다고 결론짓습니다.</p>
+      </div>
+      <div class="box warn"><span class="tag">핵심</span>
+        <p>한 관성계에서 떨어진 곳의 동시 사건은 다른 관성계에서 동시가 아니다. 누가 맞고 틀린 것이 아니라, 동시성 자체가 관찰자의 운동 상태에 따라 달라집니다.</p>
+        <p class="small">같은 장소에서 일어난 두 사건의 순서는 모든 관찰자에게 같습니다. 원인과 결과는 뒤바뀌지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">결과 · 2</p><h2>시간 지연: 움직이는 시계는 느리게 간다</h2></header>
+    <div class="body cols">
+      <div>
+        <p><strong>빛 시계</strong>: 거리 $d$ 인 두 거울 사이를 빛이 왕복합니다. 시계와 함께 있는 관찰자가 재는 왕복 시간은 $\Delta t_0 = 2d/c$ 입니다 (고유 시간).</p>
+        <p>시계가 $v$ 로 움직이는 것을 보는 관찰자에게 빛은 비스듬히 갑니다. $\big(\tfrac{c\Delta t}{2}\big)^2 = \big(\tfrac{v\Delta t}{2}\big)^2 + d^2$ 이므로</p>
+        <div class="eq">$$\Delta t = \frac{\Delta t_0}{\sqrt{1 - v^2/c^2}} = \gamma\,\Delta t_0$$</div>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>v / c</th><th>γ</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">0.1</td><td class="mono">1.005</td></tr>
+          <tr><td class="mono">0.5</td><td class="mono">1.155</td></tr>
+          <tr><td class="mono">0.8</td><td class="mono">1.667</td></tr>
+          <tr><td class="mono">0.9</td><td class="mono">2.294</td></tr>
+          <tr><td class="mono">0.99</td><td class="mono">7.09</td></tr>
+          <tr><td class="mono">0.999</td><td class="mono">22.4</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="note">고유 시간은 '두 사건이 같은 장소에서 일어나는 기준계'에서 잰 시간입니다. 학생들이 어느 쪽이 Δt₀인지 헷갈리면 이 정의로 돌아가게 하세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">결과 · 3</p><h2>길이 수축과 뮤온</h2></header>
+    <div class="body cols">
+      <div>
+        <p>움직이는 물체의 길이는 운동 방향으로만 줄어듭니다. 물체와 함께 있는 관찰자가 잰 길이 $L_0$ (고유 길이)에 대해</p>
+        <div class="eq">$$L = \frac{L_0}{\gamma} = L_0\sqrt{1 - v^2/c^2}$$</div>
+        <p class="small">물체가 실제로 압축되는 것이 아니라 공간 간격의 측정이 기준계마다 다른 것입니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">대기 상층의 뮤온 (v = 0.99c, 고유 수명 2.2 μs)</span>
+        <p>상대론이 없다면 수명 동안 $0.99c\times2.2\ \mu$s ≈ 650 m 만 가서 4800 m 아래 지표에 거의 오지 못합니다.</p>
+        <p><strong>지표 관찰자</strong>: 뮤온 시계가 $\gamma = 7.09$ 배 느려 수명 15.6 μs, 약 4.6 km 를 간다.</p>
+        <p><strong>뮤온</strong>: 수명은 2.2 μs 그대로이지만 대기 두께가 $4800/7.09 \approx 677$ m 로 줄어 있다.</p>
+        <p>두 설명은 같은 결과를 줍니다. 실제로 많은 뮤온이 지표에서 검출됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">로런츠 변환</p><h2>두 가정을 만족하는 시공간 변환</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$x' = \gamma(x - vt),\quad t' = \gamma\Big(t - \frac{v}{c^2}x\Big),\quad y' = y,\quad z' = z$$</div>
+        <p>$v \ll c$ 이면 갈릴레이 변환이 되고, 역변환은 $v \to -v$ 입니다. <strong>속도 변환</strong> $u' = dx'/dt'$:</p>
+        <div class="eq">$$u' = \frac{u - v}{1 - uv/c^2}$$</div>
+        <p>$u = c$ 를 넣으면 $u' = c$: 광속 불변이 그대로 들어 있습니다.</p>
+      </div>
+      <div class="box def"><span class="tag">불변량: 시공간 간격</span>
+        <div class="eq">$$(\Delta s)^2 = (c\Delta t)^2 - (\Delta x)^2 = (c\Delta t')^2 - (\Delta x')^2$$</div>
+        <p>시간 간격과 공간 간격은 관찰자마다 다르지만 이 조합은 모두에게 같습니다. 같은 장소의 두 사건에서는 $\Delta s = c\Delta t_0$, 곧 고유 시간입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">쌍둥이 역설</p><h2>왜 우주선에 탄 쪽이 젊은가</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>A는 지구에 남고, B는 $0.95c$ 로 20광년 떨어진 별에 다녀옵니다.</p>
+        <p>A가 잰 시간 $2\times20/0.95 = 42.1$ 년, B의 고유 시간 $42.1\times\sqrt{1-0.95^2} = 13.1$ 년.</p>
+        <p>B의 입장에서는 A가 움직이니 A가 젊어야 하지 않을까요?</p>
+        <div class="box def"><span class="tag">풀이 · 특수 상대론만으로 충분하다</span>
+          <p>A는 처음부터 끝까지 하나의 관성계에 있지만, B는 돌아올 때 관성계를 <strong>바꿉니다</strong>. 그래서 두 사람은 대칭이 아닙니다.</p>
+          <p>나이는 각자 세계선을 따라 잰 고유 시간입니다. 두 사건을 잇는 세계선 가운데 관성 운동(직선)의 고유 시간이 가장 깁니다.</p>
+        </div>
+      </div>
+      <figure class="fig">{{fig:twin}}<figcaption>A의 세계선은 직선, B의 세계선은 꺾인 선입니다. 방향 전환을 아무리 짧게 해도 결과는 같습니다.</figcaption></figure>
+      <aside class="note">기존 상대론 p51은 "쌍둥이 역설은 일반 상대론으로 해결되며, 가속할 때의 겉보기 중력이 B를 젊게 한다"고 했습니다. 일반 상대론적 설명은 하나의 관점일 뿐이고, 표준적 해결은 위와 같습니다. 가속 없이 '바통을 넘기는' 세 쌍둥이 설정으로도 같은 결과가 나옵니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">질량-에너지 관계</p><h2>상대론적 운동량과 에너지</h2></header>
+    <div class="body cols">
+      <div>
+        <p>충돌에서 운동량 보존이 모든 관성계에서 성립하려면 운동량과 에너지를 다음처럼 정의해야 합니다 ($m$: 질량, 관찰자와 무관).</p>
+        <div class="eq">$$\vec p = \gamma m\vec u,\qquad E = \gamma mc^2,\qquad K = (\gamma - 1)mc^2$$</div>
+        <div class="eq">$$E^2 = (pc)^2 + (mc^2)^2$$</div>
+        <ul>
+          <li>정지 에너지 $mc^2$: 전자 0.511 MeV, 양성자 938.3 MeV</li>
+          <li>질량이 없는 광자는 $E = pc$</li>
+          <li>$u \ll c$ 이면 $K \approx \tfrac12mu^2$</li>
+          <li>$u \to c$ 이면 $K \to \infty$. 질량이 있는 물체는 $c$ 에 이를 수 없다.</li>
+        </ul>
+      </div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>① 운동 에너지 1.0 GeV 인 양성자의 속력은?</p>
+        <p>② 전자와 양전자가 정지 상태에서 쌍소멸하면 나오는 에너지는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>① $\gamma = 1 + 1000/938.3 = 2.07$, $v = c\sqrt{1 - 1/\gamma^2} = 0.875c$</p>
+          <p>② $2\times0.511 = 1.022$ MeV. 운동량 보존 때문에 0.511 MeV 감마선 두 개가 반대 방향으로 나옵니다 (PET 영상의 원리).</p>
+        </div></details>
+      </div>
+      <aside class="note">'상대론적 질량 γm₀' 표기는 쓰지 않고 불변 질량 m 하나로 통일했습니다. 기존 자료 p79의 표기도 오류는 아니지만, 요즘 교재의 흐름에 맞춘 것입니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제 · 수능형</p><h2>터널을 지나는 우주선</h2></header>
+    <div class="body cols">
+      <div>
+        <p>관찰자 A에 대해 정지한 터널의 길이가 $L$ 이다. 우주선이 A에 대해 $0.8c$ 로 터널을 지나고, A의 관성계에서 우주선 앞이 터널 출구를 지나는 순간 우주선 뒤가 입구를 지난다. 다음 중 옳은 것은?</p>
+        <p>ㄱ. A의 관성계에서 우주선 앞이 입구를 지난 뒤 뒤가 입구를 지날 때까지 걸린 시간은 $L/0.8c$ 보다 작다.</p>
+        <p>ㄴ. 우주선 관성계에서 터널의 길이는 $L$ 보다 작다.</p>
+        <p>ㄷ. 우주선 관성계에서는 터널 출구가 우주선 앞을 지난 뒤에 입구가 우주선 뒤를 지난다.</p>
+      </div>
+      <details class="answer"><summary>풀이 보기 (답: ㄴ, ㄷ)</summary><div>
+        <p>ㄱ. A의 관성계에서 우주선 길이도 $L$ 이므로 걸린 시간은 정확히 $L/0.8c$. 틀림.</p>
+        <p>ㄴ. 우주선에게 터널은 움직이므로 $L\sqrt{1-0.64} = 0.6L$. 옳음.</p>
+        <p>ㄷ. 우주선에게 터널(0.6L)은 우주선의 고유 길이($\gamma L = 1.67L$)보다 짧으므로, 출구가 앞을 먼저 지나고 한참 뒤에 입구가 뒤를 지납니다. 옳음. A에게 동시였던 두 사건이 우주선에게는 동시가 아닙니다.</p>
+      </div></details>
+      <aside class="note">2025학년도 수능 9번과 같은 구조입니다. 기존 상대론 p69~71의 풀이는 검산 결과 맞습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">IV-3</span>
+    <h2>일반 상대성 이론</h2>
+    <p class="std">시공간, 질량-에너지, 중력에 의한 시간 변화: 정성적인 의미</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">등가 원리</p><h2>가속과 중력은 구별할 수 없다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>창문 없는 로켓이 우주 공간에서 $g$ 로 가속하면, 안의 사람은 지표에 서 있을 때와 같은 '무게'를 느낍니다. 공을 놓으면 바닥으로 $g$ 로 떨어집니다.</p>
+        <p>관성력 단원의 관성력 $-m\vec A$ 와 중력 $m\vec g$ 는 모두 질량에 비례합니다. 그래서 국소적인 실험으로는 둘을 구별할 수 없습니다. 이것이 <em class="term">등가 원리</em>입니다.</p>
+        <p class="small">관성 질량과 중력 질량이 같다는 것은 지금까지 $10^{-15}$ 수준까지 확인되었습니다 (MICROSCOPE 위성, 2022).</p>
+      </div>
+      <div class="box def"><span class="tag">결론: 중력 = 시공간의 휨</span>
+        <p>아인슈타인(1915)은 질량과 에너지가 주위의 시공간을 휘게 하고, 물체와 빛은 그 휜 시공간에서 가장 곧은 경로를 따라간다고 보았습니다.</p>
+        <p>가속하는 로켓 안에서 수평으로 쏜 빛은 바닥 쪽으로 휘어 보입니다. 등가 원리에 따라 중력장에서도 빛이 휘어야 합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">증거 · 1</p><h2>빛의 휨과 중력 렌즈</h2></header>
+    <div class="body cols">
+      <div>
+        <p>태양 가장자리를 스치는 별빛이 휘는 각은</p>
+        <div class="eq">$$\delta = \frac{4GM_\odot}{c^2R_\odot} = 1.75'' \approx 4.9\times10^{-4}\ ^\circ$$</div>
+        <p>1919년 개기일식 때 에딩턴의 관측대가 태양 근처 별의 겉보기 위치가 이만큼 바깥으로 밀려난 것을 확인했습니다. 뉴턴 이론으로 빛을 입자처럼 다루면 이 값의 절반이 나옵니다.</p>
+      </div>
+      <div class="box def"><span class="tag">중력 렌즈</span>
+        <p>은하나 은하단 같은 큰 질량은 뒤에 있는 천체의 빛을 휘어, 여러 개의 상(아인슈타인 십자가)이나 고리(아인슈타인 고리)를 만듭니다.</p>
+        <p>렌즈 효과의 크기로 보이지 않는 질량(암흑 물질)의 분포를 잽니다.</p>
+      </div>
+      <aside class="note">기존 상대론 p93은 휨 각을 0.005°로 썼는데, 실제 값(1.75″ ≈ 0.0005°)의 약 10배입니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">증거 · 2</p><h2>중력에 의한 시간 지연과 GPS</h2></header>
+    <div class="body cols">
+      <div>
+        <p>중력 퍼텐셜이 낮은 곳(질량 가까이)의 시계일수록 느리게 갑니다. 높이 차 $h$ 가 작으면</p>
+        <div class="eq">$$\frac{\Delta t_{위}}{\Delta t_{아래}} \approx 1 + \frac{gh}{c^2}$$</div>
+        <p>같은 이유로 강한 중력장에서 나오는 빛은 진동수가 낮아집니다 (중력 적색 편이). 1959년 파운드와 레브카가 22.5 m 높이의 탑에서 처음 측정했습니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">GPS 위성 (고도 20 200 km)</span>
+        <div class="tbl-wrap"><table class="tbl">
+          <tbody>
+            <tr><td>중력이 약해 빨라짐 (일반 상대론)</td><td class="mono">+45.7 μs/일</td></tr>
+            <tr><td>궤도 속력 때문에 느려짐 (특수 상대론)</td><td class="mono">−7.2 μs/일</td></tr>
+            <tr><td><strong>합계</strong></td><td class="mono"><strong>+38.5 μs/일</strong></td></tr>
+          </tbody>
+        </table></div>
+        <p>보정하지 않으면 위치 오차가 하루 약 $c\times38\ \mu$s ≈ 11 km 쌓입니다. 그래서 위성 시계는 발사 전에 진동수를 미리 조금 낮춰 둡니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">증거 · 3</p><h2>블랙홀과 중력파</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">블랙홀</span>
+        <p>질량 $M$ 이 슈바르츠실트 반지름 안쪽으로 뭉치면 빛도 빠져나오지 못합니다.</p>
+        <div class="eq">$$r_s = \frac{2GM}{c^2}\qquad(\text{태양 3.0 km, 지구 8.9 mm})$$</div>
+        <p>반지름 $r_s$ 인 면이 <strong>사건의 지평선</strong>입니다. 곡률이 무한대가 되는 특이점은 중심($r = 0$)에 있습니다.</p>
+        <p class="small">멀리 있는 관찰자가 보면 지평선에 다가가는 물체의 시계는 점점 느려져 멈춘 것처럼 보입니다. 떨어지는 물체 자신에게는 시간이 평소대로 흐르고, 아무 일 없이 지평선을 지나갑니다.</p>
+      </div>
+      <div class="box def"><span class="tag">중력파</span>
+        <p>무거운 천체가 가속 운동하면 시공간의 일렁임이 빛의 속력으로 퍼져 나갑니다.</p>
+        <p>2015년 9월 14일, LIGO가 약 13억 광년 떨어진 두 블랙홀(태양 질량의 약 36배와 29배)의 병합에서 온 중력파를 처음 검출했습니다 (발표 2016년 2월). 4 km 팔 길이가 약 $4\times10^{-18}$ m (양성자 지름의 수백분의 1) 변한 것을 마이컬슨 간섭계로 잡아냈습니다.</p>
+      </div>
+      <aside class="note">기존 상대론 p96은 r_s를 특이점처럼, p97은 '시간이 멈추는 지점'을 관찰자 구분 없이, p98은 검출 시점을 2016년 2월로 썼습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">IV-4</span>
+    <h2>양자역학의 수립</h2>
+    <p class="std">빛과 물질의 이중성, 보어의 양자 가설과 수소 원자 모형·스펙트럼</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">흑체 복사</p><h2>플랑크의 양자 가설 (1900)</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>모든 빛을 흡수하는 이상적인 물체(흑체)가 내는 빛의 스펙트럼은 온도로만 정해집니다.</p>
+        <ul>
+          <li>빈 변위 법칙: $\lambda_{max}T = 2.898\times10^{-3}$ m·K</li>
+          <li>슈테판-볼츠만 법칙: 단위 면적·단위 시간당 방출 에너지 $\sigma T^4$</li>
+        </ul>
+        <p>고전 이론(레일리-진스)은 짧은 파장에서 세기가 무한대로 커지는 '자외선 파탄'을 예측했습니다. 플랑크는 공동 벽의 <strong>진동자</strong>가 에너지를 $hf$ 의 정수배로만 가진다고 가정해 실험 곡선을 정확히 맞혔습니다.</p>
+        <div class="eq">$$E_n = nhf,\qquad h = 6.626\times10^{-34}\ \text{J·s}$$</div>
+      </div>
+      <figure class="fig">{{fig:blackbody}}<figcaption>태양 표면(약 5800 K)의 $\lambda_{max}$ 는 약 500 nm, 사람 몸(310 K)은 약 9.3 μm 적외선입니다.</figcaption></figure>
+      <aside class="note">빛 자체가 hf 덩어리(광자)라는 생각은 1905년 아인슈타인의 것입니다. 기존 양자 p11은 플랑크가 '복사 에너지'를 양자화했다고 썼습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">빛의 입자성 · 1</p><h2>광전 효과 (아인슈타인, 1905)</h2></header>
+    <div class="body cols">
+      <div>
+        <p class="small">실험 사실 (파동 이론으로 설명할 수 없는 것들)</p>
+        <ul>
+          <li>문턱 진동수 $f_0$ 보다 낮은 빛은 아무리 세도 전자를 떼어 내지 못한다.</li>
+          <li>광전자의 최대 운동 에너지는 빛의 세기와 무관하고 진동수에만 비례해 커진다.</li>
+          <li>빛이 약해도 전자는 지연 없이(1 ns 이내) 튀어나온다.</li>
+          <li>광전류의 세기는 빛의 세기에 비례한다.</li>
+        </ul>
+      </div>
+      <div class="box def"><span class="tag">광자 가설</span>
+        <div class="eq">$$K_{max} = hf - W = eV_s$$</div>
+        <p>빛은 에너지 $hf$ 인 광자의 흐름이고, 전자 하나는 광자 하나를 흡수합니다. $W$: 일함수, $V_s$: 정지 전압.</p>
+        <p class="small">밀리컨(1916)이 이 식의 직선 관계를 정밀하게 확인했습니다. 예: 나트륨($W \approx 2.28$ eV)에 400 nm 빛을 쬐면 $K_{max} \approx 0.82$ eV, 문턱 파장은 약 544 nm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">빛의 입자성 · 2</p><h2>콤프턴 효과 (1923)</h2></header>
+    <div class="body cols">
+      <div>
+        <p>X선을 흑연에 쪼이면 산란된 X선 중 일부의 파장이 길어집니다. 산란각 $\phi$ 가 클수록 더 길어집니다.</p>
+        <p>광자를 에너지 $hf$, 운동량 $p = h/\lambda$ 인 입자로 보고 전자와의 탄성 충돌에 에너지·운동량 보존(상대론적)을 적용하면</p>
+        <div class="eq">$$\lambda' - \lambda = \frac{h}{m_ec}(1 - \cos\phi),\qquad \frac{h}{m_ec} = 2.43\ \text{pm}$$</div>
+      </div>
+      <div class="box"><span class="tag">왜 X선이어야 하나</span>
+        <p>파장 변화는 최대 $2h/m_ec \approx 4.9$ pm 입니다. 가시광선(약 500 nm)에서는 이 변화가 너무 작아 보이지 않고, 파장이 0.07 nm 정도인 X선에서는 몇 %나 되어 측정할 수 있습니다.</p>
+        <p class="small">원자에 강하게 묶인 안쪽 전자와 부딪히면 원자 전체가 반동해 파장 변화가 거의 없습니다. 그래서 원래 파장의 봉우리도 함께 보입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">물질의 파동성</p><h2>드브로이 파와 데이비슨-거머 실험</h2></header>
+    <div class="body cols">
+      <div>
+        <p>드브로이(1924): 광자에서 성립하는 $p = h/\lambda$ 가 전자 같은 입자에도 성립한다.</p>
+        <div class="eq">$$\lambda = \frac hp = \frac{h}{\sqrt{2mK}}\qquad(\text{전자: } \lambda \approx \frac{1.226}{\sqrt{V}}\ \text{nm})$$</div>
+        <p>54 V 로 가속한 전자의 파장은 0.167 nm 로, 결정 속 원자 간격과 비슷합니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">데이비슨-거머 (1927)</span>
+        <p>니켈 결정 표면에 수직으로 54 eV 전자를 쏘자, 입사 방향과 $50^\circ$ 를 이루는 쪽에서 산란 전자가 가장 많았습니다.</p>
+        <p>표면 원자 간격 $D = 0.215$ nm 로 계산하면 $D\sin50^\circ = 0.165$ nm. 드브로이 파장과 맞습니다.</p>
+        <p class="small">같은 결과를 결정 내부의 브래그 면으로 보면 면 간격 0.091 nm, 빛살과 면이 이루는 각 $65^\circ$ 에서 $2d\sin65^\circ = 0.165$ nm 입니다. 전자 현미경이 이 원리를 씁니다.</p>
+      </div>
+      <aside class="note">기존 양자 p56은 각을 '수직 입사각 50°, 결정면 각도 15°'라고 썼습니다. 50°는 산란각이고 브래그 각은 65°입니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">원자 모형</p><h2>보어의 수소 원자 모형 (1913)</h2></header>
+    <div class="body cols">
+      <div>
+        <p>러더퍼드 모형의 문제: 원운동하는 전자는 가속하므로 전자기파를 내며 에너지를 잃고 핵에 떨어져야 한다.</p>
+        <p><strong>보어의 가설</strong></p>
+        <ol>
+          <li>전자는 각운동량이 $L = n\hbar$ 인 궤도(정상 상태)에서만 돌고, 그동안 빛을 내지 않는다.</li>
+          <li>정상 상태 사이를 옮길 때만 $hf = E_i - E_f$ 인 빛을 내거나 흡수한다.</li>
+        </ol>
+        <div class="eq">$$r_n = n^2a_0\ (a_0 = 0.0529\ \text{nm}),\qquad E_n = -\frac{13.6\ \text{eV}}{n^2}$$</div>
+      </div>
+      <div class="box def"><span class="tag">물질파로 다시 보기</span>
+        <p>$L = mvr = n\hbar$ 는 $2\pi r = n\dfrac{h}{mv} = n\lambda$ 와 같습니다. 궤도 둘레에 전자의 드브로이 파장이 정수 개 들어가 정상파를 이루는 조건입니다.</p>
+        <p class="small">보어 모형은 수소의 스펙트럼을 설명했지만, 전자가 둘 이상인 원자나 선의 세기는 설명하지 못해 양자역학으로 넘어갑니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">수소 스펙트럼</p><h2>선 스펙트럼은 에너지 준위의 지문</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <div class="eq">$$\frac1\lambda = R\Big(\frac1{n_f^2} - \frac1{n_i^2}\Big),\qquad R = 1.097\times10^7\ \text{m}^{-1}$$</div>
+        <ul>
+          <li>라이먼 계열 ($n_f = 1$): 자외선, Lyα 121.6 nm</li>
+          <li>발머 계열 ($n_f = 2$): 가시광선, Hα 656 nm (빨강)</li>
+          <li>파셴 계열 ($n_f = 3$): 적외선</li>
+        </ul>
+        <p class="small">발머(1885)는 가시광선 네 줄을 $\lambda = Bn^2/(n^2-4)$ 로 맞혔고, 뤼드베리(1888)가 위의 일반식으로 정리했습니다. 보어는 $R$ 을 기본 상수로 계산해 냈습니다.</p>
+      </div>
+      <figure class="fig">{{fig:hlevels}}<figcaption>화살표 하나가 스펙트럼선 하나. 아래 준위로 갈수록 간격이 넓어 라이먼 계열의 에너지가 가장 큽니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>양자역학의 수립</h2></header>
+    <div class="body cols c3">
+      <div class="q"><span class="qn">Q1</span>
+        <p>일함수 4.5 eV 인 텅스텐에 파장 200 nm 자외선을 쬐었다. 정지 전압은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$hf = 1240/200 = 6.2$ eV, $K_{max} = 1.7$ eV, $V_s = 1.7$ V</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>수소 원자가 $n = 3$ 에서 $n = 2$ 로 옮길 때 내는 빛의 파장은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\Delta E = 13.6(1/4 - 1/9) = 1.89$ eV, $\lambda = 1240/1.89 = 656$ nm (Hα)</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q3</span>
+        <p>속력 30 m/s 로 던진 0.15 kg 야구공과, 100 V 로 가속한 전자의 드브로이 파장을 비교하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>공: $\lambda = 6.63\times10^{-34}/4.5 = 1.5\times10^{-34}$ m. 어떤 틈보다도 훨씬 작아 파동성이 드러나지 않습니다.</p>
+          <p>전자: $1.226/\sqrt{100} = 0.123$ nm.</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">IV-5</span>
+    <h2>상보성, 불확정성, 파동 함수</h2>
+    <p class="std">[12고물04-04] 상보성 원리와 불확정성 원리를 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">상보성 원리 (보어, 1927)</p><h2>입자이면서 파동인 것은 어떻게 보이는가</h2></header>
+    <div class="body cols">
+      <div>
+        <p>전자를 하나씩 이중 슬릿으로 보내면, 스크린에는 점이 하나씩 찍힙니다 (입자). 점이 수천 개 모이면 간섭무늬가 나타납니다 (파동).</p>
+        <p>전자가 어느 슬릿을 지났는지 알아내는 장치를 달면 간섭무늬가 사라집니다.</p>
+      </div>
+      <div class="box def"><span class="tag">상보성</span>
+        <p>빛과 물질은 입자성과 파동성을 모두 갖지만, 한 실험에서는 어느 한쪽만 드러납니다. 두 성질은 서로 배타적이면서, 대상을 완전히 이해하려면 둘 다 필요한 서로 보완적인 관계입니다.</p>
+        <div class="tbl-wrap"><table class="tbl">
+          <tbody>
+            <tr><td>파동성이 드러나는 실험</td><td>간섭, 회절, 전자 회절</td></tr>
+            <tr><td>입자성이 드러나는 실험</td><td>광전 효과, 콤프턴 효과, 검출기의 점</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">불확정성 원리 (하이젠베르크, 1927)</p><h2>위치와 운동량은 동시에 정확할 수 없다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\Delta x\,\Delta p_x \ge \frac\hbar2,\qquad \hbar = \frac{h}{2\pi} = 1.055\times10^{-34}\ \text{J·s}$$</div>
+        <p><strong>파동 묶음으로 이해하기</strong>: 좁은 곳에 모인 파동을 만들려면 파수 $k$ 가 다른 사인파를 많이 겹쳐야 합니다. 위치가 좁을수록($\Delta x$ 작음) 파수의 폭 $\Delta k$ 가 넓어지고, 둘 사이에 $\Delta x\Delta k \ge \tfrac12$ 가 성립합니다. 여기에 $p = \hbar k$ 를 곱한 것이 위 식입니다.</p>
+        <p class="small">측정 장치가 서툴러서 생기는 한계가 아니라, 파동 함수가 원래 가진 성질입니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">어림 계산</span>
+        <p>원자 크기 $\Delta x \approx 0.1$ nm 에 갇힌 전자: $\Delta v \ge \dfrac{\hbar}{2m\Delta x} \approx 5.8\times10^5$ m/s. 원자 속 전자가 정지해 있을 수 없는 이유입니다.</p>
+        <p>에너지-시간: $\Delta E\,\Delta t \gtrsim \hbar/2$. 수명이 짧은 들뜬 상태일수록 스펙트럼선의 폭이 넓습니다.</p>
+      </div>
+      <aside class="note">ΔxΔk는 단위가 없으므로 비교 기준은 1/2이고, ħ/2는 ΔxΔp의 하한입니다. 기존 양자 p88은 ΔxΔk = 4π ≥ ħ/2로 차원이 맞지 않았습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">파동 함수</p><h2>확률 진폭과 확률 해석 (보른, 1926)</h2></header>
+    <div class="body cols">
+      <div>
+        <p>입자의 상태는 파동 함수 $\psi(x,t)$ (복소수)로 나타냅니다. $x$ 와 $x + dx$ 사이에서 입자를 발견할 확률은</p>
+        <div class="eq">$$P\,dx = |\psi(x,t)|^2dx,\qquad \int_{-\infty}^{\infty}|\psi|^2dx = 1\ \ (\text{규격화})$$</div>
+        <p>두 상태의 중첩 $\Psi = \psi_1 + \psi_2$ 에서는</p>
+        <div class="eq">$$|\Psi|^2 = (\psi_1 + \psi_2)^*(\psi_1 + \psi_2) = |\psi_1|^2 + |\psi_2|^2 + 2\,\mathrm{Re}(\psi_1^*\psi_2)$$</div>
+      </div>
+      <div class="box warn"><span class="tag">간섭항의 뜻</span>
+        <p>마지막 항이 이중 슬릿 무늬를 만드는 간섭항입니다. 두 파동 함수가 서로 '상호작용'해서 생기는 것이 아니라, 확률 진폭을 먼저 더하고 나서 제곱하기 때문에 생깁니다.</p>
+        <p>고전적인 확률이라면 $P_1 + P_2$ 만 있어야 합니다. 경로를 관측하면 간섭항이 사라지고 정확히 이렇게 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">슈뢰딩거 방정식 (1926) · 소개</p><h2>파동 함수가 시간에 따라 변하는 규칙</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$i\hbar\frac{\partial\psi}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2\psi}{\partial x^2} + V(x)\psi$$</div>
+        <p>자유 입자의 평면파 $\psi = e^{i(kx - \omega t)}$ 에 $E = \hbar\omega$, $p = \hbar k$ 를 쓰면 $E = \dfrac{p^2}{2m}$ 이 됩니다. 에너지 보존을 파동의 언어로 쓴 식입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">정상 상태</span>
+        <p>$V$ 가 시간에 무관하면 $\psi(x,t) = \phi(x)e^{-iEt/\hbar}$ 꼴의 해가 있고, $\phi$ 는</p>
+        <div class="eq">$$-\frac{\hbar^2}{2m}\frac{d^2\phi}{dx^2} + V(x)\phi = E\phi$$</div>
+        <p>를 만족합니다 (시간에 무관한 슈뢰딩거 방정식). 이 상태는 $|\psi|^2$ 가 시간에 따라 변하지 않습니다.</p>
+        <p class="small">에너지가 정해진 이런 상태(고유 상태)에서만 $\hat H\phi = E\phi$ 가 성립합니다. 일반 상태는 여러 고유 상태의 중첩입니다.</p>
+      </div>
+      <aside class="note">기존 양자 p103은 변수 분리식 우변을 "= E"로만 써서 X(x)T(t)가 빠졌고, p114는 '어떤 파동함수든' 고유값 방정식을 만족하는 것처럼 썼습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">IV-6</span>
+    <h2>퍼텐셜 상자, 반도체, 나노 물리</h2>
+    <p class="std">[12고물04-05] 1차원 무한 퍼텐셜 상자 속 입자의 파동 함수와 에너지 준위를 정량적으로 설명하고, 반도체를 띠 이론으로 이해하고, 나노 물리학의 전망을 토의할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">1차원 무한 퍼텐셜 상자</p><h2>경계 조건이 에너지를 양자화한다</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>$0 \lt x \lt L$ 에서 $V = 0$, 그 밖은 $V = \infty$. 벽 밖에는 입자가 없으므로 $\psi(0) = \psi(L) = 0$ 입니다.</p>
+        <p>상자 안에서 $\phi'' = -k^2\phi$, $k = \sqrt{2mE}/\hbar$. 해 $\phi = A\sin kx$ 가 $x = L$ 에서 0이 되려면 $kL = n\pi$:</p>
+        <div class="eq">$$\phi_n(x) = \sqrt{\frac2L}\sin\frac{n\pi x}{L},\qquad E_n = \frac{n^2h^2}{8mL^2}\quad(n = 1, 2, 3, \dots)$$</div>
+        <p class="small">벽 사이에 반파장이 $n$ 개 들어가는 정상파입니다 ($L = n\lambda/2$). 진폭 $\sqrt{2/L}$ 는 규격화 조건에서 나옵니다.</p>
+      </div>
+      <figure class="fig">{{fig:box}}<figcaption>각 파동 함수를 자기 에너지 높이에 그렸습니다. $n$ 번째 상태에는 마디가 $n-1$ 개 있습니다.</figcaption></figure>
+      <aside class="note">상자의 중심을 원점으로 옮기면 해가 cos(홀수 n)와 sin(짝수 n)으로 갈립니다. 한 식으로 쓰면 √(2/L) sin[nπ(x + L/2)/L]입니다. 기존 양자 p128~129의 "cos + sin"을 더한 식은 어떤 n에서도 해가 아닙니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">상자 속 입자의 해석</p><h2>영점 에너지와 불확정성</h2></header>
+    <div class="body cols">
+      <div>
+        <ul>
+          <li><strong>영점 에너지</strong>: 가장 낮은 에너지 $E_1$ 도 0이 아니다. 갇힌 입자는 멈춰 있을 수 없다.</li>
+          <li>준위 간격이 $1/L^2$ 에 비례한다. 상자가 작을수록 양자 효과가 크다.</li>
+          <li>$n = 2$ 의 상자 한가운데처럼, 고전적으로는 갈 수 있는데 발견 확률이 0인 곳(마디)이 있다.</li>
+        </ul>
+        <div class="box warn"><span class="tag">운동량의 기댓값</span>
+          <p>정상파는 $+p$ 와 $-p$ 로 가는 두 파동의 중첩이므로 $\langle p\rangle = 0$ 입니다. 운동량의 크기는 $|p| = n\pi\hbar/L$ 이고, 이것이 $\Delta p$ 입니다.</p>
+        </div>
+      </div>
+      <div class="box def"><span class="tag">불확정성 확인</span>
+        <div class="eq">$$\langle x\rangle = \frac L2,\quad \Delta x = L\sqrt{\frac1{12} - \frac1{2n^2\pi^2}},\quad \Delta p = \frac{n\pi\hbar}{L}$$</div>
+        <div class="eq">$$\Delta x\,\Delta p = \frac\hbar2\sqrt{\frac{n^2\pi^2}{3} - 2}$$</div>
+        <p>$n = 1$ 이면 $0.568\hbar$, $n = 2$ 이면 $1.67\hbar$. 언제나 $\hbar/2$ 보다 큽니다.</p>
+      </div>
+      <aside class="note">기존 양자 p122는 ⟨p⟩ = nπħ/L, ΔxΔp = nπħ라고 썼습니다. 후자는 Δx = L로 둔 값입니다. 위 식은 수치로 검산했습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">예제와 응용</p><h2>나노미터 상자 속 전자, 그리고 양자점</h2></header>
+    <div class="body cols">
+      <div class="box ex"><span class="tag">예제</span>
+        <p>폭 1.0 nm 인 상자에 갇힌 전자의 $E_1$ 과, $n = 2 \to 1$ 전이에서 나오는 빛의 파장은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$E_1 = \dfrac{(6.63\times10^{-34})^2}{8(9.11\times10^{-31})(1.0\times10^{-9})^2} = 6.0\times10^{-20}$ J $= 0.376$ eV</p>
+          <p>$\Delta E = 3E_1 = 1.13$ eV, $\lambda = 1240/1.13 \approx 1100$ nm (적외선)</p>
+        </div></details>
+      </div>
+      <div class="box def"><span class="tag">양자점</span>
+        <p>지름 수 nm 인 반도체 알갱이에서는 전자가 상자에 갇힌 것처럼 행동합니다. 크기가 작을수록 에너지 간격이 커져 더 짧은 파장(파란 쪽)의 빛을 냅니다.</p>
+        <p>같은 물질로 크기만 바꿔 색을 고를 수 있어 QLED 디스플레이와 생체 영상에 씁니다. 2023년 노벨 화학상 주제입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">터널 효과 · 정성적으로</p><h2>넘을 수 없는 장벽을 통과하는 파동 함수</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>장벽의 높이 $U$ 가 입자 에너지 $E$ 보다 커도, 장벽 안에서 파동 함수는 0이 되지 않고 지수적으로 줄어듭니다. 장벽이 얇으면 반대편에 남은 진폭이 있습니다.</p>
+        <div class="eq">$$T \approx e^{-2\kappa L},\qquad \kappa = \frac{\sqrt{2m(U - E)}}{\hbar}$$</div>
+        <p class="small">전자, $U - E = 1$ eV: 두께 0.5 nm 이면 $T \approx 6\times10^{-3}$, 1.0 nm 이면 $4\times10^{-5}$. 두께에 매우 민감합니다.</p>
+        <p>응용: 주사 터널링 현미경(STM)은 탐침과 표면 사이 터널 전류가 거리에 지수적으로 변하는 것을 이용해 원자 하나하나를 봅니다. 플래시 메모리, 원자핵의 알파 붕괴도 터널 효과입니다.</p>
+      </div>
+      <figure class="fig">{{fig:tunnel}}<figcaption>장벽 안에서는 진동하지 않고 지수적으로 줄어듭니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">고체의 띠 이론</p><h2>원자 준위가 모여 에너지 띠가 된다</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>원자 두 개가 가까워지면 같은 준위가 둘로 갈라집니다. 고체처럼 $10^{23}$ 개가 모이면 준위가 촘촘한 <em class="term">띠</em>가 되고, 띠 사이에는 전자가 가질 수 없는 띠틈이 생깁니다.</p>
+        <ul>
+          <li><strong>원자가띠</strong>: 전자가 채워진 가장 높은 띠</li>
+          <li><strong>전도띠</strong>: 그 위의 비어 있는 띠. 여기 올라간 전자가 전류를 나른다</li>
+          <li><strong>띠틈</strong> $E_g$: 두 띠 사이 간격</li>
+        </ul>
+      </div>
+      <figure class="fig">{{fig:bands}}<figcaption>도체는 띠가 일부만 채워져 있고, 반도체와 절연체는 띠틈의 크기로 구분합니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">반도체</p><h2>띠틈, 도핑, p-n 접합</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>물질</th><th>띠틈 (300 K)</th></tr></thead>
+          <tbody>
+            <tr><td>저마늄 Ge</td><td class="mono">0.67 eV</td></tr>
+            <tr><td>규소 Si</td><td class="mono">1.12 eV</td></tr>
+            <tr><td>갈륨비소 GaAs</td><td class="mono">1.42 eV</td></tr>
+            <tr><td>질화 갈륨 GaN</td><td class="mono">3.4 eV</td></tr>
+            <tr><td>다이아몬드 (절연체)</td><td class="mono">5.5 eV</td></tr>
+          </tbody>
+        </table></div>
+        <p class="small">반도체는 온도가 오르면 전도띠로 올라가는 전자가 늘어 저항이 <strong>줄어듭니다</strong>. 금속은 반대로 저항이 늘어납니다.</p>
+      </div>
+      <div class="box def"><span class="tag">도핑과 소자</span>
+        <p><strong>n형</strong>: Si에 15족(인 P)을 넣으면 남는 전자가 전도띠 근처에 생긴다. <strong>p형</strong>: 13족(붕소 B)을 넣으면 전자가 빈 자리(양공)가 원자가띠 근처에 생긴다.</p>
+        <p><strong>p-n 접합</strong>: 한 방향으로만 전류가 잘 흐르는 다이오드. 전자와 양공이 만나 재결합하면 띠틈만큼의 에너지를 빛으로 내는 것이 LED입니다.</p>
+        <div class="eq">$$\lambda = \frac{hc}{E_g} = \frac{1240\ \text{eV·nm}}{E_g}$$</div>
+        <p class="small">파란 LED (InGaN, 약 2.7 eV → 450 nm), 2014 노벨 물리학상.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">나노 물리</p><h2>크기가 성질을 바꾸는 세계</h2></header>
+    <div class="body cols c3">
+      <div class="box def"><span class="tag">그래핀</span>
+        <p>탄소 원자 한 층이 벌집 모양으로 이어진 2차원 물질 (2004년 분리, 2010 노벨 물리학상). 띠틈이 0이고 전자의 이동도가 매우 크며, 같은 무게의 강철보다 훨씬 강하고 거의 투명합니다.</p>
+      </div>
+      <div class="box def"><span class="tag">탄소 나노튜브</span>
+        <p>그래핀을 지름 1 nm 정도로 만 원통 (1991년 보고). 마는 방향에 따라 도체가 되기도 하고 반도체가 되기도 합니다. 가볍고 강한 복합 소재, 투명 전극, 차세대 트랜지스터 후보.</p>
+      </div>
+      <div class="box def"><span class="tag">양자점과 그 밖</span>
+        <p>크기로 색을 정하는 양자점, 터널 효과를 쓰는 플래시 메모리와 STM, 원자 몇 개 두께의 2차원 반도체(MoS₂ 등). 모두 '상자에 갇힌 전자'로 이해할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">토의 활동 · 수행평가 연계</p><h2>나노 소재 조사·발표</h2></header>
+    <div class="body cols">
+      <div>
+        <ol>
+          <li>모둠마다 소재 하나를 고른다: 그래핀, 탄소 나노튜브, 양자점, 2차원 반도체, 페로브스카이트 태양전지 등.</li>
+          <li>그 소재의 성질을 이 단원의 개념(퍼텐셜 상자, 띠틈, 터널 효과)으로 설명한다.</li>
+          <li>실제 제품이나 연구 사례를 하나 찾아 출처와 함께 소개한다.</li>
+          <li>상용화를 막는 과제(대량 생산, 비용, 안전성)를 토의한다.</li>
+        </ol>
+      </div>
+      <div class="box"><span class="tag">평가 기준 예시</span>
+        <ul>
+          <li>물리 개념을 정확하게 연결했는가</li>
+          <li>수치(크기, 띠틈, 파장)를 근거로 제시했는가</li>
+          <li>출처가 믿을 만하고 표시되어 있는가</li>
+          <li>전망과 한계를 균형 있게 다루었는가</li>
+        </ul>
+      </div>
+      <aside class="note">2015 자료에는 띠 이론과 나노 물리가 없었습니다 (OT 진도표의 '소재 물리'에 해당하는 덱 없음). 2022 성취기준 [12고물04-05]의 적용 시 고려 사항이 나노튜브·그래핀 조사·발표를 예로 듭니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>상자, 터널, 띠</h2></header>
+    <div class="body cols c3">
+      <div class="q"><span class="qn">Q1</span>
+        <p>상자의 폭을 절반으로 줄이면 바닥 상태 에너지는 몇 배가 되는가?</p>
+        <details class="answer"><summary>풀이 보기</summary><div><p>$E_1 \propto 1/L^2$ 이므로 4배.</p></div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>띠틈이 1.42 eV 인 GaAs LED가 내는 빛의 파장과 영역은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div><p>$\lambda = 1240/1.42 \approx 873$ nm, 근적외선 (리모컨).</p></div></details>
+      </div>
+      <div class="q"><span class="qn">Q3</span>
+        <p>STM 탐침과 표면 사이 거리가 0.1 nm 줄면 터널 전류는 대략 몇 배가 되는가? ($\kappa \approx 1.0\times10^{10}$ m⁻¹)</p>
+        <details class="answer"><summary>풀이 보기</summary><div><p>$e^{2\kappa\Delta L} = e^{2} \approx 7$ 배. 이렇게 민감해서 원자 하나의 높이 차이도 잴 수 있습니다.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">정리</p><h2>현대 물리에서 가져갈 것</h2></header>
+    <div class="body cols">
+      <ul>
+        <li>가속 좌표계에서는 관성력 $-m\vec A$ 를 더한다. 원심력, 코리올리 힘.</li>
+        <li>두 가정 → 동시성의 상대성, $\Delta t = \gamma\Delta t_0$, $L = L_0/\gamma$, 로런츠 변환.</li>
+        <li>쌍둥이 역설은 관성계를 바꾼 쪽의 고유 시간이 짧은 것으로 풀린다.</li>
+        <li>$E = \gamma mc^2$, $E^2 = (pc)^2 + (mc^2)^2$.</li>
+        <li>등가 원리 → 빛의 휨 1.75″, 중력에 의한 시간 지연(GPS), 블랙홀, 중력파.</li>
+      </ul>
+      <ul>
+        <li>흑체·광전·콤프턴: 빛의 입자성. 데이비슨-거머: 물질의 파동성.</li>
+        <li>보어 모형 $E_n = -13.6/n^2$ eV, 스펙트럼 $1/\lambda = R(1/n_f^2 - 1/n_i^2)$.</li>
+        <li>상보성, $\Delta x\Delta p \ge \hbar/2$, $|\psi|^2$ 는 확률 밀도.</li>
+        <li>무한 퍼텐셜 상자 $E_n = n^2h^2/8mL^2$, $\langle p\rangle = 0$.</li>
+        <li>띠틈이 도체·반도체·절연체를 가르고, 나노 크기에서는 양자 효과가 성질을 바꾼다.</li>
+      </ul>
+    </div>
+  </div>
+</section>

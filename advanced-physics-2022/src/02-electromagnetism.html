@@ -1,0 +1,783 @@
+<!--
+title: 고급 물리학 Ⅱ 전자기학
+short: 전자기학
+file: 02-electromagnetism.html
+desc: 가우스 법칙과 도체·유전체, 축전기, 비오-사바르·앙페르 법칙, 전자기 유도, 교류와 공진, 맥스웰 방정식과 전자기파
+-->
+<section class="slide cover">
+  <div class="sl">
+    <p class="kicker">고급 물리학 · 2022 개정 · Ⅱ</p>
+    <h2>전자기학</h2>
+    <p class="sub">대칭을 이용해 전기장과 자기장을 구하고, 변하는 장이 서로를 만들어 빛이 되는 과정까지 따라갑니다.</p>
+    <p class="meta">가우스 법칙 · 축전기 · 비오-사바르와 앙페르 · 전자기 유도 · 교류와 공진 · 전자기파</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">단원 구성과 성취기준</p><h2>이 단원에서 할 일</h2></header>
+    <div class="body cols">
+      <ol>
+        <li><strong>가우스 법칙</strong>: 도체·유전체 주변 전기장, 전위, 정전기 차폐, 등전위면, 전기 쌍극자 <span class="small">[12고물02-01]</span></li>
+        <li><strong>축전기</strong>: 평행판 축전기의 직렬·병렬, 유전체의 역할 <span class="small">[12고물02-02]</span></li>
+        <li><strong>전류와 자기장</strong>: 비오-사바르 법칙, 대칭이 있을 때 앙페르 법칙 <span class="small">[12고물02-03]</span></li>
+        <li><strong>전자기 유도</strong>: 패러데이·렌츠 법칙, 자체 유도 계수</li>
+        <li><strong>교류와 전기 진동</strong>: LC·RLC 회로의 진동과 공진 <span class="small">[12고물02-06]</span></li>
+        <li><strong>맥스웰 방정식과 전자기파</strong>: 파동 방정식 유도, 발생 원리, 성질과 종류</li>
+      </ol>
+      <div class="box"><span class="tag">연계</span>
+        <p>저항의 직렬·병렬 연결과 소비 전력, 축전기의 기본 개념은 「물리학」에서 배웠습니다. 여기서는 그 위에 장(field)의 언어를 더합니다.</p>
+      </div>
+      <aside class="note">전자기 유도와 전자기파 항목의 성취기준 번호는 자료마다 달라 표기하지 않았습니다. 교과서에서 번호를 확인해 채워 넣으세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">II-1</span>
+    <h2>전기장과 가우스 법칙</h2>
+    <p class="std">[12고물02-01] 가우스 법칙을 이용하여 도체와 유전체 주변의 전기장을 구하고, 전위, 정전기 차폐, 등전위면, 전기 쌍극자를 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">쿨롱 법칙과 전기장</p><h2>전기장은 시험 전하가 받는 힘의 벡터</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\vec F = \frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r^2}\hat r,\qquad \frac{1}{4\pi\varepsilon_0} = 8.99\times10^9\ \text{N·m}^2/\text{C}^2$$</div>
+        <p>원천 전하를 흐트러뜨리지 않을 만큼 작은 시험 전하 $q$ 로 전기장을 정의합니다.</p>
+        <div class="eq">$$\vec E = \lim_{q\to0}\frac{\vec F}{q}\qquad(\text{단위 N/C} = \text{V/m})$$</div>
+        <p>전기장은 크기와 방향을 가진 벡터장이고, 여러 전하의 전기장은 벡터로 더합니다 (중첩 원리).</p>
+      </div>
+      <div class="box"><span class="tag">상수 이야기</span>
+        <p>$\varepsilon_0 = 8.85\times10^{-12}$ C²/(N·m²) 은 SI 단위계에서 전하와 힘을 잇는 비례 상수(전기 상수)입니다. 진공이 전하를 '저장'한다는 뜻은 아닙니다.</p>
+        <p>전하는 기본 전하 $e = 1.602\times10^{-19}$ C 의 정수배로만 자유롭게 존재합니다. 쿼크는 $\pm\tfrac13e,\ \pm\tfrac23e$ 를 갖지만 홀로 떨어져 나오지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">전기 선속과 가우스 법칙</p><h2>닫힌 곡면을 나가는 전기 선속 = 안의 전하 / ε₀</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\Phi_E = \oint_S\vec E\cdot d\vec A = \frac{Q_{in}}{\varepsilon_0}$$</div>
+        <p><strong>유도</strong>: 점전하를 중심으로 한 반지름 $r$ 인 구면에서 $E$ 는 일정하고 면에 수직이므로</p>
+        <div class="eq">$$\oint E\,dA = \frac{q}{4\pi\varepsilon_0r^2}\cdot4\pi r^2 = \frac{q}{\varepsilon_0}$$</div>
+        <p>결과에 $r$ 이 없습니다. 모양이 다른 닫힌 곡면이라도 같은 입체각 $4\pi$ 를 덮으므로 선속은 같습니다. 바깥 전하의 전기력선은 들어온 만큼 나가서 기여가 0입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">가우스 법칙으로 E를 구하는 조건</span>
+        <p>법칙 자체는 언제나 성립하지만, $\oint\vec E\cdot d\vec A$ 에서 $E$ 를 적분 밖으로 꺼내려면 대칭이 필요합니다. 가우스 곡면 위에서 $E$ 가 일정하고 면과 평행하거나 수직이어야 합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">세 가지 대칭</p><h2>구, 원통(선), 평면</h2></header>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>대칭</th><th>전하 분포 예</th><th>가우스 곡면</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td>구 대칭</td><td>점전하, 대전된 구</td><td>같은 중심의 구면</td><td>$E = \dfrac{Q_{in}}{4\pi\varepsilon_0r^2}$</td></tr>
+          <tr><td>원통(선) 대칭</td><td>무한 직선 전하 $\lambda$</td><td>같은 축의 원통</td><td>$E = \dfrac{\lambda}{2\pi\varepsilon_0r}$</td></tr>
+          <tr><td>평면 대칭</td><td>무한 평면 전하 $\sigma$</td><td>평면을 관통하는 납작한 상자</td><td>$E = \dfrac{\sigma}{2\varepsilon_0}$ (거리와 무관)</td></tr>
+        </tbody>
+      </table></div>
+      <p>평면 대칭에서 쓰는 납작한 원통(필박스)은 <strong>가우스 곡면의 모양</strong>일 뿐, 원통 대칭이라는 뜻이 아닙니다. 옆면에서는 $\vec E\perp d\vec A$ 라 선속이 0이고, 윗면·아랫면에서만 $2EA$ 가 나옵니다.</p>
+      <aside class="note">기존 전자기 p25·28·29는 '쓸 수 있는 대칭은 구와 원통 두 가지'라 하고 무한 평면을 원통 대칭에 넣었습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">구 대칭의 예</p><h2>고르게 대전된 부도체 구</h2></header>
+    <div class="body cols">
+      <div>
+        <p>전하 $Q$ 가 반지름 $R$ 인 구에 고르게 퍼져 있고, 물질의 편극은 무시합니다.</p>
+        <div class="eq">$$r \ge R:\ \ E = \frac{Q}{4\pi\varepsilon_0r^2},\qquad r \lt R:\ \ Q_{in} = Q\frac{r^3}{R^3}\ \Rightarrow\ E = \frac{Qr}{4\pi\varepsilon_0R^3}$$</div>
+        <p>도체 구라면 전하는 모두 표면에 있으므로 내부 $E = 0$ 이고 바깥은 같습니다.</p>
+      </div>
+      <figure class="fig">{{fig:gauss_sphere}}<figcaption>구 안에서는 $r$ 에 비례, 밖에서는 $1/r^2$ 로 줄어듭니다.</figcaption></figure>
+      <aside class="note">기존 자료 p37~40은 이 구를 '유전체 구'라 부르면서 ε₀로 계산했습니다. 유전체라면 편극 때문에 내부 장이 E/κ로 줄어듭니다. 여기서는 '편극을 무시한 부도체'로 명시했습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">도체</p><h2>정전기적 평형과 정전기 차폐</h2></header>
+    <div class="body cols">
+      <div>
+        <p>도체 속 자유 전자는 전기장이 있으면 움직입니다. 움직임이 멈춘 상태(<em class="term">정전기적 평형</em>)에서는</p>
+        <ul>
+          <li>도체 내부의 전기장은 0이다.</li>
+          <li>남는 전하는 모두 표면에 있다.</li>
+          <li>표면 바로 밖의 전기장은 표면에 수직이고 $E = \sigma/\varepsilon_0$ 이다.</li>
+          <li>도체 전체가 하나의 등전위체다.</li>
+        </ul>
+      </div>
+      <div class="box def"><span class="tag">정전기 차폐</span>
+        <p>도체 껍질 안의 빈 공간(공동)에 전하가 없으면, 바깥 전기장이 어떻든 공동 안의 전기장은 0입니다. 도체 표면의 유도 전하가 바깥 장을 상쇄하기 때문입니다.</p>
+        <p>예: 패러데이 새장, 자동차 안이 번개에 안전한 이유, 동축 케이블의 바깥 도체, 전자레인지 문의 금속 망.</p>
+      </div>
+      <aside class="note">'도체 내부 E = 0'은 평형 조건이고, '정전기 차폐'는 그 결과로 공동이 보호되는 현상입니다. 기존 p86은 둘을 같은 것으로 불렀습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">유전체</p><h2>편극이 전기장을 줄인다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>유전체(부도체)에 전기장을 걸면 분자가 늘어나거나 정렬해 <em class="term">편극</em>됩니다. 표면에 나타난 속박 전하가 원래 장과 반대 방향의 장을 만들어</p>
+        <div class="eq">$$E = \frac{E_0}{\kappa},\qquad \varepsilon = \kappa\varepsilon_0$$</div>
+        <p>유전체 속 점전하의 전기장은 $E = \dfrac{q}{4\pi\kappa\varepsilon_0r^2}$ 입니다.</p>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>물질</th><th>유전 상수 κ</th></tr></thead>
+        <tbody>
+          <tr><td>진공</td><td class="mono">1 (정의)</td></tr>
+          <tr><td>공기 (1기압)</td><td class="mono">1.000 59</td></tr>
+          <tr><td>종이</td><td class="mono">약 3.7</td></tr>
+          <tr><td>유리</td><td class="mono">5 ~ 10</td></tr>
+          <tr><td>물 (20 °C)</td><td class="mono">80</td></tr>
+          <tr><td>티탄산 바륨</td><td class="mono">1000 이상</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">전위와 등전위면</p><h2>전기장은 전위가 가장 빨리 떨어지는 방향</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$V(B) - V(A) = -\int_A^B\vec E\cdot d\vec l,\qquad \vec E = -\nabla V$$</div>
+        <p>점전하의 전위는 무한히 먼 곳을 0으로 잡아 $V = \dfrac{q}{4\pi\varepsilon_0r}$ 입니다. 전위는 스칼라라서 그냥 더하면 됩니다.</p>
+        <p>전하 $q$ 를 옮길 때 전기력이 한 일은 $W = -q\Delta V$ 입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">등전위면</span>
+        <ul>
+          <li>전위가 같은 점들의 면. 그 위로 전하를 옮기는 데 일이 들지 않는다.</li>
+          <li>전기력선과 언제나 수직이다.</li>
+          <li>등전위면이 촘촘한 곳일수록 전기장이 세다 ($E = -dV/dx$).</li>
+          <li>점전하: 동심 구면, 균일한 장: 평행한 평면, 도체 표면: 등전위면.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">전기 쌍극자</p><h2>크기가 같고 부호가 반대인 두 전하</h2></header>
+    <div class="body cols">
+      <div>
+        <p>쌍극자 모멘트 $\vec p = q\vec d$ 는 $-q$ 에서 $+q$ 쪽을 향합니다. 쌍극자에서 먼 곳($r \gg d$), 축과 이루는 각 $\theta$ 인 점에서</p>
+        <div class="eq">$$\vec E = \frac{p}{4\pi\varepsilon_0r^3}\big(2\cos\theta\,\hat r + \sin\theta\,\hat\theta\big),\qquad V = \frac{p\cos\theta}{4\pi\varepsilon_0r^2}$$</div>
+        <ul>
+          <li>축 위($\theta = 0$): $E = \dfrac{2p}{4\pi\varepsilon_0r^3}$</li>
+          <li>수직 이등분선 위($\theta = 90^\circ$): $E = \dfrac{p}{4\pi\varepsilon_0r^3}$, 방향은 $-\vec p$</li>
+        </ul>
+      </div>
+      <div class="box def"><span class="tag">균일한 장 속의 쌍극자</span>
+        <div class="eq">$$\vec\tau = \vec p\times\vec E,\qquad U = -\vec p\cdot\vec E$$</div>
+        <p>알짜힘은 0이지만 돌림힘이 쌍극자를 장 방향으로 돌립니다. 전자레인지가 물 분자를 흔드는 원리입니다.</p>
+      </div>
+      <aside class="note">기존 p99는 '멀리 있으므로 θ→0'이라며 축 위의 값을 일반 결과처럼 썼습니다. 거리 조건(r ≫ d)과 방향(θ)은 서로 무관합니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>가우스 법칙과 전위</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">Q1</span>
+        <p>반지름 $a$ 인 도체 구(전하 $+Q$)를 안반지름 $b$, 바깥반지름 $c$ 인 도체 껍질(알짜 전하 0)이 둘러싸고 있다. 각 구간의 $E(r)$ 와 껍질 안·밖 면의 전하를 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$r\lt a$: 0 · $a\lt r\lt b$: $\dfrac{Q}{4\pi\varepsilon_0r^2}$ · $b\lt r\lt c$: 0 · $r\gt c$: $\dfrac{Q}{4\pi\varepsilon_0r^2}$</p>
+          <p>껍질 안쪽 면 $-Q$, 바깥 면 $+Q$ (껍질 속 $E = 0$ 이 되도록).</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>균일한 전기장 $E = 200$ V/m 이 $+x$ 방향일 때, $x = 0$ 과 $x = 0.30$ m 사이의 전위차와, 전자를 이 사이에서 옮길 때 전기력이 한 일을 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$V(0.3) - V(0) = -Ed = -60$ V</p>
+          <p>전자를 0 → 0.3 m 로 옮기면 $W = -q\Delta V = -(-e)(-60) = -60$ eV $= -9.6\times10^{-18}$ J. 전자는 전기장 반대쪽으로 힘을 받으므로 외부에서 일을 해 줘야 합니다.</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">II-2</span>
+    <h2>축전기</h2>
+    <p class="std">[12고물02-02] 평행판 축전기의 직렬·병렬 연결에 따른 전기 용량 변화를 계산하고, 유전체의 역할을 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">평행판 축전기</p><h2>가우스 법칙으로 구하는 전기 용량</h2></header>
+    <div class="body cols">
+      <div>
+        <p>넓이 $A$ 인 두 판에 $\pm Q$ 가 있으면 판 사이의 장은 두 평면 전하의 장의 합입니다.</p>
+        <div class="eq">$$E = \frac{\sigma}{\varepsilon_0} = \frac{Q}{\varepsilon_0A},\qquad V = Ed = \frac{Qd}{\varepsilon_0A}$$</div>
+        <div class="eq">$$C = \frac QV = \frac{\varepsilon_0A}{d}$$</div>
+        <p class="small">가장자리 효과는 판 간격이 판 크기보다 훨씬 작을 때 무시합니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>10 cm × 10 cm 판, 간격 1.0 mm 인 공기 축전기의 전기 용량은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$C = \dfrac{(8.85\times10^{-12})(0.010)}{1.0\times10^{-3}} = 8.85\times10^{-11}$ F $\approx 89$ pF</p>
+          <p>1 F 를 만들려면 판 한 변이 약 10 km 여야 합니다. 그래서 실제 축전기는 얇은 유전체를 감아 만듭니다.</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">연결</p><h2>직렬과 병렬</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">병렬: 전압이 같다</span>
+        <div class="eq">$$C_{eq} = C_1 + C_2 + \cdots$$</div>
+        <p>전하가 나뉘어 저장됩니다. 판의 넓이를 늘린 것과 같습니다.</p>
+      </div>
+      <div class="box def"><span class="tag">직렬: 전하량이 같다</span>
+        <div class="eq">$$\frac1{C_{eq}} = \frac1{C_1} + \frac1{C_2} + \cdots$$</div>
+        <p>전압이 나뉘어 걸립니다. 판 간격을 늘린 것과 같아 전기 용량이 가장 작은 것보다도 작아집니다.</p>
+      </div>
+      <p class="small">저항과 공식이 서로 바뀐 꼴입니다. $C = \varepsilon A/d$ 에서 병렬은 $A$ 가, 직렬은 $d$ 가 더해진다고 생각하면 외우지 않아도 됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">유전체를 넣으면</p><h2>전지에 연결된 채로? 떼어 낸 뒤?</h2></header>
+    <div class="body">
+      <p>유전 상수 $\kappa$ 인 유전체로 판 사이를 채우면 $C = \kappa C_0$ 가 됩니다. 나머지 물리량은 무엇이 고정되는지에 따라 달라집니다.</p>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>상황</th><th>Q</th><th>V</th><th>E (판 사이)</th><th>U</th></tr></thead>
+        <tbody>
+          <tr><td>전지에 연결 (V 고정)</td><td>$\kappa Q_0$</td><td>$V_0$</td><td>$E_0$</td><td>$\kappa U_0$</td></tr>
+          <tr><td>전지에서 분리 (Q 고정)</td><td>$Q_0$</td><td>$V_0/\kappa$</td><td>$E_0/\kappa$</td><td>$U_0/\kappa$</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box"><span class="tag">유전체의 역할 세 가지</span>
+        <p>① 전기 용량을 $\kappa$ 배로 키운다 ② 판이 닿지 않게 간격을 유지한다 ③ 공기보다 높은 전압에서도 절연이 깨지지 않게 한다 (절연 내력).</p>
+      </div>
+      <aside class="note">Q가 고정된 경우 U가 줄어드는 만큼의 에너지는 유전체를 판 사이로 끌어당기는 힘이 한 일입니다. 학생 질문이 자주 나오는 부분입니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">에너지</p><h2>축전기에 저장된 에너지와 에너지 밀도</h2></header>
+    <div class="body cols">
+      <div>
+        <p>전하 $q$ 가 있을 때 $dq$ 를 더 옮기는 데 드는 일은 $dW = V\,dq = \dfrac qC dq$ 이므로</p>
+        <div class="eq">$$U = \int_0^Q\frac qC\,dq = \frac{Q^2}{2C} = \tfrac12CV^2 = \tfrac12QV$$</div>
+      </div>
+      <div class="box def"><span class="tag">에너지는 장에 저장된다</span>
+        <p>평행판에서 $U = \tfrac12\dfrac{\varepsilon_0A}{d}(Ed)^2 = \tfrac12\varepsilon_0E^2\,(Ad)$ 이므로</p>
+        <div class="eq">$$u_E = \tfrac12\varepsilon_0E^2$$</div>
+        <p>이 식은 평행판에만 해당하지 않고, 전기장이 있는 모든 곳에서 성립합니다. 전자기파가 에너지를 나르는 근거가 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">복습 · 교과서 범위 확인</p><h2>회로의 전위 변화와 키르히호프 법칙</h2></header>
+    <div class="body cols">
+      <div>
+        <p><strong>접합점 법칙</strong> (전하 보존): 들어오는 전류의 합 = 나가는 전류의 합</p>
+        <p><strong>고리 법칙</strong> (에너지 보존): 닫힌 고리를 한 바퀴 돌면 전위 변화의 합이 0</p>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>지나는 소자와 방향</th><th>전위 변화 ΔV</th></tr></thead>
+          <tbody>
+            <tr><td>저항, 전류 방향으로</td><td>$-IR$</td></tr>
+            <tr><td>저항, 전류 반대 방향으로</td><td>$+IR$</td></tr>
+            <tr><td>전지, (−)에서 (+)로</td><td>$+\mathcal E$</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="box"><span class="tag">용어</span>
+        <p>'전압 강하'는 크기 $IR$ (양수)을 말합니다. 부호를 붙여 쓸 때는 '전위 변화 $\Delta V = -IR$' 처럼 구분하세요.</p>
+      </div>
+      <aside class="note">2022 고급 물리학에 키르히호프 법칙 성취기준이 있는지 출처가 엇갈립니다. 교과서에 없으면 이 슬라이드는 「물리학」 복습으로만 쓰세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">II-3</span>
+    <h2>전류가 만드는 자기장</h2>
+    <p class="std">[12고물02-03] 비오-사바르 법칙을 이용하여 전류에 의한 자기장을 예측하고, 대칭성이 있는 경우 앙페르 법칙으로 자기장을 구할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">자기력</p><h2>로런츠 힘: 자기력은 일을 하지 않는다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\vec F = q\big(\vec E + \vec v\times\vec B\big)$$</div>
+        <p>자기력은 늘 속도에 수직이라 $\vec F\cdot\vec v = 0$, 곧 일을 하지 않습니다. 속력은 그대로이고 방향만 바뀝니다.</p>
+        <p>균일한 자기장에 수직으로 들어온 입자는 원운동합니다.</p>
+        <div class="eq">$$r = \frac{mv}{qB},\qquad \omega = \frac{qB}{m}\ \ (\text{사이클로트론 진동수, 속력과 무관})$$</div>
+      </div>
+      <div class="box"><span class="tag">전류가 받는 힘</span>
+        <div class="eq">$$\vec F = I\vec L\times\vec B$$</div>
+        <p>전류 고리가 받는 돌림힘은 $\vec\tau = \vec\mu\times\vec B$, 자기 쌍극자 모멘트 $\vec\mu = I\vec A$ 입니다. 전동기와 아날로그 전류계의 원리입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">비오-사바르 법칙</p><h2>전류 요소 하나가 만드는 자기장</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$d\vec B = \frac{\mu_0}{4\pi}\frac{I\,d\vec l\times\hat r}{r^2},\qquad \mu_0 = 4\pi\times10^{-7}\ \text{T·m/A}$$</div>
+        <p>쿨롱 법칙처럼 거리의 제곱에 반비례하지만, 방향은 $d\vec l$ 과 $\hat r$ 에 모두 수직입니다.</p>
+        <p class="small">역사: 1820년 외르스테드가 전류 근처 나침반의 움직임을 발견했고, 같은 해 비오와 사바르는 긴 직선 도선의 자기장이 거리 $r$ 에 반비례함을 측정했습니다. 전류 요소의 $1/r^2$ 꼴은 그 결과를 미분형으로 정리한 것입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">결과 두 가지</span>
+        <p>길이가 유한한 직선 도선 (양 끝이 수직선과 이루는 각 $\theta_1,\ \theta_2$):</p>
+        <div class="eq">$$B = \frac{\mu_0I}{4\pi s}(\sin\theta_2 - \sin\theta_1)\ \xrightarrow{\ \text{무한}\ }\ \frac{\mu_0I}{2\pi s}$$</div>
+        <p>원형 고리의 중심축 위:</p>
+        <div class="eq">$$B(z) = \frac{\mu_0IR^2}{2(R^2+z^2)^{3/2}},\qquad B(0) = \frac{\mu_0I}{2R}$$</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">앙페르 법칙</p><h2>대칭이 있으면 선적분 한 번으로 끝난다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\oint\vec B\cdot d\vec l = \mu_0I_{enc}$$</div>
+        <p>반지름 $R$ 인 원통 도선에 전류 $I$ 가 단면 전체에 고르게 흐를 때, 같은 축의 원을 앙페르 고리로 잡으면</p>
+        <div class="eq">$$r\ge R:\ B = \frac{\mu_0I}{2\pi r},\qquad r\lt R:\ I_{enc} = I\frac{r^2}{R^2}\ \Rightarrow\ B = \frac{\mu_0Ir}{2\pi R^2}$$</div>
+      </div>
+      <figure class="fig">{{fig:ampere_cyl}}<figcaption>앞에서 본 대전된 구의 전기장과 꼴이 닮았지만, 바깥에서 $1/r$ 로 줄어듭니다 (선 대칭).</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">앙페르 법칙의 응용</p><h2>솔레노이드, 토로이드, 평행 도선</h2></header>
+    <div class="body cols c3">
+      <div class="box def"><span class="tag">긴 솔레노이드</span>
+        <p>직사각형 고리를 잡으면 바깥 $B \approx 0$, 안쪽은 균일:</p>
+        <div class="eq">$$B = \mu_0nI$$</div>
+        <p class="small">$n$: 단위 길이당 감은 수</p>
+      </div>
+      <div class="box def"><span class="tag">토로이드</span>
+        <p>도넛 안쪽 반지름 $r$ 인 원 고리:</p>
+        <div class="eq">$$B = \frac{\mu_0NI}{2\pi r}$$</div>
+        <p class="small">바깥은 감싼 알짜 전류가 0이라 $B = 0$</p>
+      </div>
+      <div class="box def"><span class="tag">평행 도선 사이의 힘</span>
+        <div class="eq">$$\frac FL = \frac{\mu_0I_1I_2}{2\pi d}$$</div>
+        <p class="small">같은 방향 전류는 끌어당기고 반대 방향은 밀어냅니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>자기장 구하기</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">Q1</span>
+        <p>길이 20 cm 에 500 번 감은 솔레노이드에 2.0 A 가 흐른다. 내부 자기장은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$n = 2500$ /m, $B = (4\pi\times10^{-7})(2500)(2.0) = 6.3\times10^{-3}$ T</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>반원 모양 도선(반지름 $R$)과 양쪽 무한 직선으로 이루어진 머리핀 모양 도선에 전류 $I$ 가 흐른다. 반원 중심의 자기장은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>반원: 고리 중심 값의 절반 $\dfrac{\mu_0I}{4R}$. 반무한 직선 두 개: 각각 $\dfrac{\mu_0I}{4\pi R}$, 같은 방향.</p>
+          <p>$B = \dfrac{\mu_0I}{4R} + \dfrac{\mu_0I}{2\pi R}$</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">II-4</span>
+    <h2>전자기 유도</h2>
+    <p class="std">변하는 자기 선속이 기전력을 만든다 · 자체 유도 계수</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">패러데이·렌츠 법칙</p><h2>자기 선속이 변하면 기전력이 생긴다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\Phi_B = \int\vec B\cdot d\vec A,\qquad \mathcal E = -N\frac{d\Phi_B}{dt}$$</div>
+        <p>(−) 부호가 <strong>렌츠 법칙</strong>입니다. 유도 전류는 자신을 만든 선속 변화를 방해하는 방향으로 흐릅니다. 그렇지 않으면 에너지 보존이 깨집니다.</p>
+        <p class="small">패러데이 1831년, 렌츠 1834년.</p>
+      </div>
+      <div class="box def"><span class="tag">선속을 바꾸는 세 가지 방법</span>
+        <ul>
+          <li>$B$ 를 바꾼다: 자석을 움직이거나 전류를 바꾼다</li>
+          <li>$A$ 를 바꾼다: 도선 막대를 밀어 고리를 넓힌다, $\mathcal E = BLv$</li>
+          <li>각을 바꾼다: 고리를 돌린다 (발전기)</li>
+        </ul>
+        <p>교류 발전기: $\Phi_B = BA\cos\omega t$ 이므로</p>
+        <div class="eq">$$\mathcal E = NBA\omega\sin\omega t$$</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">자체 유도</p><h2>자체 유도 계수와 RL 회로</h2></header>
+    <div class="body cols">
+      <div>
+        <p>코일의 전류가 바뀌면 자기 자신을 지나는 선속이 바뀌어 기전력이 생깁니다.</p>
+        <div class="eq">$$N\Phi_B = LI,\qquad \mathcal E_L = -L\frac{dI}{dt}$$</div>
+        <p>긴 솔레노이드 (감은 수 $N$, 길이 $l$, 단면적 $A$):</p>
+        <div class="eq">$$L = \frac{N\cdot\mu_0(N/l)I\cdot A}{I} = \frac{\mu_0N^2A}{l}$$</div>
+        <p class="small">단위: H (헨리) = V·s/A</p>
+      </div>
+      <div class="box def"><span class="tag">RL 회로와 자기 에너지</span>
+        <p>스위치를 닫으면 $\mathcal E - IR - L\dfrac{dI}{dt} = 0$ 이므로</p>
+        <div class="eq">$$I(t) = \frac{\mathcal E}{R}\big(1 - e^{-t/\tau}\big),\qquad \tau = \frac LR$$</div>
+        <div class="eq">$$U_B = \tfrac12LI^2,\qquad u_B = \frac{B^2}{2\mu_0}$$</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">상호 유도</p><h2>한 코일의 전류 변화가 옆 코일에 기전력을 만든다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\mathcal E_2 = -M\frac{dI_1}{dt},\qquad \mathcal E_1 = -M\frac{dI_2}{dt}$$</div>
+        <p>상호 유도 계수 $M$ 은 두 코일의 모양과 상대 위치로만 정해지고, 어느 쪽에서 보아도 같습니다 ($M_{12} = M_{21}$).</p>
+      </div>
+      <div class="box"><span class="tag">응용</span>
+        <ul>
+          <li>변압기: 이상적이면 $\dfrac{V_2}{V_1} = \dfrac{N_2}{N_1}$, 전력은 보존</li>
+          <li>무선 충전, 교통카드 (근거리 유도)</li>
+          <li>금속 탐지기</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">II-5</span>
+    <h2>교류와 전기 진동</h2>
+    <p class="std">[12고물02-06] 교류의 발생 원리와 교류 기전력의 주기적 변화를 이해하고, LC·RLC 회로에서 전기 진동과 공진을 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">교류의 세 소자</p><h2>저항, 코일, 축전기: 리액턴스와 위상</h2></header>
+    <div class="body cols wide-l">
+      <div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>소자</th><th>전압 진폭</th><th>전압과 전류의 위상</th></tr></thead>
+          <tbody>
+            <tr><td>저항 R</td><td>$V_R = IR$</td><td>같다</td></tr>
+            <tr><td>코일 L</td><td>$V_L = IX_L$, $X_L = \omega L$</td><td>전압이 $90^\circ$ 앞선다</td></tr>
+            <tr><td>축전기 C</td><td>$V_C = IX_C$, $X_C = \dfrac{1}{\omega C}$</td><td>전압이 $90^\circ$ 뒤진다</td></tr>
+          </tbody>
+        </table></div>
+        <p>실효값: $I_{rms} = \dfrac{I_{max}}{\sqrt2},\ \ V_{rms} = \dfrac{V_{max}}{\sqrt2}$. 가정의 220 V는 실효값이고 최댓값은 약 311 V입니다.</p>
+      </div>
+      <figure class="fig">{{fig:phasor}}<figcaption>위상자는 각진동수 $\omega$ 로 시계 반대 방향으로 돌고, 세로축 투영이 순간값입니다.</figcaption></figure>
+      <aside class="note">기존 p269는 "ΔV_rms = ΔV_rms/√2"로 분자에 rms를 썼습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">LC 회로</p><h2>전기 진동: 용수철 진자와 같은 방정식</h2></header>
+    <div class="body cols">
+      <div>
+        <p>충전된 축전기를 코일에 연결하면 $\dfrac qC + L\dfrac{dI}{dt} = 0$, $I = \dfrac{dq}{dt}$ 이므로</p>
+        <div class="eq">$$\frac{d^2q}{dt^2} = -\frac{1}{LC}q\ \Rightarrow\ q = Q\cos(\omega_0t + \phi),\quad \omega_0 = \frac{1}{\sqrt{LC}}$$</div>
+        <p>에너지는 축전기의 전기장과 코일의 자기장 사이를 오갑니다.</p>
+        <div class="eq">$$\frac{q^2}{2C} + \tfrac12LI^2 = \frac{Q^2}{2C} = \text{일정}$$</div>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>용수철 진자</th><th>LC 회로</th></tr></thead>
+        <tbody>
+          <tr><td>변위 $x$</td><td>전하 $q$</td></tr>
+          <tr><td>속도 $v$</td><td>전류 $I$</td></tr>
+          <tr><td>질량 $m$</td><td>자체 유도 계수 $L$</td></tr>
+          <tr><td>용수철 상수 $k$</td><td>$1/C$</td></tr>
+          <tr><td>$\omega_0 = \sqrt{k/m}$</td><td>$\omega_0 = 1/\sqrt{LC}$</td></tr>
+          <tr><td>마찰 $b$</td><td>저항 $R$</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">RLC 직렬 회로</p><h2>임피던스와 위상각</h2></header>
+    <div class="body cols">
+      <div>
+        <p>전원 $v = V_{max}\sin\omega t$ 에 R, L, C를 직렬로 연결하면 전류는 모든 소자에서 같습니다. 위상자를 더하면</p>
+        <div class="eq">$$V_{max} = I_{max}\sqrt{R^2 + (X_L - X_C)^2} = I_{max}Z$$</div>
+        <div class="eq">$$\tan\phi = \frac{X_L - X_C}{R},\qquad i = I_{max}\sin(\omega t - \phi)$$</div>
+        <p>평균 전력은 저항에서만 소비됩니다: $P = I_{rms}^2R = I_{rms}V_{rms}\cos\phi$.</p>
+      </div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>$R = 100\ \Omega$, $L = 0.50$ H, $C = 10\ \mu$F 를 직렬로 연결하고 $V_{rms} = 120$ V, 60 Hz 전원에 연결했다.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\omega = 377$ rad/s, $X_L = 188.5\ \Omega$, $X_C = 265.3\ \Omega$</p>
+          <p>$Z = \sqrt{100^2 + 76.8^2} = 126\ \Omega$, $I_{rms} = 0.952$ A</p>
+          <p>$\phi = -37.5^\circ$ (용량성, 전류가 전압보다 앞섬), $P = 90.6$ W</p>
+          <p>공진 진동수 $f_0 = \dfrac{1}{2\pi\sqrt{LC}} = 71.2$ Hz</p>
+        </div></details>
+      </div>
+      <aside class="note">기존 p284는 전류를 sin(ωt − φ)로 두고 저항 전압을 sin ωt로 써서 위상 기준이 맞지 않았습니다. 여기서는 전원 전압을 기준으로 통일했습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">공진</p><h2>$X_L = X_C$ 일 때 전류가 가장 크다</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <div class="eq">$$\omega_0 = \frac{1}{\sqrt{LC}},\qquad Z_{min} = R,\qquad Q = \frac{\omega_0L}{R} = \frac{\omega_0}{\Delta\omega}$$</div>
+        <p>$\Delta\omega$ 는 평균 전력이 최댓값의 절반이 되는 두 진동수의 차입니다. $R$ 이 작을수록 선택성이 좋습니다.</p>
+        <div class="box ex"><span class="tag">라디오 고르기</span>
+          <p>$L = 250\ \mu$H 코일로 1.0 MHz AM 방송을 들으려면 $C = \dfrac{1}{\omega^2L} \approx 101$ pF 입니다. 가변 축전기를 돌리는 것이 공진 진동수를 바꾸는 일입니다.</p>
+        </div>
+      </div>
+      <figure class="fig">{{fig:resonance}}<figcaption>같은 $L, C$ 에서 $R$ 을 바꾼 공진 곡선 (전류 진폭). $R$ 이 작을수록 $Q$ 가 크고 봉우리가 날카롭습니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">자유 진동과 강제 진동</p><h2>두 가지 '진동수'를 구분하자</h2></header>
+    <div class="body cols">
+      <div class="box"><span class="tag">전원 없음 · 자유 진동</span>
+        <div class="eq">$$L\ddot q + R\dot q + \frac qC = 0$$</div>
+        <p>$\gamma = R/2L$ 이 $\omega_0$ 보다 작으면 $q = Qe^{-\gamma t}\cos(\omega_dt+\phi)$ 로 감쇠 진동합니다 ($\omega_d = \sqrt{\omega_0^2-\gamma^2}$). 같으면 임계감쇠, 크면 과감쇠로 진동하지 않습니다.</p>
+      </div>
+      <div class="box"><span class="tag">교류 전원 · 강제 진동</span>
+        <div class="eq">$$L\ddot q + R\dot q + \frac qC = V_0\sin\omega t$$</div>
+        <p>충분한 시간이 지나면 과도 항은 사라지고 회로는 전원의 진동수 $\omega$ 로 진동합니다. 그 진폭이 $\omega = \omega_0$ 근처에서 가장 큰 것이 공진입니다.</p>
+      </div>
+      <aside class="note">강제 진동의 정상 상태 해는 q_p = (V₀/L)/D · sin(ωt − Δ), D = √((ω₀²−ω²)² + 4γ²ω²), tanΔ = 2γω/(ω₀²−ω²) 입니다. 기존 p304~305의 합성식은 sin과 cos 계수가 바뀌어 방정식을 만족하지 않습니다 (수치로 확인함).</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>교류 회로</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">Q1</span>
+        <p>RLC 직렬 회로에서 전원 진동수를 공진 진동수보다 높이면 회로는 유도성인가 용량성인가? 전류와 전압 중 무엇이 앞서는가?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\omega \gt \omega_0$ 이면 $X_L \gt X_C$ 이므로 유도성, $\phi \gt 0$. 전압이 전류보다 앞섭니다.</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>LC 회로에서 $C = 2.0\ \mu$F, $L = 50$ mH, 처음 전하 $Q = 10\ \mu$C 이다. 진동수와 최대 전류를 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\omega_0 = 1/\sqrt{(0.050)(2.0\times10^{-6})} = 3.16\times10^3$ rad/s, $f = 503$ Hz</p>
+          <p>$I_{max} = \omega_0Q = 3.16\times10^{-2}$ A</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">II-6</span>
+    <h2>맥스웰 방정식과 전자기파</h2>
+    <p class="std">전자기파의 발생 원리를 이해하고 성질과 종류를 조사·발표한다 · 파동 방정식을 유도하고 맥스웰 방정식의 과학사적 의미를 토의한다</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">변위 전류</p><h2>충전 중인 축전기에서 앙페르 법칙이 깨진다?</h2></header>
+    <div class="body cols">
+      <div>
+        <p>같은 고리를 경계로 하는 두 곡면을 생각합니다. 도선을 뚫는 평면 $S_1$ 에서는 $I_{enc} = I$, 판 사이를 지나는 주머니 모양 $S_2$ 에서는 $I_{enc} = 0$ 입니다. 같은 $\oint\vec B\cdot d\vec l$ 이 두 값을 가질 수는 없습니다.</p>
+        <p>맥스웰(1865)은 판 사이에서 변하는 전기 선속이 전류와 같은 역할을 한다고 보았습니다.</p>
+      </div>
+      <div class="box def"><span class="tag">앙페르-맥스웰 법칙</span>
+        <div class="eq">$$I_d = \varepsilon_0\frac{d\Phi_E}{dt},\qquad \oint\vec B\cdot d\vec l = \mu_0\Big(I_{enc} + \varepsilon_0\frac{d\Phi_E}{dt}\Big)$$</div>
+        <p>평행판에서 $\Phi_E = EA = Q/\varepsilon_0$ 이므로 $I_d = dQ/dt = I$. 두 곡면의 결과가 같아집니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">맥스웰 방정식</p><h2>전자기학 전체를 네 줄로</h2></header>
+    <div class="body cols wide-l">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>이름</th><th>적분형</th><th>뜻</th></tr></thead>
+        <tbody>
+          <tr><td>가우스 법칙</td><td>$\oint\vec E\cdot d\vec A = \dfrac{Q_{in}}{\varepsilon_0}$</td><td>전하가 전기장의 원천</td></tr>
+          <tr><td>자기 가우스 법칙</td><td>$\oint\vec B\cdot d\vec A = 0$</td><td>자기 홀극이 없다</td></tr>
+          <tr><td>패러데이 법칙</td><td>$\oint\vec E\cdot d\vec l = -\dfrac{d\Phi_B}{dt}$</td><td>변하는 B가 E를 만든다</td></tr>
+          <tr><td>앙페르-맥스웰 법칙</td><td>$\oint\vec B\cdot d\vec l = \mu_0I_{enc} + \mu_0\varepsilon_0\dfrac{d\Phi_E}{dt}$</td><td>전류와 변하는 E가 B를 만든다</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box deep"><span class="tag">심화 · 미분형</span>
+        <div class="eq">$$\nabla\cdot\vec E = \frac{\rho}{\varepsilon_0},\quad \nabla\cdot\vec B = 0$$</div>
+        <div class="eq">$$\nabla\times\vec E = -\frac{\partial\vec B}{\partial t},\quad \nabla\times\vec B = \mu_0\vec J + \mu_0\varepsilon_0\frac{\partial\vec E}{\partial t}$$</div>
+        <p class="small">$\nabla\cdot\vec B = 0$ 은 닫힌 곡면을 지나는 알짜 자기 선속이 0이라는 뜻입니다.</p>
+      </div>
+      <aside class="note">기존 p10은 미분형 앙페르-맥스웰 법칙의 μ₀J 앞에 (−)를 붙였고, p318은 적분형에서 I_enc를 빠뜨렸습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">파동 방정식 유도</p><h2>두 법칙을 엮으면 빛의 속력이 나온다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>$\vec E = E(x,t)\hat y$, $\vec B = B(x,t)\hat z$ 인 평면파를 생각합니다. 가는 직사각형 고리에 패러데이 법칙과 앙페르-맥스웰 법칙(진공, $I = 0$)을 쓰면</p>
+        <div class="eq">$$\frac{\partial E}{\partial x} = -\frac{\partial B}{\partial t},\qquad \frac{\partial B}{\partial x} = -\mu_0\varepsilon_0\frac{\partial E}{\partial t}$$</div>
+        <p>첫 식을 $x$ 로 한 번 더 미분하고 둘째 식을 넣으면</p>
+        <div class="eq">$$\frac{\partial^2E}{\partial x^2} = \mu_0\varepsilon_0\frac{\partial^2E}{\partial t^2}$$</div>
+      </div>
+      <div class="box def"><span class="tag">결과</span>
+        <p>파동 방정식 $\dfrac{\partial^2f}{\partial x^2} = \dfrac{1}{v^2}\dfrac{\partial^2f}{\partial t^2}$ 과 비교하면</p>
+        <div class="eq">$$v = \frac{1}{\sqrt{\mu_0\varepsilon_0}} = 2.998\times10^8\ \text{m/s}$$</div>
+        <p>전기와 자기 실험에서 얻은 두 상수만으로 이미 알려진 빛의 속력이 나왔습니다. 맥스웰은 빛이 전자기파라고 결론지었습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">전자기파의 성질</p><h2>횡파, E = cB, 에너지를 나른다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$E = E_0\cos(kx - \omega t),\quad B = B_0\cos(kx - \omega t),\quad E_0 = cB_0$$</div>
+        <ul>
+          <li>$\vec E\perp\vec B$ 이고 둘 다 진행 방향에 수직 (횡파)</li>
+          <li>$\vec E\times\vec B$ 방향으로 진행. 포인팅 벡터 $\vec S = \dfrac{1}{\mu_0}\vec E\times\vec B$</li>
+          <li>전기·자기 에너지 밀도가 같다: $\tfrac12\varepsilon_0E^2 = \dfrac{B^2}{2\mu_0}$</li>
+          <li>세기 $I = \langle S\rangle = \dfrac{E_0^2}{2\mu_0c}$</li>
+        </ul>
+        <p class="small">예: 지구에 오는 햇빛 $I \approx 1.36$ kW/m² 이면 $E_0 \approx 1.0$ kV/m, $B_0 \approx 3.4\ \mu$T.</p>
+      </div>
+      <figure class="fig">{{fig:emwave}}<figcaption>한 순간의 평면 전자기파. 전기장과 자기장은 같은 위상으로 진동합니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">전자기파의 발생</p><h2>가속하는 전하가 전자기파를 낸다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>정지한 전하는 전기장만, 등속으로 움직이는 전하는 전기장과 자기장을 만들지만 복사하지는 않습니다. <strong>가속하는</strong> 전하는 장의 변화가 빛의 속력으로 퍼져 나가 전자기파가 됩니다.</p>
+        <div class="box def"><span class="tag">진동하는 전기 쌍극자 = 안테나</span>
+          <p>길이 $\lambda/2$ 인 도선에 진동수 $f$ 의 교류를 걸면 전하가 양 끝을 오가며 같은 진동수의 전자기파를 냅니다.</p>
+          <p>복사는 안테나 축에 수직인 방향으로 가장 세고, 축 방향으로는 나가지 않습니다.</p>
+        </div>
+      </div>
+      <div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>종류</th><th>파장</th><th>주로 만드는 방법</th></tr></thead>
+          <tbody>
+            <tr><td>전파</td><td>1 mm 이상</td><td>안테나의 교류</td></tr>
+            <tr><td>적외선</td><td>700 nm ~ 1 mm</td><td>분자의 진동·회전, 열복사</td></tr>
+            <tr><td>가시광선</td><td>380 ~ 700 nm</td><td>원자의 전자 전이</td></tr>
+            <tr><td>자외선</td><td>10 ~ 380 nm</td><td>원자의 전자 전이</td></tr>
+            <tr><td>X선</td><td>0.01 ~ 10 nm</td><td>전자의 급감속, 안쪽 전자 전이</td></tr>
+            <tr><td>감마선</td><td>0.01 nm 이하</td><td>원자핵의 전이</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">조사·발표와 토의</p><h2>맥스웰 방정식의 과학사적 의미</h2></header>
+    <div class="body cols">
+      <div>
+        <p><strong>토의 질문</strong></p>
+        <ol>
+          <li>전기, 자기, 빛이라는 서로 다른 현상이 어떻게 하나의 이론이 되었는가?</li>
+          <li>1887년 헤르츠의 불꽃 간격 실험은 맥스웰 이론의 무엇을 확인했는가?</li>
+          <li>모든 관성계에서 $c$ 가 같다는 맥스웰 방정식의 결론은 어떤 문제를 낳았고, 아인슈타인은 이것을 어떻게 풀었는가? (현대 물리 단원과 연결)</li>
+        </ol>
+      </div>
+      <div class="box"><span class="tag">조사 활동</span>
+        <p>모둠별로 전자기파 한 영역을 맡아 발생 원리, 검출 방법, 생활 속 활용, 인체 영향을 조사해 발표합니다.</p>
+        <p class="small">예: 5G 통신의 주파수 대역, 전자레인지 2.45 GHz, 적외선 체온계, 자외선 살균, CT, 감마선 멸균</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">정리</p><h2>전자기학에서 가져갈 것</h2></header>
+    <div class="body cols">
+      <ul>
+        <li>가우스 법칙은 늘 성립하고, 구·원통·평면 대칭이 있을 때 E를 구하는 도구가 된다.</li>
+        <li>정전기적 평형의 도체: 내부 E = 0, 전하는 표면, 공동은 차폐된다.</li>
+        <li>유전체는 편극으로 장을 $1/\kappa$ 로 줄이고 전기 용량을 $\kappa$ 배로 키운다.</li>
+        <li>$C = \varepsilon_0A/d$, 병렬은 더하고 직렬은 역수를 더한다, $u_E = \tfrac12\varepsilon_0E^2$.</li>
+      </ul>
+      <ul>
+        <li>비오-사바르는 언제나, 앙페르는 대칭이 있을 때. 솔레노이드 $B = \mu_0nI$.</li>
+        <li>$\mathcal E = -N\,d\Phi_B/dt$, (−)는 렌츠 법칙. $L = \mu_0N^2A/l$, $u_B = B^2/2\mu_0$.</li>
+        <li>RLC: $Z = \sqrt{R^2+(X_L-X_C)^2}$, 공진 $\omega_0 = 1/\sqrt{LC}$.</li>
+        <li>변위 전류가 맥스웰 방정식을 완성하고, 그 결론이 $c = 1/\sqrt{\mu_0\varepsilon_0}$ 인 전자기파다.</li>
+      </ul>
+    </div>
+  </div>
+</section>

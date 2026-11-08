@@ -1,0 +1,507 @@
+<!--
+title: 고급 물리학 Ⅲ 광학
+short: 광학
+file: 03-optics.html
+desc: 거울과 얇은 렌즈, 광학 기기, 영의 이중 슬릿과 간섭계, 회절과 분해능, 회절격자, 편광과 3D 영상
+-->
+<section class="slide cover">
+  <div class="sl">
+    <p class="kicker">고급 물리학 · 2022 개정 · Ⅲ</p>
+    <h2>광학</h2>
+    <p class="sub">빛을 광선으로 다루는 기하광학에서 시작해, 빛을 파동으로 다루어야 보이는 간섭·회절·편광으로 나아갑니다.</p>
+    <p class="meta">[12고물03-01] 거울과 렌즈 · [12고물03-02] 간섭 · [12고물03-03] 회절과 분해능 · [12고물03-04] 편광</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">단원 구성</p><h2>광선에서 파동으로</h2></header>
+    <div class="body cols">
+      <ol>
+        <li><strong>거울과 얇은 렌즈</strong>: 상의 위치와 배율, 현미경·망원경·카메라</li>
+        <li><strong>간섭</strong>: 영의 이중 슬릿, 박막, 뉴턴 링, 마이컬슨 간섭계</li>
+        <li><strong>회절과 분해능</strong>: 단일·원형·이중 슬릿, 회절격자, 레일리 기준</li>
+        <li><strong>편광</strong>: 말뤼스 법칙, 브루스터 각, 3D 영상과 액정 화면</li>
+      </ol>
+      <div class="box"><span class="tag">언제 파동으로 봐야 하나</span>
+        <p>빛이 지나는 틈이나 장애물의 크기가 파장($\sim 500$ nm)보다 훨씬 크면 광선 모형으로 충분합니다. 크기가 파장에 가까워지면 간섭과 회절이 드러납니다.</p>
+        <p class="small">연계: 「물리학」 빛과 물질, 「전자기와 양자」 빛과 정보 통신</p>
+      </div>
+      <aside class="note">이 덱은 2015 개정 자료에 없던 광학 영역을 새로 만든 것입니다. 기존 OT 진도표에는 '광학(기하광학, 파동광학)'이 있었지만 대응하는 슬라이드가 없었습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">III-1</span>
+    <h2>거울과 얇은 렌즈</h2>
+    <p class="std">[12고물03-01] 거울과 얇은 렌즈에 의한 상을 설명하고, 현미경, 망원경, 카메라 등 여러 가지 광학 기기의 원리에 적용할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">복습</p><h2>반사, 굴절, 그리고 근축 근사</h2></header>
+    <div class="body cols">
+      <div>
+        <ul>
+          <li><strong>반사 법칙</strong>: 입사각 = 반사각</li>
+          <li><strong>굴절 법칙</strong>(스넬 법칙): $n_1\sin\theta_1 = n_2\sin\theta_2$, 굴절률 $n = c/v$</li>
+          <li><strong>전반사</strong>: $n_1 \gt n_2$ 이고 $\sin\theta_1 \gt n_2/n_1$ 이면 굴절광이 없다 (광섬유)</li>
+        </ul>
+        <p>광축과 이루는 각이 작은 광선(<em class="term">근축 광선</em>)만 생각하면 $\sin\theta \approx \tan\theta \approx \theta$ 로 놓을 수 있습니다. 거울·렌즈 공식은 모두 이 근사에서 나옵니다.</p>
+      </div>
+      <div class="box def"><span class="tag">부호 규약 (이 덱 전체)</span>
+        <ul>
+          <li>물체 거리 $s$: 실물체면 $+$</li>
+          <li>상 거리 $s'$: 빛이 실제로 모이는 쪽(실상)이면 $+$, 허상이면 $-$</li>
+          <li>초점 거리 $f$: 오목 거울·볼록 렌즈 $+$, 볼록 거울·오목 렌즈 $-$</li>
+          <li>배율 $m = -s'/s$: $m \lt 0$ 이면 거꾸로 선 상</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">구면 거울</p><h2>오목 거울이 만드는 상</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <div class="eq">$$\frac1s + \frac1{s'} = \frac1f,\qquad f = \frac R2,\qquad m = -\frac{s'}{s}$$</div>
+        <p><strong>세 광선 작도</strong></p>
+        <ol>
+          <li>광축에 평행한 광선 → 초점 F를 지나 반사</li>
+          <li>F를 지나는 광선 → 광축에 평행하게 반사</li>
+          <li>꼭짓점으로 들어간 광선 → 광축에 대칭으로 반사</li>
+        </ol>
+        <p class="small">물체가 F 안쪽에 있으면 ($s \lt f$) 확대된 바로 선 허상이 거울 뒤에 생깁니다 (화장 거울).</p>
+      </div>
+      <figure class="fig">{{fig:mirror}}<figcaption>F와 C(곡률 중심) 사이의 물체: 거꾸로 서고 확대된 실상이 C 밖에 생깁니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">얇은 렌즈</p><h2>렌즈 공식과 렌즈 제작자 공식</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <div class="eq">$$\frac1s + \frac1{s'} = \frac1f,\qquad m = -\frac{s'}{s}$$</div>
+        <div class="eq">$$\frac1f = (n-1)\Big(\frac1{R_1} - \frac1{R_2}\Big)$$</div>
+        <p class="small">곡률 중심이 빛이 나가는 쪽에 있으면 $R \gt 0$. 양볼록 렌즈는 $R_1 \gt 0,\ R_2 \lt 0$ 이라 $f \gt 0$ 입니다. 렌즈를 물속에 넣으면 $n$ 대신 상대 굴절률 $n/n_{물}$ 을 써야 하므로 $f$ 가 길어집니다.</p>
+      </div>
+      <figure class="fig">{{fig:lens}}<figcaption>세 광선: 평행 → F′, 중심 → 직진, F → 평행. 세 광선이 만나는 곳에 상이 생깁니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">예제</p><h2>초점 거리 10 cm 인 볼록 렌즈</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">물체가 15 cm 앞에 있을 때</span>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\dfrac1{s'} = \dfrac1{10} - \dfrac1{15} = \dfrac1{30}$, $s' = +30$ cm</p>
+          <p>$m = -30/15 = -2$: 렌즈 뒤 30 cm 에 거꾸로 선 2배 실상 (영사기)</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">물체가 5 cm 앞에 있을 때</span>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\dfrac1{s'} = \dfrac1{10} - \dfrac15 = -\dfrac1{10}$, $s' = -10$ cm</p>
+          <p>$m = +2$: 물체와 같은 쪽 10 cm 에 바로 선 2배 허상 (돋보기)</p>
+        </div></details>
+      </div>
+      <div class="box"><span class="tag">상의 성질 한눈에 (볼록 렌즈)</span>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>물체 위치</th><th>상</th></tr></thead>
+          <tbody>
+            <tr><td>$s \gt 2f$</td><td>$f$ 와 $2f$ 사이, 축소된 실상 (카메라, 눈)</td></tr>
+            <tr><td>$f \lt s \lt 2f$</td><td>$2f$ 밖, 확대된 실상 (영사기, 현미경 대물렌즈)</td></tr>
+            <tr><td>$s \lt f$</td><td>같은 쪽, 확대된 허상 (돋보기, 접안렌즈)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">광학 기기 · 1</p><h2>카메라와 돋보기</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">카메라</span>
+        <p>멀리 있는 물체의 축소된 실상을 센서 위에 맺습니다. 물체 거리가 바뀌면 렌즈와 센서 사이 거리를 바꿔 초점을 맞춥니다.</p>
+        <p><strong>f-수</strong> $N = f/D$ ($D$: 조리개 지름). 센서에 들어오는 빛의 양은 $D^2$ 에 비례하므로 $1/N^2$ 에 비례합니다. f/2.8 → f/4 는 빛이 약 절반입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">돋보기 (각배율)</span>
+        <p>맨눈으로 가장 크게 보는 거리는 명시 거리 25 cm 입니다. 물체를 초점 근처에 두면 상이 무한히 멀리 생기고, 눈은 긴장 없이 봅니다.</p>
+        <div class="eq">$$M = \frac{\theta'}{\theta} \approx \frac{25\ \text{cm}}{f}$$</div>
+        <p class="small">$f = 5$ cm 돋보기는 약 5배.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">광학 기기 · 2</p><h2>현미경과 망원경: 렌즈 두 개</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">복합 현미경</span>
+        <p>대물렌즈가 확대된 실상을 만들고, 접안렌즈가 그 상을 돋보기처럼 다시 확대합니다.</p>
+        <div class="eq">$$M = m_oM_e \approx -\frac{L}{f_o}\cdot\frac{25\ \text{cm}}{f_e}$$</div>
+        <p class="small">$L$: 경통 길이 (두 렌즈 초점 사이, 보통 16 cm). 예: $f_o = 4$ mm, $f_e = 25$ mm → $M \approx -400$.</p>
+      </div>
+      <div class="box def"><span class="tag">굴절 망원경</span>
+        <p>대물렌즈가 먼 물체의 상을 초점면에 만들고, 접안렌즈로 그 상을 봅니다. 두 렌즈 간격은 $f_o + f_e$ 입니다.</p>
+        <div class="eq">$$M = -\frac{f_o}{f_e}$$</div>
+        <p class="small">예: $f_o = 1000$ mm, $f_e = 25$ mm → 40배. 망원경의 진짜 성능은 배율보다 <strong>구경</strong>(모으는 빛의 양과 분해능)이 정합니다. 회절에서 다시 봅니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>거울과 렌즈</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">Q1</span>
+        <p>초점 거리 $-15$ cm 인 볼록 거울(자동차 측면 거울) 앞 30 cm 에 물체가 있다. 상의 위치와 배율은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\dfrac1{s'} = -\dfrac1{15} - \dfrac1{30} = -\dfrac1{10}$, $s' = -10$ cm (거울 뒤 허상)</p>
+          <p>$m = +\tfrac13$: 바로 선 축소 허상. 넓은 범위가 보이지만 실제보다 멀어 보입니다.</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>굴절률 1.50 인 양볼록 렌즈의 두 곡률 반지름이 모두 20 cm 이다. 공기 중 초점 거리는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\dfrac1f = 0.50\Big(\dfrac1{20} + \dfrac1{20}\Big) = \dfrac1{20}$, $f = 20$ cm</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">III-2</span>
+    <h2>간섭</h2>
+    <p class="std">[12고물03-02] 영의 이중 슬릿 실험에서 나타나는 무늬의 특징과 다양한 간섭계를 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">간섭의 조건</p><h2>경로차가 위상차를 만든다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>두 파동이 겹치면 변위가 더해집니다 (중첩 원리). 같은 진동수의 두 파동의 경로차가 $\Delta$ 이면 위상차는</p>
+        <div class="eq">$$\delta = \frac{2\pi}{\lambda}\Delta$$</div>
+        <ul>
+          <li>$\Delta = m\lambda$: 보강 간섭 (밝음)</li>
+          <li>$\Delta = (m+\tfrac12)\lambda$: 상쇄 간섭 (어두움)</li>
+        </ul>
+      </div>
+      <div class="box def"><span class="tag">결맞음</span>
+        <p>무늬가 보이려면 두 빛의 위상차가 시간에 따라 일정해야 합니다. 보통 광원은 원자들이 제각각 빛을 내 위상이 무작위로 바뀝니다. 그래서 한 광원을 두 갈래로 나누어(이중 슬릿, 반투명 거울) 서로 결맞은 빛을 만듭니다.</p>
+        <p class="small">레이저는 결맞음 길이가 길어 무늬를 얻기 쉽습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">영의 이중 슬릿 (1801)</p><h2>밝은 무늬의 위치와 간격</h2></header>
+    <div class="body cols">
+      <div>
+        <p>슬릿 간격 $d$, 스크린까지 거리 $L \gg d$. 두 슬릿에서 각 $\theta$ 방향으로 간 빛의 경로차는 $d\sin\theta$ 입니다.</p>
+        <div class="eq">$$\text{밝은 무늬: } d\sin\theta = m\lambda,\qquad \text{어두운 무늬: } d\sin\theta = \big(m+\tfrac12\big)\lambda$$</div>
+        <p>각이 작으면 $\sin\theta \approx \tan\theta = y/L$ 이므로</p>
+        <div class="eq">$$y_m = \frac{m\lambda L}{d},\qquad \Delta y = \frac{\lambda L}{d}$$</div>
+        <p>세기 분포: $I = I_0\cos^2\Big(\dfrac{\pi d\sin\theta}{\lambda}\Big)$</p>
+      </div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>He-Ne 레이저 $\lambda = 633$ nm, $d = 0.25$ mm, $L = 2.0$ m 일 때 무늬 간격은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\Delta y = \dfrac{(633\times10^{-9})(2.0)}{0.25\times10^{-3}} = 5.1$ mm</p>
+          <p>거꾸로, 무늬 간격을 재면 빛의 파장을 nm 단위로 잴 수 있습니다. 영은 이 실험으로 빛이 파동임을 보였습니다.</p>
+        </div></details>
+        <p class="small">무늬 간격을 넓히려면 $L$ 을 늘리거나 $d$ 를 줄이거나 파장이 긴 빛을 씁니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">박막 간섭</p><h2>비눗방울의 색, 반사 방지막</h2></header>
+    <div class="body cols">
+      <div>
+        <p>두께 $t$, 굴절률 $n$ 인 막의 윗면과 아랫면에서 반사한 두 빛이 간섭합니다. 거의 수직 입사면 경로차는 $2nt$ 입니다.</p>
+        <div class="box warn"><span class="tag">반사할 때의 위상 변화</span>
+          <p>굴절률이 <strong>큰</strong> 매질의 경계에서 반사하면 위상이 $\pi$ (반파장) 바뀝니다. 작은 매질 쪽에서 반사하면 바뀌지 않습니다.</p>
+        </div>
+        <p>공기 속 비누막은 윗면에서만 $\pi$ 가 바뀌므로 반사광이 밝은 조건은</p>
+        <div class="eq">$$2nt = \big(m+\tfrac12\big)\lambda$$</div>
+      </div>
+      <div class="box ex"><span class="tag">반사 방지막</span>
+        <p>유리($n = 1.5$) 위의 MgF₂ 막($n = 1.38$)은 두 면 모두에서 $\pi$ 가 바뀌므로, 반사광이 어두운 조건은 $2nt = (m+\tfrac12)\lambda$.</p>
+        <p>$\lambda = 550$ nm 에서 가장 얇은 두께는 $t = \dfrac{\lambda}{4n} \approx 100$ nm 입니다.</p>
+        <p class="small">안경·카메라 렌즈가 보랏빛을 띠는 것은 가운데 파장의 반사만 줄이기 때문입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">간섭계 · 1</p><h2>뉴턴 링: 공기층 두께를 재는 자</h2></header>
+    <div class="body cols">
+      <div>
+        <p>곡률 반지름 $R$ 인 평볼록 렌즈를 평평한 유리 위에 올리면, 중심에서 거리 $r$ 인 곳의 공기층 두께는</p>
+        <div class="eq">$$t \approx \frac{r^2}{2R}$$</div>
+        <p>반사광은 아래 유리 면(공기 → 유리)에서만 $\pi$ 가 바뀌므로 어두운 고리 조건은 $2t = m\lambda$:</p>
+        <div class="eq">$$r_m = \sqrt{m\lambda R}\qquad(m = 0, 1, 2, \dots)$$</div>
+        <p class="small">접촉점($m = 0$)이 어둡고, 고리는 바깥으로 갈수록 촘촘해집니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">활용</span>
+        <p>$R = 1.0$ m, $\lambda = 589$ nm 이면 첫 어두운 고리 반지름은 0.77 mm 입니다.</p>
+        <p>렌즈 공장에서는 표준 원판 위에 렌즈를 올려 고리가 동심원으로 고르게 나오는지 보고 연마 오차를 파장의 몇 분의 1 수준으로 검사합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">간섭계 · 2</p><h2>마이컬슨 간섭계: 파장의 몇 분의 1까지</h2></header>
+    <div class="body cols">
+      <div>
+        <p>반투명 거울이 빛을 두 팔로 나누었다가 다시 합칩니다. 한 거울을 $d$ 만큼 옮기면 그 팔의 왕복 경로가 $2d$ 바뀌어, 무늬가 $N$ 개 지나갑니다.</p>
+        <div class="eq">$$2d = N\lambda$$</div>
+        <p class="small">예: $\lambda = 632.8$ nm 에서 무늬 1000개가 지나가면 거울은 0.3164 mm 움직인 것입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">초정밀 측정</span>
+        <ul>
+          <li>1887 마이컬슨-몰리 실험: 에테르 바람을 찾으려 했다 (현대 물리 단원)</li>
+          <li>미터의 정의를 빛의 파장으로 재는 길이 표준</li>
+          <li>LIGO: 팔 길이 4 km 간섭계로 $10^{-18}$ m 수준의 길이 변화를 재 2015년 중력파를 검출</li>
+          <li>광간섭 단층 촬영(OCT): 망막 단면 영상</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>간섭</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">Q1</span>
+        <p>이중 슬릿 장치 전체를 굴절률 1.33 인 물속에 넣으면 무늬 간격은 어떻게 되는가?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>물속 파장 $\lambda/n$ 이 짧아지므로 $\Delta y$ 도 $1/1.33$ 배, 약 75 %로 줄어듭니다.</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>공기 중 비누막($n = 1.33$)을 수직으로 내려다볼 때 녹색 빛(530 nm)이 가장 밝게 반사되는 최소 두께는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$2nt = \tfrac12\lambda$ 에서 $t = \dfrac{\lambda}{4n} = \dfrac{530}{4\times1.33} \approx 100$ nm</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">III-3</span>
+    <h2>회절과 분해능</h2>
+    <p class="std">[12고물03-03] 회절의 원리와 관련 현상을 설명하고, 광학 기기의 분해능에 적용할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">단일 슬릿 회절</p><h2>틈이 좁을수록 빛이 넓게 퍼진다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>하위헌스 원리: 틈의 각 점이 새로운 파원입니다. 폭 $a$ 인 틈을 위아래 절반으로 나누면, 두 절반에서 짝지은 파원의 경로차가 $\lambda/2$ 일 때 모두 상쇄됩니다.</p>
+        <div class="eq">$$\text{어두운 무늬: } a\sin\theta = m\lambda\quad(m = \pm1, \pm2, \dots)$$</div>
+        <div class="eq">$$I = I_0\Big(\frac{\sin\alpha}{\alpha}\Big)^2,\qquad \alpha = \frac{\pi a\sin\theta}{\lambda}$$</div>
+        <p>가운데 밝은 무늬의 폭은 $\dfrac{2\lambda L}{a}$ 로, 다른 밝은 무늬의 두 배입니다.</p>
+      </div>
+      <div class="box warn"><span class="tag">이중 슬릿 식과 헷갈리지 않기</span>
+        <p>이중 슬릿: $d\sin\theta = m\lambda$ 는 <strong>밝은</strong> 무늬</p>
+        <p>단일 슬릿: $a\sin\theta = m\lambda$ 는 <strong>어두운</strong> 무늬, 그리고 $m = 0$ 은 제외 (가운데는 가장 밝다)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">이중 슬릿 + 회절</p><h2>실제 이중 슬릿 무늬는 회절 포락선 안에 있다</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>슬릿마다 폭 $a$ 가 있으면 두 효과가 곱해집니다.</p>
+        <div class="eq">$$I = I_0\cos^2\beta\,\Big(\frac{\sin\alpha}{\alpha}\Big)^2,\quad \beta = \frac{\pi d\sin\theta}{\lambda}$$</div>
+        <p>간섭의 밝은 무늬가 회절의 어두운 무늬와 겹치면 그 차수가 사라집니다. $d = 4a$ 이면 $m = \pm4, \pm8, \dots$ 가 사라집니다.</p>
+      </div>
+      <figure class="fig">{{fig:slits}}<figcaption>가로축은 $a\sin\theta/\lambda$. 점선(회절)이 실선(간섭)의 높이를 정합니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">원형 구멍과 분해능</p><h2>레일리 기준: 두 점을 구별할 수 있는 최소 각</h2></header>
+    <div class="body cols">
+      <div>
+        <p>지름 $D$ 인 원형 구멍을 지난 빛은 가운데 원반(에어리 원반)과 고리로 퍼집니다. 첫 어두운 고리는</p>
+        <div class="eq">$$\sin\theta = 1.22\frac{\lambda}{D}$$</div>
+        <p>한 점의 회절 무늬 중심이 다른 점의 첫 어두운 고리에 올 때를 겨우 구별되는 한계로 정합니다.</p>
+        <div class="eq">$$\theta_{min} \approx 1.22\frac{\lambda}{D}$$</div>
+      </div>
+      <div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>기기 (λ = 550 nm)</th><th>구경 D</th><th>θ_min</th></tr></thead>
+        <tbody>
+          <tr><td>사람 눈</td><td>5 mm</td><td class="mono">1.3 × 10⁻⁴ rad</td></tr>
+          <tr><td>학교 망원경</td><td>10 cm</td><td class="mono">6.7 × 10⁻⁶ rad</td></tr>
+          <tr><td>허블 우주 망원경</td><td>2.4 m</td><td class="mono">2.8 × 10⁻⁷ rad (0.06″)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box"><span class="tag">현미경의 한계</span>
+        <p>광학 현미경으로 구별할 수 있는 가장 작은 간격은 약 $\lambda/2$, 곧 200~250 nm 입니다. 더 작은 것을 보려면 파장이 짧은 전자를 씁니다 (전자 현미경, 현대 물리의 물질파).</p>
+      </div>
+      </div>
+      <aside class="note">기존 양자 p141의 '광학 현미경 분해능 약 500 nm'는 회절 한계 λ/2 ≈ 200~250 nm로 바로잡았습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">다중 슬릿 · 회절격자</p><h2>슬릿이 많을수록 밝은 선이 날카롭다</h2></header>
+    <div class="body cols wide-r">
+      <div>
+        <p>간격 $d$ 로 $N$ 개의 슬릿이 있으면 주 극대의 위치는 이중 슬릿과 같지만, 폭은 $1/N$ 로 좁아집니다.</p>
+        <div class="eq">$$d\sin\theta = m\lambda$$</div>
+        <p>분해능 (가까운 두 파장을 가르는 능력):</p>
+        <div class="eq">$$R = \frac{\lambda}{\Delta\lambda} = Nm$$</div>
+        <p class="small">분광기, CD 표면의 무지갯빛, 분광 망원경으로 별의 성분을 읽는 일.</p>
+      </div>
+      <figure class="fig">{{fig:grating}}<figcaption>주 극대 위치는 같고, N이 커질수록 폭이 좁아집니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>회절과 분해능</h2></header>
+    <div class="body cols">
+      <div class="q"><span class="qn">Q1</span>
+        <p>1 mm 에 600 줄을 새긴 회절격자에 500 nm 빛을 수직으로 비추었다. 1차 극대의 각과 관찰할 수 있는 가장 높은 차수는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$d = 1.67\ \mu$m, $\sin\theta_1 = 0.30$, $\theta_1 = 17.5^\circ$</p>
+          <p>$\sin\theta \le 1$ 이므로 $m \le d/\lambda = 3.3$, 가장 높은 차수는 3차입니다.</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>나트륨 D선 589.0 nm 와 589.6 nm 를 1차 스펙트럼에서 가르려면 슬릿이 몇 개 이상 필요한가? 사람 눈으로 30 km 떨어진 자동차 전조등 두 개(간격 1.5 m)를 구별할 수 있을까?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$N \ge \dfrac{589.3}{0.6} \approx 980$ 개</p>
+          <p>전조등이 눈에 이루는 각은 $1.5/30000 = 5\times10^{-5}$ rad 로 $1.3\times10^{-4}$ rad 보다 작아 구별할 수 없습니다. 하나의 빛으로 보입니다.</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">III-4</span>
+    <h2>편광</h2>
+    <p class="std">[12고물03-04] 편광 방향에 따른 빛의 투과 규칙성을 찾고, 3D 영상 등 실생활 사례를 설명할 수 있다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">편광과 말뤼스 법칙</p><h2>빛은 횡파다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>전자기파의 전기장은 진행 방향에 수직인 평면 안에서 진동합니다. 그 진동 방향이 한쪽으로 정해진 빛이 <em class="term">선편광</em>된 빛입니다. 햇빛과 전등 빛은 편광되지 않은 빛입니다.</p>
+        <p>편광판은 투과축 방향의 전기장 성분만 통과시킵니다. 선편광된 빛이 투과축과 각 $\theta$ 를 이루면 $E\cos\theta$ 만 지나가므로</p>
+        <div class="eq">$$I = I_0\cos^2\theta\qquad(\text{말뤼스 법칙})$$</div>
+        <p>편광되지 않은 빛은 모든 방향이 섞여 있어 $\langle\cos^2\theta\rangle = \tfrac12$, 곧 첫 편광판에서 세기가 절반이 됩니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">세 장의 편광판</span>
+        <p>투과축이 0°, 90° 인 두 장 사이로는 빛이 지나가지 않습니다. 그 사이에 45° 판을 끼우면?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$I = \dfrac{I_0}{2}\cos^245^\circ\cos^245^\circ = \dfrac{I_0}{8}$</p>
+          <p>판을 하나 <strong>더</strong> 넣었는데 빛이 지나갑니다. 편광판은 빛을 걸러내는 체가 아니라 성분을 골라내는 장치이기 때문입니다.</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">반사와 산란에 의한 편광</p><h2>브루스터 각과 하늘의 편광</h2></header>
+    <div class="body cols">
+      <div>
+        <p>빛이 유리나 물 표면에서 반사될 때, 특정한 입사각에서 반사광은 입사면에 수직으로 진동하는 성분만 남습니다.</p>
+        <div class="eq">$$\tan\theta_B = \frac{n_2}{n_1}$$</div>
+        <p>이때 반사광과 굴절광은 서로 수직입니다. 물($n = 1.33$)은 $53^\circ$, 유리($n = 1.5$)는 $56^\circ$ 입니다.</p>
+        <p class="small">수면 반사광이 대부분 수평으로 편광되어 있어, 투과축이 세로인 편광 선글라스가 눈부심을 줄입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">산란</span>
+        <p>공기 분자에 산란된 햇빛은 부분적으로 편광됩니다. 태양과 $90^\circ$ 를 이루는 하늘에서 편광이 가장 강합니다. 편광판을 돌려 하늘을 보며 확인해 보세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">실생활 사례 · 조사 활동</p><h2>3D 영화, 액정 화면, 광탄성</h2></header>
+    <div class="body cols c3">
+      <div class="box def"><span class="tag">3D 영화</span>
+        <p>왼눈용·오른눈용 영상을 서로 다른 편광(주로 반대 방향의 원편광)으로 동시에 쏩니다. 안경의 두 렌즈가 각각 한 편광만 통과시켜 두 눈이 다른 영상을 보고, 뇌가 깊이를 느낍니다.</p>
+      </div>
+      <div class="box def"><span class="tag">액정 화면 (LCD)</span>
+        <p>투과축이 수직인 편광판 두 장 사이에 액정이 있습니다. 전압을 걸지 않으면 액정이 편광 방향을 90° 돌려 빛이 지나가고, 전압을 걸면 돌리지 않아 어두워집니다.</p>
+      </div>
+      <div class="box def"><span class="tag">광탄성</span>
+        <p>투명 플라스틱에 힘이 걸리면 편광 방향에 따라 굴절률이 달라집니다. 편광판 두 장 사이에 두면 응력 분포가 무지갯빛 무늬로 보여 구조물의 약한 곳을 찾습니다.</p>
+      </div>
+      <aside class="note">활동 제안: 스마트폰 화면(LCD 또는 편광층이 있는 OLED)과 편광 필름 한 장으로 말뤼스 법칙을 정성적으로 확인하고, 조도 센서 앱으로 cos² 그래프를 그려 보게 하세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">정리</p><h2>광학에서 가져갈 것</h2></header>
+    <div class="body cols">
+      <ul>
+        <li>거울·렌즈: $\dfrac1s + \dfrac1{s'} = \dfrac1f$, $m = -s'/s$, 부호 규약을 일관되게.</li>
+        <li>현미경 $M \approx -(L/f_o)(25\ \text{cm}/f_e)$, 망원경 $M = -f_o/f_e$.</li>
+        <li>이중 슬릿: $d\sin\theta = m\lambda$ 가 밝은 무늬, 간격 $\lambda L/d$.</li>
+        <li>박막: 굴절률이 큰 매질에서 반사하면 위상이 $\pi$ 바뀐다.</li>
+        <li>마이컬슨 간섭계: $2d = N\lambda$, 파장 단위의 정밀 측정.</li>
+      </ul>
+      <ul>
+        <li>단일 슬릿: $a\sin\theta = m\lambda$ 가 어두운 무늬.</li>
+        <li>분해능: $\theta_{min} \approx 1.22\lambda/D$. 구경이 클수록, 파장이 짧을수록 잘 보인다.</li>
+        <li>회절격자: 슬릿 수 $N$ 이 클수록 선이 날카롭고 $R = Nm$.</li>
+        <li>편광: $I = I_0\cos^2\theta$, 브루스터 각 $\tan\theta_B = n_2/n_1$.</li>
+      </ul>
+    </div>
+  </div>
+</section>
