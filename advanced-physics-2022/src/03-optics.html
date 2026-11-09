@@ -51,14 +51,30 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
         </ul>
         <p>광축과 이루는 각이 작은 광선(<em class="term">근축 광선</em>)만 생각하면 $\sin\theta \approx \tan\theta \approx \theta$ 로 놓을 수 있습니다. 거울·렌즈 공식은 모두 이 근사에서 나옵니다.</p>
       </div>
-      <div class="box def"><span class="tag">부호 규약 (이 덱 전체)</span>
+      <div class="box def"><span class="tag">기호와 부호 규약 (교과서와 같음)</span>
         <ul>
-          <li>물체 거리 $s$: 실물체면 $+$</li>
-          <li>상 거리 $s'$: 빛이 실제로 모이는 쪽(실상)이면 $+$, 허상이면 $-$</li>
+          <li>물체 거리 $p$: 실물체면 $+$</li>
+          <li>상 거리 $i$: 빛이 실제로 모이는 쪽(실상)이면 $+$, 허상이면 $-$</li>
           <li>초점 거리 $f$: 오목 거울·볼록 렌즈 $+$, 볼록 거울·오목 렌즈 $-$</li>
-          <li>배율 $m = -s'/s$: $m \lt 0$ 이면 거꾸로 선 상</li>
+          <li>배율 $m = -i/p$: $m \lt 0$ 이면 거꾸로 선 상</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 하위헌스 원리와 굴절 법칙</p><h2>파면의 진행으로 스넬 법칙과 임계각 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>평면파의 파면 AB가 경계에 비스듬히 온다. A가 먼저 경계에 닿고, B는 경계의 점 D까지 더 가야 한다.</p><div class="eq">$$\overline{BD} = v_1t = \overline{AD}\sin\theta_1$$</div></li>
+        <li><p>같은 시간 $t$ 동안 A에서 나온 2차 파동은 매질 2에서 반지름 $v_2t$ 만큼 퍼진다. 새 파면 CD는 이 원에 접한다.</p><div class="eq">$$\overline{AC} = v_2t = \overline{AD}\sin\theta_2$$</div></li>
+        <li><p>두 식을 나누면 $\overline{AD}$ 와 $t$ 가 지워진다.</p><div class="eq">$$\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}$$</div></li>
+        <li><p>굴절률 $n = c/v$ 로 쓰면 스넬 법칙.</p><div class="eq">$$n_1\sin\theta_1 = n_2\sin\theta_2$$</div></li>
+        <li><p>$n_1 \gt n_2$ 이면 $\theta_2 = 90^\circ$ 가 되는 입사각이 있다. 그보다 크면 굴절광이 없다 (전반사).</p><div class="eq">$$\sin\theta_c = \frac{n_2}{n_1}$$</div></li>
+        <li><p>예: 물에서 공기로, 유리에서 공기로.</p><div class="eq">$$\theta_c = \sin^{-1}\frac{1}{1.33} = 48.8^\circ,\qquad \sin^{-1}\frac{1}{1.50} = 41.8^\circ$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -68,16 +84,33 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
     <header><p class="kicker">거울에 의한 상 · 교과서 171~174쪽</p><h2>오목 거울이 만드는 상</h2></header>
     <div class="body cols wide-r">
       <div>
-        <div class="eq">$$\frac1s + \frac1{s'} = \frac1f,\qquad f = \frac R2,\qquad m = -\frac{s'}{s}$$</div>
+        <div class="eq">$$\frac1p + \frac1{i} = \frac1f,\qquad f = \frac R2,\qquad m = -\frac{i}{p}$$</div>
         <p><strong>세 광선 작도</strong></p>
         <ol>
           <li>광축에 평행한 광선 → 초점 F를 지나 반사</li>
           <li>F를 지나는 광선 → 광축에 평행하게 반사</li>
           <li>꼭짓점으로 들어간 광선 → 광축에 대칭으로 반사</li>
         </ol>
-        <p class="small">물체가 F 안쪽에 있으면 ($s \lt f$) 확대된 바로 선 허상이 거울 뒤에 생깁니다 (화장 거울).</p>
+        <p class="small">물체가 F 안쪽에 있으면 ($p \lt f$) 확대된 바로 선 허상이 거울 뒤에 생깁니다 (화장 거울).</p>
       </div>
       <figure class="fig">{{fig:mirror}}<figcaption>F와 C(곡률 중심) 사이의 물체: 거꾸로 서고 확대된 실상이 C 밖에 생깁니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 거울 방정식 · 교과서 172~173쪽 식 (Ⅲ. 1-4~8)</p><h2>삼각형의 외각과 근축 근사로 거울 방정식 얻기</h2></header>
+    <div class="body">
+      <p>물체 O에서 나온 광선이 거울 위 점 A에서 반사해 상 I를 지난다. OA, CA(법선), IA가 광축과 이루는 각을 $\alpha,\ \beta,\ \gamma$, 입사각을 $\theta$ 라 하자.</p>
+      <ol class="steps">
+        <li><p>삼각형의 외각은 이웃하지 않은 두 내각의 합이다.</p><div class="eq">$$\beta = \alpha + \theta,\qquad \gamma = \alpha + 2\theta$$</div></li>
+        <li><p>$\theta$ 를 지운다.</p><div class="eq">$$\alpha + \gamma = 2\beta$$</div></li>
+        <li><p>A의 높이를 $h$ 라 하면, 근축 광선에서는 각을 라디안으로 어림할 수 있다.</p><div class="eq">$$\alpha \approx \frac hp,\qquad \beta \approx \frac hr,\qquad \gamma \approx \frac hi$$</div></li>
+        <li><p>대입하고 $h$ 로 나누면 $h$ 가 사라진다. 모든 근축 광선이 같은 점 I에 모인다는 뜻이다.</p><div class="eq">$$\frac1p + \frac1i = \frac2r$$</div></li>
+        <li><p>평행 광선($p\to\infty$)이 모이는 곳이 초점이므로 $f = r/2$ (식 Ⅲ. 1-8).</p><div class="eq">$$\frac1p + \frac1i = \frac1f$$</div></li>
+        <li><p>꼭짓점으로 들어간 광선은 광축에 대칭으로 반사하므로 닮은 삼각형에서 가로 배율.</p><div class="eq">$$m = \frac{y_I}{y_O} = -\frac ip$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -87,11 +120,27 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
     <header><p class="kicker">렌즈에 의한 상 · 교과서 175~179쪽</p><h2>렌즈 공식과 렌즈 제작자 공식</h2></header>
     <div class="body cols wide-r">
       <div>
-        <div class="eq">$$\frac1s + \frac1{s'} = \frac1f,\qquad m = -\frac{s'}{s}$$</div>
+        <div class="eq">$$\frac1p + \frac1{i} = \frac1f,\qquad m = -\frac{i}{p}$$</div>
         <div class="eq">$$\frac1f = (n-1)\Big(\frac1{R_1} - \frac1{R_2}\Big)$$</div>
         <p class="small">곡률 중심이 빛이 나가는 쪽에 있으면 $R \gt 0$. 양볼록 렌즈는 $R_1 \gt 0,\ R_2 \lt 0$ 이라 $f \gt 0$ 입니다. 렌즈를 물속에 넣으면 $n$ 대신 상대 굴절률 $n/n_{물}$ 을 써야 하므로 $f$ 가 길어집니다.</p>
       </div>
       <figure class="fig">{{fig:lens}}<figcaption>세 광선: 평행 → F′, 중심 → 직진, F → 평행. 세 광선이 만나는 곳에 상이 생깁니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 렌즈의 초점 거리 · 교과서 176~178쪽 식 (Ⅲ. 1-15, 20)</p><h2>구면 두 개의 굴절을 이어 붙여 렌즈 제작자 공식 얻기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>굴절면 하나 (반지름 $R$, 굴절률 $n_1$ 에서 $n_2$ 로). 거울과 같은 방법의 근축 근사 결과.</p><div class="eq">$$\frac{n_1}{p} + \frac{n_2}{i} = \frac{n_2 - n_1}{R}$$</div></li>
+        <li><p>첫째 면: 주변 매질 $n_m$ 에서 렌즈 $n_l$ 로.</p><div class="eq">$$\frac{n_m}{p_1} + \frac{n_l}{i_1} = \frac{n_l - n_m}{R_1}$$</div></li>
+        <li><p>첫째 면의 상이 둘째 면의 물체가 된다. 얇은 렌즈에서는 둘째 면 뒤쪽에 있으므로 $p_2 = -i_1$.</p><div class="eq">$$p_2 = -i_1$$</div></li>
+        <li><p>둘째 면: 렌즈 $n_l$ 에서 매질 $n_m$ 으로.</p><div class="eq">$$-\frac{n_l}{i_1} + \frac{n_m}{i_2} = \frac{n_m - n_l}{R_2}$$</div></li>
+        <li><p>2단계와 4단계를 더하면 $n_l/i_1$ 이 지워진다.</p><div class="eq">$$n_m\Big(\frac1{p_1} + \frac1{i_2}\Big) = (n_l - n_m)\Big(\frac1{R_1} - \frac1{R_2}\Big)$$</div></li>
+        <li><p>공기 중($n_m = 1$)이면 렌즈 방정식과 렌즈 제작자 공식이 함께 나온다.</p><div class="eq">$$\frac1p + \frac1i = \frac1f,\qquad \frac1f = (n - 1)\Big(\frac1{R_1} - \frac1{R_2}\Big)$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -102,23 +151,23 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
     <div class="body cols">
       <div class="q"><span class="qn">물체가 15 cm 앞에 있을 때</span>
         <details class="answer"><summary>풀이 보기</summary><div>
-          <p>$\dfrac1{s'} = \dfrac1{10} - \dfrac1{15} = \dfrac1{30}$, $s' = +30$ cm</p>
+          <p>$\dfrac1{i} = \dfrac1{10} - \dfrac1{15} = \dfrac1{30}$, $i = +30$ cm</p>
           <p>$m = -30/15 = -2$: 렌즈 뒤 30 cm 에 거꾸로 선 2배 실상 (영사기)</p>
         </div></details>
       </div>
       <div class="q"><span class="qn">물체가 5 cm 앞에 있을 때</span>
         <details class="answer"><summary>풀이 보기</summary><div>
-          <p>$\dfrac1{s'} = \dfrac1{10} - \dfrac15 = -\dfrac1{10}$, $s' = -10$ cm</p>
+          <p>$\dfrac1{i} = \dfrac1{10} - \dfrac15 = -\dfrac1{10}$, $i = -10$ cm</p>
           <p>$m = +2$: 물체와 같은 쪽 10 cm 에 바로 선 2배 허상 (돋보기)</p>
         </div></details>
       </div>
-      <div class="box"><span class="tag">상의 성질 한눈에 (볼록 렌즈)</span>
+      <div class="box span"><span class="tag">상의 성질 한눈에 (볼록 렌즈)</span>
         <div class="tbl-wrap"><table class="tbl">
           <thead><tr><th>물체 위치</th><th>상</th></tr></thead>
           <tbody>
-            <tr><td>$s \gt 2f$</td><td>$f$ 와 $2f$ 사이, 축소된 실상 (카메라, 눈)</td></tr>
-            <tr><td>$f \lt s \lt 2f$</td><td>$2f$ 밖, 확대된 실상 (영사기, 현미경 대물렌즈)</td></tr>
-            <tr><td>$s \lt f$</td><td>같은 쪽, 확대된 허상 (돋보기, 접안렌즈)</td></tr>
+            <tr><td>$p \gt 2f$</td><td>$f$ 와 $2f$ 사이, 축소된 실상 (카메라, 눈)</td></tr>
+            <tr><td>$f \lt p \lt 2f$</td><td>$2f$ 밖, 확대된 실상 (영사기, 현미경 대물렌즈)</td></tr>
+            <tr><td>$p \lt f$</td><td>같은 쪽, 확대된 허상 (돋보기, 접안렌즈)</td></tr>
           </tbody>
         </table></div>
       </div>
@@ -161,6 +210,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 광학 기구의 배율 · 교과서 180~183쪽</p><h2>각배율로 돋보기, 현미경, 망원경 배율 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>맨눈: 높이 $y$ 인 물체를 명시 거리 25 cm 에 두고 볼 때 눈에 이루는 각.</p><div class="eq">$$\theta \approx \frac{y}{25\ \text{cm}}$$</div></li>
+        <li><p>돋보기: 물체를 초점에 두면 상이 무한히 멀리 생기고, 눈에 이루는 각은 $y/f$.</p><div class="eq">$$M = \frac{\theta'}{\theta} = \frac{25\ \text{cm}}{f}$$</div></li>
+        <li><p>현미경 대물렌즈: 상이 초점에서 $L$ 더 간 곳($i = f_o + L$)에 생기도록 둔다. 렌즈 방정식으로 $p$ 를 구하면</p><div class="eq">$$\frac1p = \frac1{f_o} - \frac{1}{f_o + L}\ \Rightarrow\ m_o = -\frac ip = -\frac{L}{f_o}$$</div></li>
+        <li><p>접안렌즈가 그 상을 돋보기로 본다. 두 배율을 곱한다.</p><div class="eq">$$M = m_oM_e = -\frac{L}{f_o}\cdot\frac{25\ \text{cm}}{f_e}$$</div></li>
+        <li><p>망원경: 각 $\theta$ 로 오는 먼 물체의 상이 대물렌즈 초점면에 높이 $f_o\theta$ 로 거꾸로 생긴다. 이것을 접안렌즈 초점에 둔다.</p><div class="eq">$$\theta' = \frac{-f_o\theta}{f_e}\ \Rightarrow\ M = \frac{\theta'}{\theta} = -\frac{f_o}{f_e}$$</div></li>
+        <li><p>예: 현미경 $f_o = 4$ mm, $f_e = 25$ mm, $L = 160$ mm. 망원경 $f_o = 1000$ mm, $f_e = 25$ mm.</p><div class="eq">$$M_{현미경} = -\frac{160}{4}\cdot\frac{250}{25} = -400,\qquad M_{망원경} = -40$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">광학 기구 · 3 · 교과서 182~183쪽</p><h2>수차: 실제 렌즈는 한 점에 모으지 못한다</h2></header>
@@ -184,7 +249,7 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
       <div class="q"><span class="qn">Q1</span>
         <p>초점 거리 $-15$ cm 인 볼록 거울(자동차 측면 거울) 앞 30 cm 에 물체가 있다. 상의 위치와 배율은?</p>
         <details class="answer"><summary>풀이 보기</summary><div>
-          <p>$\dfrac1{s'} = -\dfrac1{15} - \dfrac1{30} = -\dfrac1{10}$, $s' = -10$ cm (거울 뒤 허상)</p>
+          <p>$\dfrac1{i} = -\dfrac1{15} - \dfrac1{30} = -\dfrac1{10}$, $i = -10$ cm (거울 뒤 허상)</p>
           <p>$m = +\tfrac13$: 바로 선 축소 허상. 넓은 범위가 보이지만 실제보다 멀어 보입니다.</p>
         </div></details>
       </div>
@@ -226,13 +291,30 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 두 파동의 간섭 · 교과서 188~190쪽</p><h2>합차 공식으로 간섭 무늬의 세기 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>진폭이 같고 위상차가 $\delta$ 인 두 파동이 한 점에서 겹친다.</p><div class="eq">$$E = E_0\sin\omega t + E_0\sin(\omega t + \delta)$$</div></li>
+        <li><p>$\sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2}$ 를 쓴다.</p><div class="eq">$$E = 2E_0\cos\frac\delta2\,\sin\Big(\omega t + \frac\delta2\Big)$$</div></li>
+        <li><p>합성파의 진폭은 $2E_0\cos(\delta/2)$. 세기는 진폭의 제곱에 비례하므로 ($I_0$: 한 파동의 세기)</p><div class="eq">$$I = 4I_0\cos^2\frac\delta2$$</div></li>
+        <li><p>위상차를 경로차 $\Delta$ 로 바꾼다.</p><div class="eq">$$\delta = \frac{2\pi}{\lambda}\Delta\ \Rightarrow\ I = 4I_0\cos^2\frac{\pi\Delta}{\lambda}$$</div></li>
+        <li><p>$\Delta = m\lambda$ 이면 $4I_0$ (보강), $\Delta = (m + \tfrac12)\lambda$ 이면 0 (상쇄).</p><div class="eq">$$I_{max} = 4I_0,\qquad I_{min} = 0$$</div></li>
+        <li><p>무늬 전체의 평균은 $2I_0$, 두 빛을 그냥 더한 값이다. 에너지가 사라지는 것이 아니라 밝은 곳으로 다시 나뉜다.</p><div class="eq">$$\langle I\rangle = 4I_0\Big\langle\cos^2\frac\delta2\Big\rangle = 2I_0$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">영의 이중 슬릿 (1801) · 교과서 190~193쪽</p><h2>밝은 무늬의 위치와 간격</h2></header>
     <div class="body cols">
       <div>
         <p>슬릿 간격 $d$, 스크린까지 거리 $L \gg d$. 두 슬릿에서 각 $\theta$ 방향으로 간 빛의 경로차는 $d\sin\theta$ 입니다.</p>
-        <div class="eq">$$\text{밝은 무늬: } d\sin\theta = m\lambda,\qquad \text{어두운 무늬: } d\sin\theta = \big(m+\tfrac12\big)\lambda$$</div>
+        <div class="eq">$$\text{밝은 무늬: } d\sin\theta = m\lambda$$</div>
+        <div class="eq">$$\text{어두운 무늬: } d\sin\theta = \big(m+\tfrac12\big)\lambda$$</div>
         <p>각이 작으면 $\sin\theta \approx \tan\theta = y/L$ 이므로</p>
         <div class="eq">$$y_m = \frac{m\lambda L}{d},\qquad \Delta y = \frac{\lambda L}{d}$$</div>
         <p>세기 분포: $I = I_0\cos^2\Big(\dfrac{\pi d\sin\theta}{\lambda}\Big)$</p>
@@ -245,6 +327,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
         </div></details>
         <p class="small">무늬 간격을 넓히려면 $L$ 을 늘리거나 $d$ 를 줄이거나 파장이 긴 빛을 씁니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 영의 이중 슬릿 · 교과서 190~193쪽</p><h2>경로차 d sin θ 에서 무늬 간격까지</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>$L \gg d$ 이면 두 슬릿에서 점 P로 가는 광선은 거의 나란하다. 아래 슬릿에서 위 광선에 수선을 내리면 남는 길이가 경로차다.</p><div class="eq">$$\Delta = d\sin\theta$$</div></li>
+        <li><p>보강 조건을 쓴다.</p><div class="eq">$$d\sin\theta_m = m\lambda\qquad(m = 0, \pm1, \pm2, \dots)$$</div></li>
+        <li><p>스크린 위 높이 $y$ 는 $\tan\theta = y/L$. 각이 작으면 $\sin\theta\approx\tan\theta$.</p><div class="eq">$$y_m = L\tan\theta_m \approx \frac{m\lambda L}{d}$$</div></li>
+        <li><p>이웃한 밝은 무늬 사이 간격은 $m$ 에 무관하다 (무늬가 고르게 늘어선다).</p><div class="eq">$$\Delta y = y_{m+1} - y_m = \frac{\lambda L}{d}$$</div></li>
+        <li><p>앞 슬라이드의 세기 식에 $\Delta = d\sin\theta$ 를 넣으면 무늬의 밝기 분포.</p><div class="eq">$$I = 4I_0\cos^2\frac{\pi d\sin\theta}{\lambda}$$</div></li>
+        <li><p>예: $\lambda = 633$ nm, $d = 0.25$ mm, $L = 2.0$ m.</p><div class="eq">$$\Delta y = \frac{(633\times10^{-9})(2.0)}{0.25\times10^{-3}} = 5.1\ \text{mm}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -270,6 +368,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 얇은 막의 간섭 · 교과서 194쪽</p><h2>광경로차와 반사 위상을 함께 세기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>윗면 반사광 ①과 아랫면 반사광 ②. 수직 입사면 ②가 막 속을 $2t$ 더 가고, 막 속 파장은 $\lambda/n$ 이다.</p><div class="eq">$$\text{광경로차} = 2nt\ \Rightarrow\ \text{위상차} = \frac{2\pi}{\lambda}\,2nt$$</div></li>
+        <li><p>굴절률이 큰 매질에서 반사할 때마다 위상이 $\pi$ 더해진다.</p><div class="eq">$$n_1 \lt n_2\ \text{인 경계에서 반사}\ \Rightarrow\ +\pi$$</div></li>
+        <li><p>비누막 (공기-비누-공기): ①만 $\pi$ 가 바뀐다. 총 위상차.</p><div class="eq">$$\delta = \frac{2\pi}{\lambda}\,2nt - \pi$$</div></li>
+        <li><p>$\delta = 2\pi m$ 이면 밝고, $\delta = (2m+1)\pi$ 이면 어둡다.</p><div class="eq">$$\text{밝음: } 2nt = \big(m + \tfrac12\big)\lambda,\qquad \text{어두움: } 2nt = m\lambda$$</div></li>
+        <li><p>반사 방지막 (공기-MgF₂-유리): ①, ② 모두 $\pi$ 라 지워진다. 어두운 조건의 가장 얇은 두께.</p><div class="eq">$$2nt = \tfrac12\lambda\ \Rightarrow\ t = \frac{\lambda}{4n} = \frac{550}{4(1.38)} = 99.6\ \text{nm}$$</div></li>
+        <li><p>비누막이 아주 얇아지면 ($t\to0$) 위상차 $\pi$ 만 남아 모든 색이 어두워진다. 터지기 직전의 비눗방울 위쪽이 검게 보인다.</p><div class="eq">$$t\to0\ \Rightarrow\ \delta\to-\pi\ \ (\text{상쇄})$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">뉴턴링 · 교과서 194~195쪽</p><h2>뉴턴 링: 공기층 두께를 재는 자</h2></header>
@@ -285,6 +399,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
         <p>$R = 1.0$ m, $\lambda = 589$ nm 이면 첫 어두운 고리 반지름은 0.77 mm 입니다.</p>
         <p>렌즈 공장에서는 표준 원판 위에 렌즈를 올려 고리가 동심원으로 고르게 나오는지 보고 연마 오차를 파장의 몇 분의 1 수준으로 검사합니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 뉴턴링 · 교과서 194~195쪽</p><h2>피타고라스 정리로 공기층 두께와 고리 반지름 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>렌즈 곡률 중심에서 그린 직각삼각형. 중심에서 $r$ 떨어진 곳의 공기층 두께가 $t$.</p><div class="eq">$$R^2 = r^2 + (R - t)^2\ \Rightarrow\ r^2 = 2Rt - t^2$$</div></li>
+        <li><p>$t \ll R$ 이라 $t^2$ 을 버린다.</p><div class="eq">$$t \approx \frac{r^2}{2R}$$</div></li>
+        <li><p>공기층 아랫면(공기→유리)에서만 위상이 $\pi$ 바뀐다. 어두운 고리 조건.</p><div class="eq">$$2t = m\lambda\ \Rightarrow\ r_m = \sqrt{m\lambda R}$$</div></li>
+        <li><p>밝은 고리는 반파장 어긋난 곳.</p><div class="eq">$$2t = \big(m + \tfrac12\big)\lambda\ \Rightarrow\ r = \sqrt{\big(m + \tfrac12\big)\lambda R}$$</div></li>
+        <li><p>이웃한 고리 간격은 $m$ 이 클수록 줄어든다 (바깥이 촘촘).</p><div class="eq">$$r_{m+1} - r_m \approx \frac{\sqrt{\lambda R}}{2\sqrt m}$$</div></li>
+        <li><p>예: $R = 1.0$ m, $\lambda = 589$ nm.</p><div class="eq">$$r_1 = \sqrt{(589\times10^{-9})(1.0)} = 0.77\ \text{mm},\qquad r_4 = 1.53\ \text{mm}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -356,6 +486,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 단일 슬릿 회절 · 교과서 198~203쪽</p><h2>틈을 짝수 조각으로 나누어 어두운 무늬 찾기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>폭 $a$ 인 틈을 위·아래 절반으로 나눈다. 위 절반의 맨 위 점과 아래 절반의 맨 위 점은 $a/2$ 떨어져 있다.</p><div class="eq">$$\Delta = \frac a2\sin\theta$$</div></li>
+        <li><p>이 경로차가 반파장이면 짝지은 두 점이 상쇄된다. 짝을 아래로 옮겨도 모두 같으므로 전체가 어두워진다.</p><div class="eq">$$\frac a2\sin\theta = \frac\lambda2\ \Rightarrow\ a\sin\theta = \lambda$$</div></li>
+        <li><p>4조각, 6조각으로 나누어도 같은 논리. 일반적으로 ($m = 0$ 은 제외)</p><div class="eq">$$a\sin\theta = m\lambda\qquad(m = \pm1, \pm2, \dots)$$</div></li>
+        <li><p>스크린 위치로 ($\sin\theta \approx y/L$). 가운데 밝은 무늬는 $m = -1$ 과 $+1$ 사이다.</p><div class="eq">$$y_m \approx \frac{m\lambda L}{a},\qquad w_{가운데} = \frac{2\lambda L}{a}$$</div></li>
+        <li><p>예: $a = 0.10$ mm, $\lambda = 600$ nm, $L = 1.5$ m.</p><div class="eq">$$w = \frac{2(600\times10^{-9})(1.5)}{0.10\times10^{-3}} = 18\ \text{mm}$$</div></li>
+        <li><p>퍼지는 각은 $\lambda/a$ 정도다. 틈이 파장에 비해 넓으면 회절이 거의 보이지 않는다.</p><div class="eq">$$\theta_1 \approx \frac\lambda a\ \Rightarrow\ a \gg \lambda\ \text{이면}\ \theta_1\to0$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">이중 슬릿 + 회절</p><h2>실제 이중 슬릿 무늬는 회절 포락선 안에 있다</h2></header>
@@ -382,11 +528,11 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
       </div>
       <div>
       <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>기기 (λ = 550 nm)</th><th>구경 D</th><th>θ_min</th></tr></thead>
+        <thead><tr><th>기기</th><th class="nw">구경 D</th><th class="nw">θ<sub>min</sub> (λ = 550 nm)</th></tr></thead>
         <tbody>
-          <tr><td>사람 눈</td><td>5 mm</td><td class="mono">1.3 × 10⁻⁴ rad</td></tr>
-          <tr><td>학교 망원경</td><td>10 cm</td><td class="mono">6.7 × 10⁻⁶ rad</td></tr>
-          <tr><td>허블 우주 망원경</td><td>2.4 m</td><td class="mono">2.8 × 10⁻⁷ rad (0.06″)</td></tr>
+          <tr><td class="nw">사람 눈</td><td class="mono">5 mm</td><td class="mono">1.3 × 10⁻⁴ rad</td></tr>
+          <tr><td class="nw">학교 망원경</td><td class="mono">10 cm</td><td class="mono">6.7 × 10⁻⁶ rad</td></tr>
+          <tr><td class="nw">허블 망원경</td><td class="mono">2.4 m</td><td class="mono">2.8 × 10⁻⁷ rad</td></tr>
         </tbody>
       </table></div>
       <div class="box"><span class="tag">현미경의 한계</span>
@@ -410,6 +556,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
         <p class="small">분광기, CD 표면의 무지갯빛, 분광 망원경으로 별의 성분을 읽는 일.</p>
       </div>
       <figure class="fig">{{fig:grating}}<figcaption>주 극대 위치는 같고, N이 커질수록 폭이 좁아집니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 회절격자 · 교과서 207~211쪽</p><h2>600 줄/mm 격자의 차수와 스펙트럼의 겹침</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>슬릿 간격.</p><div class="eq">$$d = \frac{1\ \text{mm}}{600} = 1.67\ \mu\text{m}$$</div></li>
+        <li><p>500 nm 빛의 각 차수 방향 ($d\sin\theta = m\lambda$).</p><div class="eq">$$\sin\theta_m = \frac{m(0.500)}{1.67} = 0.30,\ 0.60,\ 0.90\ \Rightarrow\ 17.5^\circ,\ 36.9^\circ,\ 64.2^\circ$$</div></li>
+        <li><p>$\sin\theta \le 1$ 이어야 하므로 볼 수 있는 가장 높은 차수.</p><div class="eq">$$m \le \frac d\lambda = 3.3\ \Rightarrow\ m_{max} = 3$$</div></li>
+        <li><p>흰빛(400~700 nm)의 1차와 2차 스펙트럼은 겹치는가?</p><div class="eq">$$1\text{차 끝}: \frac{0.70}{1.67} = 0.42,\qquad 2\text{차 시작}: \frac{2(0.40)}{1.67} = 0.48\ \Rightarrow\ \text{안 겹침}$$</div></li>
+        <li><p>2차와 3차는?</p><div class="eq">$$2\text{차 끝}: \frac{2(0.70)}{1.67} = 0.84,\qquad 3\text{차 시작}: \frac{3(0.40)}{1.67} = 0.72\ \Rightarrow\ \text{겹침}$$</div></li>
+      </ol>
+      <p class="small">분광기는 겹치지 않는 1차 스펙트럼을 주로 씁니다. 슬릿 수 $N$ 이 많을수록 같은 차수에서 더 가까운 두 파장을 가를 수 있습니다 ($\lambda/\Delta\lambda = Nm$).</p>
     </div>
   </div>
 </section>
@@ -465,6 +627,22 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 말뤼스 법칙 · 교과서 217~218쪽</p><h2>전기장 성분으로 투과 세기 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>선편광의 전기장 $E_0$ 가 투과축과 $\theta$ 를 이룬다. 축 방향 성분만 지나가고 수직 성분은 흡수된다.</p><div class="eq">$$E_\parallel = E_0\cos\theta,\qquad E_\perp = E_0\sin\theta\ (\text{흡수})$$</div></li>
+        <li><p>세기는 전기장 진폭의 제곱에 비례한다.</p><div class="eq">$$I = I_0\cos^2\theta$$</div></li>
+        <li><p>편광되지 않은 빛은 모든 $\theta$ 가 고르게 섞여 있다.</p><div class="eq">$$I = I_0\langle\cos^2\theta\rangle = \frac{I_0}{2}$$</div></li>
+        <li><p>투과축 0°, 45°, 90° 세 장을 차례로 지난다.</p><div class="eq">$$I_1 = \frac{I_0}{2},\quad I_2 = I_1\cos^245^\circ = \frac{I_0}{4},\quad I_3 = I_2\cos^245^\circ = \frac{I_0}{8}$$</div></li>
+        <li><p>가운데 판의 각을 $\phi$ 로 바꾸면 ($\cos(90^\circ - \phi) = \sin\phi$)</p><div class="eq">$$I_3 = \frac{I_0}{2}\cos^2\phi\,\sin^2\phi = \frac{I_0}{8}\sin^22\phi$$</div></li>
+        <li><p>$\phi = 45^\circ$ 에서 가장 밝고, $0^\circ$ 나 $90^\circ$ 이면 어둡다.</p><div class="eq">$$I_{3,max} = \frac{I_0}{8}\ \ (\phi = 45^\circ)$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">브루스터 법칙 · 교과서 218~219쪽</p><h2>브루스터 각과 하늘의 편광</h2></header>
@@ -478,6 +656,21 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
       <div class="box def"><span class="tag">산란</span>
         <p>공기 분자에 산란된 햇빛은 부분적으로 편광됩니다. 태양과 $90^\circ$ 를 이루는 하늘에서 편광이 가장 강합니다. 편광판을 돌려 하늘을 보며 확인해 보세요.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 브루스터 법칙 · 교과서 218~219쪽</p><h2>반사광과 굴절광이 수직일 조건에서 tan θ<sub>B</sub> 얻기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>브루스터 각에서는 반사광과 굴절광이 수직이다.</p><div class="eq">$$\theta_B + \theta_t = 90^\circ$$</div></li>
+        <li><p>스넬 법칙에 넣는다.</p><div class="eq">$$n_1\sin\theta_B = n_2\sin\theta_t = n_2\sin(90^\circ - \theta_B) = n_2\cos\theta_B$$</div></li>
+        <li><p>정리한다.</p><div class="eq">$$\tan\theta_B = \frac{n_2}{n_1}$$</div></li>
+        <li><p>예: 공기에서 물로, 유리로. 이때 굴절각은 $90^\circ - \theta_B$.</p><div class="eq">$$\theta_B = \tan^{-1}1.33 = 53.1^\circ,\qquad \tan^{-1}1.50 = 56.3^\circ$$</div></li>
+        <li class="wide"><p>왜 수직일 때 입사면 안의 성분이 반사되지 않는가: 반사광은 굴절된 매질 속 전자가 굴절광의 전기장 방향으로 진동하며 다시 낸 빛이다. 진동하는 전하는 진동 방향으로는 복사하지 못한다 (안테나 축 방향, 전자기학 단원). 반사 방향이 마침 그 진동 방향과 나란하면, 입사면 안에서 진동하는 성분은 반사광에 없다.</p></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -510,7 +703,7 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
         <p>투과축이 수직인 편광판 두 장 사이에 액정이 있습니다. 전압을 걸지 않으면 액정이 편광 방향을 90° 돌려 빛이 지나가고, 전압을 걸면 돌리지 않아 어두워집니다.</p>
       </div>
       <div class="box def"><span class="tag">AMOLED</span>
-        <p>스스로 빛을 내므로 편광판이 화면을 만드는 데 필요하지 않습니다. 대신 바깥 빛이 금속 전극에 반사되는 것을 막으려고 선편광판 + 1/4 파장판(원편광판)을 붙입니다. 반사된 원편광은 회전 방향이 바뀌어 편광판을 다시 지나지 못합니다.</p>
+        <p>스스로 빛을 내므로 화면을 만드는 데 편광판이 필요 없습니다. 대신 바깥 빛이 금속 전극에서 반사되지 않게 원편광판(선편광판 + 1/4 파장판)을 붙입니다. 반사된 빛은 회전 방향이 바뀌어 다시 지나가지 못합니다.</p>
       </div>
       <div class="box def"><span class="tag">광탄성</span>
         <p>투명 플라스틱에 힘이 걸리면 편광 방향에 따라 굴절률이 달라집니다. 편광판 두 장 사이에 두면 응력 분포가 무지갯빛 무늬로 보여 구조물의 약한 곳을 찾습니다.</p>
@@ -525,7 +718,7 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
     <header><p class="kicker">정리</p><h2>광학에서 가져갈 것</h2></header>
     <div class="body cols">
       <ul>
-        <li>거울·렌즈: $\dfrac1s + \dfrac1{s'} = \dfrac1f$, $m = -s'/s$, 부호 규약을 일관되게.</li>
+        <li>거울·렌즈: $\dfrac1p + \dfrac1{i} = \dfrac1f$, $m = -i/p$, 부호 규약을 일관되게.</li>
         <li>현미경 $M \approx -(L/f_o)(25\ \text{cm}/f_e)$, 망원경 $M = -f_o/f_e$.</li>
         <li>이중 슬릿: $d\sin\theta = m\lambda$ 가 밝은 무늬, 간격 $\lambda L/d$.</li>
         <li>박막: 굴절률이 큰 매질에서 반사하면 위상이 $\pi$ 바뀐다.</li>

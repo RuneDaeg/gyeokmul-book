@@ -5,6 +5,7 @@
 
 src/*.html 의 슬라이드 원고에 공통 머리말·도구 막대·쪽 번호를 붙이고,
 {{fig:이름}} 자리에 tools/figures.py 가 계산한 SVG 그림을 넣어 slides/ 에 쓴다.
+마지막으로 verification-report.md 4장에서 오류 목록 페이지(slides/errors.html)를 만든다.
 """
 import html
 import pathlib
@@ -14,6 +15,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from figures import FIGS  # noqa: E402
+import errors  # noqa: E402
 
 SRC = ROOT / "src"
 OUT = ROOT / "slides"
@@ -131,16 +133,30 @@ INDEX = """<!doctype html>
   <header class="home-head">
     <p class="kicker">2022 개정 교육과정 · 과학 계열 진로 선택</p>
     <h1>고급 물리학 수업 자료</h1>
-    <p class="lede">교과서(대전광역시교육감 인정, 조영원 외)의 단원 순서를 따라 역학 · 전자기학 · 광학 · 현대 물리를 정리한 슬라이드입니다. 슬라이드마다 교과서 쪽을 적었고, 2015 개정 자료를 검증하며 찾은 오류를 바로잡은 서술로 다시 썼습니다.</p>
+    <p class="lede">교과서(대전광역시교육감 인정, 조영원 외)의 단원 순서를 따라 역학 · 전자기학 · 광학 · 현대 물리를 정리한 슬라이드입니다. 슬라이드마다 교과서 쪽을 적었고, 핵심 식은 '유도'·'풀이' 슬라이드에서 한 단계씩 끌어냅니다. 2015 개정 자료를 검증하며 찾은 오류는 바로잡은 서술로 다시 썼습니다.</p>
   </header>
   <ol class="decks">
 {items}
   </ol>
+  <section class="verify">
+    <h2>검증 자료</h2>
+    <ul class="decks">
+      <li class="deck-card">
+        <a href="errors.html">
+          <span class="no">!</span>
+          <span class="t">2015 자료 물리 오류 목록</span>
+          <span class="d">자료 6종에서 찾은 오류를 자료·등급별로 걸러 보고, 2022 슬라이드에서 바로잡은 곳으로 바로 갑니다.</span>
+          <span class="n">{errsum}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
   <section class="howto">
     <h2>쓰는 법</h2>
     <ul>
       <li><strong>발표 모드</strong>: 오른쪽 위 버튼이나 <kbd>P</kbd>. <kbd>←</kbd> <kbd>→</kbd> 로 넘기고 <kbd>Esc</kbd> 로 끝냅니다. 터치 화면에서는 좌우로 밉니다.</li>
       <li><strong>교사용 메모</strong>: 버튼이나 <kbd>N</kbd>. 슬라이드마다 2015 자료의 어떤 오류를 고쳤는지, 수업 운영 팁이 보입니다.</li>
+      <li><strong>유도 · 풀이 슬라이드</strong>: 머리 표시가 '유도'나 '풀이'로 시작하는 슬라이드는 앞 슬라이드의 식을 번호 붙은 단계로 끌어냅니다. 판서 대신 한 단계씩 짚어 가며 쓰세요.</li>
       <li><strong>풀이 보기</strong>: 확인 문제의 풀이는 접혀 있어 학생 화면에서 바로 보이지 않습니다.</li>
       <li>쪽 번호를 누르면 그 슬라이드로 가는 주소(#s12 형식)가 됩니다.</li>
     </ul>
@@ -161,7 +177,7 @@ ITEM = """    <li class="deck-card">
     </li>"""
 
 
-def build_index(decks):
+def build_index(decks, errsum=""):
     items = []
     for i, (meta, total) in enumerate(decks):
         no = "OT" if i == 0 else ["I", "II", "III", "IV"][i - 1]
@@ -169,7 +185,7 @@ def build_index(decks):
         title = re.sub(r"^(I|II|III|IV|Ⅰ|Ⅱ|Ⅲ|Ⅳ)\s+", "", title)
         items.append(ITEM.format(file=meta["file"], no=no, title=html.escape(title),
                                  desc=html.escape(meta["desc"]), total=total))
-    (OUT / "index.html").write_text(INDEX.format(fonts=FONTS, items="\n".join(items)), encoding="utf-8")
+    (OUT / "index.html").write_text(INDEX.format(fonts=FONTS, items="\n".join(items), errsum=errsum), encoding="utf-8")
 
 
 def main():
@@ -179,7 +195,9 @@ def main():
         meta, total = build_deck(path)
         decks.append((meta, total))
         print(f"{meta['file']}: 슬라이드 {total}장")
-    build_index(decks)
+    total, linked = errors.build(ROOT / "verification-report.md", OUT, FONTS, MATHJAX)
+    print(f"errors.html: 오류 {total}건, 바로잡은 슬라이드 링크가 있는 항목 {linked}건")
+    build_index(decks, f"오류 {total}건 · 자료별·등급별 찾기")
     print(f"index.html: 묶음 {len(decks)}개, 슬라이드 {sum(t for _, t in decks)}장")
     return decks
 

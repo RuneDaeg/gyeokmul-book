@@ -330,14 +330,15 @@ def blackbody():
     p = Plot(480, 240, (100, 3000), (0, 1.1), pad=(36, 14, 14, 36))
     inner = [p.axes("λ (nm)", "세기")]
     p.y1 = 1.1
-    for T, cls, tc in ((5000, "c1", "t-acc"), (4000, "c3", "t-warm"), (3000, "c2", "t-ink")):
+    for i, (T, cls, tc) in enumerate(((5000, "c1", "t-acc"), (4000, "c3", "t-warm"), (3000, "c2", "t-ink"))):
         inner.append(p.curve(lambda l, T=T: B(l, T) / peak, cls=cls, n=500))
         lm = 2.898e-3 / T * 1e9
         inner.append(f'<circle cx="{p.X(lm):.1f}" cy="{p.Y(B(lm, T) / peak):.1f}" r="3" class="fInk"/>')
-        inner.append(f'<text x="{p.X(lm) + 8:.0f}" y="{p.Y(B(lm, T) / peak) - 4:.0f}" class="{tc}">{T} K (λ_max ≈ {lm:.0f} nm)</text>')
+        # 범례는 곡선이 없는 오른쪽 위에 모은다
+        inner.append(f'<text x="{p.X(1550):.0f}" y="{p.Y(1.0 - 0.13 * i):.0f}" class="{tc}">{T} K · λ<tspan baseline-shift="sub" font-size="10">max</tspan> ≈ {lm:.0f} nm</text>')
     inner.append(f'<path class="fA" d="M{p.X(380):.1f},{p.Y(0):.1f} H{p.X(750):.1f} V{p.Y(1.1):.1f} H{p.X(380):.1f} Z"/>')
-    inner.append(f'<text x="{p.X(565):.0f}" y="{p.h - 40}" text-anchor="middle">가시광</text>')
-    for lv in (1000, 2000, 3000):
+    inner.append(f'<text x="{p.X(565):.0f}" y="{p.h - 18}" text-anchor="middle" class="t-acc">가시광</text>')
+    for lv in (1000, 2000):
         inner.append(f'<text x="{p.X(lv):.0f}" y="{p.h - 18}" text-anchor="middle">{lv}</text>')
     return p.svg("\n".join(inner), "온도 3000 K, 4000 K, 5000 K 흑체의 복사 스펙트럼과 빈 변위 법칙")
 
@@ -443,11 +444,11 @@ def twin():
     inner = [p.axes("x (광년)", "ct (년)"),
              f'<path class="c2" d="M{p.X(0):.1f},{p.Y(0):.1f} V{p.Y(42.1):.1f}"/>',
              f'<path class="c1" d="M{p.X(0):.1f},{p.Y(0):.1f} L{p.X(turn[0]):.1f},{p.Y(turn[1]):.1f} L{p.X(0):.1f},{p.Y(42.1):.1f}"/>',
-             f'<path class="gr dash" d="M{p.X(0):.1f},{p.Y(0):.1f} L{p.X(21):.1f},{p.Y(21):.1f}"/>',
-             f'<text x="{p.X(21):.0f}" y="{p.Y(21) + 16:.0f}" text-anchor="end">빛 (45°)</text>',
-             f'<text x="{p.X(0.6):.0f}" y="{p.Y(38):.0f}" class="t-ink">지구 A: 42.1년</text>',
-             f'<text x="{p.X(11):.0f}" y="{p.Y(9):.0f}" class="t-acc">B (0.95c): 13.1년</text>',
-             f'<text x="{p.X(turn[0]) - 4:.0f}" y="{p.Y(turn[1]) - 10:.0f}" text-anchor="end">방향 전환: 관성계가 바뀜</text>']
+             f'<path class="gr dash" d="M{p.X(0):.1f},{p.Y(0):.1f} L{p.X(14):.1f},{p.Y(14):.1f}"/>',
+             f'<text x="{p.X(14) + 4:.0f}" y="{p.Y(11):.0f}">빛 (45°)</text>',
+             f'<text x="{p.X(1.0):.0f}" y="{p.Y(42.6):.0f}" class="t-ink">A (지구): 42.1년</text>',
+             f'<text x="{p.X(12):.0f}" y="{p.Y(4):.0f}" class="t-acc">B (0.95c): 13.1년</text>',
+             f'<text x="{p.X(16.3):.0f}" y="{p.Y(21) + 4:.0f}" text-anchor="end">관성계가 바뀜 →</text>']
     return p.svg("\n".join(inner), "쌍둥이 역설의 시공간 도표")
 
 

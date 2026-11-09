@@ -58,6 +58,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 관성력 · 교과서 232~234쪽</p><h2>엘리베이터와 회전 원판을 두 관점으로 풀기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>위로 $A$ 만큼 가속하는 엘리베이터 안. 사람은 정지해 있으므로 실제 힘과 아래쪽 관성력 $mA$ 가 평형이다.</p><div class="eq">$$N - mg - mA = 0\ \Rightarrow\ N = m(g + A)$$</div></li>
+        <li><p>예: 60 kg 학생, $A = 2.0$ m/s². 저울은 72 kg 을 가리킨다.</p><div class="eq">$$N = 60(9.8 + 2.0) = 708\ \text{N}$$</div></li>
+        <li><p>각속도 $\omega$ 로 도는 원판 위, 반지름 $r$ 에 정지한 물체. 밖에서 보면 정지 마찰력이 구심력이다.</p><div class="eq">$$f = m\omega^2r\qquad(\text{관성계})$$</div></li>
+        <li><p>원판 위에서 보면 물체는 정지해 있고, 바깥쪽 원심력 $m\omega^2r$ 과 마찰력이 평형이다. 식은 같다.</p><div class="eq">$$f - m\omega^2r = 0\qquad(\text{회전 좌표계})$$</div></li>
+        <li><p>미끄러지지 않을 조건 $f \le \mu_smg$. 예: $\mu_s = 0.40$, $r = 0.50$ m.</p><div class="eq">$$\omega_{max} = \sqrt{\frac{\mu_sg}{r}} = \sqrt{\frac{(0.40)(9.8)}{0.50}} = 2.8\ \text{rad/s}$$</div></li>
+        <li><p>지구 자전의 원심 가속도 (적도): $g$ 의 약 0.3 %. 적도에서 몸무게가 조금 가볍게 재진다.</p><div class="eq">$$\omega^2R = (7.29\times10^{-5})^2(6.38\times10^6) = 0.034\ \text{m/s}^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">관성력의 예 · 교과서 233~234쪽 (코리올리 힘은 교과서 밖)</p><h2>엘리베이터와 회전 좌표계</h2></header>
@@ -107,7 +123,8 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
     <div class="body cols">
       <div>
         <p>광학 단원의 마이컬슨 간섭계를 돌려, 두 팔이 에테르 바람과 나란할 때와 수직일 때의 무늬를 비교했습니다.</p>
-        <div class="eq">$$\text{예상 무늬 이동}\approx\frac{2Lv^2}{\lambda c^2} = \frac{2(11\ \text{m})(3.0\times10^4\ \text{m/s})^2}{(500\ \text{nm})(3.0\times10^8\ \text{m/s})^2} = 0.44$$</div>
+        <div class="eq">$$\text{예상 무늬 이동}\ N \approx \frac{2Lv^2}{\lambda c^2} = 0.44$$</div>
+        <p class="small">$L = 11$ m, $v = 3.0\times10^4$ m/s (지구 공전 속력), $\lambda = 500$ nm. 유도는 다음 슬라이드.</p>
         <p>장치는 0.01 무늬까지 잴 수 있었지만 이동은 나타나지 않았습니다.</p>
       </div>
       <div class="box def"><span class="tag">해석</span>
@@ -115,6 +132,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p>아인슈타인(1905)은 에테르를 아예 가정하지 않고, <strong>광속은 모든 관성계에서 같다</strong>는 것을 출발점으로 삼았습니다. 그러면 이 결과는 당연한 것이 됩니다.</p>
       </div>
       <aside class="note">기존 상대론 p27의 "무늬 이동 없음 ⇒ 빛에는 매질이 없다!"는 비약이라 위처럼 고쳤습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 마이컬슨-몰리 실험 · 교과서 236쪽</p><h2>에테르가 있었다면: 두 팔의 왕복 시간 차이</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>에테르 바람($v$)과 나란한 팔(길이 $L$): 갈 때 $c - v$, 올 때 $c + v$.</p><div class="eq">$$t_\parallel = \frac{L}{c - v} + \frac{L}{c + v} = \frac{2L}{c}\,\frac{1}{1 - v^2/c^2}$$</div></li>
+        <li><p>수직인 팔: 빛이 바람에 떠밀리지 않으려면 비스듬히 가야 해서 팔 방향 속력이 $\sqrt{c^2 - v^2}$.</p><div class="eq">$$t_\perp = \frac{2L}{\sqrt{c^2 - v^2}} = \frac{2L}{c}\,\frac{1}{\sqrt{1 - v^2/c^2}}$$</div></li>
+        <li><p>$v \ll c$ 이므로 $(1 - x)^{-1}\approx1 + x$, $(1 - x)^{-1/2}\approx1 + \tfrac x2$ 로 어림한다.</p><div class="eq">$$\Delta t = t_\parallel - t_\perp \approx \frac{2L}{c}\Big(\frac{v^2}{c^2} - \frac{v^2}{2c^2}\Big) = \frac{L}{c}\frac{v^2}{c^2}$$</div></li>
+        <li><p>장치를 $90^\circ$ 돌리면 두 팔의 역할이 바뀌어 차이가 $2\Delta t$ 만큼 변한다. 무늬 이동 수.</p><div class="eq">$$N = \frac{c\,(2\Delta t)}{\lambda} = \frac{2Lv^2}{\lambda c^2}$$</div></li>
+        <li><p>$L = 11$ m (거울로 여러 번 왕복), $v = 3.0\times10^4$ m/s (지구 공전 속력), $\lambda = 500$ nm.</p><div class="eq">$$N = \frac{2(11)(3.0\times10^4)^2}{(500\times10^{-9})(3.0\times10^8)^2} = 0.44$$</div></li>
+        <li><p>장치는 0.01 무늬까지 잴 수 있었지만, 관측된 이동은 그보다도 작았다.</p><div class="eq">$$N_{관측} \lt 0.01 \ll 0.44$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -175,6 +208,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 시간 지연 · 교과서 238~239쪽</p><h2>빛 시계와 피타고라스 정리로 γ 얻기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>시계와 함께 있는 관찰자: 빛이 거리 $d$ 를 왕복한다. 같은 장소의 두 사건이므로 고유 시간.</p><div class="eq">$$\Delta t_0 = \frac{2d}{c}$$</div></li>
+        <li><p>시계가 $v$ 로 움직이는 것을 보는 관찰자: 빛이 올라가는 동안 거울이 $v\Delta t/2$ 만큼 옆으로 간다. 운동에 수직인 길이 $d$ 는 같다.</p><div class="eq">$$\text{빗변} = \frac{c\Delta t}{2},\qquad \text{밑변} = \frac{v\Delta t}{2},\qquad \text{높이} = d$$</div></li>
+        <li><p>광속 불변: 이 관찰자에게도 빛의 속력은 $c$. 피타고라스 정리.</p><div class="eq">$$\Big(\frac{c\Delta t}{2}\Big)^2 = \Big(\frac{v\Delta t}{2}\Big)^2 + d^2$$</div></li>
+        <li><p>$\Delta t$ 에 대해 푼다.</p><div class="eq">$$\Delta t = \frac{2d}{\sqrt{c^2 - v^2}} = \frac{2d/c}{\sqrt{1 - v^2/c^2}}$$</div></li>
+        <li><p>1단계의 $\Delta t_0$ 로 쓰면 시간 지연 식.</p><div class="eq">$$\Delta t = \gamma\,\Delta t_0,\qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \ge 1$$</div></li>
+        <li><p>예: $v = 0.60c$ 이면 $\gamma = 1/0.80 = 1.25$. 우주선 시계로 4.0 년이면 지구에서는</p><div class="eq">$$\Delta t = (1.25)(4.0\ \text{년}) = 5.0\ \text{년}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">길이 수축 · 교과서 239~240쪽</p><h2>길이 수축과 뮤온</h2></header>
@@ -190,6 +239,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p><strong>뮤온</strong>: 수명은 2.2 μs 그대로이지만 대기 두께가 $4800/7.09 \approx 677$ m 로 줄어 있다.</p>
         <p>두 설명은 같은 결과를 줍니다. 실제로 많은 뮤온이 지표에서 검출됩니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 길이 수축 · 교과서 239~240쪽</p><h2>시간 지연에서 길이 수축으로, 뮤온의 생존 비율</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>지구에 정지한 두 표지 사이 거리 $L_0$ (고유 길이). 지구에서 보면 우주선이 걸리는 시간.</p><div class="eq">$$\Delta t = \frac{L_0}{v}$$</div></li>
+        <li><p>우주선에게 두 표지를 지나는 사건은 같은 장소(우주선)에서 일어난다. 그래서 우주선 시계가 고유 시간.</p><div class="eq">$$\Delta t_0 = \frac{\Delta t}{\gamma}$$</div></li>
+        <li><p>우주선이 보면 표지들이 $v$ 로 지나가므로, 그 사이 거리는</p><div class="eq">$$L = v\,\Delta t_0 = \frac{v}{\gamma}\cdot\frac{L_0}{v} = \frac{L_0}{\gamma}$$</div></li>
+        <li><p>뮤온 ($v = 0.99c$, $\gamma = 7.09$, 고유 수명 2.2 μs). 4800 m 대기를 지나는 데 걸리는 시간.</p><div class="eq">$$\text{지표에서: } \frac{4800}{0.99c} = 16.2\ \mu\text{s},\qquad \text{뮤온에게: } \frac{16.2}{7.09} = 2.28\ \mu\text{s}$$</div></li>
+        <li><p>살아남는 비율은 $e^{-t/\tau}$ 이다. 상대론으로 계산하면 셋 중 하나가 지표에 온다.</p><div class="eq">$$\frac{N}{N_0} = e^{-2.28/2.2} = 0.35$$</div></li>
+        <li><p>상대론이 없다면 시간을 늘리지 않고 그대로 계산하게 된다. 실제 검출량이 이 예상의 수백 배다.</p><div class="eq">$$\frac{N}{N_0} = e^{-16.2/2.2} = 6.4\times10^{-4}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -215,17 +280,17 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">심화 · 교과서 밖 · 쌍둥이 역설</p><h2>왜 우주선에 탄 쪽이 젊은가</h2></header>
-    <div class="body cols wide-r">
+    <div class="body cols">
       <div>
-        <p>A는 지구에 남고, B는 $0.95c$ 로 20광년 떨어진 별에 다녀옵니다.</p>
-        <p>A가 잰 시간 $2\times20/0.95 = 42.1$ 년, B의 고유 시간 $42.1\times\sqrt{1-0.95^2} = 13.1$ 년.</p>
+        <p>A는 지구에 남고, B는 $0.95c$ 로 20광년 떨어진 별에 다녀옵니다. A가 잰 시간은 $2\times20/0.95 = 42.1$ 년, B의 고유 시간은 $42.1\times\sqrt{1-0.95^2} = 13.1$ 년입니다.</p>
         <p>B의 입장에서는 A가 움직이니 A가 젊어야 하지 않을까요?</p>
-        <div class="box def"><span class="tag">풀이 · 특수 상대론만으로 충분하다</span>
-          <p>A는 처음부터 끝까지 하나의 관성계에 있지만, B는 돌아올 때 관성계를 <strong>바꿉니다</strong>. 그래서 두 사람은 대칭이 아닙니다.</p>
-          <p>나이는 각자 세계선을 따라 잰 고유 시간입니다. 두 사건을 잇는 세계선 가운데 관성 운동(직선)의 고유 시간이 가장 깁니다.</p>
-        </div>
+        <figure class="fig sm">{{fig:twin}}</figure>
       </div>
-      <figure class="fig">{{fig:twin}}<figcaption>A의 세계선은 직선, B의 세계선은 꺾인 선입니다. 방향 전환을 아무리 짧게 해도 결과는 같습니다.</figcaption></figure>
+      <div class="box def"><span class="tag">풀이 · 특수 상대론만으로 충분하다</span>
+        <p>A는 처음부터 끝까지 하나의 관성계에 있지만, B는 돌아올 때 관성계를 <strong>바꿉니다</strong>. 그래서 두 사람은 대칭이 아닙니다.</p>
+        <p>나이는 각자 세계선을 따라 잰 고유 시간입니다. 두 사건을 잇는 세계선 가운데 관성 운동(직선)의 고유 시간이 가장 깁니다.</p>
+        <p class="small">방향 전환을 아무리 짧게 해도 결과는 같습니다. 가속 자체가 나이를 바꾸는 것이 아니라, 세계선의 모양이 다른 것입니다.</p>
+      </div>
       <aside class="note">기존 상대론 p51은 "쌍둥이 역설은 일반 상대론으로 해결되며, 가속할 때의 겉보기 중력이 B를 젊게 한다"고 했습니다. 일반 상대론적 설명은 하나의 관점일 뿐이고, 표준적 해결은 위와 같습니다. 가속 없이 '바통을 넘기는' 세 쌍둥이 설정으로도 같은 결과가 나옵니다.</aside>
     </div>
   </div>
@@ -236,14 +301,14 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
     <header><p class="kicker">질량과 에너지 · 교과서 241~243쪽</p><h2>상대론적 운동량과 에너지</h2></header>
     <div class="body cols">
       <div>
-        <p>충돌에서 운동량 보존이 모든 관성계에서 성립하려면 운동량과 에너지를 다음처럼 정의해야 합니다 ($m$: 질량, 관찰자와 무관).</p>
+        <p>운동량 보존이 모든 관성계에서 성립하려면 운동량과 에너지를 이렇게 정의해야 합니다 ($m$: 질량, 관찰자와 무관).</p>
         <div class="eq">$$\vec p = \gamma m\vec u,\qquad E = \gamma mc^2,\qquad K = (\gamma - 1)mc^2$$</div>
         <div class="eq">$$E^2 = (pc)^2 + (mc^2)^2$$</div>
         <ul>
-          <li>정지 에너지 $mc^2$: 전자 0.511 MeV, 양성자 938.3 MeV</li>
+          <li>정지 에너지: 전자 0.511 MeV, 양성자 938.3 MeV</li>
           <li>질량이 없는 광자는 $E = pc$</li>
           <li>$u \ll c$ 이면 $K \approx \tfrac12mu^2$</li>
-          <li>$u \to c$ 이면 $K \to \infty$. 질량이 있는 물체는 $c$ 에 이를 수 없다.</li>
+          <li>$u \to c$ 이면 $K \to \infty$ (광속에 이를 수 없다)</li>
         </ul>
       </div>
       <div class="box ex"><span class="tag">예제</span>
@@ -255,6 +320,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         </div></details>
       </div>
       <aside class="note">교과서(241~243쪽)도 질량 m에 로런츠 인자 γ를 곱하는 방식으로 상대론적 운동량 p = γmv와 에너지 E = γmc²를 씁니다 (소단원 제목은 '특수 상대론적 질량과 에너지'). 기존 자료 p79의 '상대론적 질량 γm₀'과 표기가 다르니 학생에게 짚어 주세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 상대론적 에너지 · 교과서 241~243쪽</p><h2>E² = (pc)² + (mc²)² 와 저속 극한 확인</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>$E = \gamma mc^2$, $p = \gamma mu$ 를 제곱해서 뺀다.</p><div class="eq">$$E^2 - (pc)^2 = \gamma^2m^2c^4\Big(1 - \frac{u^2}{c^2}\Big) = m^2c^4$$</div></li>
+        <li><p>정리하면 속력이 들어 있지 않은 관계식이다.</p><div class="eq">$$E^2 = (pc)^2 + (mc^2)^2$$</div></li>
+        <li><p>운동 에너지는 정지 에너지를 뺀 것. 저속이면 $\gamma$ 를 이항 전개한다.</p><div class="eq">$$\gamma = \Big(1 - \frac{u^2}{c^2}\Big)^{-1/2} \approx 1 + \frac{u^2}{2c^2} + \frac{3u^4}{8c^4}$$</div></li>
+        <li><p>첫 항이 뉴턴 역학의 운동 에너지, 둘째 항이 상대론적 보정이다.</p><div class="eq">$$K = (\gamma - 1)mc^2 \approx \tfrac12mu^2 + \frac{3mu^4}{8c^2}$$</div></li>
+        <li><p>예: 운동 에너지 1.0 GeV 인 양성자 ($mc^2 = 938.3$ MeV).</p><div class="eq">$$\gamma = 1 + \frac{1000}{938.3} = 2.07,\qquad u = c\sqrt{1 - 1/\gamma^2} = 0.875c$$</div></li>
+        <li><p>운동량은 2단계 식으로 바로 구한다 ($E = 1938$ MeV).</p><div class="eq">$$pc = \sqrt{E^2 - (mc^2)^2} = \sqrt{1938^2 - 938^2}\ \text{MeV} = 1.70\ \text{GeV}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -334,13 +415,29 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
       <div class="box ex"><span class="tag">GPS 위성 (고도 20 200 km)</span>
         <div class="tbl-wrap"><table class="tbl">
           <tbody>
-            <tr><td>중력이 약해 빨라짐 (일반 상대론)</td><td class="mono">+45.7 μs/일</td></tr>
-            <tr><td>궤도 속력 때문에 느려짐 (특수 상대론)</td><td class="mono">−7.2 μs/일</td></tr>
+            <tr><td>약한 중력: 빨라짐 (일반 상대론)</td><td class="mono">+45.7 μs/일</td></tr>
+            <tr><td>궤도 속력: 느려짐 (특수 상대론)</td><td class="mono">−7.2 μs/일</td></tr>
             <tr><td><strong>합계</strong></td><td class="mono"><strong>+38.5 μs/일</strong></td></tr>
           </tbody>
         </table></div>
         <p>보정하지 않으면 위치 오차가 하루 약 $c\times38\ \mu$s ≈ 11 km 쌓입니다. 그래서 위성 시계는 발사 전에 진동수를 미리 조금 낮춰 둡니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · GPS 시계 보정 · 교과서 244~245쪽</p><h2>특수·일반 상대론 효과를 하루 단위로 계산하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>궤도 반지름과 속력 (고도 20 200 km, $GM = 3.986\times10^{14}$ m³/s²).</p><div class="eq">$$r = 2.657\times10^7\ \text{m},\qquad v = \sqrt{GM/r} = 3.87\ \text{km/s}$$</div></li>
+        <li><p>특수 상대론: 움직이는 시계가 느리다. $v \ll c$ 이면 $1/\gamma \approx 1 - v^2/2c^2$.</p><div class="eq">$$\frac{\Delta t}{t} \approx -\frac{v^2}{2c^2} = -8.3\times10^{-11}\ \Rightarrow\ -7.2\ \mu\text{s/일}$$</div></li>
+        <li><p>일반 상대론: 중력 퍼텐셜이 높은 곳의 시계가 빠르다. 높이가 커서 $gh$ 대신 퍼텐셜 차를 쓴다.</p><div class="eq">$$\frac{\Delta t}{t} \approx \frac{GM}{c^2}\Big(\frac1R - \frac1r\Big) = 5.29\times10^{-10}\ \Rightarrow\ +45.7\ \mu\text{s/일}$$</div></li>
+        <li><p>두 효과를 더한다.</p><div class="eq">$$-7.2 + 45.7 = +38.5\ \mu\text{s/일}$$</div></li>
+        <li><p>보정하지 않으면 생기는 거리 오차 (빛이 그 시간 동안 가는 거리).</p><div class="eq">$$c\,(38.5\ \mu\text{s}) = 11.5\ \text{km/일}$$</div></li>
+      </ol>
+      <p class="small">하루는 86 400 s 입니다. 위성 시계는 발사 전에 기준 진동수 10.23 MHz 를 약 $4.5\times10^{-10}$ 만큼 낮춰 맞춥니다.</p>
     </div>
   </div>
 </section>
@@ -364,6 +461,21 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">어림 · 슈바르츠실트 반지름 · 교과서 246쪽</p><h2>탈출 속력이 광속이 되는 반지름</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>역학 단원의 탈출 속력.</p><div class="eq">$$v_{esc} = \sqrt{\frac{2GM}{R}}$$</div></li>
+        <li><p>$v_{esc} = c$ 로 놓고 $R$ 에 대해 푼다. 뉴턴 역학의 어림이지만 일반 상대론의 정확한 값과 같다.</p><div class="eq">$$r_s = \frac{2GM}{c^2}$$</div></li>
+        <li><p>태양 ($GM = 1.327\times10^{20}$ m³/s²)과 지구.</p><div class="eq">$$r_{s,\odot} = \frac{2(1.327\times10^{20})}{(2.998\times10^8)^2} = 2.95\ \text{km},\qquad r_{s,지구} = 8.9\ \text{mm}$$</div></li>
+        <li><p>태양 질량을 그 안에 넣으면 밀도는 원자핵 밀도($\sim2\times10^{17}$ kg/m³)의 약 100배.</p><div class="eq">$$\rho = \frac{M}{\tfrac43\pi r_s^3} = \frac{1.99\times10^{30}}{\tfrac43\pi(2950)^3} \approx 1.8\times10^{19}\ \text{kg/m}^3$$</div></li>
+        <li><p>$r_s \propto M$ 이므로 $\rho \propto 1/M^2$. 무거운 블랙홀일수록 평균 밀도가 낮다 (은하 중심의 초대질량 블랙홀은 물보다 묽을 수도 있다).</p><div class="eq">$$\rho \propto \frac{M}{r_s^3} \propto \frac{1}{M^2}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide divider">
   <div class="sl">
     <span class="roman">IV-2</span>
@@ -375,18 +487,34 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">흑체 복사 · 교과서 251~253쪽</p><h2>플랑크의 양자 가설 (1900)</h2></header>
-    <div class="body cols wide-r">
+    <div class="body cols">
       <div>
         <p>모든 빛을 흡수하는 이상적인 물체(흑체)가 내는 빛의 스펙트럼은 온도로만 정해집니다.</p>
         <ul>
           <li>빈 변위 법칙: $\lambda_{max}T = 2.898\times10^{-3}$ m·K</li>
           <li>슈테판-볼츠만 법칙: 단위 면적·단위 시간당 방출 에너지 $\sigma T^4$</li>
         </ul>
-        <p>고전 이론(레일리-진스)은 짧은 파장에서 세기가 무한대로 커지는 '자외선 파탄'을 예측했습니다. 플랑크는 공동 벽의 <strong>진동자</strong>가 에너지를 $hf$ 의 정수배로만 가진다고 가정해 실험 곡선을 정확히 맞혔습니다.</p>
+        <p>고전 이론은 짧은 파장에서 세기가 무한대가 된다고 예측했습니다 (자외선 파탄). 플랑크는 공동 벽의 <strong>진동자</strong> 에너지가 $hf$ 의 정수배라고 가정해 실험 곡선을 맞혔습니다.</p>
         <div class="eq">$$E_n = nhf,\qquad h = 6.626\times10^{-34}\ \text{J·s}$$</div>
       </div>
       <figure class="fig">{{fig:blackbody}}<figcaption>태양 표면(약 5800 K)의 $\lambda_{max}$ 는 약 500 nm, 사람 몸(310 K)은 약 9.3 μm 적외선입니다.</figcaption></figure>
       <aside class="note">빛 자체가 hf 덩어리(광자)라는 생각은 1905년 아인슈타인의 것입니다. 기존 양자 p11은 플랑크가 '복사 에너지'를 양자화했다고 썼습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 흑체 복사 · 교과서 252~253쪽</p><h2>빈 법칙과 슈테판-볼츠만 법칙으로 태양 재기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>햇빛 스펙트럼의 봉우리 $\lambda_{max} \approx 500$ nm 에서 태양 표면 온도.</p><div class="eq">$$T = \frac{2.898\times10^{-3}}{5.0\times10^{-7}} \approx 5800\ \text{K}$$</div></li>
+        <li><p>같은 식으로 사람 몸 (310 K) 이 가장 많이 내는 빛.</p><div class="eq">$$\lambda_{max} = \frac{2.898\times10^{-3}}{310} = 9.3\ \mu\text{m}\ \ (\text{적외선, 열화상 카메라})$$</div></li>
+        <li><p>태양 표면 1 m² 가 1초에 내는 에너지 ($\sigma = 5.67\times10^{-8}$ W/(m²·K⁴)).</p><div class="eq">$$\sigma T^4 = (5.67\times10^{-8})(5800)^4 = 6.4\times10^7\ \text{W/m}^2$$</div></li>
+        <li><p>표면 전체 (반지름 $6.96\times10^8$ m) 로 곱하면 태양의 광도.</p><div class="eq">$$L = 4\pi R^2\sigma T^4 = 3.9\times10^{26}\ \text{W}$$</div></li>
+        <li><p>지구 거리($1.496\times10^{11}$ m)의 구면에 고르게 퍼진다. 전자기학 단원의 1.36 kW/m² 와 맞는다.</p><div class="eq">$$\frac{L}{4\pi d^2} = 1.39\times10^3\ \text{W/m}^2$$</div></li>
+        <li><p>500 nm 광자 하나의 에너지로 나누면, 1 m² 에 1초에 들어오는 광자 수.</p><div class="eq">$$\frac{1360}{(2.48\ \text{eV})(1.60\times10^{-19}\ \text{J/eV})} = 3.4\times10^{21}\ \text{개}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -413,6 +541,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 광전 효과 · 교과서 254~256쪽</p><h2>에너지 보존 한 줄에서 정지 전압 그래프까지</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>광자 하나의 에너지가 전자 하나에 전달된다. 표면에서 떼어 내는 데 일함수 $W$ 가 든다.</p><div class="eq">$$hf = W + K_{max}$$</div></li>
+        <li><p>정지 전압 $V_s$ 는 가장 빠른 전자를 멈추는 전압.</p><div class="eq">$$eV_s = K_{max}\ \Rightarrow\ V_s = \frac he\,f - \frac We$$</div></li>
+        <li><p>$V_s$-$f$ 그래프는 기울기 $h/e$ 인 직선이고, 금속이 달라도 기울기는 같다. 가로축 절편이 문턱 진동수.</p><div class="eq">$$f_0 = \frac Wh,\qquad \lambda_0 = \frac{hc}{W}$$</div></li>
+        <li><p>계산에 편한 상수.</p><div class="eq">$$hc = (6.626\times10^{-34})(2.998\times10^8)\ \text{J·m} = 1240\ \text{eV·nm}$$</div></li>
+        <li class="wide"><p>예: 나트륨 ($W = 2.28$ eV) 에 400 nm 빛.</p><div class="eq">$$hf = \frac{1240}{400} = 3.10\ \text{eV},\quad K_{max} = 0.82\ \text{eV},\quad V_s = 0.82\ \text{V},\quad \lambda_0 = 544\ \text{nm}$$</div></li>
+        <li><p>밀리컨처럼 기울기로 플랑크 상수를 잰다. 기울기가 $4.14\times10^{-15}$ V·s 이면</p><div class="eq">$$h = e\times(\text{기울기}) = (1.602\times10^{-19})(4.14\times10^{-15}) = 6.63\times10^{-34}\ \text{J·s}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">콤프턴 효과 · 교과서 256~258쪽</p><h2>콤프턴 효과 (1923)</h2></header>
@@ -426,6 +570,37 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p>파장 변화는 최대 $2h/m_ec \approx 4.9$ pm 입니다. 가시광선(약 500 nm)에서는 이 변화가 너무 작아 보이지 않고, 파장이 0.07 nm 정도인 X선에서는 몇 %나 되어 측정할 수 있습니다.</p>
         <p class="small">원자에 강하게 묶인 안쪽 전자와 부딪히면 원자 전체가 반동해 파장 변화가 거의 없습니다. 그래서 원래 파장의 봉우리도 함께 보입니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 콤프턴 효과 · 1 · 교과서 257~258쪽</p><h2>광자와 전자의 충돌: 보존 법칙 세우기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>입사 광자 (파장 $\lambda$), 산란 광자 ($\lambda'$, 산란각 $\phi$). 전자는 처음에 정지해 있다.</p><div class="eq">$$p = \frac h\lambda,\quad p' = \frac{h}{\lambda'},\quad E_\gamma = pc,\quad E_\gamma' = p'c$$</div></li>
+        <li><p>에너지 보존 (전자의 처음 에너지는 정지 에너지).</p><div class="eq">$$pc + mc^2 = p'c + E_e$$</div></li>
+        <li><p>운동량 보존 (벡터): $\vec p = \vec p\,' + \vec p_e$. 전자 운동량을 코사인 법칙으로.</p><div class="eq">$$p_e^2 = |\vec p - \vec p\,'|^2 = p^2 + p'^2 - 2pp'\cos\phi$$</div></li>
+        <li><p>전자는 빠르므로 상대론적 에너지-운동량 관계를 쓴다.</p><div class="eq">$$E_e^2 = (p_ec)^2 + (mc^2)^2$$</div></li>
+        <li><p>2단계 식을 $E_e = (p - p')c + mc^2$ 로 쓰고 제곱한다.</p><div class="eq">$$E_e^2 = (p - p')^2c^2 + 2(p - p')mc^3 + (mc^2)^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 콤프턴 효과 · 2 · 교과서 257~258쪽</p><h2>두 식을 같게 놓아 파장 변화 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>앞의 4단계와 5단계는 같은 $E_e^2$ 이다. 3단계를 넣고, 양변의 $(mc^2)^2$ 을 지운다.</p><div class="eq">$$(p - p')^2c^2 + 2(p - p')mc^3 = (p^2 + p'^2 - 2pp'\cos\phi)\,c^2$$</div></li>
+        <li><p>$(p - p')^2 = p^2 - 2pp' + p'^2$ 을 펼치면 $p^2$, $p'^2$ 이 지워진다.</p><div class="eq">$$(p - p')\,mc = pp'(1 - \cos\phi)$$</div></li>
+        <li><p>양변을 $pp'mc$ 로 나눈다.</p><div class="eq">$$\frac{1}{p'} - \frac1p = \frac{1 - \cos\phi}{mc}$$</div></li>
+        <li><p>$1/p = \lambda/h$ 를 쓰면 콤프턴 식.</p><div class="eq">$$\lambda' - \lambda = \frac{h}{mc}(1 - \cos\phi)$$</div></li>
+        <li><p>콤프턴 파장.</p><div class="eq">$$\frac{h}{mc} = \frac{6.626\times10^{-34}}{(9.109\times10^{-31})(2.998\times10^8)} = 2.43\ \text{pm}$$</div></li>
+        <li><p>예: 교과서 실험의 71.1 pm X선이 $90^\circ$ 로 산란되면. 정반대($180^\circ$)이면 변화가 최대 4.85 pm.</p><div class="eq">$$\lambda' = 71.1 + 2.43(1 - 0) = 73.5\ \text{pm}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -449,6 +624,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 물질파 · 교과서 259~261쪽</p><h2>가속 전압에서 전자의 파장 구하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>정지한 전자를 전위차 $V$ 로 가속하면 운동 에너지.</p><div class="eq">$$K = eV$$</div></li>
+        <li><p>속력이 광속보다 훨씬 작으면 $K = p^2/2m$.</p><div class="eq">$$p = \sqrt{2mK} = \sqrt{2meV}$$</div></li>
+        <li><p>드브로이 관계.</p><div class="eq">$$\lambda = \frac hp = \frac{h}{\sqrt{2meV}}$$</div></li>
+        <li class="wide"><p>상수를 모아 계산하면, $V$ 를 볼트로 넣을 때 nm 단위 식이 된다.</p><div class="eq">$$\frac{h}{\sqrt{2me}} = \frac{6.626\times10^{-34}}{\sqrt{2(9.109\times10^{-31})(1.602\times10^{-19})}} = 1.226\times10^{-9}\ \Rightarrow\ \lambda = \frac{1.226}{\sqrt V}\ \text{nm}$$</div></li>
+        <li><p>데이비슨-거머의 54 V.</p><div class="eq">$$\lambda = \frac{1.226}{\sqrt{54}} = 0.167\ \text{nm}$$</div></li>
+        <li><p>표면 원자 열 간격 $D = 0.215$ nm 의 반사형 회절격자로 보면, $50^\circ$ 에서 첫 극대 ($D\sin\phi = \lambda$).</p><div class="eq">$$D\sin50^\circ = (0.215)(0.766) = 0.165\ \text{nm}\ \approx\ 0.167\ \text{nm}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">원자 모형 · 교과서 267~271쪽</p><h2>보어의 수소 원자 모형 (1913)</h2></header>
@@ -466,6 +657,38 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p>$L = mvr = n\hbar$ 는 $2\pi r = n\dfrac{h}{mv} = n\lambda$ 와 같습니다. 궤도 둘레에 전자의 드브로이 파장이 정수 개 들어가 정상파를 이루는 조건입니다.</p>
         <p class="small">보어 모형은 수소의 스펙트럼을 설명했지만, 전자가 둘 이상인 원자나 선의 세기는 설명하지 못해 양자역학으로 넘어갑니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 보어 모형 · 1 · 교과서 269~270쪽 식 (Ⅳ. 2-16~19)</p><h2>양자 조건과 쿨롱 힘으로 궤도 반지름 구하기</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>궤도 둘레에 물질파가 정수 개 들어간다 ($\lambda_n = h/mv_n$). 각운동량의 양자화.</p><div class="eq">$$2\pi r_n = n\lambda_n\ \Rightarrow\ mv_nr_n = \frac{nh}{2\pi}$$</div></li>
+        <li><p>원자핵($+e$)의 쿨롱 인력이 구심력 역할을 한다 ($k = 1/4\pi\varepsilon_0$).</p><div class="eq">$$\frac{mv_n^2}{r_n} = \frac{ke^2}{r_n^2}$$</div></li>
+        <li><p>1단계에서 $v_n = \dfrac{nh}{2\pi mr_n}$ 을 2단계에 넣어 $v_n$ 을 없앤다.</p><div class="eq">$$m\Big(\frac{nh}{2\pi mr_n}\Big)^2 = \frac{ke^2}{r_n}$$</div></li>
+        <li><p>$r_n$ 에 대해 정리한다 (식 Ⅳ. 2-19).</p><div class="eq">$$r_n = \frac{n^2h^2}{4\pi^2mke^2} = n^2a_0$$</div></li>
+        <li class="wide"><p>보어 반지름.</p><div class="eq">$$a_0 = \frac{(6.626\times10^{-34})^2}{4\pi^2(9.109\times10^{-31})(8.99\times10^9)(1.602\times10^{-19})^2} = 0.0529\ \text{nm}$$</div></li>
+        <li><p>속력도 양자화된다. 바닥 상태 전자는 광속의 약 1/137 로 돈다.</p><div class="eq">$$v_n = \frac{2\pi ke^2}{nh},\qquad v_1 = 2.19\times10^6\ \text{m/s}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 보어 모형 · 2 · 교과서 270~272쪽</p><h2>에너지 준위와 뤼드베리 상수 계산하기</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>앞 슬라이드 2단계에서 운동 에너지.</p><div class="eq">$$K = \tfrac12mv_n^2 = \frac{ke^2}{2r_n}$$</div></li>
+        <li><p>전기 퍼텐셜 에너지 (무한히 먼 곳 기준).</p><div class="eq">$$U = -\frac{ke^2}{r_n}$$</div></li>
+        <li><p>역학적 에너지는 $-K$ 다 (인공위성과 같은 구조).</p><div class="eq">$$E_n = K + U = -\frac{ke^2}{2r_n}$$</div></li>
+        <li><p>$r_n = n^2a_0$ 를 넣는다.</p><div class="eq">$$E_n = -\frac{ke^2}{2a_0}\frac{1}{n^2} = -\frac{2\pi^2mk^2e^4}{h^2}\frac1{n^2} = -\frac{13.6\ \text{eV}}{n^2}$$</div></li>
+        <li class="wide"><p>$n_i\to n_f$ 전이에서 나오는 빛: $hc/\lambda = E_i - E_f$.</p><div class="eq">$$\frac1\lambda = R\Big(\frac1{n_f^2} - \frac1{n_i^2}\Big),\qquad R = \frac{13.6\ \text{eV}}{hc} = \frac{13.6}{1240\ \text{nm}} = 1.097\times10^7\ \text{m}^{-1}$$</div></li>
+        <li><p>예: Hα ($3\to2$).</p><div class="eq">$$\frac1\lambda = R\Big(\frac14 - \frac19\Big) = \frac{5R}{36}\ \Rightarrow\ \lambda = 656\ \text{nm}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -535,8 +758,8 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p>빛과 물질은 입자성과 파동성을 모두 갖지만, 한 실험에서는 어느 한쪽만 드러납니다. 두 성질은 서로 배타적이면서, 대상을 완전히 이해하려면 둘 다 필요한 서로 보완적인 관계입니다.</p>
         <div class="tbl-wrap"><table class="tbl">
           <tbody>
-            <tr><td>파동성이 드러나는 실험</td><td>간섭, 회절, 전자 회절</td></tr>
-            <tr><td>입자성이 드러나는 실험</td><td>광전 효과, 콤프턴 효과, 검출기의 점</td></tr>
+            <tr><td class="nw">파동성</td><td>간섭, 회절, 전자 회절</td></tr>
+            <tr><td class="nw">입자성</td><td>광전 효과, 콤프턴 효과</td></tr>
           </tbody>
         </table></div>
       </div>
@@ -558,6 +781,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p>에너지-시간: $\Delta E\,\Delta t \gtrsim \hbar/2$. 수명이 짧은 들뜬 상태일수록 스펙트럼선의 폭이 넓습니다.</p>
       </div>
       <aside class="note">ΔxΔk는 단위가 없으므로 비교 기준은 1/2이고, ħ/2는 ΔxΔp의 하한입니다. 기존 양자 p88은 ΔxΔk = 4π ≥ ħ/2로 차원이 맞지 않았습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">어림 · 불확정성 원리 · 교과서 263~266쪽</p><h2>불확정성 원리로 수소 원자의 크기 어림하기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>전자가 반지름 $r$ 정도에 갇혀 있으면 $\Delta x \sim r$. 운동량의 크기는 적어도 그 불확정도 정도다.</p><div class="eq">$$p \sim \Delta p \sim \frac{\hbar}{r}$$</div></li>
+        <li><p>에너지를 $r$ 의 함수로 쓴다. 작게 갇힐수록 운동 에너지가 커진다.</p><div class="eq">$$E(r) \approx \frac{p^2}{2m} - \frac{ke^2}{r} = \frac{\hbar^2}{2mr^2} - \frac{ke^2}{r}$$</div></li>
+        <li><p>에너지가 가장 낮은 $r$ 을 미분으로 찾는다.</p><div class="eq">$$\frac{dE}{dr} = -\frac{\hbar^2}{mr^3} + \frac{ke^2}{r^2} = 0\ \Rightarrow\ r = \frac{\hbar^2}{mke^2}$$</div></li>
+        <li><p>$\hbar = h/2\pi$ 로 바꾸면 보어 반지름과 정확히 같다.</p><div class="eq">$$r = \frac{h^2}{4\pi^2mke^2} = a_0 = 0.053\ \text{nm}$$</div></li>
+        <li><p>그때의 에너지.</p><div class="eq">$$E_{min} = \frac{\hbar^2}{2ma_0^2} - \frac{ke^2}{a_0} = -\frac{ke^2}{2a_0} = -13.6\ \text{eV}$$</div></li>
+        <li><p>원자가 무너지지 않는 이유: $r$ 을 줄이면 운동 에너지가 $1/r^2$ 로 커져 퍼텐셜 에너지의 이득($1/r$)보다 빨리 커진다.</p><div class="eq">$$r\to0:\ \ \frac{\hbar^2}{2mr^2}\ \gg\ \frac{ke^2}{r}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -599,6 +838,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 슈뢰딩거 방정식 · 교과서 274~276쪽</p><h2>변수 분리로 시간에 무관한 방정식 얻기</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>$V$ 가 시간에 무관하면 $\psi(x,t) = \phi(x)T(t)$ 꼴의 해를 찾는다. 대입하면</p><div class="eq">$$i\hbar\,\phi\frac{dT}{dt} = -\frac{\hbar^2}{2m}\frac{d^2\phi}{dx^2}\,T + V\phi\,T$$</div></li>
+        <li><p>양변을 $\phi T$ 로 나눈다.</p><div class="eq">$$i\hbar\frac{1}{T}\frac{dT}{dt} = \frac{1}{\phi}\Big(-\frac{\hbar^2}{2m}\frac{d^2\phi}{dx^2} + V\phi\Big)$$</div></li>
+        <li><p>왼쪽은 $t$ 만, 오른쪽은 $x$ 만의 함수다. 모든 $x,\ t$ 에서 같으려면 둘 다 상수여야 한다. 이 상수가 에너지 $E$.</p><div class="eq">$$\text{왼쪽} = \text{오른쪽} = E$$</div></li>
+        <li><p>시간 부분을 푼다.</p><div class="eq">$$\frac{dT}{dt} = -\frac{iE}{\hbar}T\ \Rightarrow\ T(t) = e^{-iEt/\hbar}$$</div></li>
+        <li><p>공간 부분은 시간에 무관한 슈뢰딩거 방정식이다.</p><div class="eq">$$-\frac{\hbar^2}{2m}\frac{d^2\phi}{dx^2} + V(x)\,\phi = E\,\phi$$</div></li>
+        <li><p>$|e^{-iEt/\hbar}| = 1$ 이라 확률 밀도가 시간에 따라 변하지 않는다 (정상 상태).</p><div class="eq">$$|\psi(x,t)|^2 = |\phi(x)|^2\,\big|e^{-iEt/\hbar}\big|^2 = |\phi(x)|^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide divider">
   <div class="sl">
     <span class="roman">IV-2</span>
@@ -610,15 +865,31 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">1차원 무한 퍼텐셜 상자 · 교과서 277~279쪽</p><h2>경계 조건이 에너지를 양자화한다</h2></header>
-    <div class="body cols wide-r">
+    <div class="body cols">
       <div>
         <p>$0 \lt x \lt L$ 에서 $V = 0$, 그 밖은 $V = \infty$. 벽 밖에는 입자가 없으므로 $\psi(0) = \psi(L) = 0$ 입니다.</p>
         <p>상자 안에서 $\phi'' = -k^2\phi$, $k = \sqrt{2mE}/\hbar$. 해 $\phi = A\sin kx$ 가 $x = L$ 에서 0이 되려면 $kL = n\pi$:</p>
-        <div class="eq">$$\phi_n(x) = \sqrt{\frac2L}\sin\frac{n\pi x}{L},\qquad E_n = \frac{n^2h^2}{8mL^2}\quad(n = 1, 2, 3, \dots)$$</div>
-        <p class="small">벽 사이에 반파장이 $n$ 개 들어가는 정상파입니다 ($L = n\lambda/2$). 진폭 $\sqrt{2/L}$ 는 규격화 조건에서 나옵니다.</p>
+        <div class="eq">$$\phi_n(x) = \sqrt{\frac2L}\sin\frac{n\pi x}{L},\qquad E_n = \frac{n^2h^2}{8mL^2}$$</div>
+        <p class="small">$n = 1, 2, 3, \dots$. 벽 사이에 반파장이 $n$ 개 들어가는 정상파입니다 ($L = n\lambda/2$). 풀이 과정은 다음 슬라이드.</p>
       </div>
       <figure class="fig">{{fig:box}}<figcaption>각 파동 함수를 자기 에너지 높이에 그렸습니다. $n$ 번째 상태에는 마디가 $n-1$ 개 있습니다.</figcaption></figure>
       <aside class="note">상자의 중심을 원점으로 옮기면 해가 cos(홀수 n)와 sin(짝수 n)으로 갈립니다. 한 식으로 쓰면 √(2/L) sin[nπ(x + L/2)/L]입니다. 기존 양자 p128~129의 "cos + sin"을 더한 식은 어떤 n에서도 해가 아닙니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 1차원 무한 퍼텐셜 상자 · 교과서 277~279쪽</p><h2>방정식 풀기, 경계 조건, 규격화를 차례로</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>상자 안($V = 0$)의 방정식을 $k = \sqrt{2mE}/\hbar$ 로 쓴다.</p><div class="eq">$$\frac{d^2\phi}{dx^2} = -k^2\phi$$</div></li>
+        <li><p>두 번 미분해 자기 자신의 $-k^2$ 배가 되는 함수는 사인과 코사인 (역학의 단진동과 같은 꼴).</p><div class="eq">$$\phi(x) = A\sin kx + B\cos kx$$</div></li>
+        <li><p>왼쪽 벽: $\phi(0) = 0$ 이어야 하므로 코사인 항이 없다.</p><div class="eq">$$\phi(0) = B = 0$$</div></li>
+        <li><p>오른쪽 벽: $\phi(L) = A\sin kL = 0$. $A = 0$ 이면 입자가 없으므로 $\sin kL = 0$.</p><div class="eq">$$kL = n\pi\ \Rightarrow\ k_n = \frac{n\pi}{L}\quad(n = 1, 2, 3, \dots)$$</div></li>
+        <li><p>$k$ 가 띄엄띄엄하니 에너지도 띄엄띄엄하다.</p><div class="eq">$$E_n = \frac{\hbar^2k_n^2}{2m} = \frac{n^2\pi^2\hbar^2}{2mL^2} = \frac{n^2h^2}{8mL^2}$$</div></li>
+        <li><p>규격화: 상자 어딘가에서 발견될 확률은 1. $\sin^2$ 의 평균이 $\tfrac12$ 이므로</p><div class="eq">$$\int_0^LA^2\sin^2\frac{n\pi x}{L}\,dx = A^2\frac L2 = 1\ \Rightarrow\ A = \sqrt{\frac2L}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -669,14 +940,32 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">터널 효과 · 교과서 279~280쪽</p><h2>넘을 수 없는 장벽을 통과하는 파동 함수</h2></header>
-    <div class="body cols wide-r">
+    <div class="body cols">
       <div>
-        <p>장벽의 높이 $U$ 가 입자 에너지 $E$ 보다 커도, 장벽 안에서 파동 함수는 0이 되지 않고 지수적으로 줄어듭니다. 장벽이 얇으면 반대편에 남은 진폭이 있습니다.</p>
+        <p>장벽의 높이 $U$ 가 입자 에너지 $E$ 보다 커도, 장벽 안에서 파동 함수는 0이 되지 않고 지수적으로 줄어듭니다. 장벽이 얇으면 반대편에 진폭이 남습니다.</p>
         <div class="eq">$$T \approx e^{-2\kappa L},\qquad \kappa = \frac{\sqrt{2m(U - E)}}{\hbar}$$</div>
         <p class="small">전자, $U - E = 1$ eV: 두께 0.5 nm 이면 $T \approx 6\times10^{-3}$, 1.0 nm 이면 $4\times10^{-5}$. 두께에 매우 민감합니다.</p>
-        <p>응용: 주사 터널링 현미경(STM)은 탐침과 표면 사이 터널 전류가 거리에 지수적으로 변하는 것을 이용해 원자 하나하나를 봅니다. 플래시 메모리, 원자핵의 알파 붕괴도 터널 효과입니다.</p>
       </div>
-      <figure class="fig">{{fig:tunnel}}<figcaption>장벽 안에서는 진동하지 않고 지수적으로 줄어듭니다.</figcaption></figure>
+      <div>
+        <figure class="fig">{{fig:tunnel}}<figcaption>장벽 안에서는 진동하지 않고 지수적으로 줄어듭니다.</figcaption></figure>
+        <p class="small">응용: 주사 터널링 현미경(STM)은 터널 전류가 거리에 지수적으로 변하는 것으로 원자 하나하나를 봅니다. 플래시 메모리, 알파 붕괴도 터널 효과입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 터널 효과 · 교과서 279~280쪽</p><h2>장벽 속 지수 감쇠와 투과 확률 어림</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>장벽 안에서 $E \lt U$ 이면 방정식의 부호가 바뀐다.</p><div class="eq">$$\frac{d^2\phi}{dx^2} = \kappa^2\phi,\qquad \kappa = \frac{\sqrt{2m(U - E)}}{\hbar}$$</div></li>
+        <li><p>해는 진동하지 않고 지수 함수다. 두꺼운 장벽에서는 줄어드는 쪽이 주로 남는다.</p><div class="eq">$$\phi = Ce^{-\kappa x} + De^{\kappa x}\ \approx\ Ce^{-\kappa x}$$</div></li>
+        <li><p>확률은 $|\phi|^2$ 이므로 두께 $L$ 을 지나면</p><div class="eq">$$T \approx e^{-2\kappa L}$$</div></li>
+        <li><p>전자, $U - E = 1.0$ eV.</p><div class="eq">$$\kappa = \frac{\sqrt{2(9.109\times10^{-31})(1.602\times10^{-19})}}{1.055\times10^{-34}} = 5.1\times10^{9}\ \text{m}^{-1}$$</div></li>
+        <li><p>두께 0.5 nm 와 1.0 nm.</p><div class="eq">$$T_{0.5} = e^{-5.1} = 6\times10^{-3},\qquad T_{1.0} = e^{-10.2} = 4\times10^{-5}$$</div></li>
+        <li><p>두께가 2배가 되면 투과 확률은 제곱이 된다. STM이 원자 하나의 높이 차이를 잡는 이유.</p><div class="eq">$$T(2L) = \big[T(L)\big]^2$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -713,11 +1002,11 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
             <tr><td>다이아몬드 (절연체)</td><td class="mono">5.5 eV</td></tr>
           </tbody>
         </table></div>
-        <p class="small">반도체는 온도가 오르면 전도띠로 올라가는 전자가 늘어 저항이 <strong>줄어듭니다</strong>. 금속은 반대로 저항이 늘어납니다.</p>
+        <p class="small">반도체는 온도가 오르면 전도띠의 전자가 늘어 저항이 <strong>줄어듭니다</strong> (금속은 반대).</p>
       </div>
       <div class="box def"><span class="tag">도핑과 소자</span>
         <p><strong>n형</strong>: Si에 15족(인 P)을 넣으면 남는 전자가 전도띠 근처에 생긴다. <strong>p형</strong>: 13족(붕소 B)을 넣으면 전자가 빈 자리(양공)가 원자가띠 근처에 생긴다.</p>
-        <p><strong>p-n 접합</strong>: 한 방향으로만 전류가 잘 흐르는 다이오드. 전자와 양공이 만나 재결합하면 띠틈만큼의 에너지를 빛으로 내는 것이 LED입니다.</p>
+        <p><strong>p-n 접합</strong>은 한 방향으로만 전류가 잘 흐르는 다이오드입니다. 전자와 양공이 재결합하며 띠틈만큼의 에너지를 빛으로 내면 LED입니다.</p>
         <div class="eq">$$\lambda = \frac{hc}{E_g} = \frac{1240\ \text{eV·nm}}{E_g}$$</div>
         <p class="small">파란 LED (InGaN, 약 2.7 eV → 450 nm), 2014 노벨 물리학상.</p>
       </div>
@@ -823,13 +1112,13 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">기본 상호 작용과 표준 모형 · 교과서 293~294쪽</p><h2>네 가지 힘과 매개 입자</h2></header>
-    <div class="body cols wide-l">
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>상호 작용</th><th>상대적 세기 (강력 기준)</th><th>작용 거리</th><th>매개 입자</th></tr></thead>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl lab">
+        <thead><tr><th>상호 작용</th><th class="nw">상대적 세기 (강한 상호 작용 = 1)</th><th class="nw">작용 거리</th><th>매개 입자</th></tr></thead>
         <tbody>
-          <tr><td>강한 상호 작용</td><td class="mono">1</td><td>~10⁻¹⁵ m</td><td>글루온</td></tr>
+          <tr><td>강한 상호 작용</td><td class="mono">1</td><td class="mono">~10⁻¹⁵ m</td><td>글루온</td></tr>
           <tr><td>전자기 상호 작용</td><td class="mono">~10⁻²</td><td>무한</td><td>광자</td></tr>
-          <tr><td>약한 상호 작용</td><td class="mono">~10⁻⁵</td><td>~10⁻¹⁸ m</td><td>W⁺, W⁻, Z⁰</td></tr>
+          <tr><td>약한 상호 작용</td><td class="mono">~10⁻⁵</td><td class="mono">~10⁻¹⁸ m</td><td>W⁺, W⁻, Z⁰</td></tr>
           <tr><td>중력</td><td class="mono">~10⁻⁴¹</td><td>무한</td><td>중력자 (미발견)</td></tr>
         </tbody>
       </table></div>
@@ -867,6 +1156,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 결합 에너지 · 교과서 295~296쪽</p><h2>헬륨 원자핵의 질량 결손과 결합 에너지</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>흩어진 핵자 네 개의 질량 (양성자 1.007 276 u, 중성자 1.008 665 u).</p><div class="eq">$$2(1.007\,276) + 2(1.008\,665) = 4.031\,882\ \text{u}$$</div></li>
+        <li><p>헬륨-4 원자핵의 질량: 원자 질량에서 전자 두 개(0.001 097 u)를 뺀다.</p><div class="eq">$$4.002\,602 - 0.001\,097 = 4.001\,505\ \text{u}$$</div></li>
+        <li><p>질량 결손.</p><div class="eq">$$\Delta m = 4.031\,882 - 4.001\,505 = 0.030\,377\ \text{u}$$</div></li>
+        <li><p>$1\ \text{u}\cdot c^2 = 931.5$ MeV 로 바꾼다.</p><div class="eq">$$E_B = \Delta m\,c^2 = (0.030\,377)(931.5) = 28.3\ \text{MeV}$$</div></li>
+        <li><p>핵자당 결합 에너지. 철-56 (약 8.8 MeV)보다 작고, 가벼운 핵 중에서는 유난히 크다.</p><div class="eq">$$\frac{E_B}{A} = \frac{28.3}{4} = 7.07\ \text{MeV}$$</div></li>
+        <li><p>원자 질량끼리 계산해도 된다 (수소 원자 1.007 825 u 두 개를 쓰면 전자 질량이 상쇄된다).</p><div class="eq">$$2(1.007\,825) + 2(1.008\,665) - 4.002\,602 = 0.030\,378\ \text{u}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">핵분열과 핵융합 · 교과서 296~299쪽</p><h2>원자로와 별, 그리고 인공 태양</h2></header>
@@ -881,6 +1186,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p>양전하끼리의 전기적 반발을 이기려면 1억 K 이상의 고온이 필요하고, 이때 물질은 전자와 원자핵이 분리된 <strong>플라스마</strong>가 됩니다.</p>
         <p>그릇 벽이 견딜 수 없으므로 강한 자기장으로 가둡니다 (<strong>자기 가둠</strong>, 토카막). 대전의 KSTAR는 1억 ℃ 이상의 플라스마를 수십 초 유지했습니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 핵분열과 핵융합의 에너지 · 교과서 296~299쪽</p><h2>질량 결손으로 비교하는 원자로, 핵융합로, 태양</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li class="wide"><p>D-T 핵융합 $^2\text{H} + {}^3\text{H}\to{}^4\text{He} + n$ (원자 질량).</p><div class="eq">$$\Delta m = 2.014\,102 + 3.016\,049 - 4.002\,602 - 1.008\,665 = 0.018\,884\ \text{u}\ \Rightarrow\ 17.6\ \text{MeV}$$</div></li>
+        <li><p>정지 상태에서 시작하면 두 생성물의 운동량 크기가 같아 $K = p^2/2m$ 은 질량에 반비례한다.</p><div class="eq">$$K_n = \tfrac45(17.6) = 14.1\ \text{MeV},\qquad K_{\text{He}} = 3.5\ \text{MeV}$$</div></li>
+        <li class="wide"><p>우라늄-235 1 kg 이 모두 분열하면 (한 번에 약 200 MeV).</p><div class="eq">$$\frac{1000}{235}(6.02\times10^{23})(200\ \text{MeV})(1.60\times10^{-13}\ \text{J/MeV}) = 8.2\times10^{13}\ \text{J}$$</div></li>
+        <li><p>석탄 1 kg (약 $2.9\times10^7$ J) 과 비교.</p><div class="eq">$$\frac{8.2\times10^{13}}{2.9\times10^7} \approx 3\times10^6\ \text{배}$$</div></li>
+        <li><p>태양의 p-p 연쇄: 결국 수소 원자 4개가 헬륨 원자 1개가 된다.</p><div class="eq">$$4(1.007\,825) - 4.002\,602 = 0.028\,698\ \text{u}\ \Rightarrow\ 26.7\ \text{MeV}$$</div></li>
+        <li><p>태양은 광도만큼 질량을 잃는다 (흑체 복사 슬라이드의 $L$).</p><div class="eq">$$\frac{\Delta m}{\Delta t} = \frac{L}{c^2} = \frac{3.9\times10^{26}}{(3.0\times10^8)^2} = 4.3\times10^9\ \text{kg/s}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
