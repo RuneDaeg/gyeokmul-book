@@ -1,4 +1,4 @@
-// 고급 물리학(2022 개정) 슬라이드: 발표 모드, 교사용 메모, 쪽 이동
+// 고급 물리학(2022 개정) 슬라이드: 발표 모드, 교사용 메모, 쪽 이동, 인쇄 맞춤
 (function () {
   "use strict";
   var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
@@ -86,7 +86,7 @@
   // 발표 모드에서 화면을 좌우로 밀어 이동
   var x0 = null;
   document.addEventListener("touchstart", function (e) {
-    if (body.classList.contains("present")) x0 = e.touches[0].clientX;
+    if (body.classList.contains("present") && !body.classList.contains("ink-on")) x0 = e.touches[0].clientX;
   }, { passive: true });
   document.addEventListener("touchend", function (e) {
     if (x0 === null) return;
@@ -98,4 +98,53 @@
   document.addEventListener("fullscreenchange", function () {
     if (!document.fullscreenElement && body.classList.contains("present")) { /* 전체 화면만 끝나고 발표 모드는 유지 */ }
   });
+
+  // ---------- 인쇄·PDF ----------
+  // 풀이를 펼치고(또는 숨기고), 한 쪽(16:9)을 넘는 슬라이드만 글자를 줄여 맞춘다.
+  var printSaved = null;
+  function fitForPrint(opts) {
+    opts = opts || {};
+    var answers = opts.answers !== false;
+    restorePrint();
+    printSaved = { present: body.classList.contains("present"), open: [] };
+    if (printSaved.present) body.classList.remove("present");
+    document.querySelectorAll("details.answer").forEach(function (d) {
+      printSaved.open.push([d, d.open]);
+      if (answers) d.open = true;
+    });
+    body.classList.toggle("print-noanswers", !answers);
+    var probe = document.createElement("style");
+    probe.textContent = ".slide .sl{height:auto!important}.slide .body{flex:none!important}" +
+      (opts.width ? ".slide{width:" + opts.width + "!important;height:auto!important;aspect-ratio:16/9!important}" : "");
+    document.head.appendChild(probe);
+    var report = [];
+    slides.forEach(function (s) {
+      var sl = s.querySelector(".sl");
+      var H = s.clientWidth * 9 / 16, W = s.clientWidth;
+      var f = 1;
+      for (var k = 0; k < 6 && sl.offsetHeight > H * 0.995; k++) {
+        var px = parseFloat(getComputedStyle(sl).fontSize);
+        var g = Math.max(0.55, Math.min(0.97, (H / sl.offsetHeight) * 0.98));
+        f *= g;
+        sl.style.fontSize = (px * g / W * 100).toFixed(3) + "cqw";
+      }
+      if (f < 1 || sl.offsetHeight > H * 1.005) report.push([s.id, Math.round(f * 100), sl.offsetHeight > H * 1.005]);
+    });
+    probe.remove();
+    return report;
+  }
+  function restorePrint() {
+    if (!printSaved) return;
+    printSaved.open.forEach(function (it) { it[0].open = it[1]; });
+    slides.forEach(function (s) { s.querySelector(".sl").style.fontSize = ""; });
+    body.classList.remove("print-noanswers");
+    if (printSaved.present) body.classList.add("present");
+    printSaved = null;
+  }
+  // PDF 생성 스크립트가 직접 맞출 때는 건드리지 않는다
+  window.addEventListener("beforeprint", function () { if (!window.AP22_PRINT_LOCK) fitForPrint({ answers: true }); });
+  window.addEventListener("afterprint", function () { if (!window.AP22_PRINT_LOCK) restorePrint(); });
+  var printBtn = document.getElementById("btn-print");
+  if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
+  window.AP22 = { fitForPrint: fitForPrint, restorePrint: restorePrint };
 })();

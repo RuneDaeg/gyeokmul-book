@@ -113,6 +113,7 @@ body::before {
   cursor: pointer;
 }
 .btn:hover { border-color: var(--accent); color: var(--accent); }
+a.btn { display: inline-flex; align-items: center; text-decoration: none; }
 .btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
 /* ---------- 슬라이드 ---------- */
@@ -231,6 +232,9 @@ em.term { font-style: normal; color: var(--accent); font-weight: 600; }
 /* 긴 식은 단 너비에 맞춰 줄인다 (MathJax SVG에는 viewBox가 있어 비율이 유지된다) */
 .eq mjx-container[display="true"] > svg { max-width: 100%; height: auto; }
 mjx-container { color: inherit; }
+/* MathJax 글자의 두께 0 외곽선: 화면에서는 안 보이지만 PDF 에서는 가는 선으로 그려져 글자가 굵어진다 */
+mjx-container svg [stroke-width="0"] { stroke: none; }
+mjx-container svg [stroke-width]:not([stroke-width="0"]) { stroke: currentColor; }
 
 table.tbl { border-collapse: collapse; width: 100%; font-size: 0.86em; font-variant-numeric: tabular-nums; }
 .tbl-wrap { overflow-x: auto; }
@@ -377,12 +381,62 @@ body.present .present-hint { display: block; }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; transition: none !important; }
 }
+/* 인쇄·PDF: 슬라이드 한 장 = 16:9 한 쪽 (254 × 142.875 mm). 오류 목록 같은 다른 페이지는 기본 용지를 쓴다 */
+@page slide169 { size: 254mm 142.875mm; margin: 0; }
 @media print {
-  body { background: #fff; padding: 0; }
-  .bar, .site-foot, .present-hint { display: none !important; }
-  .deck { gap: 0; padding: 0; max-width: none; }
-  .slide { box-shadow: none; border: 0; break-after: page; }
-  details.answer > div { display: flex !important; }
+  :root, :root:not([data-theme="light"]) {
+  --page: #e8eeec;
+  --paper: #fbfcfa;
+  --ink: #1b2a36;
+  --muted: #586a73;
+  --line: #c6d3d1;
+  --grid: rgba(56, 132, 144, 0.085);
+  --grid-strong: rgba(56, 132, 144, 0.16);
+  --accent: #1f5fa6;
+  --accent-soft: rgba(31, 95, 166, 0.09);
+  --warm: #9a5b12;
+  --warn: #b3452c;
+  --warn-soft: rgba(179, 69, 44, 0.08);
+  --ok: #2c7650;
+  --ok-soft: rgba(44, 118, 80, 0.08);
+  --shadow: 0 1px 2px rgba(27, 42, 54, 0.08), 0 8px 24px rgba(27, 42, 54, 0.06);
+
+  }
+  html, body { background: #fff !important; }
+  body { padding: 0 !important; margin: 0; }
+  .bar, .site-foot, .present-hint, .ink-bar, .ink-fab { display: none !important; }
+  .deck, body.present .deck { display: block; gap: 0; padding: 0; margin: 0; max-width: none; height: auto; }
+  .slide, body.present .slide {
+    page: slide169;
+    display: block !important;
+    position: relative !important;
+    inset: auto;
+    width: 254mm !important;
+    height: 142.875mm !important;
+    aspect-ratio: auto;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    break-after: page;
+    break-inside: avoid;
+    overflow: hidden;
+    /* 종이에서는 굵은 모눈만 (가는 모눈은 PDF 용량만 키운다) */
+    background-image: linear-gradient(var(--grid-strong) 1px, transparent 1px), linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px);
+    background-size: 5cqw 5cqw;
+  }
+  .slide:last-of-type { break-after: auto; }
+  .sl, body.present .sl { overflow: hidden !important; }
+  aside.note { display: none !important; }
+  body.print-noanswers details.answer { display: none !important; }
+  details.answer > summary { display: none; }
+  details.answer { border-top: 0; padding-top: 0; }
+  .slide.ink-board .sl { visibility: hidden; }
+  .errs .filters, .errs .count { display: none !important; }
+  .errs .fix, .errs .item, .tally li { break-inside: avoid; }
+  .errs h2, .errs h3, .errs h4 { break-after: avoid; }
+  .errs { padding-block: 0; }
+  .errs .item[hidden], .errs .topic[hidden], .errs .mat[hidden] { display: grid !important; }
 }
 
 /* ---------- 목록 페이지 ---------- */
@@ -494,3 +548,77 @@ table.matrix td.mono, table.matrix th:not(:first-child) { text-align: right; }
 }
 .verify { display: flex; flex-direction: column; gap: 12px; }
 .verify h2 { margin: 0; font-family: var(--f-display); font-size: 22px; }
+.verify h2 + .tbl-wrap { margin-top: -2px; }
+table.pdfs { font-size: 14px; }
+table.pdfs a { font-family: var(--f-mono); font-size: 13px; white-space: nowrap; }
+
+/* ---------- 판서 ---------- */
+canvas.ink-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; border-radius: inherit; }
+body.ink-on .slide { cursor: crosshair; touch-action: none; user-select: none; -webkit-user-select: none; }
+body.ink-on.ink-erase .slide { cursor: cell; }
+body.ink-on .slide summary, body.ink-on .slide a { cursor: pointer; }
+.slide.ink-board .sl { visibility: hidden; }
+.slide.ink-board::after { content: "빈 화면 · B 로 돌아가기"; position: absolute; left: 2.4cqw; bottom: 1.6cqw; font: 500 clamp(10px, 1.05cqw, 20px) var(--f-mono); color: var(--muted); }
+.ink-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100vw - 24px);
+  padding: 5px 6px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  font: 500 13px/1 var(--f-body);
+}
+.ink-bar[hidden] { display: none; }
+.ink-bar.top { bottom: auto; top: calc(10px + env(safe-area-inset-top, 0px)); }
+@media (min-width: 900px) { .ink-bar { flex-wrap: nowrap; } }
+.ink-bar button {
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.ink-bar button:hover { border-color: var(--line); }
+.ink-bar button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.ink-bar .sep { width: 1px; height: 22px; background: var(--line); margin: 0 3px; }
+.ink-bar .sw { padding: 0; min-width: 30px; }
+.ink-bar .sw i { width: 16px; height: 16px; border-radius: 50%; display: block; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15); }
+.ink-bar .wd i { display: block; border-radius: 50%; background: currentColor; }
+.ink-bar .pres-only { display: none; }
+body.present .ink-bar .pres-only { display: inline-flex; }
+.ink-fab {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right, 0px));
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: none;
+  font: 500 13px/1 var(--f-body);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+body.present:not(.ink-on) .ink-fab { display: inline-flex; }

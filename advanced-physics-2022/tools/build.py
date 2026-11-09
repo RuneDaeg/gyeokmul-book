@@ -51,7 +51,9 @@ window.MathJax = {{
   <h1>{title}</h1>
   <div class="tools">
     <button type="button" class="btn" id="btn-notes" aria-pressed="false" title="단축키 N">교사용 메모</button>
+    <button type="button" class="btn" id="btn-ink" aria-pressed="false" title="단축키 D">판서</button>
     <button type="button" class="btn" id="btn-present" aria-pressed="false" title="단축키 P">발표 모드</button>
+    <a class="btn" href="pdf/{pdf}" title="풀이를 펼친 PDF">PDF</a>
   </div>
 </header>
 <main class="deck">
@@ -62,6 +64,7 @@ window.MathJax = {{
 </footer>
 <div class="present-hint" aria-live="polite"></div>
 <script src="assets/deck.js"></script>
+<script src="assets/ink.js"></script>
 </body>
 </html>
 """
@@ -109,7 +112,8 @@ def build_deck(path):
 
     page = PAGE.format(title=html.escape(meta["title"]), desc=html.escape(meta["desc"]),
                        fonts=FONTS, mathjax=MATHJAX, slides=body.strip(),
-                       foot=meta.get("foot", "2022 개정 교육과정 고급 물리학 수업 자료"))
+                       foot=meta.get("foot", "2022 개정 교육과정 고급 물리학 수업 자료"),
+                       pdf=meta["file"].replace(".html", ".pdf"))
     out = OUT / meta["file"]
     out.write_text(page, encoding="utf-8")
     return meta, total
@@ -150,12 +154,22 @@ INDEX = """<!doctype html>
         </a>
       </li>
     </ul>
+    <h2>PDF 내려받기</h2>
+    <div class="tbl-wrap"><table class="tbl pdfs">
+      <thead><tr><th>묶음</th><th>풀이 포함 (수업용)</th><th>학생용 (풀이 숨김)</th></tr></thead>
+      <tbody>
+{pdfrows}
+        <tr><td>오류 목록</td><td colspan="2"><a href="pdf/errors.pdf">errors.pdf</a> (A4 세로)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">슬라이드 한 장이 16:9 한 쪽입니다. 교사용 메모는 PDF에 넣지 않았습니다. 판서한 화면을 그대로 남기려면 슬라이드에서 <kbd>Ctrl</kbd>+<kbd>P</kbd> → 'PDF로 저장'을 쓰세요.</p>
   </section>
   <section class="howto">
     <h2>쓰는 법</h2>
     <ul>
       <li><strong>발표 모드</strong>: 오른쪽 위 버튼이나 <kbd>P</kbd>. <kbd>←</kbd> <kbd>→</kbd> 로 넘기고 <kbd>Esc</kbd> 로 끝냅니다. 터치 화면에서는 좌우로 밉니다.</li>
       <li><strong>교사용 메모</strong>: 버튼이나 <kbd>N</kbd>. 슬라이드마다 2015 자료의 어떤 오류를 고쳤는지, 수업 운영 팁이 보입니다.</li>
+      <li><strong>판서</strong>: 버튼이나 <kbd>D</kbd>. 펜 색 <kbd>1</kbd>~<kbd>4</kbd>, 형광펜 <kbd>H</kbd>, 레이저 <kbd>L</kbd>, 지우개 <kbd>E</kbd>, 굵기 <kbd>W</kbd>, 되돌리기 <kbd>Z</kbd>, 이 쪽 지우기 <kbd>C</kbd>, 빈 화면 <kbd>B</kbd>, 끝내기 <kbd>Esc</kbd>. 마우스·터치·펜 모두 되고, 펜은 누르는 세기에 따라 굵기가 바뀝니다. 판서는 이 브라우저에 쪽마다 저장되어 다시 열어도 남아 있습니다.</li>
       <li><strong>유도 · 풀이 슬라이드</strong>: 머리 표시가 '유도'나 '풀이'로 시작하는 슬라이드는 앞 슬라이드의 식을 번호 붙은 단계로 끌어냅니다. 판서 대신 한 단계씩 짚어 가며 쓰세요.</li>
       <li><strong>풀이 보기</strong>: 확인 문제의 풀이는 접혀 있어 학생 화면에서 바로 보이지 않습니다.</li>
       <li>쪽 번호를 누르면 그 슬라이드로 가는 주소(#s12 형식)가 됩니다.</li>
@@ -178,14 +192,17 @@ ITEM = """    <li class="deck-card">
 
 
 def build_index(decks, errsum=""):
-    items = []
+    items, pdfrows = [], []
     for i, (meta, total) in enumerate(decks):
         no = "OT" if i == 0 else ["I", "II", "III", "IV"][i - 1]
         title = meta["title"].replace("고급 물리학 ", "")
         title = re.sub(r"^(I|II|III|IV|Ⅰ|Ⅱ|Ⅲ|Ⅳ)\s+", "", title)
         items.append(ITEM.format(file=meta["file"], no=no, title=html.escape(title),
                                  desc=html.escape(meta["desc"]), total=total))
-    (OUT / "index.html").write_text(INDEX.format(fonts=FONTS, items="\n".join(items), errsum=errsum), encoding="utf-8")
+        stem = meta["file"].replace(".html", "")
+        pdfrows.append(f'        <tr><td>{no} {html.escape(title)}</td><td><a href="pdf/{stem}.pdf">{stem}.pdf</a></td>'
+                       f'<td><a href="pdf/{stem}-student.pdf">{stem}-student.pdf</a></td></tr>')
+    (OUT / "index.html").write_text(INDEX.format(fonts=FONTS, items="\n".join(items), errsum=errsum, pdfrows="\n".join(pdfrows)), encoding="utf-8")
 
 
 def main():
