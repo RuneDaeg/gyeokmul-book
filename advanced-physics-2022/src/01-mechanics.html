@@ -2,31 +2,33 @@
 title: 고급 물리학 Ⅰ 역학
 short: 역학
 file: 01-mechanics.html
-desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정식, 보존력과 충돌, 회전 운동과 각운동량 보존
+desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동, 회전 운동과 행성의 운동, 이상 기체와 열역학 제1법칙, 엔트로피와 열기관
 -->
 <section class="slide cover">
   <div class="sl">
     <p class="kicker">고급 물리학 · 2022 개정 · Ⅰ</p>
     <h2>역학</h2>
-    <p class="sub">미분이 들어간 운동 방정식으로 포물선 운동과 저항력을 풀고, 보존 법칙으로 충돌과 회전을 해석합니다.</p>
-    <p class="meta">[12고물01-01] 포물선 운동 · [12고물01-02] 보존력과 충돌 · [12고물01-03] 회전과 각운동량 보존</p>
+    <p class="sub">미분이 들어간 운동 방정식으로 포물선 운동과 저항력을 풀고, 보존 법칙으로 충돌·회전·행성 운동을 해석한 뒤, 같은 운동 법칙으로 기체와 열기관까지 설명합니다.</p>
+    <p class="meta">교과서 Ⅰ 역학 (11~95쪽) · 중단원 6개</p>
   </div>
 </section>
 
 <section class="slide">
   <div class="sl">
-    <header><p class="kicker">단원 구성</p><h2>이 단원에서 할 일</h2></header>
+    <header><p class="kicker">단원 구성 · 교과서 쪽수</p><h2>이 단원에서 할 일</h2></header>
     <div class="body cols">
       <ol>
-        <li><strong>운동의 기술과 운동 방정식</strong>: 위치·속도·가속도 벡터, 포물선 운동, 선형·제곱 저항</li>
-        <li><strong>일과 에너지, 보존력</strong>: 일-에너지 정리, 퍼텐셜 에너지 곡선</li>
-        <li><strong>운동량과 충돌</strong>: 질량 중심, 1·2차원 충돌, 질량 중심 좌표계</li>
-        <li><strong>회전 운동</strong>: 관성 모멘트, 돌림힘, 각운동량 보존, 굴림 운동</li>
-        <li><strong>연계</strong>: 중심력과 행성 운동 (「역학과 에너지」와 연결)</li>
+        <li><strong>힘과 운동</strong> (11~21쪽): 벡터, 포물선 운동, 뉴턴 법칙, 여러 가지 힘, 단진동, 저항력</li>
+        <li><strong>일과 에너지</strong> (25~33쪽): 일-운동 에너지 정리, 보존력과 비보존력, 역학적 에너지 보존</li>
+        <li><strong>입자계의 운동</strong> (39~48쪽): 질량 중심, 운동량 보존, 1·2차원 충돌</li>
+        <li><strong>회전 운동과 행성의 운동</strong> (53~65쪽): 회전 관성, 각운동량 보존, 케플러 법칙, 인공위성</li>
+        <li><strong>이상 기체와 열역학 제1법칙</strong> (69~79쪽): 기체 분자 운동, 내부 에너지, 열역학 과정</li>
+        <li><strong>엔트로피와 열기관</strong> (84~93쪽): 열효율, 카르노 기관, 엔트로피, 열역학 제2법칙</li>
       </ol>
-      <div class="box def"><span class="tag">성취기준 해설의 핵심</span>
-        <p>여러 가지 힘이 작용하는 경우의 물리량을 구하는 예에서 <strong>미분이 포함된 운동 방정식</strong>을 해결할 수 있도록 한다.</p>
+      <div class="box def"><span class="tag">교과서 학습 목표에서</span>
+        <p>여러 가지 힘이 작용하는 경우의 물리량을 구하는 예에서 <strong>미분이 포함된 운동 방정식</strong>을 해결할 수 있다. (16쪽)</p>
       </div>
+      <aside class="note">교과서 Ⅰ단원은 열역학(5·6 중단원)까지 포함합니다. 처음 판의 이 덱에는 열역학이 빠져 있었는데, 교과서 대조 뒤 Ⅰ-5·Ⅰ-6을 추가했습니다.</aside>
     </div>
   </div>
 </section>
@@ -34,8 +36,8 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 <section class="slide divider">
   <div class="sl">
     <span class="roman">I-1</span>
-    <h2>운동의 기술과 운동 방정식</h2>
-    <p class="std">[12고물01-01] 벡터를 이용하여 지표면 근처의 포물선 운동을 정량적으로 분석할 수 있다.</p>
+    <h2>힘과 운동</h2>
+    <p class="std">교과서 10~21쪽 · 벡터의 성분을 이용하여 지표면 근처의 포물선 운동을 분석한다 · 힘과 운동의 관계를 다루는 뉴턴 운동 법칙을 이해한다</p>
   </div>
 </section>
 
@@ -139,6 +141,29 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 
 <section class="slide">
   <div class="sl">
+    <header><p class="kicker">탄성력과 단진동 · 교과서 19쪽</p><h2>용수철 진자: 2계 미분방정식의 첫 예</h2></header>
+    <div class="body cols">
+      <div>
+        <p>탄성 한계 안에서 탄성력은 변형에 비례합니다 (훅의 법칙 $F = -kx$). 뉴턴 제2법칙에 넣으면</p>
+        <div class="eq">$$m\frac{d^2x}{dt^2} = -kx$$</div>
+        <p>두 번 미분했을 때 자기 자신에 $-k/m$ 을 곱한 꼴이 되는 함수는 사인·코사인입니다.</p>
+        <div class="eq">$$x(t) = A\cos(\omega t + \phi),\qquad \omega = \sqrt{\frac km},\qquad T = 2\pi\sqrt{\frac mk}$$</div>
+        <p class="small">진폭 $A$ 와 초기 위상 $\phi$ 는 처음 위치와 속도로 정해집니다. 주기는 진폭과 무관합니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>$k = 200$ N/m 인 용수철에 0.50 kg 물체를 달아 0.10 m 당겼다 놓았다. 각진동수, 주기, 최대 속력은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\omega = \sqrt{200/0.50} = 20$ rad/s, $T = 2\pi/20 = 0.31$ s</p>
+          <p>$v_{max} = A\omega = 2.0$ m/s. 에너지로 검산: $\tfrac12kA^2 = 1.0$ J $= \tfrac12mv_{max}^2$</p>
+        </div></details>
+        <p class="small">같은 꼴의 방정식이 전자기학의 LC 회로에서 다시 나옵니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
     <header><p class="kicker">탐구 활동</p><h2>컴퓨터로 운동 방정식 풀기 (오일러 방법)</h2></header>
     <div class="body cols">
       <div>
@@ -161,8 +186,8 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 <section class="slide divider">
   <div class="sl">
     <span class="roman">I-2</span>
-    <h2>일과 에너지, 보존력</h2>
-    <p class="std">[12고물01-02] 보존력과 운동량 보존 법칙을 이용하여 다양한 충돌 현상을 설명할 수 있다.</p>
+    <h2>일과 에너지</h2>
+    <p class="std">교과서 24~33쪽 · 일-운동 에너지 정리를 이해한다 · 보존력을 이해하고 역학적 에너지 보존 법칙을 설명할 수 있다</p>
   </div>
 </section>
 
@@ -229,8 +254,8 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 <section class="slide divider">
   <div class="sl">
     <span class="roman">I-3</span>
-    <h2>운동량과 충돌</h2>
-    <p class="std">계의 운동량 보존 · 질량 중심 · 1·2차원 충돌</p>
+    <h2>입자계의 운동</h2>
+    <p class="std">교과서 38~48쪽 · 질량 중심을 이용하여 물체의 운동을 설명할 수 있다 · 운동량 보존 법칙을 이용하여 다양한 충돌 현상을 설명할 수 있다</p>
   </div>
 </section>
 
@@ -294,7 +319,7 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 
 <section class="slide">
   <div class="sl">
-    <header><p class="kicker">2차원 충돌 · 질량 중심 좌표계</p><h2>질량 중심과 함께 움직이며 보면 단순해진다</h2></header>
+    <header><p class="kicker">심화 · 교과서 밖 · 질량 중심 좌표계</p><h2>질량 중심과 함께 움직이며 보면 단순해진다</h2></header>
     <div class="body cols">
       <div>
         <p>질량 중심 속도 $\vec V_{cm} = \dfrac{m_1\vec v_1 + m_2\vec v_2}{m_1+m_2}$ 로 움직이는 좌표계에서는 계의 운동량이 0입니다.</p>
@@ -362,8 +387,8 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 <section class="slide divider">
   <div class="sl">
     <span class="roman">I-4</span>
-    <h2>회전 운동</h2>
-    <p class="std">[12고물01-03] 회전 관성과 각운동량 보존 법칙을 이용하여 물체의 회전 운동을 설명할 수 있다.</p>
+    <h2>회전 운동과 행성의 운동</h2>
+    <p class="std">교과서 52~65쪽 · 회전 관성과 각운동량 보존 법칙을 이용하여 물체의 회전 운동을 설명할 수 있다 · 케플러 법칙을 이해하고 행성과 인공위성의 운동을 설명할 수 있다</p>
   </div>
 </section>
 
@@ -421,7 +446,7 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 
 <section class="slide">
   <div class="sl">
-    <header><p class="kicker">관성 모멘트 정리</p><h2>평행축 정리와 수직축 정리</h2></header>
+    <header><p class="kicker">관성 모멘트 정리 · 평행축은 교과서 56쪽, 수직축은 교과서 밖</p><h2>평행축 정리와 수직축 정리</h2></header>
     <div class="body cols">
       <div class="box def"><span class="tag">평행축 정리 · 모든 물체</span>
         <div class="eq">$$I = I_{cm} + Md^2$$</div>
@@ -482,7 +507,7 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 
 <section class="slide">
   <div class="sl">
-    <header><p class="kicker">굴림 운동</p><h2>미끄러짐 없이 구르기: 병진 + 회전</h2></header>
+    <header><p class="kicker">심화 · 교과서 밖 · 굴림 운동</p><h2>미끄러짐 없이 구르기: 병진 + 회전</h2></header>
     <div class="body cols">
       <div>
         <p>미끄러지지 않으면 접촉점이 순간적으로 정지해 있으므로</p>
@@ -508,7 +533,7 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 
 <section class="slide">
   <div class="sl">
-    <header><p class="kicker">심화 · 정성적으로</p><h2>세차 운동: 각운동량의 방향이 돈다</h2></header>
+    <header><p class="kicker">심화 · 교과서 밖 · 정성적으로</p><h2>세차 운동: 각운동량의 방향이 돈다</h2></header>
     <div class="body cols">
       <div>
         <p>빠르게 도는 팽이에 중력이 만드는 돌림힘 $\vec\tau = \vec r\times M\vec g$ 는 $\vec L$ 에 수직입니다. 그래서 $\vec L$ 의 크기는 그대로이고 방향만 수평으로 돕니다.</p>
@@ -547,19 +572,236 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
 
 <section class="slide">
   <div class="sl">
-    <header><p class="kicker">연계 · 「역학과 에너지」와 함께 보기</p><h2>중심력과 행성의 운동</h2></header>
+    <header><p class="kicker">행성의 운동 · 교과서 60~62쪽</p><h2>케플러 법칙은 뉴턴 역학의 결과다</h2></header>
     <div class="body cols">
       <div>
-        <p>만유인력은 중심력이라 돌림힘이 0이고, 각운동량이 보존됩니다. 그래서 같은 시간 동안 같은 넓이를 쓸고 지나갑니다 (케플러 제2법칙).</p>
-        <p>원 궤도에서는 $\dfrac{GMm}{r^2} = \dfrac{mv^2}{r}$ 이므로</p>
-        <div class="eq">$$v = \sqrt{\frac{GM}{r}},\qquad T^2 = \frac{4\pi^2}{GM}r^3$$</div>
+        <ol>
+          <li><strong>제1법칙</strong> (타원 궤도): 행성은 태양을 한 초점으로 하는 타원 궤도를 돈다. 역제곱 중심력을 받는 물체의 궤도는 원뿔 곡선이고, 역학적 에너지가 음수이면 닫힌 궤도인 타원이 된다.</li>
+          <li><strong>제2법칙</strong> (면적 속도 일정): 중력은 중심력이라 돌림힘이 0이고 각운동량이 보존된다.</li>
+          <li><strong>제3법칙</strong> (조화 법칙): $T^2 \propto a^3$, 비례 상수는 행성의 질량과 무관하다.</li>
+        </ol>
+      </div>
+      <div class="box def"><span class="tag">유도의 핵심</span>
+        <div class="eq">$$\frac{dA}{dt} = \frac12|\vec r\times\vec v| = \frac{L}{2m} = \text{일정}$$</div>
+        <p>근일점과 원일점에서 역학적 에너지 보존과 각운동량 보존을 함께 쓰면 (교과서 62~63쪽)</p>
+        <div class="eq">$$T^2 = \frac{4\pi^2}{GM}a^3$$</div>
+        <p class="small">예: 지구 궤도 $a = 1.496\times10^{11}$ m, $T = 1$ 년을 넣으면 태양 질량 $M = 1.99\times10^{30}$ kg 이 나옵니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">인공위성 · 교과서 63~65쪽</p><h2>원 궤도의 속력과 정지 궤도</h2></header>
+    <div class="body cols">
+      <div>
+        <p>지구 중력이 구심력 역할을 하므로</p>
+        <div class="eq">$$\frac{GMm}{r^2} = \frac{mv^2}{r}\ \Rightarrow\ v = \sqrt{\frac{GM}{r}}$$</div>
+        <p>위성의 질량과 무관합니다. 국제 우주 정거장(고도 약 400 km)은 $v \approx 7.67$ km/s, 주기 약 92분입니다.</p>
+        <p class="small">뉴턴의 대포 사고 실험: 수평으로 쏘는 속력을 키우면 떨어지는 지점이 멀어지다 결국 지구를 한 바퀴 도는 궤도가 됩니다.</p>
       </div>
       <div class="box ex"><span class="tag">정지 궤도 위성</span>
-        <p>지구 자전 주기(항성일) $T = 86\,164$ s, $GM_E = 3.986\times10^{14}$ m³/s² 이므로</p>
+        <p>주기가 지구 자전 주기(항성일) $T = 86\,164$ s 와 같아야 하므로</p>
         <div class="eq">$$r = \Big(\frac{GM_ET^2}{4\pi^2}\Big)^{1/3} = 4.216\times10^7\ \text{m}$$</div>
-        <p>고도는 $r - R_E \approx 3.58\times10^7$ m (약 35 800 km)이고, 적도면 위에 있어야 합니다.</p>
+        <p>고도 약 35 800 km, 속력 $2\pi r/T \approx 3.07$ km/s, 적도면 위. 통신·기상 위성이 여기에 있습니다.</p>
       </div>
-      <aside class="note">2022 고급 물리학 성취기준에 행성 운동이 남아 있는지는 교과서로 확인하세요. 「역학과 에너지」가 행성의 궤도 운동을 다룹니다. 기존 역학 p167은 태양일 86 400 s를 써서 반지름이 조금 크게 나왔습니다.</aside>
+      <aside class="note">기존 역학 p167은 태양일 86 400 s로 계산해 반지름이 조금 크게 나왔습니다. 교과서 63쪽도 정지 궤도 계산을 다룹니다.</aside>
+    </div>
+  </div>
+</section>
+
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">I-5</span>
+    <h2>이상 기체와 열역학 제1법칙</h2>
+    <p class="std">교과서 68~79쪽 · 이상 기체 방정식을 기체 분자 운동 모형을 바탕으로 알아본다 · 열역학 과정에서 어떻게 열역학 제1법칙이 성립하는지 살펴본다</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">기체 분자 운동 모형 · 교과서 69~72쪽</p><h2>압력은 분자 충돌의 평균이다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>분자는 크기를 무시할 수 있고, 벽·다른 분자와 탄성 충돌만 하며, 충돌 외에는 힘을 주고받지 않는다고 가정합니다 (이상 기체).</p>
+        <p>한 분자가 벽에 부딪칠 때마다 운동량 $2mv_x$ 를 전달하므로, 부피 $V$ 안의 분자 $N$ 개가 만드는 압력은</p>
+        <div class="eq">$$P = \frac13\frac{N}{V}m\langle v^2\rangle\quad\Rightarrow\quad PV = \frac23N\langle K\rangle$$</div>
+        <p>실험식 $PV = nRT = NkT$ 와 비교하면</p>
+        <div class="eq">$$\langle K\rangle = \tfrac32kT,\qquad v_{rms} = \sqrt{\frac{3kT}{m}}$$</div>
+      </div>
+      <div class="box def"><span class="tag">온도의 미시적 의미</span>
+        <p>절대 온도는 분자 하나의 평균 병진 운동 에너지에 비례합니다.</p>
+        <p class="small">예: 300 K 질소 분자의 $v_{rms} \approx 517$ m/s. 같은 온도에서 가벼운 분자일수록 빠릅니다.</p>
+        <p class="small">$k = 1.38\times10^{-23}$ J/K (볼츠만 상수), $R = N_Ak = 8.31$ J/(mol·K)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">내부 에너지 · 교과서 72~73쪽</p><h2>자유도와 에너지 등분배</h2></header>
+    <div class="body cols">
+      <div>
+        <p>이상 기체의 내부 에너지는 분자 운동 에너지의 합입니다. 분자의 독립적인 운동 방향(자유도) 하나마다 평균 $\tfrac12kT$ 씩 나누어 가집니다.</p>
+        <div class="eq">$$U = \frac f2NkT = \frac f2nRT$$</div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>기체 (상온)</th><th>자유도 f</th><th>단열 지수 γ = (f+2)/f</th></tr></thead>
+          <tbody>
+            <tr><td>단원자 (He, Ar)</td><td class="mono">3</td><td class="mono">5/3</td></tr>
+            <tr><td>이원자 (N₂, O₂)</td><td class="mono">5</td><td class="mono">7/5</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="box warn"><span class="tag">주의</span>
+        <p>이원자 분자는 병진 3 + 회전 2. 진동은 상온에서 거의 들뜨지 않아 빠집니다.</p>
+        <p>내부 에너지는 온도만의 함수(이상 기체)이고, 상태 함수입니다. 어떤 과정을 거쳤는지와 무관합니다.</p>
+      </div>
+      <aside class="note">기존 역학 p237은 3원자 기체의 γ를 '8/6'으로 쓰고 비선형 조건을 빼먹었습니다 (4/3, 비선형 분자에서만).</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">열역학 제0·1법칙 · 교과서 74~77쪽</p><h2>내부 에너지 변화 = 받은 열 − 한 일</h2></header>
+    <div class="body cols">
+      <div>
+        <p><strong>제0법칙</strong>: A와 B가 각각 C와 열평형이면 A와 B도 열평형이다. 온도계가 의미를 갖는 근거입니다.</p>
+        <p><strong>제1법칙</strong> (열역학의 에너지 보존):</p>
+        <div class="eq">$$\Delta U = Q - W,\qquad W = \int_{V_i}^{V_f}P\,dV$$</div>
+        <p>기체가 한 일은 $P$-$V$ 그래프 아래 넓이입니다. 처음과 끝이 같아도 경로가 다르면 $Q$ 와 $W$ 는 다르지만 $\Delta U$ 는 같습니다.</p>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>기호</th><th>+</th><th>−</th></tr></thead>
+        <tbody>
+          <tr><td>$\Delta U$</td><td>증가</td><td>감소</td></tr>
+          <tr><td>$Q$</td><td>열 흡수</td><td>열 방출</td></tr>
+          <tr><td>$W$</td><td>기체가 외부에 일을 함</td><td>외부가 기체에 일을 함</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="note">교과서는 W를 '기체가 한 일'로 두는 ΔU = Q − W 규약을 씁니다 (77쪽). 물리학Ⅰ·화학 교재 중 W를 '받은 일'로 두는 곳이 있어 학생들이 헷갈리니 처음에 짚어 주세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">열역학 과정 · 교과서 77~79쪽</p><h2>등온, 단열, 등적 (그리고 등압)</h2></header>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>과정</th><th>조건</th><th>제1법칙</th><th>기체가 한 일 W</th></tr></thead>
+        <tbody>
+          <tr><td>등온</td><td>$T$ 일정</td><td>$\Delta U = 0,\ Q = W$</td><td>$nRT\ln(V_f/V_i)$</td></tr>
+          <tr><td>단열</td><td>$Q = 0$</td><td>$\Delta U = -W$</td><td>$\dfrac{P_iV_i - P_fV_f}{\gamma - 1}$, $PV^\gamma$ 일정</td></tr>
+          <tr><td>등적</td><td>$V$ 일정</td><td>$Q = \Delta U$</td><td>0</td></tr>
+          <tr><td>등압 (보충)</td><td>$P$ 일정</td><td>$Q = \Delta U + P\Delta V$</td><td>$P\Delta V$</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>300 K 이상 기체 1 mol 의 부피를 두 배로 늘린다. ① 등온 팽창이면 흡수한 열은? ② 단원자 기체가 단열 팽창하면 나중 온도는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>① $Q = W = (8.31)(300)\ln2 \approx 1.73\times10^3$ J</p>
+          <p>② $TV^{\gamma-1}$ 일정, $\gamma - 1 = 2/3$: $T_f = 300\times(1/2)^{2/3} \approx 189$ K. 외부에 한 일만큼 내부 에너지가 줄어 온도가 내려갑니다 (구름이 생기는 원리).</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">I-6</span>
+    <h2>엔트로피와 열기관</h2>
+    <p class="std">교과서 83~93쪽 · 열기관에서 일어나는 열역학적 과정에 대해 이해한다 · 엔트로피의 개념을 알고, 열역학 제2법칙을 설명할 수 있다</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">열기관 · 교과서 84~86쪽</p><h2>열효율과 카르노 기관</h2></header>
+    <div class="body cols">
+      <div>
+        <p>열기관은 고온 열저장고에서 $Q_H$ 를 받아 일 $W$ 를 하고, 저온 열저장고에 $Q_C$ 를 버리며 순환합니다. 한 순환에서 $\Delta U = 0$ 이므로 $W = Q_H - Q_C$.</p>
+        <div class="eq">$$e = \frac{W}{Q_H} = 1 - \frac{Q_C}{Q_H}$$</div>
+        <p><strong>카르노 기관</strong>: 등온 팽창 → 단열 팽창 → 등온 압축 → 단열 압축의 가역 순환. 두 온도 사이에서 가능한 가장 높은 효율을 가집니다.</p>
+        <div class="eq">$$\frac{Q_C}{Q_H} = \frac{T_C}{T_H},\qquad e_C = 1 - \frac{T_C}{T_H}$$</div>
+      </div>
+      <div class="box ex"><span class="tag">예제</span>
+        <p>500 K와 300 K 사이의 카르노 기관이 한 순환에 1000 J을 흡수한다. 효율, 일, 버리는 열은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$e = 1 - 300/500 = 0.40$, $W = 400$ J, $Q_C = 600$ J</p>
+          <p>엔트로피: 고온부 $-1000/500 = -2.0$ J/K, 저온부 $+600/300 = +2.0$ J/K, 합 0 (가역).</p>
+        </div></details>
+      </div>
+      <aside class="note">기존 역학 p268은 저온 등온 압축의 열을 T_h로 썼습니다 (T_c가 맞음).</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">엔트로피 · 교과서 87~90쪽</p><h2>가역 경로로 계산하는 상태 함수</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\Delta S = \int_i^f\frac{dQ_{\text{가역}}}{T}$$</div>
+        <p>엔트로피는 상태 함수입니다. 실제 과정이 비가역이어도, 같은 처음·끝 상태를 잇는 <strong>가역</strong> 경로를 하나 골라 계산하면 됩니다.</p>
+        <div class="box ex"><span class="tag">자유 팽창</span>
+          <p>단열 용기 안에서 기체가 진공으로 퍼지면 $Q = 0,\ W = 0$ 이라 온도가 그대로입니다. 같은 처음·끝을 잇는 등온 가역 팽창으로 계산하면</p>
+          <div class="eq">$$\Delta S = nR\ln\frac{V_f}{V_i}\gt 0$$</div>
+          <p class="small">2 mol, 부피 3배: $\Delta S = 18.3$ J/K</p>
+        </div>
+      </div>
+      <div class="box def"><span class="tag">열역학 제2법칙</span>
+        <p>닫힌계의 엔트로피는 증가하거나 일정할 뿐 감소하지 않는다 ($\Delta S \ge 0$, 가역일 때만 등호).</p>
+        <p>예: 1000 J 이 400 K 물체에서 300 K 물체로 흐르면 $\Delta S = -\tfrac{1000}{400} + \tfrac{1000}{300} = +0.83$ J/K. 반대 방향은 저절로 일어나지 않습니다.</p>
+        <p class="small">효율 1인 열기관을 만들 수 없는 이유도 이것입니다. $Q_C = 0$ 이면 고온부의 엔트로피만 줄어듭니다.</p>
+      </div>
+      <aside class="note">기존 역학 p273의 dS = dQ/T는 가역 열 dQ_rev로 써야 하고, 비가역에서는 dS &gt; dQ/T입니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">통계적 엔트로피 · 교과서 90~93쪽</p><h2>S = k ln W: 확률이 큰 상태로 간다</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$S = k\ln W$$</div>
+        <p>$W$ 는 하나의 거시 상태(예: 앞면 개수)에 대응하는 미시 상태(예: 앞뒤의 순서)의 수, 곧 겹침수입니다.</p>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>동전 6개: 앞면 수</th><th class="mono">0</th><th class="mono">1</th><th class="mono">2</th><th class="mono">3</th><th class="mono">4</th><th class="mono">5</th><th class="mono">6</th></tr></thead>
+          <tbody><tr><td>W</td><td class="mono">1</td><td class="mono">6</td><td class="mono">15</td><td class="mono">20</td><td class="mono">15</td><td class="mono">6</td><td class="mono">1</td></tr></tbody>
+        </table></div>
+        <p class="small">전체 64가지 중 '앞면 3개'가 20가지(31 %)로 가장 많습니다.</p>
+      </div>
+      <div class="box def"><span class="tag">기체로 옮기면</span>
+        <p>분자 $N$ 개가 상자 왼쪽 절반에 모두 모여 있을 확률은 $(1/2)^N$. $N = 100$ 이면 $8\times10^{-31}$, 실제 기체($N\sim10^{23}$)라면 사실상 0입니다.</p>
+        <p>그래서 계는 겹침수가 큰(엔트로피가 큰) 거시 상태로 저절로 갑니다. 제2법칙은 확률의 법칙입니다.</p>
+      </div>
+      <aside class="note">기존 역학 p250은 분자 하나의 운동량을 '구 표면 위의 점'으로 두고 부피로 세는 논리 오류가 있었고, p286은 ∂S/∂N↑를 S로 썼습니다. 교과서는 동전 4개 예시로 다룹니다 (91쪽).</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>기체와 열기관</h2></header>
+    <div class="body cols c3">
+      <div class="q"><span class="qn">Q1</span>
+        <p>같은 온도의 헬륨과 산소 분자 중 $v_{rms}$ 가 큰 쪽과 그 비는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div><p>$v_{rms}\propto1/\sqrt m$: 헬륨이 $\sqrt{32/4} = 2.8$ 배 빠릅니다.</p></div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>기체가 열 500 J을 흡수하며 외부에 200 J의 일을 했다. 내부 에너지 변화는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div><p>$\Delta U = 500 - 200 = +300$ J</p></div></details>
+      </div>
+      <div class="q"><span class="qn">Q3</span>
+        <p>27 °C 와 327 °C 사이에서 작동하는 열기관의 최대 효율은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div><p>켈빈으로 바꿔 $1 - 300/600 = 0.50$. 섭씨로 계산하면 틀립니다.</p></div></details>
+      </div>
     </div>
   </div>
 </section>
@@ -578,7 +820,9 @@ desc: 벡터로 분석하는 포물선 운동, 저항력이 있는 운동 방정
         <li>관성 모멘트 $I = \int r^2dm$, 평행축 정리는 언제나, 수직축 정리는 얇은 판에서만.</li>
         <li>$d\vec L/dt = \vec\tau_{외}$. 외부 돌림힘이 없으면 각운동량 보존.</li>
         <li>굴림 운동: $v_{cm} = R\omega$, 가속도는 $I/MR^2$ 로 정해진다.</li>
-        <li>세차 운동에서는 각운동량이 보존되지 않고 방향이 돈다.</li>
+        <li>케플러 제2법칙은 각운동량 보존, $T^2 = 4\pi^2a^3/GM$, 원 궤도 $v = \sqrt{GM/r}$.</li>
+        <li>$\langle K\rangle = \tfrac32kT$, $U = \tfrac f2nRT$, $\Delta U = Q - W$.</li>
+        <li>$e = 1 - Q_C/Q_H \le 1 - T_C/T_H$, $\Delta S \ge 0$, $S = k\ln W$.</li>
       </ul>
     </div>
   </div>

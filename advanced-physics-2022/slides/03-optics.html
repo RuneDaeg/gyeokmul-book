@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>고급 물리학 Ⅲ 광학</title>
-<meta name="description" content="거울과 얇은 렌즈, 광학 기기, 영의 이중 슬릿과 간섭계, 회절과 분해능, 회절격자, 편광과 3D 영상">
+<meta name="description" content="교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭과 회절(이중 슬릿, 간섭계, 회절격자, 분해능), 영상 물리(편광과 디스플레이)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -34,19 +34,18 @@ window.MathJax = {
     <p class="kicker">고급 물리학 · 2022 개정 · Ⅲ</p>
     <h2>광학</h2>
     <p class="sub">빛을 광선으로 다루는 기하광학에서 시작해, 빛을 파동으로 다루어야 보이는 간섭·회절·편광으로 나아갑니다.</p>
-    <p class="meta">[12고물03-01] 거울과 렌즈 · [12고물03-02] 간섭 · [12고물03-03] 회절과 분해능 · [12고물03-04] 편광</p>
+    <p class="meta">교과서 Ⅲ 광학 (169~227쪽) · 기하 광학 · 간섭과 회절 · 영상 물리</p>
   </div>
-<div class="slide-no"><a href="#s1">광학 · 01 / 28</a></div></section>
+<div class="slide-no"><a href="#s1">광학 · 01 / 30</a></div></section>
 
 <section id="s2" class="slide">
   <div class="sl">
     <header><p class="kicker">단원 구성</p><h2>광선에서 파동으로</h2></header>
     <div class="body cols">
       <ol>
-        <li><strong>거울과 얇은 렌즈</strong>: 상의 위치와 배율, 현미경·망원경·카메라</li>
-        <li><strong>간섭</strong>: 영의 이중 슬릿, 박막, 뉴턴 링, 마이컬슨 간섭계</li>
-        <li><strong>회절과 분해능</strong>: 단일·원형·이중 슬릿, 회절격자, 레일리 기준</li>
-        <li><strong>편광</strong>: 말뤼스 법칙, 브루스터 각, 3D 영상과 액정 화면</li>
+        <li><strong>기하 광학</strong> (171~185쪽): 거울과 렌즈에 의한 상, 여러 가지 광학 기구</li>
+        <li><strong>간섭과 회절</strong> (188~214쪽): 파동의 중첩, 이중 슬릿, 얇은 막·뉴턴링·간섭계, 단일 슬릿, 회절격자, 분해능</li>
+        <li><strong>영상 물리</strong> (216~227쪽): 선형·원편광, 말뤼스 법칙, 브루스터 법칙, 광 활성, LCD·AMOLED·3D 디스플레이</li>
       </ol>
       <div class="box"><span class="tag">언제 파동으로 봐야 하나</span>
         <p>빛이 지나는 틈이나 장애물의 크기가 파장($\sim 500$ nm)보다 훨씬 크면 광선 모형으로 충분합니다. 크기가 파장에 가까워지면 간섭과 회절이 드러납니다.</p>
@@ -55,15 +54,15 @@ window.MathJax = {
       <aside class="note">이 덱은 2015 개정 자료에 없던 광학 영역을 새로 만든 것입니다. 기존 OT 진도표에는 '광학(기하광학, 파동광학)'이 있었지만 대응하는 슬라이드가 없었습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s2">광학 · 02 / 28</a></div></section>
+<div class="slide-no"><a href="#s2">광학 · 02 / 30</a></div></section>
 
 <section id="s3" class="slide divider">
   <div class="sl">
     <span class="roman">III-1</span>
-    <h2>거울과 얇은 렌즈</h2>
-    <p class="std">[12고물03-01] 거울과 얇은 렌즈에 의한 상을 설명하고, 현미경, 망원경, 카메라 등 여러 가지 광학 기기의 원리에 적용할 수 있다.</p>
+    <h2>기하 광학</h2>
+    <p class="std">교과서 170~185쪽 · 거울과 얇은 렌즈에 의해 형성되는 상을 설명할 수 있다 · 여러 가지 광학 기기의 원리를 설명할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s3">광학 · 03 / 28</a></div></section>
+<div class="slide-no"><a href="#s3">광학 · 03 / 30</a></div></section>
 
 <section id="s4" class="slide">
   <div class="sl">
@@ -87,11 +86,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s4">광학 · 04 / 28</a></div></section>
+<div class="slide-no"><a href="#s4">광학 · 04 / 30</a></div></section>
 
 <section id="s5" class="slide">
   <div class="sl">
-    <header><p class="kicker">구면 거울</p><h2>오목 거울이 만드는 상</h2></header>
+    <header><p class="kicker">거울에 의한 상 · 교과서 171~174쪽</p><h2>오목 거울이 만드는 상</h2></header>
     <div class="body cols wide-r">
       <div>
         <div class="eq">$$\frac1s + \frac1{s'} = \frac1f,\qquad f = \frac R2,\qquad m = -\frac{s'}{s}$$</div>
@@ -121,11 +120,11 @@ window.MathJax = {
 </svg><figcaption>F와 C(곡률 중심) 사이의 물체: 거꾸로 서고 확대된 실상이 C 밖에 생깁니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s5">광학 · 05 / 28</a></div></section>
+<div class="slide-no"><a href="#s5">광학 · 05 / 30</a></div></section>
 
 <section id="s6" class="slide">
   <div class="sl">
-    <header><p class="kicker">얇은 렌즈</p><h2>렌즈 공식과 렌즈 제작자 공식</h2></header>
+    <header><p class="kicker">렌즈에 의한 상 · 교과서 175~179쪽</p><h2>렌즈 공식과 렌즈 제작자 공식</h2></header>
     <div class="body cols wide-r">
       <div>
         <div class="eq">$$\frac1s + \frac1{s'} = \frac1f,\qquad m = -\frac{s'}{s}$$</div>
@@ -151,7 +150,7 @@ window.MathJax = {
 </svg><figcaption>세 광선: 평행 → F′, 중심 → 직진, F → 평행. 세 광선이 만나는 곳에 상이 생깁니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s6">광학 · 06 / 28</a></div></section>
+<div class="slide-no"><a href="#s6">광학 · 06 / 30</a></div></section>
 
 <section id="s7" class="slide">
   <div class="sl">
@@ -181,11 +180,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s7">광학 · 07 / 28</a></div></section>
+<div class="slide-no"><a href="#s7">광학 · 07 / 30</a></div></section>
 
 <section id="s8" class="slide">
   <div class="sl">
-    <header><p class="kicker">광학 기기 · 1</p><h2>카메라와 돋보기</h2></header>
+    <header><p class="kicker">광학 기구 · 1 · 교과서 180~184쪽</p><h2>카메라와 돋보기</h2></header>
     <div class="body cols">
       <div class="box def"><span class="tag">카메라</span>
         <p>멀리 있는 물체의 축소된 실상을 센서 위에 맺습니다. 물체 거리가 바뀌면 렌즈와 센서 사이 거리를 바꿔 초점을 맞춥니다.</p>
@@ -198,11 +197,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s8">광학 · 08 / 28</a></div></section>
+<div class="slide-no"><a href="#s8">광학 · 08 / 30</a></div></section>
 
 <section id="s9" class="slide">
   <div class="sl">
-    <header><p class="kicker">광학 기기 · 2</p><h2>현미경과 망원경: 렌즈 두 개</h2></header>
+    <header><p class="kicker">광학 기구 · 2 · 교과서 180~183쪽</p><h2>현미경과 망원경: 렌즈 두 개</h2></header>
     <div class="body cols">
       <div class="box def"><span class="tag">복합 현미경</span>
         <p>대물렌즈가 확대된 실상을 만들고, 접안렌즈가 그 상을 돋보기처럼 다시 확대합니다.</p>
@@ -216,9 +215,25 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s9">광학 · 09 / 28</a></div></section>
+<div class="slide-no"><a href="#s9">광학 · 09 / 30</a></div></section>
 
 <section id="s10" class="slide">
+  <div class="sl">
+    <header><p class="kicker">광학 기구 · 3 · 교과서 182~183쪽</p><h2>수차: 실제 렌즈는 한 점에 모으지 못한다</h2></header>
+    <div class="body cols">
+      <div class="box warn"><span class="tag">색수차</span>
+        <p>굴절률이 파장마다 달라(분산) 파란빛이 빨간빛보다 렌즈에 가까운 곳에 모입니다. 상의 가장자리에 색 번짐이 생깁니다.</p>
+        <p>해결: 굴절률과 분산이 다른 볼록·오목 렌즈를 붙인 <strong>색지움 렌즈</strong>, 또는 굴절이 없는 <strong>반사 망원경</strong>.</p>
+      </div>
+      <div class="box warn"><span class="tag">구면 수차</span>
+        <p>구면 렌즈·거울에서는 광축에서 먼 가장자리 광선이 근축 광선보다 앞에 모입니다. 렌즈 공식은 근축 근사에서만 정확합니다.</p>
+        <p>해결: 조리개로 가장자리 광선을 가리거나, <strong>비구면 렌즈</strong>·포물면 거울을 쓴다. 스마트폰 카메라 렌즈는 대부분 비구면입니다.</p>
+      </div>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s10">광학 · 10 / 30</a></div></section>
+
+<section id="s11" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>거울과 렌즈</h2></header>
     <div class="body cols">
@@ -237,19 +252,19 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s10">광학 · 10 / 28</a></div></section>
+<div class="slide-no"><a href="#s11">광학 · 11 / 30</a></div></section>
 
-<section id="s11" class="slide divider">
+<section id="s12" class="slide divider">
   <div class="sl">
     <span class="roman">III-2</span>
-    <h2>간섭</h2>
-    <p class="std">[12고물03-02] 영의 이중 슬릿 실험에서 나타나는 무늬의 특징과 다양한 간섭계를 설명할 수 있다.</p>
+    <h2>간섭과 회절 · 간섭</h2>
+    <p class="std">교과서 187~197쪽 · 빛의 파동적 성질이 연구되기까지의 과정을 알아본다 · 이중 슬릿의 간섭무늬, 간섭계의 원리, 얇은 막, 뉴턴링에 의한 간섭</p>
   </div>
-<div class="slide-no"><a href="#s11">광학 · 11 / 28</a></div></section>
+<div class="slide-no"><a href="#s12">광학 · 12 / 30</a></div></section>
 
-<section id="s12" class="slide">
+<section id="s13" class="slide">
   <div class="sl">
-    <header><p class="kicker">간섭의 조건</p><h2>경로차가 위상차를 만든다</h2></header>
+    <header><p class="kicker">파동의 중첩과 간섭 · 교과서 188~190쪽</p><h2>경로차가 위상차를 만든다</h2></header>
     <div class="body cols">
       <div>
         <p>두 파동이 겹치면 변위가 더해집니다 (중첩 원리). 같은 진동수의 두 파동의 경로차가 $\Delta$ 이면 위상차는</p>
@@ -265,11 +280,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s12">광학 · 12 / 28</a></div></section>
+<div class="slide-no"><a href="#s13">광학 · 13 / 30</a></div></section>
 
-<section id="s13" class="slide">
+<section id="s14" class="slide">
   <div class="sl">
-    <header><p class="kicker">영의 이중 슬릿 (1801)</p><h2>밝은 무늬의 위치와 간격</h2></header>
+    <header><p class="kicker">영의 이중 슬릿 (1801) · 교과서 190~193쪽</p><h2>밝은 무늬의 위치와 간격</h2></header>
     <div class="body cols">
       <div>
         <p>슬릿 간격 $d$, 스크린까지 거리 $L \gg d$. 두 슬릿에서 각 $\theta$ 방향으로 간 빛의 경로차는 $d\sin\theta$ 입니다.</p>
@@ -288,11 +303,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s13">광학 · 13 / 28</a></div></section>
+<div class="slide-no"><a href="#s14">광학 · 14 / 30</a></div></section>
 
-<section id="s14" class="slide">
+<section id="s15" class="slide">
   <div class="sl">
-    <header><p class="kicker">박막 간섭</p><h2>비눗방울의 색, 반사 방지막</h2></header>
+    <header><p class="kicker">얇은 막의 간섭 · 교과서 194쪽</p><h2>비눗방울의 색, 반사 방지막</h2></header>
     <div class="body cols">
       <div>
         <p>두께 $t$, 굴절률 $n$ 인 막의 윗면과 아랫면에서 반사한 두 빛이 간섭합니다. 거의 수직 입사면 경로차는 $2nt$ 입니다.</p>
@@ -309,11 +324,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s14">광학 · 14 / 28</a></div></section>
+<div class="slide-no"><a href="#s15">광학 · 15 / 30</a></div></section>
 
-<section id="s15" class="slide">
+<section id="s16" class="slide">
   <div class="sl">
-    <header><p class="kicker">간섭계 · 1</p><h2>뉴턴 링: 공기층 두께를 재는 자</h2></header>
+    <header><p class="kicker">뉴턴링 · 교과서 194~195쪽</p><h2>뉴턴 링: 공기층 두께를 재는 자</h2></header>
     <div class="body cols">
       <div>
         <p>곡률 반지름 $R$ 인 평볼록 렌즈를 평평한 유리 위에 올리면, 중심에서 거리 $r$ 인 곳의 공기층 두께는</p>
@@ -328,11 +343,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s15">광학 · 15 / 28</a></div></section>
+<div class="slide-no"><a href="#s16">광학 · 16 / 30</a></div></section>
 
-<section id="s16" class="slide">
+<section id="s17" class="slide">
   <div class="sl">
-    <header><p class="kicker">간섭계 · 2</p><h2>마이컬슨 간섭계: 파장의 몇 분의 1까지</h2></header>
+    <header><p class="kicker">간섭계 · 교과서 195~197쪽</p><h2>마이컬슨 간섭계: 파장의 몇 분의 1까지</h2></header>
     <div class="body cols">
       <div>
         <p>반투명 거울이 빛을 두 팔로 나누었다가 다시 합칩니다. 한 거울을 $d$ 만큼 옮기면 그 팔의 왕복 경로가 $2d$ 바뀌어, 무늬가 $N$ 개 지나갑니다.</p>
@@ -349,9 +364,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s16">광학 · 16 / 28</a></div></section>
+<div class="slide-no"><a href="#s17">광학 · 17 / 30</a></div></section>
 
-<section id="s17" class="slide">
+<section id="s18" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>간섭</h2></header>
     <div class="body cols">
@@ -369,19 +384,19 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s17">광학 · 17 / 28</a></div></section>
+<div class="slide-no"><a href="#s18">광학 · 18 / 30</a></div></section>
 
-<section id="s18" class="slide divider">
+<section id="s19" class="slide divider">
   <div class="sl">
-    <span class="roman">III-3</span>
-    <h2>회절과 분해능</h2>
-    <p class="std">[12고물03-03] 회절의 원리와 관련 현상을 설명하고, 광학 기기의 분해능에 적용할 수 있다.</p>
+    <span class="roman">III-2</span>
+    <h2>간섭과 회절 · 회절</h2>
+    <p class="std">교과서 198~214쪽 · 여러 모양의 슬릿에서 나타나는 회절 현상 · 회절격자에 입사한 광선의 경로 · 광학 기기의 분해능</p>
   </div>
-<div class="slide-no"><a href="#s18">광학 · 18 / 28</a></div></section>
+<div class="slide-no"><a href="#s19">광학 · 19 / 30</a></div></section>
 
-<section id="s19" class="slide">
+<section id="s20" class="slide">
   <div class="sl">
-    <header><p class="kicker">단일 슬릿 회절</p><h2>틈이 좁을수록 빛이 넓게 퍼진다</h2></header>
+    <header><p class="kicker">단일 슬릿 회절 · 교과서 198~203쪽</p><h2>틈이 좁을수록 빛이 넓게 퍼진다</h2></header>
     <div class="body cols">
       <div>
         <p>하위헌스 원리: 틈의 각 점이 새로운 파원입니다. 폭 $a$ 인 틈을 위아래 절반으로 나누면, 두 절반에서 짝지은 파원의 경로차가 $\lambda/2$ 일 때 모두 상쇄됩니다.</p>
@@ -395,9 +410,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s19">광학 · 19 / 28</a></div></section>
+<div class="slide-no"><a href="#s20">광학 · 20 / 30</a></div></section>
 
-<section id="s20" class="slide">
+<section id="s21" class="slide">
   <div class="sl">
     <header><p class="kicker">이중 슬릿 + 회절</p><h2>실제 이중 슬릿 무늬는 회절 포락선 안에 있다</h2></header>
     <div class="body cols wide-r">
@@ -425,11 +440,11 @@ window.MathJax = {
 </svg><figcaption>가로축은 $a\sin\theta/\lambda$. 점선(회절)이 실선(간섭)의 높이를 정합니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s20">광학 · 20 / 28</a></div></section>
+<div class="slide-no"><a href="#s21">광학 · 21 / 30</a></div></section>
 
-<section id="s21" class="slide">
+<section id="s22" class="slide">
   <div class="sl">
-    <header><p class="kicker">원형 구멍과 분해능</p><h2>레일리 기준: 두 점을 구별할 수 있는 최소 각</h2></header>
+    <header><p class="kicker">원형 구멍과 분해능 · 교과서 204~205쪽, 209~211쪽</p><h2>레일리 기준: 두 점을 구별할 수 있는 최소 각</h2></header>
     <div class="body cols">
       <div>
         <p>지름 $D$ 인 원형 구멍을 지난 빛은 가운데 원반(에어리 원반)과 고리로 퍼집니다. 첫 어두운 고리는</p>
@@ -453,11 +468,11 @@ window.MathJax = {
       <aside class="note">기존 양자 p141의 '광학 현미경 분해능 약 500 nm'는 회절 한계 λ/2 ≈ 200~250 nm로 바로잡았습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s21">광학 · 21 / 28</a></div></section>
+<div class="slide-no"><a href="#s22">광학 · 22 / 30</a></div></section>
 
-<section id="s22" class="slide">
+<section id="s23" class="slide">
   <div class="sl">
-    <header><p class="kicker">다중 슬릿 · 회절격자</p><h2>슬릿이 많을수록 밝은 선이 날카롭다</h2></header>
+    <header><p class="kicker">회절격자 · 교과서 207~211쪽</p><h2>슬릿이 많을수록 밝은 선이 날카롭다</h2></header>
     <div class="body cols wide-r">
       <div>
         <p>간격 $d$ 로 $N$ 개의 슬릿이 있으면 주 극대의 위치는 이중 슬릿과 같지만, 폭은 $1/N$ 로 좁아집니다.</p>
@@ -481,9 +496,9 @@ window.MathJax = {
 </svg><figcaption>주 극대 위치는 같고, N이 커질수록 폭이 좁아집니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s22">광학 · 22 / 28</a></div></section>
+<div class="slide-no"><a href="#s23">광학 · 23 / 30</a></div></section>
 
-<section id="s23" class="slide">
+<section id="s24" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>회절과 분해능</h2></header>
     <div class="body cols">
@@ -503,19 +518,19 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s23">광학 · 23 / 28</a></div></section>
+<div class="slide-no"><a href="#s24">광학 · 24 / 30</a></div></section>
 
-<section id="s24" class="slide divider">
+<section id="s25" class="slide divider">
   <div class="sl">
-    <span class="roman">III-4</span>
-    <h2>편광</h2>
-    <p class="std">[12고물03-04] 편광 방향에 따른 빛의 투과 규칙성을 찾고, 3D 영상 등 실생활 사례를 설명할 수 있다.</p>
+    <span class="roman">III-3</span>
+    <h2>영상 물리</h2>
+    <p class="std">교과서 215~227쪽 · 편광 방향에 따라 빛의 투과가 달라지는 현상에서 규칙성을 찾을 수 있다 · 편광이 실생활에 적용되는 사례를 찾아 설명할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s24">광학 · 24 / 28</a></div></section>
+<div class="slide-no"><a href="#s25">광학 · 25 / 30</a></div></section>
 
-<section id="s25" class="slide">
+<section id="s26" class="slide">
   <div class="sl">
-    <header><p class="kicker">편광과 말뤼스 법칙</p><h2>빛은 횡파다</h2></header>
+    <header><p class="kicker">편광과 말뤼스 법칙 · 교과서 216~218쪽</p><h2>빛은 횡파다</h2></header>
     <div class="body cols">
       <div>
         <p>전자기파의 전기장은 진행 방향에 수직인 평면 안에서 진동합니다. 그 진동 방향이 한쪽으로 정해진 빛이 <em class="term">선편광</em>된 빛입니다. 햇빛과 전등 빛은 편광되지 않은 빛입니다.</p>
@@ -532,11 +547,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s25">광학 · 25 / 28</a></div></section>
+<div class="slide-no"><a href="#s26">광학 · 26 / 30</a></div></section>
 
-<section id="s26" class="slide">
+<section id="s27" class="slide">
   <div class="sl">
-    <header><p class="kicker">반사와 산란에 의한 편광</p><h2>브루스터 각과 하늘의 편광</h2></header>
+    <header><p class="kicker">브루스터 법칙 · 교과서 218~219쪽</p><h2>브루스터 각과 하늘의 편광</h2></header>
     <div class="body cols">
       <div>
         <p>빛이 유리나 물 표면에서 반사될 때, 특정한 입사각에서 반사광은 입사면에 수직으로 진동하는 성분만 남습니다.</p>
@@ -549,17 +564,37 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s26">광학 · 26 / 28</a></div></section>
+<div class="slide-no"><a href="#s27">광학 · 27 / 30</a></div></section>
 
-<section id="s27" class="slide">
+<section id="s28" class="slide">
   <div class="sl">
-    <header><p class="kicker">실생활 사례 · 조사 활동</p><h2>3D 영화, 액정 화면, 광탄성</h2></header>
-    <div class="body cols c3">
+    <header><p class="kicker">원편광과 광 활성 · 교과서 216~221쪽</p><h2>전기장이 돌면서 나아가는 빛</h2></header>
+    <div class="body cols">
+      <div>
+        <p>크기가 같고 위상이 $90^\circ$ 어긋난 두 선편광($x$, $y$ 방향)을 겹치면 전기장 벡터의 끝이 원을 그리며 진행합니다. 이것이 <em class="term">원편광</em>입니다.</p>
+        <div class="eq">$$\vec E = E_0\big(\cos(kz-\omega t)\,\hat x \pm \sin(kz-\omega t)\,\hat y\big)$$</div>
+        <p class="small">복굴절 물질로 만든 1/4 파장판에 선편광을 $45^\circ$ 로 넣으면 두 성분 사이에 $\lambda/4$ 의 경로차가 생겨 원편광이 됩니다.</p>
+      </div>
+      <div class="box def"><span class="tag">광 활성</span>
+        <p>설탕물, 수정처럼 분자나 결정 구조에 좌우 비대칭이 있는 물질은 선편광의 편광면을 돌립니다. 회전각은 농도와 통과 길이에 비례해 당도계에 씁니다.</p>
+        <p class="small">탐구: 편광판 두 장 사이에 설탕물 병을 놓고, 빛이 가장 어두워지는 각도가 농도에 따라 어떻게 변하는지 잰다.</p>
+      </div>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s28">광학 · 28 / 30</a></div></section>
+
+<section id="s29" class="slide">
+  <div class="sl">
+    <header><p class="kicker">생활 속의 편광 · 교과서 222~225쪽 · 조사 활동</p><h2>3D 영화, 액정 화면, 광탄성</h2></header>
+    <div class="body cols">
       <div class="box def"><span class="tag">3D 영화</span>
         <p>왼눈용·오른눈용 영상을 서로 다른 편광(주로 반대 방향의 원편광)으로 동시에 쏩니다. 안경의 두 렌즈가 각각 한 편광만 통과시켜 두 눈이 다른 영상을 보고, 뇌가 깊이를 느낍니다.</p>
       </div>
       <div class="box def"><span class="tag">액정 화면 (LCD)</span>
         <p>투과축이 수직인 편광판 두 장 사이에 액정이 있습니다. 전압을 걸지 않으면 액정이 편광 방향을 90° 돌려 빛이 지나가고, 전압을 걸면 돌리지 않아 어두워집니다.</p>
+      </div>
+      <div class="box def"><span class="tag">AMOLED</span>
+        <p>스스로 빛을 내므로 편광판이 화면을 만드는 데 필요하지 않습니다. 대신 바깥 빛이 금속 전극에 반사되는 것을 막으려고 선편광판 + 1/4 파장판(원편광판)을 붙입니다. 반사된 원편광은 회전 방향이 바뀌어 편광판을 다시 지나지 못합니다.</p>
       </div>
       <div class="box def"><span class="tag">광탄성</span>
         <p>투명 플라스틱에 힘이 걸리면 편광 방향에 따라 굴절률이 달라집니다. 편광판 두 장 사이에 두면 응력 분포가 무지갯빛 무늬로 보여 구조물의 약한 곳을 찾습니다.</p>
@@ -567,9 +602,9 @@ window.MathJax = {
       <aside class="note">활동 제안: 스마트폰 화면(LCD 또는 편광층이 있는 OLED)과 편광 필름 한 장으로 말뤼스 법칙을 정성적으로 확인하고, 조도 센서 앱으로 cos² 그래프를 그려 보게 하세요.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s27">광학 · 27 / 28</a></div></section>
+<div class="slide-no"><a href="#s29">광학 · 29 / 30</a></div></section>
 
-<section id="s28" class="slide">
+<section id="s30" class="slide">
   <div class="sl">
     <header><p class="kicker">정리</p><h2>광학에서 가져갈 것</h2></header>
     <div class="body cols">
@@ -588,7 +623,7 @@ window.MathJax = {
       </ul>
     </div>
   </div>
-<div class="slide-no"><a href="#s28">광학 · 28 / 28</a></div></section>
+<div class="slide-no"><a href="#s30">광학 · 30 / 30</a></div></section>
 </main>
 <footer class="site-foot">
   <p>2022 개정 교육과정 고급 물리학 수업 자료</p>

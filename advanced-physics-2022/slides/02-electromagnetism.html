@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>고급 물리학 Ⅱ 전자기학</title>
-<meta name="description" content="가우스 법칙과 도체·유전체, 축전기, 비오-사바르·앙페르 법칙, 전자기 유도, 교류와 공진, 맥스웰 방정식과 전자기파">
+<meta name="description" content="교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극자), 전기 회로(전기 용량, 키르히호프 법칙), 자기장(비오-사바르, 암페어, 전자기 유도, 자체 유도), 교류와 전자기파">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -34,41 +34,39 @@ window.MathJax = {
     <p class="kicker">고급 물리학 · 2022 개정 · Ⅱ</p>
     <h2>전자기학</h2>
     <p class="sub">대칭을 이용해 전기장과 자기장을 구하고, 변하는 장이 서로를 만들어 빛이 되는 과정까지 따라갑니다.</p>
-    <p class="meta">가우스 법칙 · 축전기 · 비오-사바르와 앙페르 · 전자기 유도 · 교류와 공진 · 전자기파</p>
+    <p class="meta">교과서 Ⅱ 전자기학 (97~165쪽) · 중단원 4개</p>
   </div>
-<div class="slide-no"><a href="#s1">전자기학 · 01 / 43</a></div></section>
+<div class="slide-no"><a href="#s1">전자기학 · 01 / 41</a></div></section>
 
 <section id="s2" class="slide">
   <div class="sl">
-    <header><p class="kicker">단원 구성과 성취기준</p><h2>이 단원에서 할 일</h2></header>
+    <header><p class="kicker">단원 구성 · 교과서 쪽수</p><h2>이 단원에서 할 일</h2></header>
     <div class="body cols">
       <ol>
-        <li><strong>가우스 법칙</strong>: 도체·유전체 주변 전기장, 전위, 정전기 차폐, 등전위면, 전기 쌍극자 <span class="small">[12고물02-01]</span></li>
-        <li><strong>축전기</strong>: 평행판 축전기의 직렬·병렬, 유전체의 역할 <span class="small">[12고물02-02]</span></li>
-        <li><strong>전류와 자기장</strong>: 비오-사바르 법칙, 대칭이 있을 때 앙페르 법칙 <span class="small">[12고물02-03]</span></li>
-        <li><strong>전자기 유도</strong>: 패러데이·렌츠 법칙, 자체 유도 계수</li>
-        <li><strong>교류와 전기 진동</strong>: LC·RLC 회로의 진동과 공진 <span class="small">[12고물02-06]</span></li>
-        <li><strong>맥스웰 방정식과 전자기파</strong>: 파동 방정식 유도, 발생 원리, 성질과 종류</li>
+        <li><strong>전기장</strong> (99~110쪽): 전기 선속과 가우스 법칙, 도체와 유전체, 전위·등전위면·정전기 차폐, 전기 쌍극자</li>
+        <li><strong>전기 회로</strong> (112~118쪽): 평행판 축전기의 직렬·병렬, 유전체, 키르히호프 법칙</li>
+        <li><strong>자기장</strong> (121~133쪽): 비오-사바르 법칙, 암페어 법칙, 전자기 유도, 자체 유도와 상호 유도</li>
+        <li><strong>교류와 전자기파</strong> (137~165쪽): 교류 회로, 공진 회로, 맥스웰 방정식, 전자기파의 발생과 성질</li>
       </ol>
       <div class="box"><span class="tag">연계</span>
         <p>저항의 직렬·병렬 연결과 소비 전력, 축전기의 기본 개념은 「물리학」에서 배웠습니다. 여기서는 그 위에 장(field)의 언어를 더합니다.</p>
+        <p class="small">교과서는 'Ampère'를 <strong>암페어 법칙</strong>, 실효값을 <strong>유횻값</strong>으로 씁니다. 이 덱도 교과서 용어를 따릅니다.</p>
       </div>
-      <aside class="note">전자기 유도와 전자기파 항목의 성취기준 번호는 자료마다 달라 표기하지 않았습니다. 교과서에서 번호를 확인해 채워 넣으세요.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s2">전자기학 · 02 / 43</a></div></section>
+<div class="slide-no"><a href="#s2">전자기학 · 02 / 41</a></div></section>
 
 <section id="s3" class="slide divider">
   <div class="sl">
     <span class="roman">II-1</span>
-    <h2>전기장과 가우스 법칙</h2>
-    <p class="std">[12고물02-01] 가우스 법칙을 이용하여 도체와 유전체 주변의 전기장을 구하고, 전위, 정전기 차폐, 등전위면, 전기 쌍극자를 설명할 수 있다.</p>
+    <h2>전기장</h2>
+    <p class="std">교과서 98~110쪽 · 가우스 법칙으로 도체와 유전체가 만드는 전기장을 구한다 · 전위, 정전기 차폐와 등전위면, 전기 쌍극자 등을 설명할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s3">전자기학 · 03 / 43</a></div></section>
+<div class="slide-no"><a href="#s3">전자기학 · 03 / 41</a></div></section>
 
 <section id="s4" class="slide">
   <div class="sl">
-    <header><p class="kicker">쿨롱 법칙과 전기장</p><h2>전기장은 시험 전하가 받는 힘의 벡터</h2></header>
+    <header><p class="kicker">쿨롱 법칙과 전기장 · 교과서 99~101쪽</p><h2>전기장은 시험 전하가 받는 힘의 벡터</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$\vec F = \frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r^2}\hat r,\qquad \frac{1}{4\pi\varepsilon_0} = 8.99\times10^9\ \text{N·m}^2/\text{C}^2$$</div>
@@ -82,11 +80,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s4">전자기학 · 04 / 43</a></div></section>
+<div class="slide-no"><a href="#s4">전자기학 · 04 / 41</a></div></section>
 
 <section id="s5" class="slide">
   <div class="sl">
-    <header><p class="kicker">전기 선속과 가우스 법칙</p><h2>닫힌 곡면을 나가는 전기 선속 = 안의 전하 / ε₀</h2></header>
+    <header><p class="kicker">전기 선속과 가우스 법칙 · 교과서 99~104쪽</p><h2>닫힌 곡면을 나가는 전기 선속 = 안의 전하 / ε₀</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$\Phi_E = \oint_S\vec E\cdot d\vec A = \frac{Q_{in}}{\varepsilon_0}$$</div>
@@ -99,7 +97,7 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s5">전자기학 · 05 / 43</a></div></section>
+<div class="slide-no"><a href="#s5">전자기학 · 05 / 41</a></div></section>
 
 <section id="s6" class="slide">
   <div class="sl">
@@ -117,7 +115,7 @@ window.MathJax = {
       <aside class="note">기존 전자기 p25·28·29는 '쓸 수 있는 대칭은 구와 원통 두 가지'라 하고 무한 평면을 원통 대칭에 넣었습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s6">전자기학 · 06 / 43</a></div></section>
+<div class="slide-no"><a href="#s6">전자기학 · 06 / 41</a></div></section>
 
 <section id="s7" class="slide">
   <div class="sl">
@@ -142,7 +140,7 @@ window.MathJax = {
       <aside class="note">기존 자료 p37~40은 이 구를 '유전체 구'라 부르면서 ε₀로 계산했습니다. 유전체라면 편극 때문에 내부 장이 E/κ로 줄어듭니다. 여기서는 '편극을 무시한 부도체'로 명시했습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s7">전자기학 · 07 / 43</a></div></section>
+<div class="slide-no"><a href="#s7">전자기학 · 07 / 41</a></div></section>
 
 <section id="s8" class="slide">
   <div class="sl">
@@ -164,7 +162,7 @@ window.MathJax = {
       <aside class="note">'도체 내부 E = 0'은 평형 조건이고, '정전기 차폐'는 그 결과로 공동이 보호되는 현상입니다. 기존 p86은 둘을 같은 것으로 불렀습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s8">전자기학 · 08 / 43</a></div></section>
+<div class="slide-no"><a href="#s8">전자기학 · 08 / 41</a></div></section>
 
 <section id="s9" class="slide">
   <div class="sl">
@@ -188,11 +186,11 @@ window.MathJax = {
       </table></div>
     </div>
   </div>
-<div class="slide-no"><a href="#s9">전자기학 · 09 / 43</a></div></section>
+<div class="slide-no"><a href="#s9">전자기학 · 09 / 41</a></div></section>
 
 <section id="s10" class="slide">
   <div class="sl">
-    <header><p class="kicker">전위와 등전위면</p><h2>전기장은 전위가 가장 빨리 떨어지는 방향</h2></header>
+    <header><p class="kicker">전위와 등전위면 · 교과서 105~107쪽</p><h2>전기장은 전위가 가장 빨리 떨어지는 방향</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$V(B) - V(A) = -\int_A^B\vec E\cdot d\vec l,\qquad \vec E = -\nabla V$$</div>
@@ -209,11 +207,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s10">전자기학 · 10 / 43</a></div></section>
+<div class="slide-no"><a href="#s10">전자기학 · 10 / 41</a></div></section>
 
 <section id="s11" class="slide">
   <div class="sl">
-    <header><p class="kicker">전기 쌍극자</p><h2>크기가 같고 부호가 반대인 두 전하</h2></header>
+    <header><p class="kicker">전기 쌍극자 · 교과서 107~109쪽</p><h2>크기가 같고 부호가 반대인 두 전하</h2></header>
     <div class="body cols">
       <div>
         <p>쌍극자 모멘트 $\vec p = q\vec d$ 는 $-q$ 에서 $+q$ 쪽을 향합니다. 쌍극자에서 먼 곳($r \gg d$), 축과 이루는 각 $\theta$ 인 점에서</p>
@@ -230,7 +228,7 @@ window.MathJax = {
       <aside class="note">기존 p99는 '멀리 있으므로 θ→0'이라며 축 위의 값을 일반 결과처럼 썼습니다. 거리 조건(r ≫ d)과 방향(θ)은 서로 무관합니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s11">전자기학 · 11 / 43</a></div></section>
+<div class="slide-no"><a href="#s11">전자기학 · 11 / 41</a></div></section>
 
 <section id="s12" class="slide">
   <div class="sl">
@@ -252,19 +250,19 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s12">전자기학 · 12 / 43</a></div></section>
+<div class="slide-no"><a href="#s12">전자기학 · 12 / 41</a></div></section>
 
 <section id="s13" class="slide divider">
   <div class="sl">
     <span class="roman">II-2</span>
-    <h2>축전기</h2>
-    <p class="std">[12고물02-02] 평행판 축전기의 직렬·병렬 연결에 따른 전기 용량 변화를 계산하고, 유전체의 역할을 설명할 수 있다.</p>
+    <h2>전기 회로</h2>
+    <p class="std">교과서 111~118쪽 · 축전기의 전기 용량에 영향을 미치는 요인을 알고 회로의 전기 용량을 계산할 수 있다 · 키르히호프 법칙으로 회로 요소 양단의 전위차, 전류 등을 예측할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s13">전자기학 · 13 / 43</a></div></section>
+<div class="slide-no"><a href="#s13">전자기학 · 13 / 41</a></div></section>
 
 <section id="s14" class="slide">
   <div class="sl">
-    <header><p class="kicker">평행판 축전기</p><h2>가우스 법칙으로 구하는 전기 용량</h2></header>
+    <header><p class="kicker">평행판 축전기 · 교과서 112~115쪽</p><h2>가우스 법칙으로 구하는 전기 용량</h2></header>
     <div class="body cols">
       <div>
         <p>넓이 $A$ 인 두 판에 $\pm Q$ 가 있으면 판 사이의 장은 두 평면 전하의 장의 합입니다.</p>
@@ -281,7 +279,7 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s14">전자기학 · 14 / 43</a></div></section>
+<div class="slide-no"><a href="#s14">전자기학 · 14 / 41</a></div></section>
 
 <section id="s15" class="slide">
   <div class="sl">
@@ -298,7 +296,7 @@ window.MathJax = {
       <p class="small">저항과 공식이 서로 바뀐 꼴입니다. $C = \varepsilon A/d$ 에서 병렬은 $A$ 가, 직렬은 $d$ 가 더해진다고 생각하면 외우지 않아도 됩니다.</p>
     </div>
   </div>
-<div class="slide-no"><a href="#s15">전자기학 · 15 / 43</a></div></section>
+<div class="slide-no"><a href="#s15">전자기학 · 15 / 41</a></div></section>
 
 <section id="s16" class="slide">
   <div class="sl">
@@ -318,7 +316,7 @@ window.MathJax = {
       <aside class="note">Q가 고정된 경우 U가 줄어드는 만큼의 에너지는 유전체를 판 사이로 끌어당기는 힘이 한 일입니다. 학생 질문이 자주 나오는 부분입니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s16">전자기학 · 16 / 43</a></div></section>
+<div class="slide-no"><a href="#s16">전자기학 · 16 / 41</a></div></section>
 
 <section id="s17" class="slide">
   <div class="sl">
@@ -335,11 +333,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s17">전자기학 · 17 / 43</a></div></section>
+<div class="slide-no"><a href="#s17">전자기학 · 17 / 41</a></div></section>
 
 <section id="s18" class="slide">
   <div class="sl">
-    <header><p class="kicker">복습 · 교과서 범위 확인</p><h2>회로의 전위 변화와 키르히호프 법칙</h2></header>
+    <header><p class="kicker">키르히호프 법칙 · 교과서 116~118쪽</p><h2>접합점 법칙과 고리 법칙</h2></header>
     <div class="body cols">
       <div>
         <p><strong>접합점 법칙</strong> (전하 보존): 들어오는 전류의 합 = 나가는 전류의 합</p>
@@ -352,26 +350,31 @@ window.MathJax = {
             <tr><td>전지, (−)에서 (+)로</td><td>$+\mathcal E$</td></tr>
           </tbody>
         </table></div>
+        <p class="small">'전압 강하'는 크기 $IR$ (양수)을 말합니다. 부호를 붙여 쓸 때는 '전위 변화 $\Delta V = -IR$' 처럼 구분하세요.</p>
       </div>
-      <div class="box"><span class="tag">용어</span>
-        <p>'전압 강하'는 크기 $IR$ (양수)을 말합니다. 부호를 붙여 쓸 때는 '전위 변화 $\Delta V = -IR$' 처럼 구분하세요.</p>
+      <div class="box ex"><span class="tag">예제 · 전지 두 개</span>
+        <p>두 접합점 사이에 가지 세 개가 있다. ① 전지 12 V + 저항 2 Ω ② 전지 6 V + 저항 4 Ω ③ 저항 4 Ω. 두 전지의 (+)극은 같은 접합점 쪽에 있다. 각 가지의 전류는?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>①, ②에서 (+)극 쪽으로 나가는 전류를 $I_1, I_2$ 라 하면 ③에는 $I_1 + I_2$.</p>
+          <p>고리 ①-③: $12 = 2I_1 + 4(I_1 + I_2)$, 고리 ②-③: $6 = 4I_2 + 4(I_1 + I_2)$</p>
+          <p>$I_1 = 2.25$ A, $I_2 = -0.375$ A, $I_3 = 1.875$ A. $I_2$ 가 음수이므로 6 V 전지에는 실제로 반대 방향(충전 방향)으로 전류가 흐릅니다.</p>
+        </div></details>
       </div>
-      <aside class="note">2022 고급 물리학에 키르히호프 법칙 성취기준이 있는지 출처가 엇갈립니다. 교과서에 없으면 이 슬라이드는 「물리학」 복습으로만 쓰세요.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s18">전자기학 · 18 / 43</a></div></section>
+<div class="slide-no"><a href="#s18">전자기학 · 18 / 41</a></div></section>
 
 <section id="s19" class="slide divider">
   <div class="sl">
     <span class="roman">II-3</span>
-    <h2>전류가 만드는 자기장</h2>
-    <p class="std">[12고물02-03] 비오-사바르 법칙을 이용하여 전류에 의한 자기장을 예측하고, 대칭성이 있는 경우 앙페르 법칙으로 자기장을 구할 수 있다.</p>
+    <h2>자기장</h2>
+    <p class="std">교과서 120~133쪽 · 비오-사바르 법칙과 암페어 법칙을 이용하여 전류가 만드는 자기장을 구할 수 있다 · 자기 선속의 변화에 의해 일어나는 전자기 유도 현상을 이해한다</p>
   </div>
-<div class="slide-no"><a href="#s19">전자기학 · 19 / 43</a></div></section>
+<div class="slide-no"><a href="#s19">전자기학 · 19 / 41</a></div></section>
 
 <section id="s20" class="slide">
   <div class="sl">
-    <header><p class="kicker">자기력</p><h2>로런츠 힘: 자기력은 일을 하지 않는다</h2></header>
+    <header><p class="kicker">복습 · 자기력 (교과서 120쪽 단원 연계)</p><h2>로런츠 힘: 자기력은 일을 하지 않는다</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$\vec F = q\big(\vec E + \vec v\times\vec B\big)$$</div>
@@ -385,11 +388,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s20">전자기학 · 20 / 43</a></div></section>
+<div class="slide-no"><a href="#s20">전자기학 · 20 / 41</a></div></section>
 
 <section id="s21" class="slide">
   <div class="sl">
-    <header><p class="kicker">비오-사바르 법칙</p><h2>전류 요소 하나가 만드는 자기장</h2></header>
+    <header><p class="kicker">비오-사바르 법칙 · 교과서 121~123쪽</p><h2>전류 요소 하나가 만드는 자기장</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$d\vec B = \frac{\mu_0}{4\pi}\frac{I\,d\vec l\times\hat r}{r^2},\qquad \mu_0 = 4\pi\times10^{-7}\ \text{T·m/A}$$</div>
@@ -404,15 +407,15 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s21">전자기학 · 21 / 43</a></div></section>
+<div class="slide-no"><a href="#s21">전자기학 · 21 / 41</a></div></section>
 
 <section id="s22" class="slide">
   <div class="sl">
-    <header><p class="kicker">앙페르 법칙</p><h2>대칭이 있으면 선적분 한 번으로 끝난다</h2></header>
+    <header><p class="kicker">암페어(앙페르) 법칙 · 교과서 124~127쪽</p><h2>대칭이 있으면 선적분 한 번으로 끝난다</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$\oint\vec B\cdot d\vec l = \mu_0I_{enc}$$</div>
-        <p>반지름 $R$ 인 원통 도선에 전류 $I$ 가 단면 전체에 고르게 흐를 때, 같은 축의 원을 앙페르 고리로 잡으면</p>
+        <p>반지름 $R$ 인 원통 도선에 전류 $I$ 가 단면 전체에 고르게 흐를 때, 같은 축의 원을 암페어 고리로 잡으면</p>
         <div class="eq">$$r\ge R:\ B = \frac{\mu_0I}{2\pi r},\qquad r\lt R:\ I_{enc} = I\frac{r^2}{R^2}\ \Rightarrow\ B = \frac{\mu_0Ir}{2\pi R^2}$$</div>
       </div>
       <figure class="fig"><svg viewBox="0 0 420 220" role="img" aria-label="전류가 고르게 흐르는 원통 도선의 거리에 따른 자기장 세기" xmlns="http://www.w3.org/2000/svg">
@@ -428,11 +431,11 @@ window.MathJax = {
 </svg><figcaption>앞에서 본 대전된 구의 전기장과 꼴이 닮았지만, 바깥에서 $1/r$ 로 줄어듭니다 (선 대칭).</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s22">전자기학 · 22 / 43</a></div></section>
+<div class="slide-no"><a href="#s22">전자기학 · 22 / 41</a></div></section>
 
 <section id="s23" class="slide">
   <div class="sl">
-    <header><p class="kicker">앙페르 법칙의 응용</p><h2>솔레노이드, 토로이드, 평행 도선</h2></header>
+    <header><p class="kicker">암페어 법칙의 응용 · 교과서 126~127쪽</p><h2>솔레노이드, 토로이드, 평행 도선</h2></header>
     <div class="body cols c3">
       <div class="box def"><span class="tag">긴 솔레노이드</span>
         <p>직사각형 고리를 잡으면 바깥 $B \approx 0$, 안쪽은 균일:</p>
@@ -450,7 +453,7 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s23">전자기학 · 23 / 43</a></div></section>
+<div class="slide-no"><a href="#s23">전자기학 · 23 / 41</a></div></section>
 
 <section id="s24" class="slide">
   <div class="sl">
@@ -471,19 +474,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s24">전자기학 · 24 / 43</a></div></section>
+<div class="slide-no"><a href="#s24">전자기학 · 24 / 41</a></div></section>
 
-<section id="s25" class="slide divider">
+<section id="s25" class="slide">
   <div class="sl">
-    <span class="roman">II-4</span>
-    <h2>전자기 유도</h2>
-    <p class="std">변하는 자기 선속이 기전력을 만든다 · 자체 유도 계수</p>
-  </div>
-<div class="slide-no"><a href="#s25">전자기학 · 25 / 43</a></div></section>
-
-<section id="s26" class="slide">
-  <div class="sl">
-    <header><p class="kicker">패러데이·렌츠 법칙</p><h2>자기 선속이 변하면 기전력이 생긴다</h2></header>
+    <header><p class="kicker">전자기 유도 · 교과서 128~130쪽</p><h2>자기 선속이 변하면 기전력이 생긴다</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$\Phi_B = \int\vec B\cdot d\vec A,\qquad \mathcal E = -N\frac{d\Phi_B}{dt}$$</div>
@@ -501,11 +496,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s26">전자기학 · 26 / 43</a></div></section>
+<div class="slide-no"><a href="#s25">전자기학 · 25 / 41</a></div></section>
 
-<section id="s27" class="slide">
+<section id="s26" class="slide">
   <div class="sl">
-    <header><p class="kicker">자체 유도</p><h2>자체 유도 계수와 RL 회로</h2></header>
+    <header><p class="kicker">자체 유도 · 교과서 131~133쪽 (RL 과도 응답은 교과서 밖)</p><h2>자체 유도 계수와 RL 회로</h2></header>
     <div class="body cols">
       <div>
         <p>코일의 전류가 바뀌면 자기 자신을 지나는 선속이 바뀌어 기전력이 생깁니다.</p>
@@ -521,11 +516,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s27">전자기학 · 27 / 43</a></div></section>
+<div class="slide-no"><a href="#s26">전자기학 · 26 / 41</a></div></section>
 
-<section id="s28" class="slide">
+<section id="s27" class="slide">
   <div class="sl">
-    <header><p class="kicker">상호 유도</p><h2>한 코일의 전류 변화가 옆 코일에 기전력을 만든다</h2></header>
+    <header><p class="kicker">상호 유도 · 교과서 133쪽</p><h2>한 코일의 전류 변화가 옆 코일에 기전력을 만든다</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$\mathcal E_2 = -M\frac{dI_1}{dt},\qquad \mathcal E_1 = -M\frac{dI_2}{dt}$$</div>
@@ -540,19 +535,19 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s28">전자기학 · 28 / 43</a></div></section>
+<div class="slide-no"><a href="#s27">전자기학 · 27 / 41</a></div></section>
 
-<section id="s29" class="slide divider">
+<section id="s28" class="slide divider">
   <div class="sl">
-    <span class="roman">II-5</span>
-    <h2>교류와 전기 진동</h2>
-    <p class="std">[12고물02-06] 교류의 발생 원리와 교류 기전력의 주기적 변화를 이해하고, LC·RLC 회로에서 전기 진동과 공진을 설명할 수 있다.</p>
+    <span class="roman">II-4</span>
+    <h2>교류와 전자기파</h2>
+    <p class="std">교과서 136~165쪽 · 교류 회로의 특징에 대해 설명할 수 있다 · 맥스웰 방정식을 이해하고 적용한다 · 전자기파의 발생 원리를 이해하고, 전자기파의 성질, 종류를 설명할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s29">전자기학 · 29 / 43</a></div></section>
+<div class="slide-no"><a href="#s28">전자기학 · 28 / 41</a></div></section>
 
-<section id="s30" class="slide">
+<section id="s29" class="slide">
   <div class="sl">
-    <header><p class="kicker">교류의 세 소자</p><h2>저항, 코일, 축전기: 리액턴스와 위상</h2></header>
+    <header><p class="kicker">교류 · 교과서 137~146쪽</p><h2>저항, 코일, 축전기: 리액턴스와 위상</h2></header>
     <div class="body cols wide-l">
       <div>
         <div class="tbl-wrap"><table class="tbl">
@@ -563,7 +558,7 @@ window.MathJax = {
             <tr><td>축전기 C</td><td>$V_C = IX_C$, $X_C = \dfrac{1}{\omega C}$</td><td>전압이 $90^\circ$ 뒤진다</td></tr>
           </tbody>
         </table></div>
-        <p>실효값: $I_{rms} = \dfrac{I_{max}}{\sqrt2},\ \ V_{rms} = \dfrac{V_{max}}{\sqrt2}$. 가정의 220 V는 실효값이고 최댓값은 약 311 V입니다.</p>
+        <p>유횻값(실효값): $I_{rms} = \dfrac{I_{max}}{\sqrt2},\ \ V_{rms} = \dfrac{V_{max}}{\sqrt2}$. 가정의 220 V는 유횻값이고 최댓값은 약 311 V입니다.</p>
       </div>
       <figure class="fig"><svg viewBox="0 0 420 250" role="img" aria-label="RLC 직렬 회로의 위상자 도표" xmlns="http://www.w3.org/2000/svg">
 <path class="ax" d="M80,150 H350"/>
@@ -584,11 +579,11 @@ window.MathJax = {
       <aside class="note">기존 p269는 "ΔV_rms = ΔV_rms/√2"로 분자에 rms를 썼습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s30">전자기학 · 30 / 43</a></div></section>
+<div class="slide-no"><a href="#s29">전자기학 · 29 / 41</a></div></section>
 
-<section id="s31" class="slide">
+<section id="s30" class="slide">
   <div class="sl">
-    <header><p class="kicker">LC 회로</p><h2>전기 진동: 용수철 진자와 같은 방정식</h2></header>
+    <header><p class="kicker">LC 회로 · 교과서 147~149쪽</p><h2>전기 진동: 용수철 진자와 같은 방정식</h2></header>
     <div class="body cols">
       <div>
         <p>충전된 축전기를 코일에 연결하면 $\dfrac qC + L\dfrac{dI}{dt} = 0$, $I = \dfrac{dq}{dt}$ 이므로</p>
@@ -609,11 +604,11 @@ window.MathJax = {
       </table></div>
     </div>
   </div>
-<div class="slide-no"><a href="#s31">전자기학 · 31 / 43</a></div></section>
+<div class="slide-no"><a href="#s30">전자기학 · 30 / 41</a></div></section>
 
-<section id="s32" class="slide">
+<section id="s31" class="slide">
   <div class="sl">
-    <header><p class="kicker">RLC 직렬 회로</p><h2>임피던스와 위상각</h2></header>
+    <header><p class="kicker">RLC 직렬 회로 · 교과서 149~152쪽</p><h2>임피던스와 위상각</h2></header>
     <div class="body cols">
       <div>
         <p>전원 $v = V_{max}\sin\omega t$ 에 R, L, C를 직렬로 연결하면 전류는 모든 소자에서 같습니다. 위상자를 더하면</p>
@@ -633,9 +628,9 @@ window.MathJax = {
       <aside class="note">기존 p284는 전류를 sin(ωt − φ)로 두고 저항 전압을 sin ωt로 써서 위상 기준이 맞지 않았습니다. 여기서는 전원 전압을 기준으로 통일했습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s32">전자기학 · 32 / 43</a></div></section>
+<div class="slide-no"><a href="#s31">전자기학 · 31 / 41</a></div></section>
 
-<section id="s33" class="slide">
+<section id="s32" class="slide">
   <div class="sl">
     <header><p class="kicker">공진</p><h2>$X_L = X_C$ 일 때 전류가 가장 크다</h2></header>
     <div class="body cols wide-r">
@@ -662,11 +657,11 @@ window.MathJax = {
 </svg><figcaption>같은 $L, C$ 에서 $R$ 을 바꾼 공진 곡선 (전류 진폭). $R$ 이 작을수록 $Q$ 가 크고 봉우리가 날카롭습니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s33">전자기학 · 33 / 43</a></div></section>
+<div class="slide-no"><a href="#s32">전자기학 · 32 / 41</a></div></section>
 
-<section id="s34" class="slide">
+<section id="s33" class="slide">
   <div class="sl">
-    <header><p class="kicker">자유 진동과 강제 진동</p><h2>두 가지 '진동수'를 구분하자</h2></header>
+    <header><p class="kicker">심화 · 자유 진동과 강제 진동</p><h2>두 가지 '진동수'를 구분하자</h2></header>
     <div class="body cols">
       <div class="box"><span class="tag">전원 없음 · 자유 진동</span>
         <div class="eq">$$L\ddot q + R\dot q + \frac qC = 0$$</div>
@@ -679,9 +674,9 @@ window.MathJax = {
       <aside class="note">강제 진동의 정상 상태 해는 q_p = (V₀/L)/D · sin(ωt − Δ), D = √((ω₀²−ω²)² + 4γ²ω²), tanΔ = 2γω/(ω₀²−ω²) 입니다. 기존 p304~305의 합성식은 sin과 cos 계수가 바뀌어 방정식을 만족하지 않습니다 (수치로 확인함).</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s34">전자기학 · 34 / 43</a></div></section>
+<div class="slide-no"><a href="#s33">전자기학 · 33 / 41</a></div></section>
 
-<section id="s35" class="slide">
+<section id="s34" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>교류 회로</h2></header>
     <div class="body cols">
@@ -700,35 +695,27 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s35">전자기학 · 35 / 43</a></div></section>
+<div class="slide-no"><a href="#s34">전자기학 · 34 / 41</a></div></section>
 
-<section id="s36" class="slide divider">
+<section id="s35" class="slide">
   <div class="sl">
-    <span class="roman">II-6</span>
-    <h2>맥스웰 방정식과 전자기파</h2>
-    <p class="std">전자기파의 발생 원리를 이해하고 성질과 종류를 조사·발표한다 · 파동 방정식을 유도하고 맥스웰 방정식의 과학사적 의미를 토의한다</p>
-  </div>
-<div class="slide-no"><a href="#s36">전자기학 · 36 / 43</a></div></section>
-
-<section id="s37" class="slide">
-  <div class="sl">
-    <header><p class="kicker">변위 전류</p><h2>충전 중인 축전기에서 앙페르 법칙이 깨진다?</h2></header>
+    <header><p class="kicker">변위 전류 · 교과서 153~155쪽</p><h2>충전 중인 축전기에서 암페어 법칙이 깨진다?</h2></header>
     <div class="body cols">
       <div>
         <p>같은 고리를 경계로 하는 두 곡면을 생각합니다. 도선을 뚫는 평면 $S_1$ 에서는 $I_{enc} = I$, 판 사이를 지나는 주머니 모양 $S_2$ 에서는 $I_{enc} = 0$ 입니다. 같은 $\oint\vec B\cdot d\vec l$ 이 두 값을 가질 수는 없습니다.</p>
         <p>맥스웰(1865)은 판 사이에서 변하는 전기 선속이 전류와 같은 역할을 한다고 보았습니다.</p>
       </div>
-      <div class="box def"><span class="tag">앙페르-맥스웰 법칙</span>
+      <div class="box def"><span class="tag">맥스웰-암페어 법칙</span>
         <div class="eq">$$I_d = \varepsilon_0\frac{d\Phi_E}{dt},\qquad \oint\vec B\cdot d\vec l = \mu_0\Big(I_{enc} + \varepsilon_0\frac{d\Phi_E}{dt}\Big)$$</div>
         <p>평행판에서 $\Phi_E = EA = Q/\varepsilon_0$ 이므로 $I_d = dQ/dt = I$. 두 곡면의 결과가 같아집니다.</p>
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s37">전자기학 · 37 / 43</a></div></section>
+<div class="slide-no"><a href="#s35">전자기학 · 35 / 41</a></div></section>
 
-<section id="s38" class="slide">
+<section id="s36" class="slide">
   <div class="sl">
-    <header><p class="kicker">맥스웰 방정식</p><h2>전자기학 전체를 네 줄로</h2></header>
+    <header><p class="kicker">맥스웰 방정식 · 교과서 156~157쪽</p><h2>전자기학 전체를 네 줄로</h2></header>
     <div class="body cols wide-l">
       <div class="tbl-wrap"><table class="tbl">
         <thead><tr><th>이름</th><th>적분형</th><th>뜻</th></tr></thead>
@@ -736,7 +723,7 @@ window.MathJax = {
           <tr><td>가우스 법칙</td><td>$\oint\vec E\cdot d\vec A = \dfrac{Q_{in}}{\varepsilon_0}$</td><td>전하가 전기장의 원천</td></tr>
           <tr><td>자기 가우스 법칙</td><td>$\oint\vec B\cdot d\vec A = 0$</td><td>자기 홀극이 없다</td></tr>
           <tr><td>패러데이 법칙</td><td>$\oint\vec E\cdot d\vec l = -\dfrac{d\Phi_B}{dt}$</td><td>변하는 B가 E를 만든다</td></tr>
-          <tr><td>앙페르-맥스웰 법칙</td><td>$\oint\vec B\cdot d\vec l = \mu_0I_{enc} + \mu_0\varepsilon_0\dfrac{d\Phi_E}{dt}$</td><td>전류와 변하는 E가 B를 만든다</td></tr>
+          <tr><td>맥스웰-암페어 법칙</td><td>$\oint\vec B\cdot d\vec l = \mu_0I_{enc} + \mu_0\varepsilon_0\dfrac{d\Phi_E}{dt}$</td><td>전류와 변하는 E가 B를 만든다</td></tr>
         </tbody>
       </table></div>
       <div class="box deep"><span class="tag">심화 · 미분형</span>
@@ -744,17 +731,17 @@ window.MathJax = {
         <div class="eq">$$\nabla\times\vec E = -\frac{\partial\vec B}{\partial t},\quad \nabla\times\vec B = \mu_0\vec J + \mu_0\varepsilon_0\frac{\partial\vec E}{\partial t}$$</div>
         <p class="small">$\nabla\cdot\vec B = 0$ 은 닫힌 곡면을 지나는 알짜 자기 선속이 0이라는 뜻입니다.</p>
       </div>
-      <aside class="note">기존 p10은 미분형 앙페르-맥스웰 법칙의 μ₀J 앞에 (−)를 붙였고, p318은 적분형에서 I_enc를 빠뜨렸습니다.</aside>
+      <aside class="note">기존 p10은 미분형 맥스웰-암페어 법칙의 μ₀J 앞에 (−)를 붙였고, p318은 적분형에서 I_enc를 빠뜨렸습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s38">전자기학 · 38 / 43</a></div></section>
+<div class="slide-no"><a href="#s36">전자기학 · 36 / 41</a></div></section>
 
-<section id="s39" class="slide">
+<section id="s37" class="slide">
   <div class="sl">
-    <header><p class="kicker">파동 방정식 유도</p><h2>두 법칙을 엮으면 빛의 속력이 나온다</h2></header>
+    <header><p class="kicker">파동 방정식 · 교과서 157~159쪽</p><h2>두 법칙을 엮으면 빛의 속력이 나온다</h2></header>
     <div class="body cols">
       <div>
-        <p>$\vec E = E(x,t)\hat y$, $\vec B = B(x,t)\hat z$ 인 평면파를 생각합니다. 가는 직사각형 고리에 패러데이 법칙과 앙페르-맥스웰 법칙(진공, $I = 0$)을 쓰면</p>
+        <p>$\vec E = E(x,t)\hat y$, $\vec B = B(x,t)\hat z$ 인 평면파를 생각합니다. 가는 직사각형 고리에 패러데이 법칙과 맥스웰-암페어 법칙(진공, $I = 0$)을 쓰면</p>
         <div class="eq">$$\frac{\partial E}{\partial x} = -\frac{\partial B}{\partial t},\qquad \frac{\partial B}{\partial x} = -\mu_0\varepsilon_0\frac{\partial E}{\partial t}$$</div>
         <p>첫 식을 $x$ 로 한 번 더 미분하고 둘째 식을 넣으면</p>
         <div class="eq">$$\frac{\partial^2E}{\partial x^2} = \mu_0\varepsilon_0\frac{\partial^2E}{\partial t^2}$$</div>
@@ -766,11 +753,11 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s39">전자기학 · 39 / 43</a></div></section>
+<div class="slide-no"><a href="#s37">전자기학 · 37 / 41</a></div></section>
 
-<section id="s40" class="slide">
+<section id="s38" class="slide">
   <div class="sl">
-    <header><p class="kicker">전자기파의 성질</p><h2>횡파, E = cB, 에너지를 나른다</h2></header>
+    <header><p class="kicker">전자기파의 성질 · 교과서 160~165쪽</p><h2>횡파, E = cB, 에너지를 나른다</h2></header>
     <div class="body cols">
       <div>
         <div class="eq">$$E = E_0\cos(kx - \omega t),\quad B = B_0\cos(kx - \omega t),\quad E_0 = cB_0$$</div>
@@ -815,11 +802,11 @@ window.MathJax = {
 </svg><figcaption>한 순간의 평면 전자기파. 전기장과 자기장은 같은 위상으로 진동합니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s40">전자기학 · 40 / 43</a></div></section>
+<div class="slide-no"><a href="#s38">전자기학 · 38 / 41</a></div></section>
 
-<section id="s41" class="slide">
+<section id="s39" class="slide">
   <div class="sl">
-    <header><p class="kicker">전자기파의 발생</p><h2>가속하는 전하가 전자기파를 낸다</h2></header>
+    <header><p class="kicker">전자기파의 발생 · 교과서 160~162쪽</p><h2>가속하는 전하가 전자기파를 낸다</h2></header>
     <div class="body cols">
       <div>
         <p>정지한 전하는 전기장만, 등속으로 움직이는 전하는 전기장과 자기장을 만들지만 복사하지는 않습니다. <strong>가속하는</strong> 전하는 장의 변화가 빛의 속력으로 퍼져 나가 전자기파가 됩니다.</p>
@@ -843,9 +830,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s41">전자기학 · 41 / 43</a></div></section>
+<div class="slide-no"><a href="#s39">전자기학 · 39 / 41</a></div></section>
 
-<section id="s42" class="slide">
+<section id="s40" class="slide">
   <div class="sl">
     <header><p class="kicker">조사·발표와 토의</p><h2>맥스웰 방정식의 과학사적 의미</h2></header>
     <div class="body cols">
@@ -863,9 +850,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s42">전자기학 · 42 / 43</a></div></section>
+<div class="slide-no"><a href="#s40">전자기학 · 40 / 41</a></div></section>
 
-<section id="s43" class="slide">
+<section id="s41" class="slide">
   <div class="sl">
     <header><p class="kicker">정리</p><h2>전자기학에서 가져갈 것</h2></header>
     <div class="body cols">
@@ -876,14 +863,14 @@ window.MathJax = {
         <li>$C = \varepsilon_0A/d$, 병렬은 더하고 직렬은 역수를 더한다, $u_E = \tfrac12\varepsilon_0E^2$.</li>
       </ul>
       <ul>
-        <li>비오-사바르는 언제나, 앙페르는 대칭이 있을 때. 솔레노이드 $B = \mu_0nI$.</li>
+        <li>비오-사바르는 언제나, 암페어는 대칭이 있을 때. 솔레노이드 $B = \mu_0nI$.</li>
         <li>$\mathcal E = -N\,d\Phi_B/dt$, (−)는 렌츠 법칙. $L = \mu_0N^2A/l$, $u_B = B^2/2\mu_0$.</li>
         <li>RLC: $Z = \sqrt{R^2+(X_L-X_C)^2}$, 공진 $\omega_0 = 1/\sqrt{LC}$.</li>
         <li>변위 전류가 맥스웰 방정식을 완성하고, 그 결론이 $c = 1/\sqrt{\mu_0\varepsilon_0}$ 인 전자기파다.</li>
       </ul>
     </div>
   </div>
-<div class="slide-no"><a href="#s43">전자기학 · 43 / 43</a></div></section>
+<div class="slide-no"><a href="#s41">전자기학 · 41 / 41</a></div></section>
 </main>
 <footer class="site-foot">
   <p>2022 개정 교육과정 고급 물리학 수업 자료</p>
