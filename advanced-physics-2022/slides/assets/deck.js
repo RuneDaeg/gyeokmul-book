@@ -111,13 +111,39 @@
 
   function show(i, at) {
     idx = Math.max(0, Math.min(slides.length - 1, i));
-    slides.forEach(function (s, k) { s.classList.toggle("current", k === idx); });
+    slides.forEach(function (s, k) {
+      s.classList.toggle("current", k === idx);
+      if (k !== idx) s.querySelector(".sl").style.fontSize = "";
+    });
     setRevealed(at === "end" ? stepsOf[idx].length : 0);
+    fitPresent();
     var id = slides[idx].id;
     if (id && location.hash !== "#" + id) {
       try { history.replaceState(null, "", "#" + id); } catch (e) { /* 무시 */ }
     }
   }
+
+  // 발표 모드: 지금 슬라이드가 화면을 넘으면 글자를 줄여 맞춘다 (휴대폰, 4:3 화면 등).
+  // 아직 안 나온 단계도 자리를 차지하므로 처음부터 끝까지 다 들어가는 크기가 된다.
+  // 가로 화면(present-land)에서는 폭이 좁아도 휴대폰용 한 단 배치를 쓰지 않고 16:9 두 단을 그대로 줄인다.
+  function fitPresent() {
+    var on = body.classList.contains("present") && !printSaved;
+    body.classList.toggle("present-land", on && window.innerWidth > window.innerHeight);
+    if (!on) return;
+    var sl = slides[idx].querySelector(".sl");
+    sl.style.fontSize = "";
+    for (var k = 0; k < 8 && sl.scrollHeight > sl.clientHeight + 6; k++) {
+      var px = parseFloat(getComputedStyle(sl).fontSize);
+      var g = Math.max(0.7, Math.min(0.97, (sl.clientHeight / sl.scrollHeight) * 0.98));
+      if (px * g < 10) break;   // 이보다 작으면 읽을 수 없으니 넘치는 부분은 스크롤로 본다
+      sl.style.fontSize = (px * g).toFixed(2) + "px";
+    }
+  }
+  window.addEventListener("resize", function () { fitPresent(); });
+  document.addEventListener("toggle", function (e) {
+    if (e.target.matches && e.target.matches("details.answer")) fitPresent();
+  }, true);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitPresent(); });
 
   function nearestSlide() {
     var best = 0, bestD = Infinity;
@@ -139,9 +165,9 @@
   }
 
   function exitPresent() {
-    body.classList.remove("present");
+    body.classList.remove("present", "present-land");
     if (presentBtn) presentBtn.setAttribute("aria-pressed", "false");
-    slides.forEach(function (s) { s.classList.remove("current"); });
+    slides.forEach(function (s) { s.classList.remove("current"); s.querySelector(".sl").style.fontSize = ""; });
     if (document.fullscreenElement && document.exitFullscreen) {
       document.exitFullscreen().catch(function () {});
     }
@@ -211,8 +237,9 @@
     opts = opts || {};
     var answers = opts.answers !== false;
     restorePrint();
+    slides.forEach(function (s) { s.querySelector(".sl").style.fontSize = ""; });
     printSaved = { present: body.classList.contains("present"), open: [] };
-    if (printSaved.present) body.classList.remove("present");
+    if (printSaved.present) body.classList.remove("present", "present-land");
     document.querySelectorAll("details.answer").forEach(function (d) {
       printSaved.open.push([d, d.open]);
       if (answers) d.open = true;
@@ -243,8 +270,10 @@
     printSaved.open.forEach(function (it) { it[0].open = it[1]; });
     slides.forEach(function (s) { s.querySelector(".sl").style.fontSize = ""; });
     body.classList.remove("print-noanswers");
-    if (printSaved.present) body.classList.add("present");
+    var wasPresent = printSaved.present;
+    if (wasPresent) body.classList.add("present");
     printSaved = null;
+    if (wasPresent) fitPresent();
   }
   // PDF 생성 스크립트가 직접 맞출 때는 건드리지 않는다
   window.addEventListener("beforeprint", function () { if (!window.AP22_PRINT_LOCK) fitForPrint({ answers: true }); });

@@ -353,6 +353,22 @@ body.present .slide {
 }
 body.present .slide.current { display: block; }
 body.present .sl { overflow: auto; }
+/* 가로 화면 발표: 글자 크기도 16:9 비율 그대로 (작은 휴대폰에서 15px 하한 때문에 넘치지 않게) */
+body.present-land .sl { font-size: clamp(10px, 1.95cqw, 40px); }
+body.present-land .slide.derive .sl { font-size: clamp(10px, 1.8cqw, 37px); }
+/* 세로로 든 휴대폰: 16:9 띠로 줄이면 글자가 너무 작아지므로 화면 전체를 쓴다.
+   위는 판서 버튼, 아래는 쪽 표시 자리를 비운다 */
+@media (orientation: portrait) and (max-width: 720px) {
+  body.present .slide { width: 100vw; height: 100vh; height: 100dvh; }
+  body.present .sl {
+    padding-top: calc(58px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px));
+  }
+  /* 쪽 번호는 아래 안내 줄에 이미 나온다 */
+  body.present .slide-no { display: none; }
+  /* 옆으로 밀면 슬라이드가 넘어가므로 긴 식은 옆 스크롤 대신 너비에 맞춰 줄인다 */
+  body.present .eq mjx-container[display="true"] > svg { max-width: 100%; }
+}
 /* 단계별 표시: 자리는 그대로 두고 감춰서, 한 줄이 나올 때 화면이 흔들리지 않게 */
 body.present .slide .step { transition: opacity 0.25s ease, transform 0.25s ease; }
 body.present .slide .step:not(.shown) { visibility: hidden; opacity: 0; transform: translateY(0.3em); }
@@ -373,18 +389,18 @@ body.present .present-hint { display: block; }
 
 /* 좁은 화면: 카드는 내용 높이를 따르고 단을 한 줄로 */
 @container (max-width: 680px) {
-  .sl { padding: 22px 18px 34px; gap: 10px; }
-  .cols, .cols.c3, .cols.wide-l, .cols.wide-r { grid-template-columns: 1fr; }
-  .slide.cover h2 { font-size: 2.2em; }
-  .slide.divider .roman { font-size: 3.2em; }
-  .toc { columns: 1; }
-  figure.fig svg { max-height: none; }
-  .sl ol.steps > li { grid-template-columns: 1.7em minmax(0, 1fr); }
-  .sl ol.steps > li > .eq { grid-column: 2; }
-  .sl ol.steps > li.wide > p, .sl ol.steps > li.wide > .eq { grid-column: 2; }
-  .slide.derive .sl { font-size: 15px; }
+  :where(body:not(.present-land)) .sl { padding: 22px 18px 34px; gap: 10px; }
+  :where(body:not(.present-land)) .cols, :where(body:not(.present-land)) .cols.c3, :where(body:not(.present-land)) .cols.wide-l, :where(body:not(.present-land)) .cols.wide-r { grid-template-columns: 1fr; }
+  :where(body:not(.present-land)) .slide.cover h2 { font-size: 2.2em; }
+  :where(body:not(.present-land)) .slide.divider .roman { font-size: 3.2em; }
+  :where(body:not(.present-land)) .toc { columns: 1; }
+  :where(body:not(.present-land)) figure.fig svg { max-height: none; }
+  :where(body:not(.present-land)) .sl ol.steps > li { grid-template-columns: 1.7em minmax(0, 1fr); }
+  :where(body:not(.present-land)) .sl ol.steps > li > .eq { grid-column: 2; }
+  :where(body:not(.present-land)) .sl ol.steps > li.wide > p, :where(body:not(.present-land)) .sl ol.steps > li.wide > .eq { grid-column: 2; }
+  :where(body:not(.present-land)) .slide.derive .sl { font-size: 15px; }
   /* 좁은 화면: 긴 식은 줄이지 않고 옆으로 밀어서 본다 */
-  .eq mjx-container[display="true"] > svg { max-width: none; }
+  :where(body:not(.present-land)) .eq mjx-container[display="true"] > svg { max-width: none; }
 }
 @media (max-width: 720px) {
   .slide { aspect-ratio: auto; min-height: 0; }
