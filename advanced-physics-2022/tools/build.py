@@ -40,7 +40,17 @@ PAGE = """<!doctype html>
 window.MathJax = {{
   tex: {{ inlineMath: [["$", "$"], ["\\\\(", "\\\\)"]], displayMath: [["$$", "$$"], ["\\\\[", "\\\\]"]] }},
   svg: {{ fontCache: "global" }},
-  options: {{ skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code", "svg"] }}
+  options: {{ skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code", "svg"] }},
+  startup: {{
+    pageReady: function () {{
+      // 그림 라벨은 글자 폭을 재서 배치하므로 웹 글꼴이 모두 내려온 뒤에 그린다
+      return MathJax.startup.defaultPageReady().then(function () {{
+        return document.fonts ? document.fonts.ready : null;
+      }}).then(function () {{
+        if (window.AP22_figLabels) window.AP22_figLabels();
+      }});
+    }}
+  }}
 }};
 </script>
 <script src="{mathjax}" defer></script>

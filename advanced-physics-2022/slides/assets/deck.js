@@ -8,6 +8,59 @@
   var notesBtn = document.getElementById("btn-notes");
   var hint = document.querySelector(".present-hint");
 
+  // ---------- 그림 라벨의 수식 ----------
+  // figures.py 가 data-tex 에 남긴 '글자 $수식$ 글자' 라벨을 MathJax 로 그려 그림 SVG 안에 끼워 넣는다.
+  // MathJax 의 startup.pageReady 에서 부른다 (모든 수식 조판이 끝난 뒤).
+  window.AP22_figLabels = function () {
+    var MJ = window.MathJax;
+    if (!MJ || !MJ.tex2svg || !MJ.startup || !MJ.startup.output) return;
+    var NS = "http://www.w3.org/2000/svg";
+    var opts = MJ.startup.output.options, cache = opts.fontCache;
+    opts.fontCache = "none";   // 글자 모양을 각 라벨 안에 바로 넣는다
+    document.querySelectorAll(".fig svg text[data-tex]").forEach(function (t) {
+      try {
+        var cls = t.getAttribute("class") || "";
+        var F = parseFloat(getComputedStyle(t).fontSize) || 13;
+        var x = parseFloat(t.getAttribute("x")) || 0, y = parseFloat(t.getAttribute("y")) || 0;
+        var anchor = t.getAttribute("text-anchor") || "start";
+        var g = document.createElementNS(NS, "g");
+        g.setAttribute("class", ("mlab " + cls).trim());
+        t.parentNode.insertBefore(g, t);
+        var cx = 0;
+        t.getAttribute("data-tex").split("$").forEach(function (part, i) {
+          if (!part) return;
+          if (i % 2 === 0) {
+            var tt = document.createElementNS(NS, "text");
+            tt.setAttribute("x", cx);
+            tt.setAttribute("y", 0);
+            if (cls) tt.setAttribute("class", cls);
+            tt.setAttributeNS("http://www.w3.org/XML/1998/namespace", "xml:space", "preserve");
+            tt.style.whiteSpace = "pre";
+            tt.textContent = part;
+            g.appendChild(tt);
+            cx += tt.getComputedTextLength();
+          } else {
+            var m = MJ.tex2svg(part, { display: false }).querySelector("svg");
+            var vb = m.getAttribute("viewBox").split(/[\s,]+/).map(Number);
+            var k = F * 1.06 / 1000;   // 수식 1 em = 라벨 글자 크기
+            m.setAttribute("x", cx + 0.3);
+            m.setAttribute("y", vb[1] * k);
+            m.setAttribute("width", vb[2] * k);
+            m.setAttribute("height", vb[3] * k);
+            m.setAttribute("overflow", "visible");
+            m.removeAttribute("style");
+            g.appendChild(m);
+            cx += vb[2] * k + 0.6;
+          }
+        });
+        var dx = anchor === "middle" ? -cx / 2 : anchor === "end" ? -cx : 0;
+        g.setAttribute("transform", "translate(" + (x + dx).toFixed(1) + "," + y.toFixed(1) + ")");
+        t.parentNode.removeChild(t);
+      } catch (e) { /* 실패하면 대체 글자를 그대로 둔다 */ }
+    });
+    opts.fontCache = cache;
+  };
+
   // ---------- 단계별 표시 (발표 모드) ----------
   // 유도 단계(ol.steps)와 번호 목록의 항목을 한 줄씩 보여 준다. 단계 목록 뒤에 붙은 문단은 마지막 단계로 친다.
   var stepsOf = slides.map(function (s) {

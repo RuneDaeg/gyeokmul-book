@@ -2,7 +2,9 @@
 
 색은 모두 deck.css 의 클래스(c1, c2, ax, fA …)로 지정하므로 밝은/어두운 테마를 따라간다.
 """
+import html
 import math
+import re
 
 
 def _path(points):
@@ -15,6 +17,7 @@ class Plot:
     def __init__(self, w, h, xr, yr, pad=(44, 16, 16, 34)):
         self.w, self.h = w, h
         self.l, self.t, self.r, self.b = pad
+        self.t += 12   # y축 이름이 들어갈 자리
         self.x0, self.x1 = xr
         self.y0, self.y1 = yr
 
@@ -41,18 +44,32 @@ class Plot:
         s = [f'<path class="ax" d="M{self.l},{oy:.1f} H{self.w - self.r + 6}"/>',
              f'<path class="ax" d="M{self.l},{self.h - self.b} V{self.t - 6}"/>']
         if xlabel:
-            s.append(f'<text x="{self.w - self.r}" y="{oy + 22:.1f}" text-anchor="end">{xlabel}</text>')
+            s.append(f'<text x="{self.w - self.r}" y="{self.h - 3}" text-anchor="end">{xlabel}</text>')
         if ylabel:
-            s.append(f'<text x="{self.l - 8}" y="{self.t + 4}" text-anchor="end">{ylabel}</text>')
+            s.append(f'<text x="{self.l + 6}" y="{self.t - 6}">{ylabel}</text>')
         return "\n".join(s)
 
     def svg(self, inner, label):
-        return (f'<svg viewBox="0 0 {self.w} {self.h}" role="img" aria-label="{label}" '
-                f'xmlns="http://www.w3.org/2000/svg">\n{inner}\n</svg>')
+        return svg(self.w, self.h, inner, label)
+
+
+TEXT_RE = re.compile(r"<text([^>]*)>([^<]*\$[^<]*)</text>")
+
+
+def tex_labels(inner):
+    """'$...$' 가 든 라벨은 data-tex 에 LaTeX 원문을 두고, 페이지가 열릴 때 deck.js 가 MathJax 로 그린다.
+    글자 내용은 스크립트가 돌지 않을 때 보일 대체 문자열이다."""
+    def sub(m):
+        src = m.group(2)
+        plain = re.sub(r"\\(?:mathrm|text)\{([^}]*)\}", r"\1", src)
+        plain = re.sub(r"\\[a-zA-Z]+\s?", "", plain).replace("$", "").replace("{", "").replace("}", "")
+        return f'<text{m.group(1)} data-tex="{html.escape(src, quote=True)}">{plain}</text>'
+    return TEXT_RE.sub(sub, inner)
 
 
 def svg(w, h, inner, label):
-    return f'<svg viewBox="0 0 {w} {h}" role="img" aria-label="{label}" xmlns="http://www.w3.org/2000/svg">\n{inner}\n</svg>'
+    return (f'<svg viewBox="0 0 {w} {h}" role="img" aria-label="{label}" xmlns="http://www.w3.org/2000/svg">\n'
+            f'{tex_labels(inner)}\n</svg>')
 
 
 # ---------------------------------------------------------------- 역학
@@ -78,11 +95,11 @@ def traj():
         pts1.append((p.X(x), p.Y(max(y, 0))))
         t += 0.01
     xr1 = drag_xy(t)[0]
-    inner = [p.axes("x (m)", "y (m)"),
+    inner = [p.axes("$x$ (m)", "$y$ (m)"),
              f'<path class="c2 dash" d="{_path(pts0)}"/>',
              f'<path class="c1" d="{_path(pts1)}"/>',
-             f'<text x="{p.X(30):.0f}" y="{p.Y(9.5):.0f}" class="t-ink">저항 없음: R = {R0:.1f} m</text>',
-             f'<text x="{p.X(23):.0f}" y="{p.Y(4.2):.0f}" class="t-acc">선형 저항 b/m = 0.25 s⁻¹: R ≈ {xr1:.1f} m</text>']
+             f'<text x="{p.X(30):.0f}" y="{p.Y(9.5):.0f}" class="t-ink">저항 없음: $R = {R0:.1f}$ m</text>',
+             f'<text x="{p.X(13.5):.0f}" y="{p.Y(2.2):.0f}" text-anchor="middle" class="t-acc">선형 저항: $R \\approx {xr1:.1f}$ m</text>']
     for xv in (10, 20, 30, 40):
         inner.append(f'<text x="{p.X(xv):.0f}" y="{p.h - 18}" text-anchor="middle">{xv}</text>')
     for yv in (5, 10):
@@ -92,14 +109,14 @@ def traj():
 
 def vterm():
     p = Plot(440, 220, (0, 5), (0, 1.15), pad=(46, 14, 14, 36))
-    inner = [p.axes("t / τ", "v / v_T"),
+    inner = [p.axes("$t/\\tau$", "$v/v_T$"),
              f'<path class="gr dash" d="M{p.X(0):.0f},{p.Y(1):.0f} H{p.X(5):.0f}"/>',
              p.curve(lambda t: 1 - math.exp(-t)),
              f'<path class="gr dash" d="M{p.X(1):.0f},{p.Y(0):.0f} V{p.Y(1 - math.exp(-1)):.0f} H{p.X(0):.0f}"/>',
-             f'<text x="{p.X(1) + 4:.0f}" y="{p.Y(0.1):.0f}">τ = m/b</text>',
+             f'<text x="{p.X(1) + 4:.0f}" y="{p.Y(0.1):.0f}">$\\tau = m/b$</text>',
              f'<text x="{p.l - 6}" y="{p.Y(0.632) + 4:.0f}" text-anchor="end">0.63</text>',
              f'<text x="{p.l - 6}" y="{p.Y(1) + 4:.0f}" text-anchor="end">1</text>',
-             f'<text x="{p.X(3.2):.0f}" y="{p.Y(1.06):.0f}" class="t-acc">종단 속도 v_T = mg/b</text>']
+             f'<text x="{p.X(3.2):.0f}" y="{p.Y(1.06):.0f}" class="t-acc">종단 속도 $v_T = mg/b$</text>']
     return p.svg("\n".join(inner), "선형 저항을 받으며 떨어지는 물체의 속력이 종단 속도에 다가가는 그래프")
 
 
@@ -110,7 +127,7 @@ def potential():
     E = 2.4
     p = Plot(480, 250, (0.4, 9.0), (-2.2, 5.2), pad=(40, 14, 14, 34))
     xs = [0.4 + 8.6 * i / 600 for i in range(601)]
-    inner = [p.axes("x", "U, E")]
+    inner = [p.axes("$x$", "$U,\\ E$")]
     # 운동 가능 구간(E ≥ U) 음영
     seg = []
     for x in xs + [None]:
@@ -125,10 +142,10 @@ def potential():
             seg = []
     inner.append(p.curve(U, cls="c2"))
     inner.append(f'<path class="c1" d="M{p.X(0.4):.0f},{p.Y(E):.1f} H{p.X(9):.0f}"/>')
-    inner.append(f'<text x="{p.X(8.95):.0f}" y="{p.Y(E) - 6:.0f}" text-anchor="end" class="t-acc">역학적 에너지 E</text>')
-    inner.append(f'<text x="{p.X(2.6):.0f}" y="{p.Y(1.3):.0f}" text-anchor="middle" class="t-ink">E ≥ U: 운동 가능</text>')
-    inner.append(f'<text x="{p.X(2.6):.0f}" y="{p.Y(0.6):.0f}" text-anchor="middle">K = E − U</text>')
-    inner.append(f'<text x="{p.X(4.6):.0f}" y="{p.Y(4.6):.0f}" text-anchor="middle" class="t-warn">E &lt; U: 금지 구간</text>')
+    inner.append(f'<text x="{p.X(0.5):.0f}" y="{p.Y(E) - 6:.0f}" class="t-acc">역학적 에너지 $E$</text>')
+    inner.append(f'<text x="{p.X(2.6):.0f}" y="{p.Y(1.3):.0f}" text-anchor="middle" class="t-ink">$E \\ge U$: 운동 가능</text>')
+    inner.append(f'<text x="{p.X(2.6):.0f}" y="{p.Y(0.6):.0f}" text-anchor="middle">$K = E - U$</text>')
+    inner.append(f'<text x="{p.X(4.6):.0f}" y="{p.Y(4.6):.0f}" text-anchor="middle" class="t-warn">$E \\lt U$: 금지 구간</text>')
     inner.append(f'<text x="{p.X(0.9):.0f}" y="{p.Y(-1.9):.0f}">전환점</text>')
     return p.svg("\n".join(inner), "퍼텐셜 에너지 곡선과 역학적 에너지, 운동 가능 구간")
 
@@ -138,15 +155,15 @@ def radial(kind):
     p = Plot(420, 220, (0, 4), (0, 1.15), pad=(40, 14, 14, 36))
     if kind == "E":
         f = lambda r: r if r < 1 else 1 / r ** 2
-        lab_in, lab_out, ylab = "E ∝ r", "E ∝ 1/r²", "E"
+        lab_in, lab_out, ylab = "$E \\propto r$", "$E \\propto 1/r^2$", "$E$"
         aria = "균일하게 대전된 부도체 구의 반지름에 따른 전기장 세기"
     else:
         f = lambda r: r if r < 1 else 1 / r
-        lab_in, lab_out, ylab = "B ∝ r", "B ∝ 1/r", "B"
+        lab_in, lab_out, ylab = "$B \\propto r$", "$B \\propto 1/r$", "$B$"
         aria = "전류가 고르게 흐르는 원통 도선의 거리에 따른 자기장 세기"
-    inner = [p.axes("r", ylab), p.curve(f),
+    inner = [p.axes("$r$", ylab), p.curve(f),
              f'<path class="ax dash" d="M{p.X(1):.0f},{p.Y(0):.0f} V{p.Y(1):.0f}"/>',
-             f'<text x="{p.X(1):.0f}" y="{p.h - 18}" text-anchor="middle">R</text>',
+             f'<text x="{p.X(1):.0f}" y="{p.h - 18}" text-anchor="middle">$R$</text>',
              f'<text x="{p.X(0.45):.0f}" y="{p.Y(0.78):.0f}" text-anchor="middle" class="t-acc">{lab_in}</text>',
              f'<text x="{p.X(2.4):.0f}" y="{p.Y(0.45):.0f}" class="t-acc">{lab_out}</text>']
     return p.svg("\n".join(inner), aria)
@@ -167,11 +184,11 @@ def phasor():
         f'<path class="gr dash" d="M{ox + VR},{oy} V{ey} M{ox},{ey} H{ox + VR}"/>',
         f'<path class="c2" d="M{ox},{oy} L{ex},{ey}"/>',
         f'<circle cx="{ex}" cy="{ey}" r="3.5" class="fInk"/>',
-        f'<text x="{ox + VR - 4}" y="{oy + 18}" text-anchor="end" class="t-acc">ΔV_R (전류 I와 같은 위상)</text>',
-        f'<text x="{ox + 8}" y="{oy - VL + 4}" class="t-warm">ΔV_L (I보다 90° 앞섬)</text>',
-        f'<text x="{ox + 8}" y="{oy + VC + 4}" class="t-warn">ΔV_C (I보다 90° 뒤짐)</text>',
-        f'<text x="{ex + 8}" y="{ey - 2}" class="t-ink">ΔV_max</text>',
-        f'<text x="{ox + 38}" y="{oy - 10}" class="t-ink">φ ≈ {phi:.0f}°</text>',
+        f'<text x="{ox + 6}" y="{oy + 18}" class="t-acc">$\\Delta V_R$ (전류 $I$와 같은 위상)</text>',
+        f'<text x="{ox + 8}" y="{oy - VL + 4}" class="t-warm">$\\Delta V_L$ ($I$보다 $90^\\circ$ 앞섬)</text>',
+        f'<text x="{ox + 8}" y="{oy + VC + 4}" class="t-warn">$\\Delta V_C$ ($I$보다 $90^\\circ$ 뒤짐)</text>',
+        f'<text x="{ex + 8}" y="{ey - 2}" class="t-ink">$\\Delta V_{{max}}$</text>',
+        f'<text x="{ox + 38}" y="{oy - 10}" class="t-ink">$\\phi \\approx {phi:.0f}^\\circ$</text>',
         f'<path class="c2" d="M{ox + 30},{oy} A30,30 0 0 0 {ox + 30 * math.cos(math.radians(phi)):.1f},{oy - 30 * math.sin(math.radians(phi)):.1f}"/>',
     ]
     return svg(w, h, "\n".join(inner), "RLC 직렬 회로의 위상자 도표")
@@ -179,7 +196,7 @@ def phasor():
 
 def resonance():
     p = Plot(460, 240, (0.4, 1.6), (0, 1.08), pad=(44, 14, 14, 36))
-    inner = [p.axes("ω / ω₀", "I / I_max")]
+    inner = [p.axes("$\\omega/\\omega_0$", "$I/I_{max}$")]
     labels = []
     for Q, cls in ((10, "c1"), (4, "c3"), (2, "c2")):
         f = lambda x, Q=Q: 1 / math.sqrt(1 + Q * Q * (x - 1 / x) ** 2)
@@ -187,10 +204,10 @@ def resonance():
         labels.append((Q, cls))
     inner.append(f'<path class="ax dash" d="M{p.X(1):.0f},{p.Y(0):.0f} V{p.Y(1.04):.0f}"/>')
     inner.append(f'<text x="{p.X(1):.0f}" y="{p.h - 18}" text-anchor="middle">1</text>')
-    y = 30
+    y = 44
     for Q, cls in labels:
         tcls = {"c1": "t-acc", "c3": "t-warm", "c2": "t-ink"}[cls]
-        inner.append(f'<text x="{p.X(0.44):.0f}" y="{y}" class="{tcls}">Q = {Q}</text>')
+        inner.append(f'<text x="{p.X(0.44):.0f}" y="{y}" class="{tcls}">$Q = {Q}$</text>')
         y += 18
     return p.svg("\n".join(inner), "RLC 직렬 회로의 공진 곡선, Q 인자 10, 4, 2")
 
@@ -203,14 +220,14 @@ def emwave():
     # B 는 z 방향: 비스듬한 투영(오른쪽 아래 30°)
     B = [(x0 + x + 40 * math.sin(k * x) * 0.8, y0 + 40 * math.sin(k * x) * 0.55) for x in range(0, L + 1, 3)]
     inner = [f'<path class="ax" d="M{x0},{y0} H{x0 + L + 10}"/>',
-             f'<text x="{x0 + L + 4}" y="{y0 + 18}" text-anchor="end">x (진행 방향)</text>',
+             f'<text x="{x0 + L + 4}" y="{y0 + 96}" text-anchor="end">$x$ (진행 방향)</text>',
              f'<path class="c1" d="{_path(E)}"/>',
              f'<path class="c3" d="{_path(B)}"/>']
     for x in range(0, L + 1, 20):
         inner.append(f'<path class="gr" d="M{x0 + x},{y0} V{y0 - 70 * math.sin(k * x):.1f}"/>')
-    inner += [f'<text x="{x0 + 52}" y="{y0 - 76}" class="t-acc">E (y 방향)</text>',
-              f'<text x="{x0 + 70}" y="{y0 + 44}" class="t-warm">B (z 방향)</text>',
-              f'<text x="{x0 + 250}" y="{y0 - 82}" class="t-ink">E ⊥ B ⊥ 진행 방향, E = cB</text>']
+    inner += [f'<text x="{x0 + 52}" y="{y0 - 76}" class="t-acc">$\\vec E$ ($y$ 방향)</text>',
+              f'<text x="{x0 + 4}" y="{y0 + 46}" class="t-warm">$\\vec B$ ($z$ 방향)</text>',
+              f'<text x="{x0 + 250}" y="{y0 - 82}" class="t-ink">$\\vec E \\perp \\vec B \\perp$ 진행 방향, $E = cB$</text>']
     return svg(w, h, "\n".join(inner), "진행하는 평면 전자기파의 전기장과 자기장")
 
 
@@ -232,7 +249,7 @@ def lens():
              f'<path class="fInk" d="M{ox - 5},{ay - ho + 8} L{ox},{ay - ho} L{ox + 5},{ay - ho + 8} Z"/>',
              f'<path class="c4" d="M{ix:.1f},{ay} V{ay - hi:.1f}"/>',
              f'<path class="fW" d="M{ix - 5:.1f},{ay - hi - 8:.1f} L{ix:.1f},{ay - hi:.1f} L{ix + 5:.1f},{ay - hi - 8:.1f} Z" style="fill:var(--warn)"/>']
-    for fx, lab in ((cx - f, "F"), (cx + f, "F′")):
+    for fx, lab in ((cx - f, "$F$"), (cx + f, "$F'$")):
         inner.append(f'<circle cx="{fx}" cy="{ay}" r="3" class="fInk"/>')
         inner.append(f'<text x="{fx}" y="{ay + 18}" text-anchor="middle" class="t-ink">{lab}</text>')
     top = ay - ho
@@ -245,8 +262,8 @@ def lens():
     # 3) F 통과 → 평행
     yl = top + (ay - top) / (cx - f - ox) * (cx - ox) if cx - f != ox else ay
     inner.append(_ray([(ox, top), (cx, yl), (ix + 40, yl)], cls="c2"))
-    inner += [f'<text x="{ox}" y="{top - 10}" text-anchor="middle">물체 (s = {s / f:.2g}f)</text>',
-              f'<text x="{ix:.0f}" y="{ay - hi + 26:.0f}" text-anchor="middle" class="t-warn">실상 (거꾸로, m = {-si / s:.1f})</text>']
+    inner += [f'<text x="{ox}" y="{top - 10}" text-anchor="middle">물체 ($p = {s / f:.2g}f$)</text>',
+              f'<text x="{ix:.0f}" y="{ay - hi + 26:.0f}" text-anchor="middle" class="t-warn">실상 (거꾸로, $m = {-si / s:.1f}$)</text>']
     return svg(w, h, "\n".join(inner), "볼록 렌즈의 상 작도: 세 광선")
 
 
@@ -266,7 +283,7 @@ def mirror():
              f'<path class="c2" d="M{ox},{ay} V{top}"/>',
              f'<path class="fInk" d="M{ox - 5},{top + 8} L{ox},{top} L{ox + 5},{top + 8} Z"/>',
              f'<path class="c4" d="M{ix:.1f},{ay} V{ay - hi:.1f}"/>']
-    for px, lab in ((mx - f, "F"), (mx - R, "C")):
+    for px, lab in ((mx - f, "$F$"), (mx - R, "$C$")):
         inner.append(f'<circle cx="{px}" cy="{ay}" r="3" class="fInk"/>')
         inner.append(f'<text x="{px}" y="{ay - 8}" text-anchor="middle" class="t-ink">{lab}</text>')
     ytip = ay - hi
@@ -279,8 +296,8 @@ def mirror():
     # 3) 꼭짓점으로 입사 → 광축에 대칭으로 반사
     kv = (ay - top) / (mx - ox)
     inner.append(_ray([(ox, top), (mx, ay), (ix - 30, ay + kv * (mx - (ix - 30)))], cls="c2"))
-    inner += [f'<text x="{ox:.0f}" y="{top - 8:.0f}" text-anchor="middle">물체 (s = 1.6f)</text>',
-              f'<text x="{ix:.0f}" y="{ytip + 20:.0f}" text-anchor="middle" class="t-warn">실상 (m = {-si / s:.2f})</text>']
+    inner += [f'<text x="{ox:.0f}" y="{top - 8:.0f}" text-anchor="middle">물체 ($p = 1.6f$)</text>',
+              f'<text x="{ix:.0f}" y="{ytip + 20:.0f}" text-anchor="middle" class="t-warn">실상 ($m = {-si / s:.2f}$)</text>']
     return svg(w, h, "\n".join(inner), "오목 거울의 상 작도: 세 광선")
 
 
@@ -292,11 +309,11 @@ def slits():
 
     d_over_a = 4
     two = lambda u: single(u) * math.cos(math.pi * d_over_a * u) ** 2
-    inner = [p.axes("a sinθ / λ", "I"), p.curve(two, n=1600), p.curve(single, cls="c3 dash", n=600)]
+    inner = [p.axes("$a\\sin\\theta/\\lambda$", "$I$"), p.curve(two, n=1600), p.curve(single, cls="c3 dash", n=600)]
     for u in (-3, -2, -1, 1, 2, 3):
         inner.append(f'<text x="{p.X(u):.0f}" y="{p.h - 18}" text-anchor="middle">{u}</text>')
     inner += [f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.78):.0f}" class="t-warm">단일 슬릿 회절 포락선</text>',
-              f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.62):.0f}" class="t-acc">이중 슬릿 (d = 4a)</text>',
+              f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.62):.0f}" class="t-acc">이중 슬릿 ($d = 4a$)</text>',
               f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.48):.0f}">4번째 밝은 무늬가 사라진다</text>']
     return p.svg("\n".join(inner), "이중 슬릿 간섭 무늬와 단일 슬릿 회절 포락선")
 
@@ -309,13 +326,13 @@ def grating():
         if abs(math.sin(b)) < 1e-9:
             return 1.0
         return (math.sin(N * b) / (N * math.sin(b))) ** 2
-    inner = [p.axes("d sinθ / λ", "I / I_max"),
+    inner = [p.axes("$d\\sin\\theta/\\lambda$", "$I/I_{max}$"),
              p.curve(lambda u: g(u, 2), cls="c3", n=1200),
              p.curve(lambda u: g(u, 8), cls="c1", n=1600)]
     for u in (-1, 0, 1):
-        inner.append(f'<text x="{p.X(u):.0f}" y="{p.h - 18}" text-anchor="middle">m = {u}</text>')
-    inner += [f'<text x="{p.X(0.18):.0f}" y="{p.Y(0.9):.0f}" class="t-warm">N = 2</text>',
-              f'<text x="{p.X(0.1):.0f}" y="{p.Y(0.55):.0f}" class="t-acc">N = 8: 극대가 날카롭다</text>']
+        inner.append(f'<text x="{p.X(u):.0f}" y="{p.h - 18}" text-anchor="middle">$m = {u}$</text>')
+    inner += [f'<text x="{p.X(-0.62):.0f}" y="{p.t - 6}" class="t-warm">$N = 2$</text>',
+              f'<text x="{p.X(0.2):.0f}" y="{p.t - 6}" class="t-acc">$N = 8$: 극대가 날카롭다</text>']
     return p.svg("\n".join(inner), "슬릿 수 N이 2와 8일 때 회절격자의 세기 분포")
 
 
@@ -328,14 +345,14 @@ def blackbody():
         return 2 * h * c * c / lam ** 5 / (math.exp(h * c / (lam * k * T)) - 1)
     peak = B(2.898e-3 / 5000 * 1e9, 5000)
     p = Plot(480, 240, (100, 3000), (0, 1.1), pad=(36, 14, 14, 36))
-    inner = [p.axes("λ (nm)", "세기")]
+    inner = [p.axes("$\\lambda$ (nm)", "세기")]
     p.y1 = 1.1
     for i, (T, cls, tc) in enumerate(((5000, "c1", "t-acc"), (4000, "c3", "t-warm"), (3000, "c2", "t-ink"))):
         inner.append(p.curve(lambda l, T=T: B(l, T) / peak, cls=cls, n=500))
         lm = 2.898e-3 / T * 1e9
         inner.append(f'<circle cx="{p.X(lm):.1f}" cy="{p.Y(B(lm, T) / peak):.1f}" r="3" class="fInk"/>')
         # 범례는 곡선이 없는 오른쪽 위에 모은다
-        inner.append(f'<text x="{p.X(1550):.0f}" y="{p.Y(1.0 - 0.13 * i):.0f}" class="{tc}">{T} K · λ<tspan baseline-shift="sub" font-size="10">max</tspan> ≈ {lm:.0f} nm</text>')
+        inner.append(f'<text x="{p.X(1550):.0f}" y="{p.Y(1.0 - 0.13 * i):.0f}" class="{tc}">{T} K · $\\lambda_{{max}} \\approx {lm:.0f}$ nm</text>')
     inner.append(f'<path class="fA" d="M{p.X(380):.1f},{p.Y(0):.1f} H{p.X(750):.1f} V{p.Y(1.1):.1f} H{p.X(380):.1f} Z"/>')
     inner.append(f'<text x="{p.X(565):.0f}" y="{p.h - 18}" text-anchor="middle" class="t-acc">가시광</text>')
     for lv in (1000, 2000):
@@ -355,10 +372,10 @@ def hlevels():
         E = -13.6 / n ** 2
         y = Y(E)
         inner.append(f'<path class="c2" d="M120,{y:.1f} H440"/>')
-        if n <= 4:
-            inner.append(f'<text x="112" y="{y + 4:.1f}" text-anchor="end">n = {n}  ({E:.2f} eV)</text>')
+        if n <= 3:
+            inner.append(f'<text x="112" y="{y + 4:.1f}" text-anchor="end">$n = {n}$ (${E:.2f}$ eV)</text>')
     inner.append(f'<path class="c2 dash" d="M120,{Y(0):.1f} H440"/>')
-    inner.append(f'<text x="112" y="{Y(0) + 4:.1f}" text-anchor="end">n = ∞  (0 eV)</text>')
+    inner.append(f'<text x="112" y="{Y(0) + 4:.1f}" text-anchor="end">$n = \\infty$ (0 eV)</text>')
     series = (("라이먼 (자외선)", 1, 150, "c4", "t-warn"), ("발머 (가시광)", 2, 280, "c1", "t-acc"), ("파셴 (적외선)", 3, 390, "c3", "t-warm"))
     for name, nf, x0, cls, tcls in series:
         for i, ni in enumerate(range(nf + 1, nf + 4)):
@@ -372,21 +389,21 @@ def hlevels():
 
 def box():
     w, h = 460, 260
-    xl, xr, base = 110, 350, 240
+    xl, xr, base = 90, 330, 240
     sc = 22  # 에너지 n² 단위 1당 픽셀
     inner = [f'<path class="c2" d="M{xl},18 V{base} H{xr} V18" style="stroke-width:2.4"/>',
              f'<path class="fW" d="M{xl - 22},18 H{xl} V{base} H{xl - 22} Z"/>',
              f'<path class="fW" d="M{xr},18 H{xr + 22} V{base} H{xr} Z"/>',
              f'<text x="{xl}" y="{base + 16}" text-anchor="middle">0</text>',
-             f'<text x="{xr}" y="{base + 16}" text-anchor="middle">L</text>',
-             f'<text x="{xl - 11}" y="34" text-anchor="middle" class="t-warn">∞</text>',
-             f'<text x="{xr + 11}" y="34" text-anchor="middle" class="t-warn">∞</text>']
+             f'<text x="{xr}" y="{base + 16}" text-anchor="middle">$L$</text>',
+             f'<text x="{xl - 11}" y="34" text-anchor="middle" class="t-warn">$\\infty$</text>',
+             f'<text x="{xr + 11}" y="34" text-anchor="middle" class="t-warn">$\\infty$</text>']
     for n, cls in ((1, "c1"), (2, "c3"), (3, "c4")):
         y0 = base - 14 - sc * n * n
         inner.append(f'<path class="gr dash" d="M{xl},{y0} H{xr}"/>')
         pts = [(xl + (xr - xl) * i / 200, y0 - 18 * math.sin(n * math.pi * i / 200)) for i in range(201)]
         inner.append(f'<path class="{cls}" d="{_path(pts)}"/>')
-        inner.append(f'<text x="{xr + 30}" y="{y0 + 4}">n = {n}, E = {n * n}E₁</text>')
+        inner.append(f'<text x="{xr + 28}" y="{y0 + 4}">$n = {n},\\ E = {'' if n == 1 else n * n}E_1$</text>')
     return svg(w, h, "\n".join(inner), "1차원 무한 퍼텐셜 상자 속 입자의 파동 함수 n = 1, 2, 3")
 
 
@@ -408,10 +425,10 @@ def tunnel():
              f'<path class="c1" d="{_path(left)}"/>',
              f'<path class="c4" d="{_path(mid)}"/>',
              f'<path class="c1" d="{_path(right)}"/>',
-             f'<text x="{(xa + xb) / 2}" y="24" text-anchor="middle" class="t-warn">장벽 U &gt; E</text>',
+             f'<text x="{(xa + xb) / 2}" y="24" text-anchor="middle" class="t-warn">장벽 $U \\gt E$</text>',
              f'<text x="60" y="{y0 + 62}">입사 + 반사</text>',
              f'<text x="{xb + 40}" y="{y0 + 62}">투과 (진폭 작음)</text>',
-             f'<text x="{(xa + xb) / 2}" y="{y0 + 78}" text-anchor="middle">지수 감소 e^(−κx)</text>']
+             f'<text x="{(xa + xb) / 2}" y="{y0 + 78}" text-anchor="middle">지수 감소 $e^{{-\\kappa x}}$</text>']
     return svg(w, h, "\n".join(inner), "퍼텐셜 장벽을 지나는 파동 함수의 터널 효과")
 
 
@@ -430,7 +447,7 @@ def bands():
         else:
             gap = vb[0] - cb[1]
             inner.append(f'<path class="ax dash" d="M{x + bw / 2},{cb[1]} V{vb[0]}"/>')
-            inner.append(f'<text x="{x + bw / 2 + 6}" y="{cb[1] + gap / 2 + 4}" class="t-warn">띠틈 E_g</text>')
+            inner.append(f'<text x="{x + bw / 2 + 6}" y="{cb[1] + gap / 2 + 4}" class="t-warn">띠틈 $E_g$</text>')
         inner.append(f'<text x="{x + bw / 2}" y="{cb[0] + 16}" text-anchor="middle">전도띠</text>')
         inner.append(f'<text x="{x + bw / 2}" y="{vb[1] - 10}" text-anchor="middle" class="t-acc">원자가띠</text>')
         inner.append(f'<text x="{x + bw / 2}" y="228" text-anchor="middle" class="t-ink">{name}</text>')
@@ -441,13 +458,13 @@ def bands():
 def twin():
     p = Plot(400, 280, (-2, 22), (0, 44), pad=(40, 14, 14, 30))
     turn = (19, 21.05)
-    inner = [p.axes("x (광년)", "ct (년)"),
+    inner = [p.axes("$x$ (광년)", "$ct$ (년)"),
              f'<path class="c2" d="M{p.X(0):.1f},{p.Y(0):.1f} V{p.Y(42.1):.1f}"/>',
              f'<path class="c1" d="M{p.X(0):.1f},{p.Y(0):.1f} L{p.X(turn[0]):.1f},{p.Y(turn[1]):.1f} L{p.X(0):.1f},{p.Y(42.1):.1f}"/>',
              f'<path class="gr dash" d="M{p.X(0):.1f},{p.Y(0):.1f} L{p.X(14):.1f},{p.Y(14):.1f}"/>',
-             f'<text x="{p.X(14) + 4:.0f}" y="{p.Y(11):.0f}">빛 (45°)</text>',
-             f'<text x="{p.X(1.0):.0f}" y="{p.Y(42.6):.0f}" class="t-ink">A (지구): 42.1년</text>',
-             f'<text x="{p.X(12):.0f}" y="{p.Y(4):.0f}" class="t-acc">B (0.95c): 13.1년</text>',
+             f'<text x="{p.X(14) + 4:.0f}" y="{p.Y(11):.0f}">빛 ($45^\\circ$)</text>',
+             f'<text x="{p.X(1.5):.0f}" y="{p.Y(41.0):.0f}" class="t-ink">A (지구): 42.1년</text>',
+             f'<text x="{p.X(12):.0f}" y="{p.Y(4):.0f}" class="t-acc">B ($0.95c$): 13.1년</text>',
              f'<text x="{p.X(16.3):.0f}" y="{p.Y(21) + 4:.0f}" text-anchor="end">관성계가 바뀜 →</text>']
     return p.svg("\n".join(inner), "쌍둥이 역설의 시공간 도표")
 
