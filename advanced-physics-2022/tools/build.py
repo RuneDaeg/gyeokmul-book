@@ -60,6 +60,7 @@ window.MathJax = {{
   <div class="crumb"><a href="index.html">고급 물리학 · 2022 개정</a></div>
   <h1>{title}</h1>
   <div class="tools">
+    <button type="button" class="btn" id="btn-toc" aria-pressed="false" title="단축키 T">목차</button>
     <button type="button" class="btn" id="btn-notes" aria-pressed="false" title="단축키 N">교사용 메모</button>
     <button type="button" class="btn" id="btn-ink" aria-pressed="false" title="단축키 D">판서</button>
     <button type="button" class="btn" id="btn-present" aria-pressed="false" title="단축키 P">발표 모드</button>

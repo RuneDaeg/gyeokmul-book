@@ -192,6 +192,11 @@
     var tag = (e.target && e.target.tagName) || "";
     if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
     var inPresent = body.classList.contains("present");
+    if (tocIsOpen()) {
+      if (e.key === "Escape" || e.key === "t" || e.key === "T") { closeToc(); e.preventDefault(); }
+      return;
+    }
+    if (e.key === "t" || e.key === "T") { openToc(); e.preventDefault(); return; }
     if (e.key === "p" || e.key === "P") { inPresent ? exitPresent() : enterPresent(); e.preventDefault(); return; }
     if (e.key === "n" || e.key === "N") { setNotes(!body.classList.contains("show-notes")); return; }
     if (!inPresent) return;
@@ -207,7 +212,8 @@
   // 발표 모드에서 화면을 좌우로 밀어 이동
   var x0 = null;
   document.addEventListener("touchstart", function (e) {
-    if (body.classList.contains("present") && !body.classList.contains("ink-on")) x0 = e.touches[0].clientX;
+    if (body.classList.contains("present") && !body.classList.contains("ink-on") && !tocIsOpen() &&
+        !(e.target.closest && e.target.closest(".sim, .eq"))) x0 = e.touches[0].clientX;
   }, { passive: true });
   document.addEventListener("touchend", function (e) {
     if (x0 === null) return;
@@ -221,7 +227,7 @@
   document.addEventListener("click", function (e) {
     if (!body.classList.contains("present") || body.classList.contains("ink-on")) return;
     if (swiped) { swiped = false; return; }
-    if (e.button !== 0 || e.target.closest("a, button, summary, details, input, label, .ink-bar, .ink-fab")) return;
+    if (e.button !== 0 || e.target.closest("a, button, summary, details, input, label, select, .sim, .toc-panel, .ink-bar, .ink-fab")) return;
     if (!e.target.closest(".slide")) return;
     next(e.shiftKey);
   });
@@ -229,6 +235,123 @@
   document.addEventListener("fullscreenchange", function () {
     if (!document.fullscreenElement && body.classList.contains("present")) { /* 전체 화면만 끝나고 발표 모드는 유지 */ }
   });
+
+  // ---------- 목차 ----------
+  // 중단원(구분 슬라이드)마다 묶은 목차. 항목을 누르면 그 슬라이드로 간다 (발표 모드에서도).
+  var tocPanel = null, tocBtn = document.getElementById("btn-toc"), tocFab = null, tocFilter = null;
+  function tocText(el) { return el ? el.textContent.replace(/\s+/g, " ").trim() : ""; }
+  function buildToc() {
+    tocPanel = document.createElement("div");
+    tocPanel.className = "toc-panel";
+    tocPanel.hidden = true;
+    tocPanel.setAttribute("role", "dialog");
+    tocPanel.setAttribute("aria-label", "목차");
+    var h1 = document.querySelector(".bar h1");
+    var head = document.createElement("div");
+    head.className = "toc-head";
+    head.innerHTML = '<strong>목차</strong><span class="toc-deck"></span>' +
+      '<input type="search" class="toc-filter" placeholder="제목·주제로 찾기" aria-label="슬라이드 제목이나 주제로 찾기" autocomplete="off">' +
+      '<button type="button" class="btn toc-close">닫기 (Esc)</button>';
+    head.querySelector(".toc-deck").textContent = tocText(h1);
+    var bodyEl = document.createElement("div");
+    bodyEl.className = "toc-body";
+    var group = null, list = null;
+    function newGroup(label, i) {
+      group = document.createElement("section");
+      group.className = "toc-group";
+      var h = document.createElement("h3");
+      if (i === null) h.textContent = label;
+      else {
+        var a = document.createElement("a");
+        a.href = "#" + slides[i].id; a.setAttribute("data-i", i); a.textContent = label;
+        h.appendChild(a);
+      }
+      list = document.createElement("ol");
+      group.appendChild(h); group.appendChild(list);
+      bodyEl.appendChild(group);
+    }
+    slides.forEach(function (s, i) {
+      var title = tocText(s.querySelector("h2"));
+      if (s.classList.contains("divider")) {
+        newGroup((tocText(s.querySelector(".roman")) + "  " + title).trim(), i);
+        return;
+      }
+      if (!group) newGroup("시작", null);
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "#" + s.id; a.setAttribute("data-i", i);
+      var no = document.createElement("span"); no.className = "toc-no"; no.textContent = (i + 1 < 10 ? "0" : "") + (i + 1);
+      var tx = document.createElement("span"); tx.className = "toc-title"; tx.textContent = title;
+      a.appendChild(no); a.appendChild(tx);
+      var kick = tocText(s.querySelector(".kicker"));
+      var kind = /^(유도|풀이|어림)/.exec(kick) || /^(확인 문제|시뮬레이션|심화)/.exec(kick);
+      if (kind) { var tg = document.createElement("span"); tg.className = "toc-kind"; tg.textContent = kind[1]; a.appendChild(tg); }
+      li.setAttribute("data-k", (title + " " + kick).toLowerCase());   // 찾기는 제목과 머리 표시 모두에서
+      li.appendChild(a); list.appendChild(li);
+    });
+    tocPanel.appendChild(head); tocPanel.appendChild(bodyEl);
+    document.body.appendChild(tocPanel);
+    tocFilter = head.querySelector(".toc-filter");
+    tocFilter.addEventListener("input", function () {
+      var q = tocFilter.value.trim().toLowerCase();
+      tocPanel.querySelectorAll(".toc-group").forEach(function (g) {
+        var any = false;
+        g.querySelectorAll("li").forEach(function (li) {
+          var hit = !q || li.getAttribute("data-k").indexOf(q) >= 0;
+          li.hidden = !hit; if (hit) any = true;
+        });
+        g.hidden = !any && !!q && g.querySelector("h3").textContent.toLowerCase().indexOf(q) < 0;
+      });
+    });
+    tocFilter.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { closeToc(); e.preventDefault(); }
+      else if (e.key === "Enter") {
+        var first = tocPanel.querySelector(".toc-group:not([hidden]) li:not([hidden]) a");
+        if (first) { goTo(+first.getAttribute("data-i")); e.preventDefault(); }
+      }
+    });
+    head.querySelector(".toc-close").addEventListener("click", closeToc);
+    tocPanel.addEventListener("click", function (e) {
+      var a = e.target.closest("a[data-i]");
+      if (a) { e.preventDefault(); goTo(+a.getAttribute("data-i")); }
+      else if (e.target === tocPanel) closeToc();
+    });
+  }
+  function goTo(i) {
+    closeToc();
+    if (body.classList.contains("present")) show(i, "start");
+    else {
+      idx = i;
+      slides[i].scrollIntoView({ block: "start" });
+      try { history.replaceState(null, "", "#" + slides[i].id); } catch (e) { /* 무시 */ }
+    }
+  }
+  function openToc() {
+    if (!tocPanel) buildToc();
+    var cur = body.classList.contains("present") ? idx : nearestSlide();
+    tocPanel.querySelectorAll("a[data-i]").forEach(function (a) {
+      a.classList.toggle("here", +a.getAttribute("data-i") === cur);
+    });
+    tocFilter.value = ""; tocFilter.dispatchEvent(new Event("input"));
+    tocPanel.hidden = false;
+    body.classList.add("toc-open");
+    if (tocBtn) tocBtn.setAttribute("aria-pressed", "true");
+    var here = tocPanel.querySelector("a.here");
+    if (here) here.scrollIntoView({ block: "center" });
+  }
+  function closeToc() {
+    if (!tocPanel || tocPanel.hidden) return;
+    tocPanel.hidden = true;
+    body.classList.remove("toc-open");
+    if (tocBtn) tocBtn.setAttribute("aria-pressed", "false");
+  }
+  function tocIsOpen() { return !!tocPanel && !tocPanel.hidden; }
+  if (tocBtn) tocBtn.addEventListener("click", function () { tocIsOpen() ? closeToc() : openToc(); });
+  tocFab = document.createElement("button");
+  tocFab.type = "button"; tocFab.className = "toc-fab"; tocFab.textContent = "목차 (T)";
+  tocFab.addEventListener("click", function (e) { e.stopPropagation(); tocIsOpen() ? closeToc() : openToc(); });
+  document.body.appendChild(tocFab);
+
 
   // ---------- 인쇄·PDF ----------
   // 풀이를 펼치고(또는 숨기고), 한 쪽(16:9)을 넘는 슬라이드만 글자를 줄여 맞춘다.

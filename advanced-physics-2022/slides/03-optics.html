@@ -34,6 +34,7 @@ window.MathJax = {
   <div class="crumb"><a href="index.html">고급 물리학 · 2022 개정</a></div>
   <h1>고급 물리학 Ⅲ 광학</h1>
   <div class="tools">
+    <button type="button" class="btn" id="btn-toc" aria-pressed="false" title="단축키 T">목차</button>
     <button type="button" class="btn" id="btn-notes" aria-pressed="false" title="단축키 N">교사용 메모</button>
     <button type="button" class="btn" id="btn-ink" aria-pressed="false" title="단축키 D">판서</button>
     <button type="button" class="btn" id="btn-present" aria-pressed="false" title="단축키 P">발표 모드</button>
@@ -48,7 +49,7 @@ window.MathJax = {
     <p class="sub">빛을 광선으로 다루는 기하광학에서 시작해, 빛을 파동으로 다루어야 보이는 간섭·회절·편광으로 나아갑니다.</p>
     <p class="meta">교과서 Ⅲ 광학 (169~227쪽) · 기하 광학 · 간섭과 회절 · 영상 물리</p>
   </div>
-<div class="slide-no"><a href="#s1">광학 · 01 / 43</a></div></section>
+<div class="slide-no"><a href="#s1">광학 · 01 / 56</a></div></section>
 
 <section id="s2" class="slide">
   <div class="sl">
@@ -66,7 +67,7 @@ window.MathJax = {
       <aside class="note">이 덱은 2015 개정 자료에 없던 광학 영역을 새로 만든 것입니다. 기존 OT 진도표에는 '광학(기하광학, 파동광학)'이 있었지만 대응하는 슬라이드가 없었습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s2">광학 · 02 / 43</a></div></section>
+<div class="slide-no"><a href="#s2">광학 · 02 / 56</a></div></section>
 
 <section id="s3" class="slide divider">
   <div class="sl">
@@ -74,7 +75,7 @@ window.MathJax = {
     <h2>기하 광학</h2>
     <p class="std">교과서 170~185쪽 · 거울과 얇은 렌즈에 의해 형성되는 상을 설명할 수 있다 · 여러 가지 광학 기기의 원리를 설명할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s3">광학 · 03 / 43</a></div></section>
+<div class="slide-no"><a href="#s3">광학 · 03 / 56</a></div></section>
 
 <section id="s4" class="slide">
   <div class="sl">
@@ -98,25 +99,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s4">광학 · 04 / 43</a></div></section>
+<div class="slide-no"><a href="#s4">광학 · 04 / 56</a></div></section>
 
 <section id="s5" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 하위헌스 원리와 굴절 법칙</p><h2>파면의 진행으로 스넬 법칙과 임계각 구하기</h2></header>
+    <header><p class="kicker">유도 · 하위헌스 원리와 굴절 법칙</p><h2>파면의 진행으로 스넬 법칙과 임계각 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>평면파의 파면 AB가 경계에 비스듬히 온다. A가 먼저 경계에 닿고, B는 경계의 점 D까지 더 가야 한다.</p><div class="eq">$$\overline{BD} = v_1t = \overline{AD}\sin\theta_1$$</div></li>
         <li><p>같은 시간 $t$ 동안 A에서 나온 2차 파동은 매질 2에서 반지름 $v_2t$ 만큼 퍼진다. 새 파면 CD는 이 원에 접한다.</p><div class="eq">$$\overline{AC} = v_2t = \overline{AD}\sin\theta_2$$</div></li>
         <li><p>두 식을 나누면 $\overline{AD}$ 와 $t$ 가 지워진다.</p><div class="eq">$$\frac{\sin\theta_1}{\sin\theta_2} = \frac{v_1}{v_2}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s5">광학 · 05 / 56</a></div></section>
+
+<section id="s6" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 하위헌스 원리와 굴절 법칙</p><h2>파면의 진행으로 스넬 법칙과 임계각 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>굴절률 $n = c/v$ 로 쓰면 스넬 법칙.</p><div class="eq">$$n_1\sin\theta_1 = n_2\sin\theta_2$$</div></li>
         <li><p>$n_1 \gt n_2$ 이면 $\theta_2 = 90^\circ$ 가 되는 입사각이 있다. 그보다 크면 굴절광이 없다 (전반사).</p><div class="eq">$$\sin\theta_c = \frac{n_2}{n_1}$$</div></li>
         <li><p>예: 물에서 공기로, 유리에서 공기로.</p><div class="eq">$$\theta_c = \sin^{-1}\frac{1}{1.33} = 48.8^\circ,\qquad \sin^{-1}\frac{1}{1.50} = 41.8^\circ$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s5">광학 · 05 / 43</a></div></section>
+<div class="slide-no"><a href="#s6">광학 · 06 / 56</a></div></section>
 
-<section id="s6" class="slide">
+<section id="s7" class="slide">
   <div class="sl">
     <header><p class="kicker">거울에 의한 상 · 교과서 171~174쪽</p><h2>오목 거울이 만드는 상</h2></header>
     <div class="body cols wide-r">
@@ -148,26 +159,37 @@ window.MathJax = {
 </svg><figcaption>F와 C(곡률 중심) 사이의 물체: 거꾸로 서고 확대된 실상이 C 밖에 생깁니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s6">광학 · 06 / 43</a></div></section>
+<div class="slide-no"><a href="#s7">광학 · 07 / 56</a></div></section>
 
-<section id="s7" class="slide derive">
+<section id="s8" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 거울 방정식 · 교과서 172~173쪽 식 (Ⅲ. 1-4~8)</p><h2>삼각형의 외각과 근축 근사로 거울 방정식 얻기</h2></header>
+    <header><p class="kicker">유도 · 거울 방정식 · 교과서 172~173쪽 식 (Ⅲ. 1-4~8)</p><h2>삼각형의 외각과 근축 근사로 거울 방정식 얻기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <p>물체 O에서 나온 광선이 거울 위 점 A에서 반사해 상 I를 지난다. OA, CA(법선), IA가 광축과 이루는 각을 $\alpha,\ \beta,\ \gamma$, 입사각을 $\theta$ 라 하자.</p>
       <ol class="steps">
         <li><p>삼각형의 외각은 이웃하지 않은 두 내각의 합이다.</p><div class="eq">$$\beta = \alpha + \theta,\qquad \gamma = \alpha + 2\theta$$</div></li>
         <li><p>$\theta$ 를 지운다.</p><div class="eq">$$\alpha + \gamma = 2\beta$$</div></li>
         <li><p>A의 높이를 $h$ 라 하면, 근축 광선에서는 각을 라디안으로 어림할 수 있다.</p><div class="eq">$$\alpha \approx \frac hp,\qquad \beta \approx \frac hr,\qquad \gamma \approx \frac hi$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s8">광학 · 08 / 56</a></div></section>
+
+<section id="s9" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 거울 방정식 · 교과서 172~173쪽 식 (Ⅲ. 1-4~8)</p><h2>삼각형의 외각과 근축 근사로 거울 방정식 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">물체 O에서 나온 광선이 거울 위 점 A에서 반사해 상 I를 지난다. OA, CA(법선), IA가 광축과 이루는 각을 $\alpha,\ \beta,\ \gamma$, 입사각을 $\theta$ 라 하자.</p>
+      <ol start="4" class="steps">
         <li><p>대입하고 $h$ 로 나누면 $h$ 가 사라진다. 모든 근축 광선이 같은 점 I에 모인다는 뜻이다.</p><div class="eq">$$\frac1p + \frac1i = \frac2r$$</div></li>
         <li><p>평행 광선($p\to\infty$)이 모이는 곳이 초점이므로 $f = r/2$ (식 Ⅲ. 1-8).</p><div class="eq">$$\frac1p + \frac1i = \frac1f$$</div></li>
         <li><p>꼭짓점으로 들어간 광선은 광축에 대칭으로 반사하므로 닮은 삼각형에서 가로 배율.</p><div class="eq">$$m = \frac{y_I}{y_O} = -\frac ip$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s7">광학 · 07 / 43</a></div></section>
+<div class="slide-no"><a href="#s9">광학 · 09 / 56</a></div></section>
 
-<section id="s8" class="slide">
+<section id="s10" class="slide">
   <div class="sl">
     <header><p class="kicker">렌즈에 의한 상 · 교과서 175~179쪽</p><h2>렌즈 공식과 렌즈 제작자 공식</h2></header>
     <div class="body cols wide-r">
@@ -195,25 +217,35 @@ window.MathJax = {
 </svg><figcaption>세 광선: 평행 → F′, 중심 → 직진, F → 평행. 세 광선이 만나는 곳에 상이 생깁니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s8">광학 · 08 / 43</a></div></section>
+<div class="slide-no"><a href="#s10">광학 · 10 / 56</a></div></section>
 
-<section id="s9" class="slide derive">
+<section id="s11" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 렌즈의 초점 거리 · 교과서 176~178쪽 식 (Ⅲ. 1-15, 20)</p><h2>구면 두 개의 굴절을 이어 붙여 렌즈 제작자 공식 얻기</h2></header>
+    <header><p class="kicker">유도 · 렌즈의 초점 거리 · 교과서 176~178쪽 식 (Ⅲ. 1-15, 20)</p><h2>구면 두 개의 굴절을 이어 붙여 렌즈 제작자 공식 얻기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>굴절면 하나 (반지름 $R$, 굴절률 $n_1$ 에서 $n_2$ 로). 거울과 같은 방법의 근축 근사 결과.</p><div class="eq">$$\frac{n_1}{p} + \frac{n_2}{i} = \frac{n_2 - n_1}{R}$$</div></li>
         <li><p>첫째 면: 주변 매질 $n_m$ 에서 렌즈 $n_l$ 로.</p><div class="eq">$$\frac{n_m}{p_1} + \frac{n_l}{i_1} = \frac{n_l - n_m}{R_1}$$</div></li>
         <li><p>첫째 면의 상이 둘째 면의 물체가 된다. 얇은 렌즈에서는 둘째 면 뒤쪽에 있으므로 $p_2 = -i_1$.</p><div class="eq">$$p_2 = -i_1$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s11">광학 · 11 / 56</a></div></section>
+
+<section id="s12" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 렌즈의 초점 거리 · 교과서 176~178쪽 식 (Ⅲ. 1-15, 20)</p><h2>구면 두 개의 굴절을 이어 붙여 렌즈 제작자 공식 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>둘째 면: 렌즈 $n_l$ 에서 매질 $n_m$ 으로.</p><div class="eq">$$-\frac{n_l}{i_1} + \frac{n_m}{i_2} = \frac{n_m - n_l}{R_2}$$</div></li>
         <li><p>2단계와 4단계를 더하면 $n_l/i_1$ 이 지워진다.</p><div class="eq">$$n_m\Big(\frac1{p_1} + \frac1{i_2}\Big) = (n_l - n_m)\Big(\frac1{R_1} - \frac1{R_2}\Big)$$</div></li>
         <li><p>공기 중($n_m = 1$)이면 렌즈 방정식과 렌즈 제작자 공식이 함께 나온다.</p><div class="eq">$$\frac1p + \frac1i = \frac1f,\qquad \frac1f = (n - 1)\Big(\frac1{R_1} - \frac1{R_2}\Big)$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s9">광학 · 09 / 43</a></div></section>
+<div class="slide-no"><a href="#s12">광학 · 12 / 56</a></div></section>
 
-<section id="s10" class="slide">
+<section id="s13" class="slide">
   <div class="sl">
     <header><p class="kicker">예제</p><h2>초점 거리 10 cm 인 볼록 렌즈</h2></header>
     <div class="body cols">
@@ -241,9 +273,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s10">광학 · 10 / 43</a></div></section>
+<div class="slide-no"><a href="#s13">광학 · 13 / 56</a></div></section>
 
-<section id="s11" class="slide">
+<section id="s14" class="slide">
   <div class="sl">
     <header><p class="kicker">광학 기구 · 1 · 교과서 180~184쪽</p><h2>카메라와 돋보기</h2></header>
     <div class="body cols">
@@ -258,9 +290,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s11">광학 · 11 / 43</a></div></section>
+<div class="slide-no"><a href="#s14">광학 · 14 / 56</a></div></section>
 
-<section id="s12" class="slide">
+<section id="s15" class="slide">
   <div class="sl">
     <header><p class="kicker">광학 기구 · 2 · 교과서 180~183쪽</p><h2>현미경과 망원경: 렌즈 두 개</h2></header>
     <div class="body cols">
@@ -276,25 +308,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s12">광학 · 12 / 43</a></div></section>
+<div class="slide-no"><a href="#s15">광학 · 15 / 56</a></div></section>
 
-<section id="s13" class="slide derive">
+<section id="s16" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 광학 기구의 배율 · 교과서 180~183쪽</p><h2>각배율로 돋보기, 현미경, 망원경 배율 구하기</h2></header>
+    <header><p class="kicker">유도 · 광학 기구의 배율 · 교과서 180~183쪽</p><h2>각배율로 돋보기, 현미경, 망원경 배율 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>맨눈: 높이 $y$ 인 물체를 명시 거리 25 cm 에 두고 볼 때 눈에 이루는 각.</p><div class="eq">$$\theta \approx \frac{y}{25\ \text{cm}}$$</div></li>
         <li><p>돋보기: 물체를 초점에 두면 상이 무한히 멀리 생기고, 눈에 이루는 각은 $y/f$.</p><div class="eq">$$M = \frac{\theta'}{\theta} = \frac{25\ \text{cm}}{f}$$</div></li>
         <li><p>현미경 대물렌즈: 상이 초점에서 $L$ 더 간 곳($i = f_o + L$)에 생기도록 둔다. 렌즈 방정식으로 $p$ 를 구하면</p><div class="eq">$$\frac1p = \frac1{f_o} - \frac{1}{f_o + L}\ \Rightarrow\ m_o = -\frac ip = -\frac{L}{f_o}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s16">광학 · 16 / 56</a></div></section>
+
+<section id="s17" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 광학 기구의 배율 · 교과서 180~183쪽</p><h2>각배율로 돋보기, 현미경, 망원경 배율 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>접안렌즈가 그 상을 돋보기로 본다. 두 배율을 곱한다.</p><div class="eq">$$M = m_oM_e = -\frac{L}{f_o}\cdot\frac{25\ \text{cm}}{f_e}$$</div></li>
         <li><p>망원경: 각 $\theta$ 로 오는 먼 물체의 상이 대물렌즈 초점면에 높이 $f_o\theta$ 로 거꾸로 생긴다. 이것을 접안렌즈 초점에 둔다.</p><div class="eq">$$\theta' = \frac{-f_o\theta}{f_e}\ \Rightarrow\ M = \frac{\theta'}{\theta} = -\frac{f_o}{f_e}$$</div></li>
         <li><p>예: 현미경 $f_o = 4$ mm, $f_e = 25$ mm, $L = 160$ mm. 망원경 $f_o = 1000$ mm, $f_e = 25$ mm.</p><div class="eq">$$M_{현미경} = -\frac{160}{4}\cdot\frac{250}{25} = -400,\qquad M_{망원경} = -40$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s13">광학 · 13 / 43</a></div></section>
+<div class="slide-no"><a href="#s17">광학 · 17 / 56</a></div></section>
 
-<section id="s14" class="slide">
+<section id="s18" class="slide">
   <div class="sl">
     <header><p class="kicker">광학 기구 · 3 · 교과서 182~183쪽</p><h2>수차: 실제 렌즈는 한 점에 모으지 못한다</h2></header>
     <div class="body cols">
@@ -308,9 +350,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s14">광학 · 14 / 43</a></div></section>
+<div class="slide-no"><a href="#s18">광학 · 18 / 56</a></div></section>
 
-<section id="s15" class="slide">
+<section id="s19" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>거울과 렌즈</h2></header>
     <div class="body cols">
@@ -329,17 +371,17 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s15">광학 · 15 / 43</a></div></section>
+<div class="slide-no"><a href="#s19">광학 · 19 / 56</a></div></section>
 
-<section id="s16" class="slide divider">
+<section id="s20" class="slide divider">
   <div class="sl">
     <span class="roman">III-2</span>
     <h2>간섭과 회절 · 간섭</h2>
     <p class="std">교과서 187~197쪽 · 빛의 파동적 성질이 연구되기까지의 과정을 알아본다 · 이중 슬릿의 간섭무늬, 간섭계의 원리, 얇은 막, 뉴턴링에 의한 간섭</p>
   </div>
-<div class="slide-no"><a href="#s16">광학 · 16 / 43</a></div></section>
+<div class="slide-no"><a href="#s20">광학 · 20 / 56</a></div></section>
 
-<section id="s17" class="slide">
+<section id="s21" class="slide">
   <div class="sl">
     <header><p class="kicker">파동의 중첩과 간섭 · 교과서 188~190쪽</p><h2>경로차가 위상차를 만든다</h2></header>
     <div class="body cols">
@@ -357,25 +399,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s17">광학 · 17 / 43</a></div></section>
+<div class="slide-no"><a href="#s21">광학 · 21 / 56</a></div></section>
 
-<section id="s18" class="slide derive">
+<section id="s22" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 두 파동의 간섭 · 교과서 188~190쪽</p><h2>합차 공식으로 간섭 무늬의 세기 구하기</h2></header>
+    <header><p class="kicker">유도 · 두 파동의 간섭 · 교과서 188~190쪽</p><h2>합차 공식으로 간섭 무늬의 세기 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>진폭이 같고 위상차가 $\delta$ 인 두 파동이 한 점에서 겹친다.</p><div class="eq">$$E = E_0\sin\omega t + E_0\sin(\omega t + \delta)$$</div></li>
         <li><p>$\sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2}$ 를 쓴다.</p><div class="eq">$$E = 2E_0\cos\frac\delta2\,\sin\Big(\omega t + \frac\delta2\Big)$$</div></li>
         <li><p>합성파의 진폭은 $2E_0\cos(\delta/2)$. 세기는 진폭의 제곱에 비례하므로 ($I_0$: 한 파동의 세기)</p><div class="eq">$$I = 4I_0\cos^2\frac\delta2$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s22">광학 · 22 / 56</a></div></section>
+
+<section id="s23" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 두 파동의 간섭 · 교과서 188~190쪽</p><h2>합차 공식으로 간섭 무늬의 세기 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>위상차를 경로차 $\Delta$ 로 바꾼다.</p><div class="eq">$$\delta = \frac{2\pi}{\lambda}\Delta\ \Rightarrow\ I = 4I_0\cos^2\frac{\pi\Delta}{\lambda}$$</div></li>
         <li><p>$\Delta = m\lambda$ 이면 $4I_0$ (보강), $\Delta = (m + \tfrac12)\lambda$ 이면 0 (상쇄).</p><div class="eq">$$I_{max} = 4I_0,\qquad I_{min} = 0$$</div></li>
         <li><p>무늬 전체의 평균은 $2I_0$, 두 빛을 그냥 더한 값이다. 에너지가 사라지는 것이 아니라 밝은 곳으로 다시 나뉜다.</p><div class="eq">$$\langle I\rangle = 4I_0\Big\langle\cos^2\frac\delta2\Big\rangle = 2I_0$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s18">광학 · 18 / 43</a></div></section>
+<div class="slide-no"><a href="#s23">광학 · 23 / 56</a></div></section>
 
-<section id="s19" class="slide">
+<section id="s24" class="slide">
   <div class="sl">
     <header><p class="kicker">영의 이중 슬릿 (1801) · 교과서 190~193쪽</p><h2>밝은 무늬의 위치와 간격</h2></header>
     <div class="body cols">
@@ -397,25 +449,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s19">광학 · 19 / 43</a></div></section>
+<div class="slide-no"><a href="#s24">광학 · 24 / 56</a></div></section>
 
-<section id="s20" class="slide derive">
+<section id="s25" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 영의 이중 슬릿 · 교과서 190~193쪽</p><h2>경로차 d sin θ 에서 무늬 간격까지</h2></header>
+    <header><p class="kicker">유도 · 영의 이중 슬릿 · 교과서 190~193쪽</p><h2>경로차 d sin θ 에서 무늬 간격까지 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>$L \gg d$ 이면 두 슬릿에서 점 P로 가는 광선은 거의 나란하다. 아래 슬릿에서 위 광선에 수선을 내리면 남는 길이가 경로차다.</p><div class="eq">$$\Delta = d\sin\theta$$</div></li>
         <li><p>보강 조건을 쓴다.</p><div class="eq">$$d\sin\theta_m = m\lambda\qquad(m = 0, \pm1, \pm2, \dots)$$</div></li>
         <li><p>스크린 위 높이 $y$ 는 $\tan\theta = y/L$. 각이 작으면 $\sin\theta\approx\tan\theta$.</p><div class="eq">$$y_m = L\tan\theta_m \approx \frac{m\lambda L}{d}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s25">광학 · 25 / 56</a></div></section>
+
+<section id="s26" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 영의 이중 슬릿 · 교과서 190~193쪽</p><h2>경로차 d sin θ 에서 무늬 간격까지 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>이웃한 밝은 무늬 사이 간격은 $m$ 에 무관하다 (무늬가 고르게 늘어선다).</p><div class="eq">$$\Delta y = y_{m+1} - y_m = \frac{\lambda L}{d}$$</div></li>
         <li><p>앞 슬라이드의 세기 식에 $\Delta = d\sin\theta$ 를 넣으면 무늬의 밝기 분포.</p><div class="eq">$$I = 4I_0\cos^2\frac{\pi d\sin\theta}{\lambda}$$</div></li>
         <li><p>예: $\lambda = 633$ nm, $d = 0.25$ mm, $L = 2.0$ m.</p><div class="eq">$$\Delta y = \frac{(633\times10^{-9})(2.0)}{0.25\times10^{-3}} = 5.1\ \text{mm}$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s20">광학 · 20 / 43</a></div></section>
+<div class="slide-no"><a href="#s26">광학 · 26 / 56</a></div></section>
 
-<section id="s21" class="slide">
+<section id="s27" class="slide">
   <div class="sl">
     <header><p class="kicker">얇은 막의 간섭 · 교과서 194쪽</p><h2>비눗방울의 색, 반사 방지막</h2></header>
     <div class="body cols">
@@ -434,25 +496,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s21">광학 · 21 / 43</a></div></section>
+<div class="slide-no"><a href="#s27">광학 · 27 / 56</a></div></section>
 
-<section id="s22" class="slide derive">
+<section id="s28" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 얇은 막의 간섭 · 교과서 194쪽</p><h2>광경로차와 반사 위상을 함께 세기</h2></header>
+    <header><p class="kicker">유도 · 얇은 막의 간섭 · 교과서 194쪽</p><h2>광경로차와 반사 위상을 함께 세기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>윗면 반사광 ①과 아랫면 반사광 ②. 수직 입사면 ②가 막 속을 $2t$ 더 가고, 막 속 파장은 $\lambda/n$ 이다.</p><div class="eq">$$\text{광경로차} = 2nt\ \Rightarrow\ \text{위상차} = \frac{2\pi}{\lambda}\,2nt$$</div></li>
         <li><p>굴절률이 큰 매질에서 반사할 때마다 위상이 $\pi$ 더해진다.</p><div class="eq">$$n_1 \lt n_2\ \text{인 경계에서 반사}\ \Rightarrow\ +\pi$$</div></li>
         <li><p>비누막 (공기-비누-공기): ①만 $\pi$ 가 바뀐다. 총 위상차.</p><div class="eq">$$\delta = \frac{2\pi}{\lambda}\,2nt - \pi$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s28">광학 · 28 / 56</a></div></section>
+
+<section id="s29" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 얇은 막의 간섭 · 교과서 194쪽</p><h2>광경로차와 반사 위상을 함께 세기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>$\delta = 2\pi m$ 이면 밝고, $\delta = (2m+1)\pi$ 이면 어둡다.</p><div class="eq">$$\text{밝음: } 2nt = \big(m + \tfrac12\big)\lambda,\qquad \text{어두움: } 2nt = m\lambda$$</div></li>
         <li><p>반사 방지막 (공기-MgF₂-유리): ①, ② 모두 $\pi$ 라 지워진다. 어두운 조건의 가장 얇은 두께.</p><div class="eq">$$2nt = \tfrac12\lambda\ \Rightarrow\ t = \frac{\lambda}{4n} = \frac{550}{4(1.38)} = 99.6\ \text{nm}$$</div></li>
         <li><p>비누막이 아주 얇아지면 ($t\to0$) 위상차 $\pi$ 만 남아 모든 색이 어두워진다. 터지기 직전의 비눗방울 위쪽이 검게 보인다.</p><div class="eq">$$t\to0\ \Rightarrow\ \delta\to-\pi\ \ (\text{상쇄})$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s22">광학 · 22 / 43</a></div></section>
+<div class="slide-no"><a href="#s29">광학 · 29 / 56</a></div></section>
 
-<section id="s23" class="slide">
+<section id="s30" class="slide">
   <div class="sl">
     <header><p class="kicker">뉴턴링 · 교과서 194~195쪽</p><h2>뉴턴 링: 공기층 두께를 재는 자</h2></header>
     <div class="body cols">
@@ -469,25 +541,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s23">광학 · 23 / 43</a></div></section>
+<div class="slide-no"><a href="#s30">광학 · 30 / 56</a></div></section>
 
-<section id="s24" class="slide derive">
+<section id="s31" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 뉴턴링 · 교과서 194~195쪽</p><h2>피타고라스 정리로 공기층 두께와 고리 반지름 구하기</h2></header>
+    <header><p class="kicker">유도 · 뉴턴링 · 교과서 194~195쪽</p><h2>피타고라스 정리로 공기층 두께와 고리 반지름 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>렌즈 곡률 중심에서 그린 직각삼각형. 중심에서 $r$ 떨어진 곳의 공기층 두께가 $t$.</p><div class="eq">$$R^2 = r^2 + (R - t)^2\ \Rightarrow\ r^2 = 2Rt - t^2$$</div></li>
         <li><p>$t \ll R$ 이라 $t^2$ 을 버린다.</p><div class="eq">$$t \approx \frac{r^2}{2R}$$</div></li>
         <li><p>공기층 아랫면(공기→유리)에서만 위상이 $\pi$ 바뀐다. 어두운 고리 조건.</p><div class="eq">$$2t = m\lambda\ \Rightarrow\ r_m = \sqrt{m\lambda R}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s31">광학 · 31 / 56</a></div></section>
+
+<section id="s32" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 뉴턴링 · 교과서 194~195쪽</p><h2>피타고라스 정리로 공기층 두께와 고리 반지름 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>밝은 고리는 반파장 어긋난 곳.</p><div class="eq">$$2t = \big(m + \tfrac12\big)\lambda\ \Rightarrow\ r = \sqrt{\big(m + \tfrac12\big)\lambda R}$$</div></li>
         <li><p>이웃한 고리 간격은 $m$ 이 클수록 줄어든다 (바깥이 촘촘).</p><div class="eq">$$r_{m+1} - r_m \approx \frac{\sqrt{\lambda R}}{2\sqrt m}$$</div></li>
         <li><p>예: $R = 1.0$ m, $\lambda = 589$ nm.</p><div class="eq">$$r_1 = \sqrt{(589\times10^{-9})(1.0)} = 0.77\ \text{mm},\qquad r_4 = 1.53\ \text{mm}$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s24">광학 · 24 / 43</a></div></section>
+<div class="slide-no"><a href="#s32">광학 · 32 / 56</a></div></section>
 
-<section id="s25" class="slide">
+<section id="s33" class="slide">
   <div class="sl">
     <header><p class="kicker">간섭계 · 교과서 195~197쪽</p><h2>마이컬슨 간섭계: 파장의 몇 분의 1까지</h2></header>
     <div class="body cols">
@@ -506,9 +588,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s25">광학 · 25 / 43</a></div></section>
+<div class="slide-no"><a href="#s33">광학 · 33 / 56</a></div></section>
 
-<section id="s26" class="slide">
+<section id="s34" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>간섭</h2></header>
     <div class="body cols">
@@ -526,17 +608,17 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s26">광학 · 26 / 43</a></div></section>
+<div class="slide-no"><a href="#s34">광학 · 34 / 56</a></div></section>
 
-<section id="s27" class="slide divider">
+<section id="s35" class="slide divider">
   <div class="sl">
     <span class="roman">III-2</span>
     <h2>간섭과 회절 · 회절</h2>
     <p class="std">교과서 198~214쪽 · 여러 모양의 슬릿에서 나타나는 회절 현상 · 회절격자에 입사한 광선의 경로 · 광학 기기의 분해능</p>
   </div>
-<div class="slide-no"><a href="#s27">광학 · 27 / 43</a></div></section>
+<div class="slide-no"><a href="#s35">광학 · 35 / 56</a></div></section>
 
-<section id="s28" class="slide">
+<section id="s36" class="slide">
   <div class="sl">
     <header><p class="kicker">단일 슬릿 회절 · 교과서 198~203쪽</p><h2>틈이 좁을수록 빛이 넓게 퍼진다</h2></header>
     <div class="body cols">
@@ -552,42 +634,62 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s28">광학 · 28 / 43</a></div></section>
+<div class="slide-no"><a href="#s36">광학 · 36 / 56</a></div></section>
 
-<section id="s29" class="slide derive">
+<section id="s37" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 단일 슬릿 회절 · 교과서 198~203쪽</p><h2>틈을 짝수 조각으로 나누어 어두운 무늬 찾기</h2></header>
+    <header><p class="kicker">유도 · 단일 슬릿 회절 · 교과서 198~203쪽</p><h2>틈을 짝수 조각으로 나누어 어두운 무늬 찾기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>폭 $a$ 인 틈을 위·아래 절반으로 나눈다. 위 절반의 맨 위 점과 아래 절반의 맨 위 점은 $a/2$ 떨어져 있다.</p><div class="eq">$$\Delta = \frac a2\sin\theta$$</div></li>
         <li><p>이 경로차가 반파장이면 짝지은 두 점이 상쇄된다. 짝을 아래로 옮겨도 모두 같으므로 전체가 어두워진다.</p><div class="eq">$$\frac a2\sin\theta = \frac\lambda2\ \Rightarrow\ a\sin\theta = \lambda$$</div></li>
         <li><p>4조각, 6조각으로 나누어도 같은 논리. 일반적으로 ($m = 0$ 은 제외)</p><div class="eq">$$a\sin\theta = m\lambda\qquad(m = \pm1, \pm2, \dots)$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s37">광학 · 37 / 56</a></div></section>
+
+<section id="s38" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 단일 슬릿 회절 · 교과서 198~203쪽</p><h2>틈을 짝수 조각으로 나누어 어두운 무늬 찾기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>스크린 위치로 ($\sin\theta \approx y/L$). 가운데 밝은 무늬는 $m = -1$ 과 $+1$ 사이다.</p><div class="eq">$$y_m \approx \frac{m\lambda L}{a},\qquad w_{가운데} = \frac{2\lambda L}{a}$$</div></li>
         <li><p>예: $a = 0.10$ mm, $\lambda = 600$ nm, $L = 1.5$ m.</p><div class="eq">$$w = \frac{2(600\times10^{-9})(1.5)}{0.10\times10^{-3}} = 18\ \text{mm}$$</div></li>
         <li><p>퍼지는 각은 $\lambda/a$ 정도다. 틈이 파장에 비해 넓으면 회절이 거의 보이지 않는다.</p><div class="eq">$$\theta_1 \approx \frac\lambda a\ \Rightarrow\ a \gg \lambda\ \text{이면}\ \theta_1\to0$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s29">광학 · 29 / 43</a></div></section>
+<div class="slide-no"><a href="#s38">광학 · 38 / 56</a></div></section>
 
-<section id="s30" class="slide derive">
+<section id="s39" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 단일 슬릿의 세기 · 교과서 201~202쪽 식 (Ⅲ. 2-5~7) · 참고 Halliday 36-2</p><h2>위상자를 이어 붙여 회절 무늬의 세기 구하기</h2></header>
+    <header><p class="kicker">유도 · 단일 슬릿의 세기 · 교과서 201~202쪽 식 (Ⅲ. 2-5~7) · 참고 Halliday 36-2</p><h2>위상자를 이어 붙여 회절 무늬의 세기 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps tight">
         <li><p>틈을 아주 많은 띠로 나눈다. 각 띠에서 오는 작은 파동은 진폭이 같고, 이웃끼리 위상이 조금씩 다르다. 맨 위와 맨 아래 띠의 위상차는</p><div class="eq">$$\phi = \frac{2\pi}{\lambda}\,a\sin\theta$$</div></li>
         <li><p>$\theta = 0$ 이면 위상차가 없어 작은 위상자들이 일직선으로 이어진다. 그 길이가 가운데 극대의 진폭이다.</p><div class="eq">$$E_\theta(0) = E_m$$</div></li>
         <li><p>$\theta \ne 0$ 이면 같은 길이의 사슬이 휘어 원호가 된다. 호의 양 끝 접선이 이루는 각이 $\phi$ 이므로 반지름을 $R$ 이라 하면</p><div class="eq">$$E_m = R\,\phi\qquad(\text{호의 길이})$$</div></li>
         <li><p>합성 진폭은 호의 양 끝을 잇는 현이다. 두 식에서 $R$ 을 지우고 $\alpha = \phi/2$ 로 둔다.</p><div class="eq">$$E_\theta = 2R\sin\frac\phi2 = E_m\frac{\sin\alpha}{\alpha},\qquad \alpha = \frac{\pi a\sin\theta}{\lambda}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s39">광학 · 39 / 56</a></div></section>
+
+<section id="s40" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 단일 슬릿의 세기 · 교과서 201~202쪽 식 (Ⅲ. 2-5~7) · 참고 Halliday 36-2</p><h2>위상자를 이어 붙여 회절 무늬의 세기 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="5" class="steps tight">
         <li><p>세기는 진폭의 제곱에 비례한다.</p><div class="eq">$$I(\theta) = I_m\Big(\frac{\sin\alpha}{\alpha}\Big)^2$$</div></li>
         <li><p>점검: $\sin\alpha = 0$ ($\alpha = m\pi$) 이면 사슬이 원을 $m$ 바퀴 돌아 제자리로 와서 어둡다. 앞 슬라이드의 $a\sin\theta = m\lambda$ 와 같다. 버금 극대는 $\alpha \approx 1.43\pi,\ 2.46\pi$ 에서</p><div class="eq">$$\frac{I}{I_m} = 0.047,\quad 0.016$$</div></li>
       </ol>
       <p class="small">가운데 무늬에 빛의 대부분이 모입니다. 원형 구멍에서는 같은 합이 베셀 함수가 되어, 첫 어두운 무늬가 $\sin\theta = 1.22\lambda/D$ 에 생깁니다 (레일리 기준).</p>
     </div>
   </div>
-<div class="slide-no"><a href="#s30">광학 · 30 / 43</a></div></section>
+<div class="slide-no"><a href="#s40">광학 · 40 / 56</a></div></section>
 
-<section id="s31" class="slide">
+<section id="s41" class="slide">
   <div class="sl">
     <header><p class="kicker">이중 슬릿 + 회절</p><h2>실제 이중 슬릿 무늬는 회절 포락선 안에 있다</h2></header>
     <div class="body cols wide-r">
@@ -615,9 +717,9 @@ window.MathJax = {
 </svg><figcaption>가로축은 $a\sin\theta/\lambda$. 점선(회절)이 실선(간섭)의 높이를 정합니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s31">광학 · 31 / 43</a></div></section>
+<div class="slide-no"><a href="#s41">광학 · 41 / 56</a></div></section>
 
-<section id="s32" class="slide">
+<section id="s42" class="slide">
   <div class="sl">
     <header><p class="kicker">원형 구멍과 분해능 · 교과서 204~205쪽, 209~211쪽</p><h2>레일리 기준: 두 점을 구별할 수 있는 최소 각</h2></header>
     <div class="body cols">
@@ -643,9 +745,9 @@ window.MathJax = {
       <aside class="note">기존 양자 p141의 '광학 현미경 분해능 약 500 nm'는 회절 한계 λ/2 ≈ 200~250 nm로 바로잡았습니다.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s32">광학 · 32 / 43</a></div></section>
+<div class="slide-no"><a href="#s42">광학 · 42 / 56</a></div></section>
 
-<section id="s33" class="slide">
+<section id="s43" class="slide">
   <div class="sl">
     <header><p class="kicker">회절격자 · 교과서 207~211쪽</p><h2>슬릿이 많을수록 밝은 선이 날카롭다</h2></header>
     <div class="body cols wide-r">
@@ -671,25 +773,35 @@ window.MathJax = {
 </svg><figcaption>주 극대 위치는 같고, N이 커질수록 폭이 좁아집니다.</figcaption></figure>
     </div>
   </div>
-<div class="slide-no"><a href="#s33">광학 · 33 / 43</a></div></section>
+<div class="slide-no"><a href="#s43">광학 · 43 / 56</a></div></section>
 
-<section id="s34" class="slide derive">
+<section id="s44" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">풀이 · 회절격자 · 교과서 207~211쪽</p><h2>600 줄/mm 격자의 차수와 스펙트럼의 겹침</h2></header>
+    <header><p class="kicker">풀이 · 회절격자 · 교과서 207~211쪽</p><h2>600 줄/mm 격자의 차수와 스펙트럼의 겹침 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>슬릿 간격.</p><div class="eq">$$d = \frac{1\ \text{mm}}{600} = 1.67\ \mu\text{m}$$</div></li>
         <li><p>500 nm 빛의 각 차수 방향 ($d\sin\theta = m\lambda$).</p><div class="eq">$$\sin\theta_m = \frac{m(0.500)}{1.67} = 0.30,\ 0.60,\ 0.90\ \Rightarrow\ 17.5^\circ,\ 36.9^\circ,\ 64.2^\circ$$</div></li>
         <li><p>$\sin\theta \le 1$ 이어야 하므로 볼 수 있는 가장 높은 차수.</p><div class="eq">$$m \le \frac d\lambda = 3.3\ \Rightarrow\ m_{max} = 3$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s44">광학 · 44 / 56</a></div></section>
+
+<section id="s45" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 회절격자 · 교과서 207~211쪽</p><h2>600 줄/mm 격자의 차수와 스펙트럼의 겹침 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>흰빛(400~700 nm)의 1차와 2차 스펙트럼은 겹치는가?</p><div class="eq">$$1\text{차 끝}: \frac{0.70}{1.67} = 0.42,\qquad 2\text{차 시작}: \frac{2(0.40)}{1.67} = 0.48\ \Rightarrow\ \text{안 겹침}$$</div></li>
         <li><p>2차와 3차는?</p><div class="eq">$$2\text{차 끝}: \frac{2(0.70)}{1.67} = 0.84,\qquad 3\text{차 시작}: \frac{3(0.40)}{1.67} = 0.72\ \Rightarrow\ \text{겹침}$$</div></li>
       </ol>
       <p class="small">분광기는 겹치지 않는 1차 스펙트럼을 주로 씁니다. 슬릿 수 $N$ 이 많을수록 같은 차수에서 더 가까운 두 파장을 가를 수 있습니다 ($\lambda/\Delta\lambda = Nm$).</p>
     </div>
   </div>
-<div class="slide-no"><a href="#s34">광학 · 34 / 43</a></div></section>
+<div class="slide-no"><a href="#s45">광학 · 45 / 56</a></div></section>
 
-<section id="s35" class="slide">
+<section id="s46" class="slide">
   <div class="sl">
     <header><p class="kicker">확인 문제</p><h2>회절과 분해능</h2></header>
     <div class="body cols">
@@ -709,17 +821,17 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s35">광학 · 35 / 43</a></div></section>
+<div class="slide-no"><a href="#s46">광학 · 46 / 56</a></div></section>
 
-<section id="s36" class="slide divider">
+<section id="s47" class="slide divider">
   <div class="sl">
     <span class="roman">III-3</span>
     <h2>영상 물리</h2>
     <p class="std">교과서 215~227쪽 · 편광 방향에 따라 빛의 투과가 달라지는 현상에서 규칙성을 찾을 수 있다 · 편광이 실생활에 적용되는 사례를 찾아 설명할 수 있다</p>
   </div>
-<div class="slide-no"><a href="#s36">광학 · 36 / 43</a></div></section>
+<div class="slide-no"><a href="#s47">광학 · 47 / 56</a></div></section>
 
-<section id="s37" class="slide">
+<section id="s48" class="slide">
   <div class="sl">
     <header><p class="kicker">편광과 말뤼스 법칙 · 교과서 216~218쪽</p><h2>빛은 횡파다</h2></header>
     <div class="body cols">
@@ -738,25 +850,35 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s37">광학 · 37 / 43</a></div></section>
+<div class="slide-no"><a href="#s48">광학 · 48 / 56</a></div></section>
 
-<section id="s38" class="slide derive">
+<section id="s49" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 말뤼스 법칙 · 교과서 217~218쪽</p><h2>전기장 성분으로 투과 세기 구하기</h2></header>
+    <header><p class="kicker">유도 · 말뤼스 법칙 · 교과서 217~218쪽</p><h2>전기장 성분으로 투과 세기 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>선편광의 전기장 $E_0$ 가 투과축과 $\theta$ 를 이룬다. 축 방향 성분만 지나가고 수직 성분은 흡수된다.</p><div class="eq">$$E_\parallel = E_0\cos\theta,\qquad E_\perp = E_0\sin\theta\ (\text{흡수})$$</div></li>
         <li><p>세기는 전기장 진폭의 제곱에 비례한다.</p><div class="eq">$$I = I_0\cos^2\theta$$</div></li>
         <li><p>편광되지 않은 빛은 모든 $\theta$ 가 고르게 섞여 있다.</p><div class="eq">$$I = I_0\langle\cos^2\theta\rangle = \frac{I_0}{2}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s49">광학 · 49 / 56</a></div></section>
+
+<section id="s50" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 말뤼스 법칙 · 교과서 217~218쪽</p><h2>전기장 성분으로 투과 세기 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>투과축 0°, 45°, 90° 세 장을 차례로 지난다.</p><div class="eq">$$I_1 = \frac{I_0}{2},\quad I_2 = I_1\cos^245^\circ = \frac{I_0}{4},\quad I_3 = I_2\cos^245^\circ = \frac{I_0}{8}$$</div></li>
         <li><p>가운데 판의 각을 $\phi$ 로 바꾸면 ($\cos(90^\circ - \phi) = \sin\phi$)</p><div class="eq">$$I_3 = \frac{I_0}{2}\cos^2\phi\,\sin^2\phi = \frac{I_0}{8}\sin^22\phi$$</div></li>
         <li><p>$\phi = 45^\circ$ 에서 가장 밝고, $0^\circ$ 나 $90^\circ$ 이면 어둡다.</p><div class="eq">$$I_{3,max} = \frac{I_0}{8}\ \ (\phi = 45^\circ)$$</div></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s38">광학 · 38 / 43</a></div></section>
+<div class="slide-no"><a href="#s50">광학 · 50 / 56</a></div></section>
 
-<section id="s39" class="slide">
+<section id="s51" class="slide">
   <div class="sl">
     <header><p class="kicker">브루스터 법칙 · 교과서 218~219쪽</p><h2>브루스터 각과 하늘의 편광</h2></header>
     <div class="body cols">
@@ -771,24 +893,34 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s39">광학 · 39 / 43</a></div></section>
+<div class="slide-no"><a href="#s51">광학 · 51 / 56</a></div></section>
 
-<section id="s40" class="slide derive">
+<section id="s52" class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 브루스터 법칙 · 교과서 218~219쪽</p><h2>반사광과 굴절광이 수직일 조건에서 tan θ<sub>B</sub> 얻기</h2></header>
+    <header><p class="kicker">유도 · 브루스터 법칙 · 교과서 218~219쪽</p><h2>반사광과 굴절광이 수직일 조건에서 tan θ<sub>B</sub> 얻기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>브루스터 각에서는 반사광과 굴절광이 수직이다.</p><div class="eq">$$\theta_B + \theta_t = 90^\circ$$</div></li>
         <li><p>스넬 법칙에 넣는다.</p><div class="eq">$$n_1\sin\theta_B = n_2\sin\theta_t = n_2\sin(90^\circ - \theta_B) = n_2\cos\theta_B$$</div></li>
         <li><p>정리한다.</p><div class="eq">$$\tan\theta_B = \frac{n_2}{n_1}$$</div></li>
+      </ol>
+    </div>
+  </div>
+<div class="slide-no"><a href="#s52">광학 · 52 / 56</a></div></section>
+
+<section id="s53" class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 브루스터 법칙 · 교과서 218~219쪽</p><h2>반사광과 굴절광이 수직일 조건에서 tan θ<sub>B</sub> 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>예: 공기에서 물로, 유리로. 이때 굴절각은 $90^\circ - \theta_B$.</p><div class="eq">$$\theta_B = \tan^{-1}1.33 = 53.1^\circ,\qquad \tan^{-1}1.50 = 56.3^\circ$$</div></li>
         <li class="wide"><p>왜 수직일 때 입사면 안의 성분이 반사되지 않는가: 반사광은 굴절된 매질 속 전자가 굴절광의 전기장 방향으로 진동하며 다시 낸 빛이다. 진동하는 전하는 진동 방향으로는 복사하지 못한다 (안테나 축 방향, 전자기학 단원). 반사 방향이 마침 그 진동 방향과 나란하면, 입사면 안에서 진동하는 성분은 반사광에 없다.</p></li>
       </ol>
     </div>
   </div>
-<div class="slide-no"><a href="#s40">광학 · 40 / 43</a></div></section>
+<div class="slide-no"><a href="#s53">광학 · 53 / 56</a></div></section>
 
-<section id="s41" class="slide">
+<section id="s54" class="slide">
   <div class="sl">
     <header><p class="kicker">원편광과 광 활성 · 교과서 216~221쪽</p><h2>전기장이 돌면서 나아가는 빛</h2></header>
     <div class="body cols">
@@ -803,9 +935,9 @@ window.MathJax = {
       </div>
     </div>
   </div>
-<div class="slide-no"><a href="#s41">광학 · 41 / 43</a></div></section>
+<div class="slide-no"><a href="#s54">광학 · 54 / 56</a></div></section>
 
-<section id="s42" class="slide">
+<section id="s55" class="slide">
   <div class="sl">
     <header><p class="kicker">생활 속의 편광 · 교과서 222~225쪽 · 조사 활동</p><h2>3D 영화, 액정 화면, 광탄성</h2></header>
     <div class="body cols">
@@ -824,9 +956,9 @@ window.MathJax = {
       <aside class="note">활동 제안: 스마트폰 화면(LCD 또는 편광층이 있는 OLED)과 편광 필름 한 장으로 말뤼스 법칙을 정성적으로 확인하고, 조도 센서 앱으로 cos² 그래프를 그려 보게 하세요.</aside>
     </div>
   </div>
-<div class="slide-no"><a href="#s42">광학 · 42 / 43</a></div></section>
+<div class="slide-no"><a href="#s55">광학 · 55 / 56</a></div></section>
 
-<section id="s43" class="slide">
+<section id="s56" class="slide">
   <div class="sl">
     <header><p class="kicker">정리</p><h2>광학에서 가져갈 것</h2></header>
     <div class="body cols">
@@ -845,7 +977,7 @@ window.MathJax = {
       </ul>
     </div>
   </div>
-<div class="slide-no"><a href="#s43">광학 · 43 / 43</a></div></section>
+<div class="slide-no"><a href="#s56">광학 · 56 / 56</a></div></section>
 </main>
 <footer class="site-foot">
   <p>2022 개정 교육과정 고급 물리학 수업 자료</p>

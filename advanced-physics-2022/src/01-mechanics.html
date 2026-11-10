@@ -85,12 +85,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 포물선 운동 · 교과서 14~15쪽</p><h2>가속도를 두 번 적분해 궤적과 도달 거리 구하기</h2></header>
+    <header><p class="kicker">유도 · 포물선 운동 · 교과서 14~15쪽</p><h2>가속도를 두 번 적분해 궤적과 도달 거리 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>공기 저항이 없으면 성분마다 가속도가 일정하다. 출발점을 원점, 위쪽을 $+y$ 로 잡는다.</p><div class="eq">$$a_x = 0,\qquad a_y = -g$$</div></li>
         <li><p>한 번 적분하고, 처음 속도 $(v_0\cos\theta,\ v_0\sin\theta)$ 로 적분 상수를 정한다.</p><div class="eq">$$v_x = v_0\cos\theta,\qquad v_y = v_0\sin\theta - gt$$</div></li>
         <li><p>한 번 더 적분한다.</p><div class="eq">$$x = v_0\cos\theta\,t,\qquad y = v_0\sin\theta\,t - \tfrac12gt^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 포물선 운동 · 교과서 14~15쪽</p><h2>가속도를 두 번 적분해 궤적과 도달 거리 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>첫 식의 $t = x/(v_0\cos\theta)$ 를 둘째 식에 넣어 $t$ 를 없애면 포물선이다.</p><div class="eq">$$y = x\tan\theta - \frac{g}{2v_0^2\cos^2\theta}\,x^2$$</div></li>
         <li><p>최고점에서는 $v_y = 0$ 이다.</p><div class="eq">$$t_H = \frac{v_0\sin\theta}{g},\qquad H = v_0\sin\theta\,t_H - \tfrac12gt_H^2 = \frac{v_0^2\sin^2\theta}{2g}$$</div></li>
         <li><p>다시 $y = 0$ 이 되는 시각은 $2t_H$ 이다. $2\sin\theta\cos\theta = \sin2\theta$ 를 쓴다.</p><div class="eq">$$R = v_0\cos\theta\cdot\frac{2v_0\sin\theta}{g} = \frac{v_0^2\sin2\theta}{g}\ \le\ \frac{v_0^2}{g}\ \ (\theta = 45^\circ)$$</div></li>
@@ -141,12 +151,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 선형 저항 · 교과서 20쪽 식 (Ⅰ. 1-39~43)</p><h2>변수 분리로 속도 v(t) 와 위치 y(t) 구하기</h2></header>
+    <header><p class="kicker">유도 · 선형 저항 · 교과서 20쪽 식 (Ⅰ. 1-39~43)</p><h2>변수 분리로 속도 v(t) 와 위치 y(t) 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>아래쪽을 $+$ 로 잡은 운동 방정식을 종단 속력 $v_t = mg/b$ 와 $\tau = m/b$ 로 정리한다.</p><div class="eq">$$\frac{dv}{dt} = g - \frac bm v = \frac{v_t - v}{\tau}$$</div></li>
         <li><p>$v$ 가 든 항과 $t$ 가 든 항을 양변으로 나눈다 (변수 분리).</p><div class="eq">$$\frac{dv}{v_t - v} = \frac{dt}{\tau}$$</div></li>
         <li><p>처음 상태 $(t = 0,\ v = 0)$ 부터 $(t,\ v)$ 까지 양변을 적분한다.</p><div class="eq">$$-\ln\frac{v_t - v}{v_t} = \frac t\tau$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 선형 저항 · 교과서 20쪽 식 (Ⅰ. 1-39~43)</p><h2>변수 분리로 속도 v(t) 와 위치 y(t) 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>지수 함수로 풀면 교과서 식 (Ⅰ. 1-42)이다. $t\to\infty$ 이면 $v\to v_t$.</p><div class="eq">$$v(t) = v_t\big(1 - e^{-t/\tau}\big)$$</div></li>
         <li><p>$y(0) = 0$ 으로 한 번 더 적분하면 위치다 (식 Ⅰ. 1-43).</p><div class="eq">$$y(t) = v_t\,t - v_t\tau\big(1 - e^{-t/\tau}\big)$$</div></li>
         <li><p>검산: $t \ll \tau$ 이면 $e^{-x}\approx 1 - x + \tfrac12x^2$ 이므로 자유 낙하로 돌아간다 ($v_t/\tau = g$).</p><div class="eq">$$v \approx v_t\frac t\tau = gt,\qquad y \approx \frac{v_t}{2\tau}t^2 = \tfrac12gt^2$$</div></li>
@@ -173,12 +193,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 제곱형 저항</p><h2>연직 낙하 속력을 부분분수 적분으로 구하기</h2></header>
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 제곱형 저항</p><h2>연직 낙하 속력을 부분분수 적분으로 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>아래쪽을 $+$ 로 잡고, 종단 속력 $v_T = \sqrt{mg/c}$ 로 묶는다.</p><div class="eq">$$m\frac{dv}{dt} = mg - cv^2 = c\big(v_T^2 - v^2\big)$$</div></li>
         <li><p>변수 분리.</p><div class="eq">$$\frac{dv}{v_T^2 - v^2} = \frac cm\,dt$$</div></li>
         <li><p>왼쪽을 부분분수로 쪼갠다.</p><div class="eq">$$\frac{1}{v_T^2 - v^2} = \frac{1}{2v_T}\Big(\frac{1}{v_T - v} + \frac{1}{v_T + v}\Big)$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 제곱형 저항</p><h2>연직 낙하 속력을 부분분수 적분으로 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>$v(0) = 0$ 부터 적분한다.</p><div class="eq">$$\frac{1}{2v_T}\ln\frac{v_T + v}{v_T - v} = \frac cm\,t$$</div></li>
         <li><p>$cv_T/m = g/v_T$ 를 쓰고 $v$ 에 대해 푼다. $\tanh x = \dfrac{e^x - e^{-x}}{e^x + e^{-x}}$.</p><div class="eq">$$v(t) = v_T\tanh\frac{gt}{v_T}$$</div></li>
         <li><p>예: $v_T = 56$ m/s 인 스카이다이버가 종단 속력의 90 %에 이르는 시간.</p><div class="eq">$$t = \frac{v_T}{g}\tanh^{-1}0.9 = \frac{56}{9.8}\times1.47 \approx 8.4\ \text{s}$$</div></li>
@@ -212,12 +242,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 단순 조화 운동 · 교과서 19~20쪽</p><h2>해를 넣어 확인하고, 초기 조건과 에너지로 정리하기</h2></header>
+    <header><p class="kicker">유도 · 단순 조화 운동 · 교과서 19~20쪽</p><h2>해를 넣어 확인하고, 초기 조건과 에너지로 정리하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>해의 후보를 두 번 미분한다.</p><div class="eq">$$x = A\cos(\omega t+\phi),\quad \dot x = -A\omega\sin(\omega t+\phi),\quad \ddot x = -\omega^2x$$</div></li>
         <li><p>운동 방정식 $\ddot x = -(k/m)\,x$ 와 비교한다.</p><div class="eq">$$\omega^2 = \frac km,\qquad T = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac mk}$$</div></li>
         <li><p>$t = 0$ 의 위치 $x_0$ 와 속도 $v_0$ 로 진폭과 위상을 정한다.</p><div class="eq">$$x_0 = A\cos\phi,\ \ v_0 = -A\omega\sin\phi\ \Rightarrow\ A = \sqrt{x_0^2 + (v_0/\omega)^2}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 단순 조화 운동 · 교과서 19~20쪽</p><h2>해를 넣어 확인하고, 초기 조건과 에너지로 정리하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>운동 에너지와 탄성 퍼텐셜 에너지를 따로 쓴다.</p><div class="eq">$$K = \tfrac12mA^2\omega^2\sin^2(\omega t+\phi),\qquad U = \tfrac12kA^2\cos^2(\omega t+\phi)$$</div></li>
         <li><p>$m\omega^2 = k$ 이고 $\sin^2 + \cos^2 = 1$ 이므로 합이 시간에 무관하다.</p><div class="eq">$$E = K + U = \tfrac12kA^2$$</div></li>
         <li><p>연직 용수철: 평형 위치 $y_0 = mg/k$ 에서 잰 변위 $y'$ 로 쓰면 중력 항이 사라져 같은 단진동이 된다.</p><div class="eq">$$m\ddot y = mg - ky\ \xrightarrow{\ y\,=\,y_0 + y'\ }\ m\ddot y' = -ky'$$</div></li>
@@ -275,12 +315,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 일-운동 에너지 정리 · 교과서 25~27쪽</p><h2>뉴턴 제2법칙을 경로를 따라 적분하기</h2></header>
+    <header><p class="kicker">유도 · 일-운동 에너지 정리 · 교과서 25~27쪽</p><h2>뉴턴 제2법칙을 경로를 따라 적분하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>알짜힘이 짧은 변위 $d\vec r$ 동안 한 일.</p><div class="eq">$$dW = \vec F_{net}\cdot d\vec r$$</div></li>
         <li><p>제2법칙 $\vec F_{net} = m\,d\vec v/dt$ 와 $d\vec r = \vec v\,dt$ 를 넣는다.</p><div class="eq">$$dW = m\frac{d\vec v}{dt}\cdot\vec v\,dt$$</div></li>
         <li><p>$v^2 = \vec v\cdot\vec v$ 를 미분하면 $2\,\vec v\cdot d\vec v/dt$ 이다.</p><div class="eq">$$\frac{d\vec v}{dt}\cdot\vec v = \frac12\frac{d(v^2)}{dt}\ \Rightarrow\ dW = \tfrac12m\,d(v^2)$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 일-운동 에너지 정리 · 교과서 25~27쪽</p><h2>뉴턴 제2법칙을 경로를 따라 적분하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>처음부터 끝까지 더한다. 힘이 변해도, 경로가 굽어도 성립한다.</p><div class="eq">$$W_{net} = \int_{v_i}^{v_f}\tfrac12m\,d(v^2) = \tfrac12mv_f^2 - \tfrac12mv_i^2$$</div></li>
         <li><p>예: 용수철($k$)이 $x = A$ 에서 $x = 0$ 까지 물체를 밀며 한 일.</p><div class="eq">$$W = \int_A^0(-kx)\,dx = \tfrac12kA^2 = \tfrac12mv^2\ \Rightarrow\ v = A\sqrt{k/m}$$</div></li>
         <li><p>힘이 속도에 늘 수직이면(등속 원운동의 구심력, 자기력) $dW = 0$ 이라 속력이 변하지 않는다.</p><div class="eq">$$\vec F\perp\vec v\ \Rightarrow\ \vec F\cdot\vec v = 0\ \Rightarrow\ \Delta K = 0$$</div></li>
@@ -316,12 +366,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 퍼텐셜 에너지 · 교과서 30~31쪽</p><h2>힘을 적분해 퍼텐셜 에너지 구하기</h2></header>
+    <header><p class="kicker">유도 · 퍼텐셜 에너지 · 교과서 30~31쪽</p><h2>힘을 적분해 퍼텐셜 에너지 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>정의: 퍼텐셜 에너지의 변화는 보존력이 한 일의 음수다.</p><div class="eq">$$U(B) - U(A) = -\int_A^B\vec F\cdot d\vec l$$</div></li>
         <li><p>지표 근처 중력 $\vec F = -mg\,\hat y$, 기준 $y = 0$.</p><div class="eq">$$U(y) = -\int_0^y(-mg)\,dy' = mgy$$</div></li>
         <li><p>탄성력 $F = -kx$, 기준은 자연 길이 $x = 0$.</p><div class="eq">$$U(x) = -\int_0^x(-kx')\,dx' = \tfrac12kx^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 퍼텐셜 에너지 · 교과서 30~31쪽</p><h2>힘을 적분해 퍼텐셜 에너지 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>만유인력, 기준을 무한히 먼 곳($U = 0$)으로 잡는다.</p><div class="eq">$$U(r) = -\int_\infty^r\Big(-\frac{GMm}{r'^2}\Big)dr' = \Big[-\frac{GMm}{r'}\Big]_\infty^r = -\frac{GMm}{r}$$</div></li>
         <li><p>거꾸로 미분하면 힘이 돌아온다.</p><div class="eq">$$F_r = -\frac{dU}{dr} = -\frac{GMm}{r^2}\ \ (\text{인력})$$</div></li>
         <li><p>지표에서 $h$ 만큼 올릴 때 ($h \ll R$) 앞의 $mgh$ 와 같아진다.</p><div class="eq">$$U(R+h) - U(R) = \frac{GMm\,h}{R(R+h)} \approx \frac{GM}{R^2}\,mh = mgh$$</div></li>
@@ -376,14 +436,39 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 연속체의 질량 중심 · 교과서 40~41쪽 · 참고 Halliday 9-1, Boas 5.3~5.4</p><h2>합을 적분으로: 막대, 반원 고리, 반원판의 질량 중심</h2></header>
-    <div class="body">
+    <header><p class="kicker">유도 · 연속체의 질량 중심 · 교과서 40~41쪽 · 참고 Halliday 9-1, Boas 5.3~5.4</p><h2>합을 적분으로: 막대, 반원 고리, 반원판의 질량 중심 <span class="part">1/2</span></h2></header>
+    <div class="body cols fig-r">
       <ol class="steps tight">
         <li><p>질량이 연속적으로 퍼져 있으면 질점의 합을 작은 질량 요소 $dm$ 의 적분으로 바꾼다.</p><div class="eq">$$\vec r_{cm} = \frac1M\sum m_i\vec r_i\ \to\ \frac1M\int\vec r\,dm$$</div></li>
         <li><p>길이 $L$ 인 막대, 선밀도 $\lambda = \lambda_0x/L$ (끝으로 갈수록 무거움). $dm = \lambda\,dx$.</p><div class="eq">$$x_{cm} = \frac{\int_0^Lx\,\lambda_0\frac xL\,dx}{\int_0^L\lambda_0\frac xL\,dx} = \frac{\lambda_0L^2/3}{\lambda_0L/2} = \frac23L$$</div></li>
+      </ol>
+      <figure class="fig">{{fig:cm_slices}}<figcaption>조각의 질량 $dm$ 을 좌표로 쓰는 것이 첫 단계입니다. ×는 질량 중심.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 연속체의 질량 중심 · 교과서 40~41쪽 · 참고 Halliday 9-1, Boas 5.3~5.4</p><h2>합을 적분으로: 막대, 반원 고리, 반원판의 질량 중심 <span class="part">2/2</span></h2></header>
+    <div class="body cols fig-r">
+      <ol start="3" class="steps tight">
         <li><p>반지름 $R$ 인 반원 고리: 각 $\theta$ 에서 $d\theta$ 만큼의 호, $dm = \lambda R\,d\theta$, $y = R\sin\theta$.</p><div class="eq">$$y_{cm} = \frac{1}{\lambda\pi R}\int_0^\pi R\sin\theta\,\lambda R\,d\theta = \frac{2R}{\pi} = 0.64R$$</div></li>
         <li><p>반원판: 극좌표의 넓이 요소는 $dA = r\,dr\,d\theta$ (야코비안 $r$ 을 빠뜨리지 않는다).</p><div class="eq">$$y_{cm} = \frac{1}{\pi R^2/2}\int_0^\pi\!\!\int_0^Rr\sin\theta\;r\,dr\,d\theta = \frac{2}{\pi R^2}\cdot\frac{R^3}{3}\cdot2 = \frac{4R}{3\pi}$$</div></li>
         <li><p>비교: 질량이 바깥 테두리에 몰린 고리($0.64R$)가 속이 찬 판($0.42R$)보다 질량 중심이 멀다. 질량 중심은 물체 밖에 있을 수도 있다 (고리).</p><div class="eq">$$\frac{4}{3\pi} = 0.42 \lt \frac2\pi = 0.64$$</div></li>
+      </ol>
+      <figure class="fig">{{fig:cm_slices}}<figcaption>조각의 질량 $dm$ 을 좌표로 쓰는 것이 첫 단계입니다. ×는 질량 중심.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 질량 중심의 운동 · 교과서 39~43쪽</p><h2>내력은 쌍으로 지워지고 외력만 남는다 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>질량 중심 위치 $\vec R_{cm} = \sum m_i\vec r_i/M$ 를 시간으로 미분한다.</p><div class="eq">$$M\vec V_{cm} = \sum m_i\vec v_i = \vec P$$</div></li>
+        <li><p>입자 $i$ 가 받는 힘은 외력과, 다른 입자 $j$ 가 주는 내력의 합이다.</p><div class="eq">$$\frac{d\vec p_i}{dt} = \vec F_i^{\,외} + \sum_{j\ne i}\vec F_{ij}$$</div></li>
+        <li><p>모든 입자에 대해 더한다.</p><div class="eq">$$\frac{d\vec P}{dt} = \sum_i\vec F_i^{\,외} + \sum_i\sum_{j\ne i}\vec F_{ij}$$</div></li>
       </ol>
     </div>
   </div>
@@ -391,12 +476,9 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 질량 중심의 운동 · 교과서 39~43쪽</p><h2>내력은 쌍으로 지워지고 외력만 남는다</h2></header>
+    <header><p class="kicker">유도 · 질량 중심의 운동 · 교과서 39~43쪽</p><h2>내력은 쌍으로 지워지고 외력만 남는다 <span class="part">2/2</span></h2></header>
     <div class="body">
-      <ol class="steps">
-        <li><p>질량 중심 위치 $\vec R_{cm} = \sum m_i\vec r_i/M$ 를 시간으로 미분한다.</p><div class="eq">$$M\vec V_{cm} = \sum m_i\vec v_i = \vec P$$</div></li>
-        <li><p>입자 $i$ 가 받는 힘은 외력과, 다른 입자 $j$ 가 주는 내력의 합이다.</p><div class="eq">$$\frac{d\vec p_i}{dt} = \vec F_i^{\,외} + \sum_{j\ne i}\vec F_{ij}$$</div></li>
-        <li><p>모든 입자에 대해 더한다.</p><div class="eq">$$\frac{d\vec P}{dt} = \sum_i\vec F_i^{\,외} + \sum_i\sum_{j\ne i}\vec F_{ij}$$</div></li>
+      <ol start="4" class="steps">
         <li><p>제3법칙 $\vec F_{ij} = -\vec F_{ji}$: 내력은 쌍으로 묶으면 0이다.</p><div class="eq">$$\sum_i\sum_{j\ne i}\vec F_{ij} = \sum_{i\lt j}\big(\vec F_{ij} + \vec F_{ji}\big) = 0$$</div></li>
         <li><p>결과: 질량 중심은 외력만 받는 질점처럼 움직인다.</p><div class="eq">$$M\vec a_{cm} = \sum\vec F^{\,외},\qquad \sum\vec F^{\,외} = 0\ \Rightarrow\ \vec P = \text{일정}$$</div></li>
         <li><p>예: 매끄러운 빙판 위에 정지한 60 kg 학생이 3.0 kg 공을 6.0 m/s 로 던지면</p><div class="eq">$$0 = (3.0)(6.0) + (60)\,v\ \Rightarrow\ v = -0.30\ \text{m/s}$$</div></li>
@@ -407,12 +489,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 로켓 방정식 · 교과서 43쪽 심화 탐구 · 참고 Halliday 9-9</p><h2>질량이 줄어드는 로켓의 속력 구하기</h2></header>
+    <header><p class="kicker">유도 · 로켓 방정식 · 교과서 43쪽 심화 탐구 · 참고 Halliday 9-9</p><h2>질량이 줄어드는 로켓의 속력 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps tight">
         <li><p>외력이 없다고 하자. 시각 $t$ 에 로켓(연료 포함)의 질량 $M$, 속도 $v$. 짧은 시간 $dt$ 동안 질량 $-dM$ $(\gt0)$ 의 가스를 로켓에 대해 속력 $u$ 로 뒤로 뿜는다.</p><div class="eq">$$\text{가스의 속도(지면 기준)} = (v + dv) - u$$</div></li>
         <li><p>로켓과 가스로 이루어진 계의 운동량이 보존된다.</p><div class="eq">$$Mv = (M + dM)(v + dv) + (-dM)(v + dv - u)$$</div></li>
         <li><p>정리하면 (아주 작은 양의 곱 $dM\,dv$ 는 지워진다)</p><div class="eq">$$M\,dv = -u\,dM$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 로켓 방정식 · 교과서 43쪽 심화 탐구 · 참고 Halliday 9-9</p><h2>질량이 줄어드는 로켓의 속력 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps tight">
         <li><p>$dt$ 로 나누면 추력. $R = -dM/dt$ 는 연료를 태우는 빠르기다 (제1 로켓 방정식).</p><div class="eq">$$Ma = Ru\qquad(\text{추력 } Ru)$$</div></li>
         <li><p>3단계를 변수 분리해 처음 질량 $M_i$ 부터 나중 질량 $M_f$ 까지 적분한다 (제2 로켓 방정식).</p><div class="eq">$$\int_{v_i}^{v_f}dv = -u\int_{M_i}^{M_f}\frac{dM}{M}\ \Rightarrow\ v_f - v_i = u\ln\frac{M_i}{M_f}$$</div></li>
         <li><p>예: $u = 2.5$ km/s, 질량비 $M_i/M_f = 5$ 이면 $\Delta v = 4.0$ km/s 로, 지표 원 궤도 속력 7.9 km/s 에 모자란다. 그래서 다 쓴 연료통을 버리는 다단 로켓을 쓴다.</p><div class="eq">$$\Delta v = 2.5\ln5 = 4.0\ \text{km/s}$$</div></li>
@@ -448,12 +540,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 1차원 충돌 · 교과서 44~46쪽</p><h2>탄성 충돌의 결과 식과 Q 식 만들기</h2></header>
+    <header><p class="kicker">유도 · 1차원 충돌 · 교과서 44~46쪽</p><h2>탄성 충돌의 결과 식과 Q 식 만들기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>운동량 보존을 질량별로 모은다.</p><div class="eq">$$m_1(v_1 - v_1') = m_2(v_2' - v_2)$$</div></li>
         <li><p>탄성 충돌이면 운동 에너지 보존도 같은 꼴로 인수분해된다.</p><div class="eq">$$m_1(v_1 - v_1')(v_1 + v_1') = m_2(v_2' - v_2)(v_2' + v_2)$$</div></li>
         <li><p>2단계 식을 1단계 식으로 나눈다: 상대 속도는 크기가 같고 방향만 반대 ($e = 1$).</p><div class="eq">$$v_1 + v_1' = v_2 + v_2'\ \Leftrightarrow\ v_1' - v_2' = -(v_1 - v_2)$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 1차원 충돌 · 교과서 44~46쪽</p><h2>탄성 충돌의 결과 식과 Q 식 만들기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>$v_2' = v_1 + v_1' - v_2$ 를 1단계 식에 넣어 정리한다.</p><div class="eq">$$v_1' = \frac{(m_1 - m_2)\,v_1 + 2m_2\,v_2}{m_1 + m_2}$$</div></li>
         <li><p>운동 에너지를 질량 중심 부분과 상대 운동 부분으로 나눌 수 있다.</p><div class="eq">$$K = \tfrac12MV_{cm}^2 + \tfrac12\mu\,(v_1 - v_2)^2,\qquad \mu = \frac{m_1m_2}{m_1 + m_2}$$</div></li>
         <li><p>$V_{cm}$ 은 충돌 전후 같고, 상대 속도는 $-e$ 배가 되므로</p><div class="eq">$$Q = K_i - K_f = \tfrac12\mu\,(1 - e^2)(v_1 - v_2)^2$$</div></li>
@@ -484,12 +586,23 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">풀이 · 2차원 충돌 · 교과서 47쪽</p><h2>당구공의 비스듬한 충돌을 성분으로 풀기</h2></header>
+    <header><p class="kicker">풀이 · 2차원 충돌 · 교과서 47쪽</p><h2>당구공의 비스듬한 충돌을 성분으로 풀기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <p>같은 질량의 공 A가 2.0 m/s 로 정지한 공 B에 비스듬히 부딪쳐, A가 처음 방향에서 $30^\circ$ 꺾여 나갔다. 탄성 충돌일 때 두 공의 나중 속력과 B의 방향은?</p>
       <ol class="steps">
         <li><p>같은 질량의 탄성 충돌이면 두 공은 직각으로 흩어진다 (앞 슬라이드).</p><div class="eq">$$\theta_B = 90^\circ - 30^\circ = 60^\circ\ \ (\text{처음 방향의 반대쪽})$$</div></li>
         <li><p>$x$ 성분 운동량 보존.</p><div class="eq">$$2.0 = v_A'\cos30^\circ + v_B'\cos60^\circ$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 2차원 충돌 · 교과서 47쪽</p><h2>당구공의 비스듬한 충돌을 성분으로 풀기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">같은 질량의 공 A가 2.0 m/s 로 정지한 공 B에 비스듬히 부딪쳐, A가 처음 방향에서 $30^\circ$ 꺾여 나갔다. 탄성 충돌일 때 두 공의 나중 속력과 B의 방향은?</p>
+      <ol start="3" class="steps">
         <li><p>$y$ 성분 운동량 보존에서 $v_B'$ 를 $v_A'$ 로 쓴다.</p><div class="eq">$$0 = v_A'\sin30^\circ - v_B'\sin60^\circ\ \Rightarrow\ v_B' = 0.577\,v_A'$$</div></li>
         <li><p>2단계 식에 넣어 푼다.</p><div class="eq">$$2.0 = v_A'(0.866 + 0.289)\ \Rightarrow\ v_A' = 1.73\ \text{m/s},\ \ v_B' = 1.00\ \text{m/s}$$</div></li>
         <li><p>검산: 운동 에너지가 보존되는가?</p><div class="eq">$$v_A'^2 + v_B'^2 = 3.0 + 1.0 = 4.0 = (2.0)^2\ \ \checkmark$$</div></li>
@@ -604,15 +717,27 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 회전 관성 · 교과서 55~56쪽</p><h2>적분으로 구하는 회전 관성: 고리, 원판, 구</h2></header>
-    <div class="body">
+    <header><p class="kicker">유도 · 회전 관성 · 교과서 55~56쪽</p><h2>적분으로 구하는 회전 관성: 고리, 원판, 구 <span class="part">1/2</span></h2></header>
+    <div class="body cols fig-r">
       <ol class="steps">
         <li><p>고리: 모든 질량이 축에서 같은 거리 $R$ 에 있다.</p><div class="eq">$$I = \int R^2\,dm = MR^2$$</div></li>
         <li><p>원판: 폭 $dr$ 인 고리로 쪼갠다. 면밀도 $\sigma = M/\pi R^2$.</p><div class="eq">$$I = \int_0^R r^2\,\sigma\,2\pi r\,dr = \frac{\pi\sigma R^4}{2} = \tfrac12MR^2$$</div></li>
         <li><p>속이 찬 구: 높이 $z$, 두께 $dz$ 인 얇은 원판(반지름² $= R^2 - z^2$)으로 쪼개고 2단계 결과를 쓴다.</p><div class="eq">$$dm = \rho\,\pi(R^2 - z^2)\,dz,\qquad dI = \tfrac12\,dm\,(R^2 - z^2)$$</div></li>
+      </ol>
+      <figure class="fig">{{fig:inertia_slices}}<figcaption>회전 관성을 아는 조각(고리, 얇은 원판)으로 쪼개서 더합니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 회전 관성 · 교과서 55~56쪽</p><h2>적분으로 구하는 회전 관성: 고리, 원판, 구 <span class="part">2/2</span></h2></header>
+    <div class="body cols fig-r">
+      <ol start="4" class="steps">
         <li><p>$z = -R$ 부터 $R$ 까지 더한다.</p><div class="eq">$$I = \frac{\pi\rho}{2}\int_{-R}^{R}(R^2 - z^2)^2\,dz = \frac{\pi\rho}{2}\cdot\frac{16R^5}{15}$$</div></li>
         <li><p>밀도 $\rho = 3M/(4\pi R^3)$ 를 넣는다.</p><div class="eq">$$I = \frac{8\pi R^5}{15}\cdot\frac{3M}{4\pi R^3} = \tfrac25MR^2$$</div></li>
       </ol>
+      <figure class="fig">{{fig:inertia_slices}}<figcaption>회전 관성을 아는 조각(고리, 얇은 원판)으로 쪼개서 더합니다.</figcaption></figure>
       <p class="small">같은 질량·반지름이면 고리 &gt; 원판 &gt; 구 순서입니다. 질량이 축에서 멀리 있을수록 회전 관성이 큽니다.</p>
     </div>
   </div>
@@ -639,13 +764,24 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 평행축 정리 · 교과서 56쪽</p><h2>질량 중심의 정의가 가운데 항을 지운다</h2></header>
+    <header><p class="kicker">유도 · 평행축 정리 · 교과서 56쪽</p><h2>질량 중심의 정의가 가운데 항을 지운다 <span class="part">1/2</span></h2></header>
     <div class="body">
       <p>질량 중심을 지나는 축에서 잰 질점 $i$ 의 위치(축에 수직인 성분)를 $\vec\rho_i$, 새 축의 위치를 $\vec d$ 라 하자.</p>
       <ol class="steps">
         <li><p>새 축까지 거리의 제곱을 전개한다.</p><div class="eq">$$|\vec\rho_i - \vec d|^2 = \rho_i^2 - 2\,\vec\rho_i\cdot\vec d + d^2$$</div></li>
         <li><p>질량을 곱해 모두 더한다.</p><div class="eq">$$I = \sum m_i\rho_i^2 - 2\,\vec d\cdot\sum m_i\vec\rho_i + Md^2$$</div></li>
         <li><p>질량 중심에서 잰 위치의 질량 가중 합은 0이다.</p><div class="eq">$$\sum m_i\vec\rho_i = M\vec\rho_{cm} = 0$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 평행축 정리 · 교과서 56쪽</p><h2>질량 중심의 정의가 가운데 항을 지운다 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">질량 중심을 지나는 축에서 잰 질점 $i$ 의 위치(축에 수직인 성분)를 $\vec\rho_i$, 새 축의 위치를 $\vec d$ 라 하자.</p>
+      <ol start="4" class="steps">
         <li><p>결과.</p><div class="eq">$$I = I_{cm} + Md^2$$</div></li>
         <li><p>예: 원판 가장자리를 지나고 판에 수직인 축.</p><div class="eq">$$I = \tfrac12MR^2 + MR^2 = \tfrac32MR^2$$</div></li>
       </ol>
@@ -675,12 +811,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 고정축 회전 · 교과서 57~58쪽</p><h2>질점 하나씩 더해 τ = Iα, L = Iω 얻기</h2></header>
+    <header><p class="kicker">유도 · 고정축 회전 · 교과서 57~58쪽</p><h2>질점 하나씩 더해 τ = Iα, L = Iω 얻기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>축에서 $r_i$ 떨어진 질점의 접선 방향 운동 방정식 ($a_t = r\alpha$).</p><div class="eq">$$F_{t,i} = m_ia_{t,i} = m_ir_i\,\alpha$$</div></li>
         <li><p>양변에 $r_i$ 를 곱하면 돌림힘이 된다.</p><div class="eq">$$\tau_i = r_iF_{t,i} = m_ir_i^2\,\alpha$$</div></li>
         <li><p>모두 더한다. 내력의 돌림힘은 쌍으로 상쇄된다.</p><div class="eq">$$\tau_{외} = \Big(\sum m_ir_i^2\Big)\alpha = I\alpha$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 고정축 회전 · 교과서 57~58쪽</p><h2>질점 하나씩 더해 τ = Iα, L = Iω 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>축 방향 각운동량도 같은 방법으로 ($v_i = r_i\omega$).</p><div class="eq">$$L_z = \sum r_i\,(m_iv_i) = \Big(\sum m_ir_i^2\Big)\omega = I\omega$$</div></li>
         <li><p>돌림힘이 한 일: 호의 길이 $ds = r\,d\theta$.</p><div class="eq">$$dW = F_t\,ds = F_t\,r\,d\theta = \tau\,d\theta$$</div></li>
         <li><p>회전의 일-에너지 정리 ($\alpha\,d\theta = \omega\,d\omega$).</p><div class="eq">$$W = \int\tau\,d\theta = \int I\omega\,d\omega = \tfrac12I\omega_f^2 - \tfrac12I\omega_i^2$$</div></li>
@@ -800,12 +946,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 케플러 제2·3법칙 · 교과서 59~62쪽</p><h2>면적 속도 일정과 조화 법칙 끌어내기</h2></header>
+    <header><p class="kicker">유도 · 케플러 제2·3법칙 · 교과서 59~62쪽</p><h2>면적 속도 일정과 조화 법칙 끌어내기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>짧은 시간 $dt$ 동안 태양-행성 선분이 휩쓴 삼각형의 넓이.</p><div class="eq">$$dA = \tfrac12\,|\vec r\times\vec v\,dt|$$</div></li>
         <li><p>각운동량 $L = m|\vec r\times\vec v|$ 로 쓴다.</p><div class="eq">$$\frac{dA}{dt} = \frac{L}{2m}$$</div></li>
         <li><p>중력은 $\vec r$ 방향(중심력)이라 돌림힘이 0이다. 그래서 면적 속도가 일정하다 (제2법칙).</p><div class="eq">$$\vec\tau = \vec r\times\vec F = 0\ \Rightarrow\ L = \text{일정}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 케플러 제2·3법칙 · 교과서 59~62쪽</p><h2>면적 속도 일정과 조화 법칙 끌어내기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>원 궤도(반지름 $r$)에서 중력이 구심력 역할을 한다.</p><div class="eq">$$\frac{GMm}{r^2} = \frac{mv^2}{r},\qquad v = \frac{2\pi r}{T}$$</div></li>
         <li><p>$v$ 를 없앤다 (제3법칙). 타원 궤도에서는 $r$ 이 긴반지름 $a$ 로 바뀐다.</p><div class="eq">$$T^2 = \frac{4\pi^2}{GM}\,r^3$$</div></li>
         <li class="wide"><p>예: 지구 공전 ($a = 1.496\times10^{11}$ m, $T = 3.156\times10^7$ s)으로 태양 질량을 잰다.</p><div class="eq">$$M = \frac{4\pi^2a^3}{GT^2} = \frac{4\pi^2(1.496\times10^{11})^3}{(6.674\times10^{-11})(3.156\times10^{7})^2} = 1.99\times10^{30}\ \text{kg}$$</div></li>
@@ -836,12 +992,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 위성의 에너지와 탈출 속력 · 교과서 63~65쪽, 73쪽</p><h2>원 궤도 위성의 역학적 에너지는 음수다</h2></header>
+    <header><p class="kicker">유도 · 위성의 에너지와 탈출 속력 · 교과서 63~65쪽, 73쪽</p><h2>원 궤도 위성의 역학적 에너지는 음수다 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>원 궤도의 $v^2 = GM/r$ 에서 운동 에너지.</p><div class="eq">$$K = \tfrac12mv^2 = \frac{GMm}{2r}$$</div></li>
         <li><p>중력 퍼텐셜 에너지 (무한히 먼 곳 기준).</p><div class="eq">$$U = -\frac{GMm}{r}$$</div></li>
         <li><p>더하면 역학적 에너지는 운동 에너지의 음수다.</p><div class="eq">$$E = K + U = -\frac{GMm}{2r} = -K$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 위성의 에너지와 탈출 속력 · 교과서 63~65쪽, 73쪽</p><h2>원 궤도 위성의 역학적 에너지는 음수다 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>높은 궤도로 옮기려면 에너지를 넣어야 하지만($E$ 증가), 그곳의 속력은 더 느리다.</p><div class="eq">$$r\uparrow\ \Rightarrow\ E\uparrow,\ \ K\downarrow,\ \ v\downarrow$$</div></li>
         <li><p>탈출 속력: 무한히 먼 곳에서도 $K \ge 0$ 이려면 지표에서 $E \ge 0$ 이어야 한다.</p><div class="eq">$$\tfrac12mv_{esc}^2 - \frac{GMm}{R} = 0\ \Rightarrow\ v_{esc} = \sqrt{\frac{2GM}{R}}$$</div></li>
         <li><p>지구 ($GM = 3.986\times10^{14}$ m³/s², $R = 6.371\times10^6$ m).</p><div class="eq">$$v_{esc} = 11.2\ \text{km/s} = \sqrt2\times7.9\ \text{km/s}\ \ (\text{지표 원 궤도 속력})$$</div></li>
@@ -881,17 +1047,27 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 기체 분자 운동 모형 · 교과서 70~72쪽 식 (Ⅰ. 5-2~7)</p><h2>분자 한 개의 충돌에서 이상 기체 방정식까지</h2></header>
+    <header><p class="kicker">유도 · 기체 분자 운동 모형 · 교과서 70~72쪽 식 (Ⅰ. 5-2~7)</p><h2>분자 한 개의 충돌에서 이상 기체 방정식까지 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>한 변이 $L$ 인 정육면체. 분자가 오른쪽 벽과 탄성 충돌하면 $x$ 성분만 뒤집힌다.</p><div class="eq">$$\Delta p_x = mv_x - (-mv_x) = 2mv_x$$</div></li>
         <li><p>같은 벽에 다시 부딪치기까지 왕복 시간.</p><div class="eq">$$\Delta t = \frac{2L}{v_x}$$</div></li>
         <li><p>분자 하나가 벽에 주는 평균 힘.</p><div class="eq">$$F_1 = \frac{\Delta p_x}{\Delta t} = \frac{mv_x^2}{L}$$</div></li>
+      </ol>
+      <aside class="note">교과서 73쪽 '더 알아보기'는 300 K 수소 분자의 rms 속력을 약 2200 m/s로 적었는데, √(3RT/M)에 M = 2.016 g/mol을 넣으면 1.93 km/s입니다. 탈출 속력의 1/6(1.87 km/s)보다 크다는 결론은 같습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 기체 분자 운동 모형 · 교과서 70~72쪽 식 (Ⅰ. 5-2~7)</p><h2>분자 한 개의 충돌에서 이상 기체 방정식까지 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>$N$ 개를 더하고 제곱 평균 $\langle v_x^2\rangle$ 로 쓴다.</p><div class="eq">$$F = \frac mL\big(v_{x1}^2 + \cdots + v_{xN}^2\big) = \frac{Nm}{L}\langle v_x^2\rangle$$</div></li>
         <li><p>벽의 넓이 $L^2$ 로 나누고, 방향이 고르므로 $\langle v_x^2\rangle = \tfrac13\langle v^2\rangle$.</p><div class="eq">$$P = \frac{Nm\langle v^2\rangle}{3V}\ \Rightarrow\ PV = \tfrac23N\langle K\rangle$$</div></li>
         <li><p>실험식 $PV = NkT$ 와 비교한다 ($M$: 몰질량).</p><div class="eq">$$\langle K\rangle = \tfrac32kT,\qquad v_{rms} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{M}}$$</div></li>
       </ol>
-      <aside class="note">교과서 73쪽 '더 알아보기'는 300 K 수소 분자의 rms 속력을 약 2200 m/s로 적었는데, √(3RT/M)에 M = 2.016 g/mol을 넣으면 1.93 km/s입니다. 탈출 속력의 1/6(1.87 km/s)보다 크다는 결론은 같습니다.</aside>
     </div>
   </div>
 </section>
@@ -993,12 +1169,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 등온 과정과 열용량 · 교과서 75쪽, 78쪽 식 (Ⅰ. 5-12)</p><h2>등온 과정의 일, 그리고 정적·정압 몰 열용량</h2></header>
+    <header><p class="kicker">유도 · 등온 과정과 열용량 · 교과서 75쪽, 78쪽 식 (Ⅰ. 5-12)</p><h2>등온 과정의 일, 그리고 정적·정압 몰 열용량 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>등온선 $P = NkT/V$ 를 부피로 적분한다 ($T$ 는 상수라 밖으로 나온다).</p><div class="eq">$$W = \int_{V_i}^{V_f}\frac{NkT}{V}\,dV = NkT\ln\frac{V_f}{V_i}$$</div></li>
         <li><p>이상 기체의 내부 에너지는 온도만의 함수라 $\Delta U = 0$.</p><div class="eq">$$Q = W = NkT\ln\frac{V_f}{V_i}$$</div></li>
         <li><p>등적 과정: $W = 0$ 이라 받은 열이 모두 내부 에너지가 된다.</p><div class="eq">$$Q_V = \Delta U = \frac f2nR\,\Delta T\ \Rightarrow\ C_V = \frac f2R$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 등온 과정과 열용량 · 교과서 75쪽, 78쪽 식 (Ⅰ. 5-12)</p><h2>등온 과정의 일, 그리고 정적·정압 몰 열용량 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>등압 과정: 기체가 한 일 $P\Delta V = nR\Delta T$ 만큼 열이 더 든다.</p><div class="eq">$$Q_P = \Delta U + P\Delta V = \Big(\frac f2 + 1\Big)nR\,\Delta T\ \Rightarrow\ C_P = C_V + R$$</div></li>
         <li><p>두 열용량의 비가 단열 지수다.</p><div class="eq">$$\gamma = \frac{C_P}{C_V} = \frac{f + 2}{f}$$</div></li>
       </ol>
@@ -1009,12 +1195,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 단열 과정 · 교과서 78~79쪽 식 (Ⅰ. 5-13)</p><h2>미분 두 개를 엮어 PV<sup>γ</sup> = 일정 얻기</h2></header>
+    <header><p class="kicker">유도 · 단열 과정 · 교과서 78~79쪽 식 (Ⅰ. 5-13)</p><h2>미분 두 개를 엮어 PV<sup>γ</sup> = 일정 얻기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>단열이므로 $Q = 0$. 제1법칙을 미소 변화로 쓴다.</p><div class="eq">$$dU = -P\,dV$$</div></li>
         <li><p>$U = \tfrac f2NkT$ 를 미분한다.</p><div class="eq">$$dU = \frac f2Nk\,dT$$</div></li>
         <li><p>$PV = NkT$ 의 양변을 미분한다 (곱의 미분).</p><div class="eq">$$P\,dV + V\,dP = Nk\,dT$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 단열 과정 · 교과서 78~79쪽 식 (Ⅰ. 5-13)</p><h2>미분 두 개를 엮어 PV<sup>γ</sup> = 일정 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>$Nk\,dT$ 를 없애고 2를 곱해 정리한다.</p><div class="eq">$$\frac f2\big(P\,dV + V\,dP\big) = -P\,dV\ \Rightarrow\ (f+2)P\,dV + fV\,dP = 0$$</div></li>
         <li><p>$fPV$ 로 나누고 $\gamma = (f+2)/f$ 로 쓴 뒤 적분한다.</p><div class="eq">$$\gamma\frac{dV}{V} + \frac{dP}{P} = 0\ \Rightarrow\ \gamma\ln V + \ln P = \text{상수}$$</div></li>
         <li><p>결과. $P = NkT/V$ 를 넣으면 온도 관계, 제1법칙에서 한 일.</p><div class="eq">$$PV^\gamma = \text{일정},\quad TV^{\gamma-1} = \text{일정},\quad W = -\Delta U = \frac{P_iV_i - P_fV_f}{\gamma - 1}$$</div></li>
@@ -1055,12 +1251,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 카르노 기관 · 교과서 85~86쪽</p><h2>네 과정의 열을 계산해 카르노 효율 얻기</h2></header>
+    <header><p class="kicker">유도 · 카르노 기관 · 교과서 85~86쪽</p><h2>네 과정의 열을 계산해 카르노 효율 얻기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>1→2 등온 팽창 ($T_H$): 흡수한 열 = 기체가 한 일.</p><div class="eq">$$Q_H = NkT_H\ln\frac{V_2}{V_1}$$</div></li>
         <li><p>3→4 등온 압축 ($T_C$): 방출한 열의 크기.</p><div class="eq">$$Q_C = NkT_C\ln\frac{V_3}{V_4}$$</div></li>
         <li><p>2→3, 4→1 단열 과정에서는 $TV^{\gamma-1}$ 이 일정하다.</p><div class="eq">$$T_HV_2^{\gamma-1} = T_CV_3^{\gamma-1},\qquad T_HV_1^{\gamma-1} = T_CV_4^{\gamma-1}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 카르노 기관 · 교과서 85~86쪽</p><h2>네 과정의 열을 계산해 카르노 효율 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>두 식을 나누면 부피비가 같아진다.</p><div class="eq">$$\Big(\frac{V_2}{V_1}\Big)^{\gamma-1} = \Big(\frac{V_3}{V_4}\Big)^{\gamma-1}\ \Rightarrow\ \frac{V_2}{V_1} = \frac{V_3}{V_4}$$</div></li>
         <li><p>그래서 1·2단계의 로그가 지워진다.</p><div class="eq">$$\frac{Q_C}{Q_H} = \frac{T_C}{T_H}$$</div></li>
         <li><p>효율 (식 Ⅰ. 6-1). 같은 식은 $Q_H/T_H = Q_C/T_C$, 곧 한 순환의 엔트로피 변화가 0이라는 뜻이다.</p><div class="eq">$$e_C = 1 - \frac{Q_C}{Q_H} = 1 - \frac{T_C}{T_H}$$</div></li>
@@ -1092,12 +1298,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 이상 기체의 엔트로피 변화 · 교과서 87~90쪽</p><h2>dQ/T 를 적분하는 일반식과 세 가지 예</h2></header>
+    <header><p class="kicker">유도 · 이상 기체의 엔트로피 변화 · 교과서 87~90쪽</p><h2>dQ/T 를 적분하는 일반식과 세 가지 예 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>가역 과정의 제1법칙 $dQ = dU + P\,dV$ 에 이상 기체 식을 넣는다.</p><div class="eq">$$dQ_{\text{가역}} = \frac f2Nk\,dT + \frac{NkT}{V}\,dV$$</div></li>
         <li><p>$T$ 로 나누면 각 항이 한 변수만의 식이 된다.</p><div class="eq">$$dS = \frac f2Nk\,\frac{dT}{T} + Nk\,\frac{dV}{V}$$</div></li>
         <li><p>적분한다.</p><div class="eq">$$\Delta S = \frac f2Nk\ln\frac{T_f}{T_i} + Nk\ln\frac{V_f}{V_i}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 이상 기체의 엔트로피 변화 · 교과서 87~90쪽</p><h2>dQ/T 를 적분하는 일반식과 세 가지 예 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>자유 팽창 ($T_f = T_i$): 2 mol 이 부피 3배로.</p><div class="eq">$$\Delta S = nR\ln3 = (2)(8.31)(1.10) = 18.3\ \text{J/K}$$</div></li>
         <li><p>열 1000 J 이 400 K 물체에서 300 K 물체로 (두 물체는 온도가 거의 변하지 않을 만큼 크다).</p><div class="eq">$$\Delta S = -\frac{1000}{400} + \frac{1000}{300} = +0.83\ \text{J/K}$$</div></li>
         <li><p>단열 가역 과정: $TV^{\gamma-1}$ 일정이면 $\tfrac f2\ln(T_f/T_i) = -\ln(V_f/V_i)$ 라 두 항이 지워진다.</p><div class="eq">$$\Delta S = 0\ \ (\text{등엔트로피 과정})$$</div></li>
@@ -1130,12 +1346,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 통계적 엔트로피 · 교과서 90~92쪽</p><h2>겹침수를 세어 자유 팽창의 엔트로피 다시 구하기</h2></header>
+    <header><p class="kicker">유도 · 통계적 엔트로피 · 교과서 90~92쪽</p><h2>겹침수를 세어 자유 팽창의 엔트로피 다시 구하기 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
         <li><p>동전 $N$ 개 중 앞면이 $n$ 개인 미시 상태의 수는 조합이다.</p><div class="eq">$$W(n) = {}_N\mathrm C_n = \frac{N!}{n!\,(N - n)!}$$</div></li>
         <li><p>예: $N = 6$, $n = 3$.</p><div class="eq">$$W = \frac{6!}{3!\,3!} = \frac{720}{36} = 20$$</div></li>
         <li><p>기체 분자 $N$ 개가 부피 $V$ 에서 $2V$ 로 퍼지면 분자 하나가 있을 수 있는 자리가 2배가 된다.</p><div class="eq">$$\frac{W_f}{W_i} = 2^N$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 통계적 엔트로피 · 교과서 90~92쪽</p><h2>겹침수를 세어 자유 팽창의 엔트로피 다시 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
         <li><p>볼츠만 식에 넣는다.</p><div class="eq">$$\Delta S = k\ln W_f - k\ln W_i = k\ln2^N = Nk\ln2$$</div></li>
         <li><p>앞 슬라이드의 열역학 결과($Nk = nR$)와 비교한다.</p><div class="eq">$$\Delta S = nR\ln\frac{2V}{V} = nR\ln2\ \ \checkmark$$</div></li>
         <li><p>1 mol 이면 $\Delta S = 5.76$ J/K. 거꾸로 분자가 모두 한쪽에 모일 확률은 $(1/2)^{6.02\times10^{23}}$ 이라 사실상 0이다.</p><div class="eq">$$\frac{W_i}{W_f} = 2^{-N} = e^{-\Delta S/k}$$</div></li>

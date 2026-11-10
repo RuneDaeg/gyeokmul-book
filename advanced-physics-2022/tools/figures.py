@@ -469,6 +469,244 @@ def twin():
     return p.svg("\n".join(inner), "쌍둥이 역설의 시공간 도표")
 
 
+
+# ---------------------------------------------------------------- 조각으로 나누어 더하기 (구분구적)
+_COL = {"c1": "var(--accent)", "c2": "var(--ink)", "c3": "var(--warm)", "c4": "var(--warn)", "ax": "var(--muted)"}
+
+
+def _arrow(x1, y1, x2, y2, cls="c2", head=8, dash=False):
+    """화살표: 선과 삼각형 머리. 색은 cls 의 선 색을 따른다."""
+    ang = math.atan2(y2 - y1, x2 - x1)
+    bx, by = x2 - head * math.cos(ang), y2 - head * math.sin(ang)
+    px, py = -math.sin(ang) * head * 0.42, math.cos(ang) * head * 0.42
+    c = cls + (" dash" if dash else "")
+    return (f'<path class="{c}" d="M{x1:.1f},{y1:.1f} L{bx:.1f},{by:.1f}"/>'
+            f'<path d="M{x2:.1f},{y2:.1f} L{bx + px:.1f},{by + py:.1f} L{bx - px:.1f},{by - py:.1f} Z" '
+            f'style="fill:{_COL[cls]}"/>')
+
+
+def _arc(cx, cy, r, a0, a1, cls="ax"):
+    """각 표시용 호. 각은 도 단위, 반시계가 양(화면에서는 위쪽)."""
+    x0, y0 = cx + r * math.cos(math.radians(a0)), cy - r * math.sin(math.radians(a0))
+    x1, y1 = cx + r * math.cos(math.radians(a1)), cy - r * math.sin(math.radians(a1))
+    sweep = 0 if a1 > a0 else 1
+    return f'<path class="{cls}" d="M{x0:.1f},{y0:.1f} A{r},{r} 0 0 {sweep} {x1:.1f},{y1:.1f}"/>'
+
+
+def ring_field(kind):
+    """고리의 한 조각이 축 위의 점 P에 만드는 장. kind='E' 는 전하 고리, 'B' 는 전류 고리."""
+    w, h = 400, 290
+    cx, cy, ry = 95, 150, 92
+    px = 245
+    top, bot = (cx, cy - ry), (cx, cy + ry)
+    d = math.hypot(px - cx, ry)
+    ux, uy = (px - cx) / d, ry / d            # 위 조각 → P 방향 (화면 좌표)
+    L = 60
+    inner = [_arrow(24, cy, 388, cy, "ax", head=7),
+             f'<text x="386" y="{cy + 18}" text-anchor="end">축</text>',
+             f'<ellipse class="c2" cx="{cx}" cy="{cy}" rx="26" ry="{ry}" style="stroke-width:3"/>',
+             f'<path class="ax" d="M{cx},{cy} L{top[0]},{top[1]}"/>',
+             f'<text x="{cx - 8}" y="{cy - ry / 2 + 4:.0f}" text-anchor="end" class="t-ink">$R$</text>',
+             f'<path class="c2 dash" d="M{top[0]},{top[1]} L{px},{cy}" style="stroke-width:1.2"/>',
+             f'<text x="{(cx + px) / 2 + 6:.0f}" y="{cy - ry / 2 - 10:.0f}" class="t-ink">$\\sqrt{{R^2 + z^2}}$</text>',
+             f'<text x="{(cx + px) / 2:.0f}" y="{cy + 18}" text-anchor="middle" class="t-ink">$z$</text>',
+             f'<circle cx="{px}" cy="{cy}" r="3.5" class="fInk"/>',
+             f'<text x="{px - 4}" y="{cy + 18}" text-anchor="end" class="t-ink">P</text>']
+    if kind == "E":
+        tip = (px + L * ux, cy + L * uy)
+        tip2 = (px + L * ux, cy - L * uy)
+        ang = math.degrees(math.atan2(ry, cx - px))       # P 에서 위 조각을 보는 방향
+        inner += [f'<circle cx="{top[0]}" cy="{top[1]}" r="5" class="fAcc"/>',
+                  f'<circle cx="{bot[0]}" cy="{bot[1]}" r="4.5" class="ax" style="fill:var(--paper)"/>',
+                  f'<text x="{cx}" y="{top[1] - 12}" text-anchor="middle" class="t-acc">$dq$</text>',
+                  f'<text x="{cx + 12}" y="{bot[1] + 16}" class="">맞은편 조각</text>',
+                  _arrow(px, cy, tip2[0], tip2[1], "ax", dash=True),
+                  _arrow(px, cy, tip[0], tip[1], "c3"),
+                  f'<path class="c3 dash" d="M{tip[0]:.1f},{cy} V{tip[1]:.1f}" style="stroke-width:1.2"/>',
+                  _arrow(px, cy, tip[0], cy, "c1"),
+                  f'<text x="{tip[0] + 6:.0f}" y="{tip[1] + 6:.0f}" class="t-warm">$d\\vec E$</text>',
+                  f'<text x="{tip[0] + 6:.0f}" y="{cy + 4}" class="t-acc">$dE_z$</text>',
+                  _arc(px, cy, 34, ang, 180),
+                  f'<text x="{px - 40}" y="{cy - 7}" text-anchor="end" class="t-ink">$\\alpha$</text>']
+        label = "고르게 대전된 고리의 한 조각 dq 가 축 위의 점 P에 만드는 전기장과 그 축 성분"
+    else:
+        vx, vy = uy, -ux                                   # r 에 수직, 위·오른쪽
+        tip = (px + L * vx, cy + L * vy)
+        tip2 = (px + L * vx, cy - L * vy)
+        q = 9
+        r1 = (px - q * ux, cy - q * uy)
+        inner += [f'<circle cx="{top[0]}" cy="{top[1]}" r="7" class="c1" style="fill:var(--paper)"/>',
+                  f'<circle cx="{top[0]}" cy="{top[1]}" r="2.2" class="fAcc"/>',
+                  f'<circle cx="{bot[0]}" cy="{bot[1]}" r="7" class="ax" style="fill:var(--paper)"/>',
+                  f'<path class="ax" d="M{bot[0] - 4.5},{bot[1] - 4.5} l9,9 M{bot[0] + 4.5},{bot[1] - 4.5} l-9,9"/>',
+                  f'<text x="{cx}" y="{top[1] - 14}" text-anchor="middle" class="t-acc">$I\\,d\\vec l$</text>',
+                  f'<text x="{cx + 14}" y="{bot[1] + 16}">맞은편 요소</text>',
+                  _arrow(px, cy, tip2[0], tip2[1], "ax", dash=True),
+                  _arrow(px, cy, tip[0], tip[1], "c3"),
+                  f'<path class="c3 dash" d="M{tip[0]:.1f},{cy} V{tip[1]:.1f}" style="stroke-width:1.2"/>',
+                  _arrow(px, cy, tip[0], cy, "c1"),
+                  f'<path class="ax" d="M{r1[0]:.1f},{r1[1]:.1f} l{q * vx:.1f},{q * vy:.1f} l{q * ux:.1f},{q * uy:.1f}"/>',
+                  f'<text x="{tip[0] + 6:.0f}" y="{tip[1] + 4:.0f}" class="t-warm">$d\\vec B \\perp \\hat r$</text>',
+                  f'<text x="{tip[0] + 6:.0f}" y="{cy + 18}" class="t-acc">$dB_z$</text>']
+        label = "원형 전류 고리의 전류 요소가 축 위의 점 P에 만드는 자기장과 그 축 성분"
+    return svg(w, h, "\n".join(inner), label)
+
+
+def disk_rings():
+    """원판을 반지름 r, 폭 dr 인 고리로 쪼갠다."""
+    w, h = 400, 290
+    cx, cy, R, k = 100, 150, 104, 0.3       # k: 원근으로 눌린 비율
+    r0, r1 = 58, 70
+    px = 285
+
+    def ell(r):
+        return f"M{cx},{cy - r} A{r * k:.1f},{r} 0 1 1 {cx},{cy + r} A{r * k:.1f},{r} 0 1 1 {cx},{cy - r} Z"
+    inner = [f'<ellipse class="fA" cx="{cx}" cy="{cy}" rx="{R * k:.1f}" ry="{R}"/>',
+             f'<path d="{ell(r1)} {ell(r0)}" fill-rule="evenodd" style="fill:var(--accent);opacity:0.55"/>',
+             f'<ellipse class="c2" cx="{cx}" cy="{cy}" rx="{R * k:.1f}" ry="{R}"/>',
+             _arrow(24, cy, 388, cy, "ax", head=7),
+             f'<text x="386" y="{cy + 18}" text-anchor="end">축</text>',
+             f'<path class="ax" d="M{cx},{cy} V{cy - r0}"/>',
+             f'<text x="{cx - 7}" y="{cy - r0 / 2 + 4:.0f}" text-anchor="end" class="t-ink">$r$</text>',
+             f'<path class="ax" d="M{cx},{cy} V{cy + R}" stroke-dasharray="3 3"/>',
+             f'<text x="{cx - 7}" y="{cy + R / 2 + 8:.0f}" text-anchor="end" class="t-ink">$R$</text>',
+             f'<path class="c1" d="M{cx + 30},{cy - r1} h14 M{cx + 30},{cy - r0} h14" style="stroke-width:1.2"/>',
+             f'<text x="{cx + 49}" y="{cy - (r0 + r1) / 2 + 5:.0f}" class="t-acc">$dr$</text>',
+             f'<path class="c2 dash" d="M{cx},{cy - (r0 + r1) / 2:.0f} L{px},{cy}" style="stroke-width:1.2"/>',
+             f'<text x="{(cx + px) / 2 + 14:.0f}" y="{cy - (r0 + r1) / 4 - 10:.0f}" class="t-ink">$\\sqrt{{r^2 + z^2}}$</text>',
+             f'<text x="{(cx + px) / 2 + 10:.0f}" y="{cy + 18}" text-anchor="middle" class="t-ink">$z$</text>',
+             f'<circle cx="{px}" cy="{cy}" r="3.5" class="fInk"/>',
+             f'<text x="{px - 4}" y="{cy + 18}" text-anchor="end" class="t-ink">P</text>',
+             _arrow(px, cy, px + 58, cy, "c1"),
+             f'<text x="{px + 30}" y="{cy - 10}" text-anchor="middle" class="t-acc">$dE_z$</text>',
+             f'<text x="{cx + 62}" y="34" class="t-acc">고리 하나: $dq = \\sigma\\,(2\\pi r\\,dr)$</text>']
+    return svg(w, h, "\n".join(inner), "원판을 반지름 r, 폭 dr 인 고리들로 쪼개 축 위의 점 P의 전기장을 더하는 그림")
+
+
+def biot_wire():
+    """직선 도선의 전류 요소가 점 P에 만드는 자기장."""
+    w, h = 400, 270
+    wy, ox, s = 205, 150, 130
+    ex = 290
+    py = wy - s
+    th = math.degrees(math.atan2(ex - ox, s))
+    inner = [f'<path class="c2" d="M20,{wy} H380" style="stroke-width:3.2"/>',
+             _arrow(30, wy - 14, 80, wy - 14, "c2", head=7),
+             f'<text x="55" y="{wy - 22}" text-anchor="middle" class="t-ink">$I$</text>',
+             f'<path class="c1" d="M{ex - 12},{wy} H{ex + 12}" style="stroke-width:6"/>',
+             f'<text x="{ex}" y="{wy + 20}" text-anchor="middle" class="t-acc">$dx$</text>',
+             f'<path class="ax" d="M{ox},{wy} V{py}" stroke-dasharray="3 3"/>',
+             f'<text x="{ox - 8}" y="{(wy + py) / 2 + 14:.0f}" text-anchor="end" class="t-ink">$s$</text>',
+             f'<path class="ax" d="M{ox},{wy + 30} H{ex} M{ox},{wy + 25} v10 M{ex},{wy + 25} v10"/>',
+             f'<text x="{(ox + ex) / 2:.0f}" y="{wy + 48}" text-anchor="middle" class="t-ink">$x = s\\tan\\theta$</text>',
+             f'<path class="c2 dash" d="M{ex},{wy} L{ox},{py}" style="stroke-width:1.2"/>',
+             f'<text x="{(ox + ex) / 2 + 10:.0f}" y="{(wy + py) / 2 - 8:.0f}" class="t-ink">$r = \\sqrt{{x^2 + s^2}}$</text>',
+             _arc(ox, py, 36, -90, -90 + th),
+             f'<text x="{ox + 14}" y="{py + 54}" class="t-ink">$\\theta$</text>',
+             f'<circle cx="{ox}" cy="{py}" r="8" class="c3" style="fill:var(--paper)"/>',
+             f'<circle cx="{ox}" cy="{py}" r="2.6" style="fill:var(--warm)"/>',
+             f'<text x="{ox - 14}" y="{py + 4}" text-anchor="end" class="t-ink">P</text>',
+             f'<text x="{ox + 16}" y="{py - 6}" class="t-warm">$d\\vec B$: 지면에서 나오는 방향</text>']
+    return svg(w, h, "\n".join(inner), "직선 도선의 전류 요소 dx 가 거리 s 인 점 P에 만드는 자기장의 기하")
+
+
+def inertia_slices():
+    """회전 관성: 원판은 고리로, 구는 얇은 원판으로 쪼갠다."""
+    w, h = 400, 280
+    R = 78
+    c1x, c2x, cy = 100, 300, 128
+    r0, r1 = 42, 52
+    z = 34
+    rz = math.sqrt(R * R - z * z)
+    inner = [  # 원판 (위에서 본 모습): 축은 중심을 지나 지면에 수직
+        f'<circle class="fA" cx="{c1x}" cy="{cy}" r="{R}"/>',
+        f'<path d="M{c1x - r1},{cy} a{r1},{r1} 0 1 0 {2 * r1},0 a{r1},{r1} 0 1 0 {-2 * r1},0 Z '
+        f'M{c1x - r0},{cy} a{r0},{r0} 0 1 0 {2 * r0},0 a{r0},{r0} 0 1 0 {-2 * r0},0 Z" fill-rule="evenodd" style="fill:var(--accent);opacity:0.55"/>',
+        f'<circle class="c2" cx="{c1x}" cy="{cy}" r="{R}"/>',
+        f'<circle cx="{c1x}" cy="{cy}" r="3.5" class="fInk"/>',
+        f'<text x="{c1x - 8}" y="{cy + 16}" text-anchor="end">축</text>',
+        f'<path class="ax" d="M{c1x},{cy} L{c1x + r0 * 0.766:.1f},{cy - r0 * 0.643:.1f}"/>',
+        f'<text x="{c1x + 12}" y="{cy - 20}" class="t-ink">$r$</text>',
+        f'<path class="c1" d="M{c1x + r0},{cy} h{r1 - r0}" style="stroke-width:1.4"/>',
+        f'<text x="{c1x + r1 + 3}" y="{cy + 16}" class="t-acc">$dr$</text>',
+        f'<path class="ax" d="M{c1x},{cy} L{c1x - R * 0.5:.1f},{cy + R * 0.866:.1f}" stroke-dasharray="3 3"/>',
+        f'<text x="{c1x - R * 0.25 - 8:.0f}" y="{cy + R * 0.5:.0f}" text-anchor="end" class="t-ink">$R$</text>',
+        f'<text x="{c1x}" y="{cy + R + 26}" text-anchor="middle" class="t-ink">원판 → 고리</text>',
+        f'<text x="{c1x}" y="{cy + R + 48}" text-anchor="middle" class="t-acc">$dm = \\sigma\\,2\\pi r\\,dr$</text>',
+        # 구 (옆에서 본 모습): 축은 세로
+        f'<circle class="fA" cx="{c2x}" cy="{cy}" r="{R}"/>',
+        f'<ellipse cx="{c2x}" cy="{cy - z}" rx="{rz:.1f}" ry="9" style="fill:var(--accent);opacity:0.55"/>',
+        f'<ellipse class="c1" cx="{c2x}" cy="{cy - z}" rx="{rz:.1f}" ry="9" style="stroke-width:1.4"/>',
+        f'<circle class="c2" cx="{c2x}" cy="{cy}" r="{R}"/>',
+        f'<path class="ax" d="M{c2x},{cy - R - 16} V{cy + R + 8}" stroke-dasharray="8 3 2 3"/>',
+        f'<text x="{c2x + 6}" y="{cy - R - 6}">축</text>',
+        f'<circle cx="{c2x}" cy="{cy}" r="3" class="fInk"/>',
+        f'<text x="{c2x - 6}" y="{cy - z / 2 + 6:.0f}" text-anchor="end" class="t-ink">$z$</text>',
+        f'<path class="ax" d="M{c2x},{cy} L{c2x + rz:.1f},{cy - z}"/>',
+        f'<text x="{c2x + rz / 2 + 4:.0f}" y="{cy - z / 2 + 16:.0f}" class="t-ink">$R$</text>',
+        f'<text x="{c2x}" y="{cy + 44}" text-anchor="middle" class="t-ink">조각의 반지름 $\\sqrt{{R^2 - z^2}}$</text>',
+        f'<text x="{c2x + rz + 6:.0f}" y="{cy - z + 5}" class="t-acc">$dz$</text>',
+        f'<text x="{c2x}" y="{cy + R + 26}" text-anchor="middle" class="t-ink">구 → 얇은 원판</text>',
+        f'<text x="{c2x}" y="{cy + R + 48}" text-anchor="middle" class="t-acc">$dm = \\rho\\,\\pi(R^2 - z^2)\\,dz$</text>']
+    return svg(w, h, "\n".join(inner), "회전 관성을 구할 때 원판은 고리로, 구는 얇은 원판으로 쪼개는 그림")
+
+
+def cm_slices():
+    """질량 중심: 막대는 dx, 반원 고리는 dθ, 반원판은 r dr dθ 조각으로."""
+    w, h = 400, 290
+    inner = []
+    # 막대: 오른쪽으로 갈수록 무겁다 (선밀도 ∝ x)
+    x0, x1, ry = 30, 370, 34
+    n = 17
+    for i in range(n):
+        xa = x0 + (x1 - x0) * i / n
+        inner.append(f'<rect x="{xa:.1f}" y="{ry - 9}" width="{(x1 - x0) / n + 0.5:.1f}" height="18" '
+                     f'style="fill:var(--accent);opacity:{0.08 + 0.62 * (i + 0.5) / n:.2f}"/>')
+    xe = x0 + (x1 - x0) * 0.56
+    xc = x0 + (x1 - x0) * 2 / 3
+    inner += [f'<rect class="c2" x="{x0}" y="{ry - 9}" width="{x1 - x0}" height="18"/>',
+              f'<rect class="c1" x="{xe:.1f}" y="{ry - 12}" width="9" height="24" style="stroke-width:1.5"/>',
+              f'<text x="{xe + 4:.0f}" y="{ry - 18}" text-anchor="middle" class="t-acc">$dm = \\lambda\\,dx$</text>',
+              f'<text x="{x0}" y="{ry + 26}" class="t-ink">$0$</text>',
+              f'<text x="{x1}" y="{ry + 26}" text-anchor="end" class="t-ink">$L$</text>',
+              f'<path class="c4" d="M{xc:.1f},{ry - 14} V{ry + 14}" style="stroke-width:2.4"/>',
+              f'<text x="{xc:.0f}" y="{ry + 28}" text-anchor="middle" class="t-warn">$2L/3$</text>']
+    # 반원 고리
+    cx, cy, R = 100, 262, 86
+    th = math.radians(52)
+    ex, ey = cx + R * math.cos(th), cy - R * math.sin(th)
+    yc = cy - 2 * R / math.pi
+    inner += [f'<path class="ax" d="M{cx - R - 12},{cy} H{cx + R + 12}"/>',
+              f'<path class="c2" d="M{cx - R},{cy} A{R},{R} 0 0 1 {cx + R},{cy}" style="stroke-width:3"/>',
+              f'<path class="ax" d="M{cx},{cy} L{ex:.1f},{ey:.1f}"/>',
+              f'<path class="ax" d="M{ex:.1f},{ey:.1f} V{cy}" stroke-dasharray="3 3"/>',
+              _arc(cx, cy, 22, 0, 52),
+              f'<text x="{cx + 27}" y="{cy - 9}" class="t-ink">$\\theta$</text>',
+              f'<circle cx="{ex:.1f}" cy="{ey:.1f}" r="5" class="fAcc"/>',
+              f'<text x="{ex + 9:.0f}" y="{ey - 4:.0f}" class="t-acc">$dm = \\lambda R\\,d\\theta$</text>',
+              f'<text x="{ex + 5:.0f}" y="{(ey + cy) / 2 + 10:.0f}" class="t-ink">$y$</text>',
+              f'<path class="c4" d="M{cx - 7},{yc - 7:.1f} l14,14 M{cx + 7},{yc - 7:.1f} l-14,14" style="stroke-width:2.2"/>',
+              f'<text x="{cx - 12}" y="{yc + 5:.0f}" text-anchor="end" class="t-warn">$2R/\\pi$</text>',
+              f'<text x="{cx}" y="{cy + 20}" text-anchor="middle" class="t-ink">반원 고리</text>']
+    # 반원판
+    cx, R = 300, 80
+    r0, r1, a0, a1 = 44, 58, math.radians(48), math.radians(66)
+    pts = [(cx + r0 * math.cos(a0), cy - r0 * math.sin(a0)), (cx + r1 * math.cos(a0), cy - r1 * math.sin(a0)),
+           (cx + r1 * math.cos(a1), cy - r1 * math.sin(a1)), (cx + r0 * math.cos(a1), cy - r0 * math.sin(a1))]
+    yc = cy - 4 * R / (3 * math.pi)
+    inner += [f'<path class="fA" d="M{cx - R},{cy} A{R},{R} 0 0 1 {cx + R},{cy} Z"/>',
+              f'<path class="c2" d="M{cx - R},{cy} A{R},{R} 0 0 1 {cx + R},{cy} Z"/>',
+              f'<path d="M{pts[0][0]:.1f},{pts[0][1]:.1f} L{pts[1][0]:.1f},{pts[1][1]:.1f} A{r1},{r1} 0 0 0 {pts[2][0]:.1f},{pts[2][1]:.1f} '
+              f'L{pts[3][0]:.1f},{pts[3][1]:.1f} A{r0},{r0} 0 0 1 {pts[0][0]:.1f},{pts[0][1]:.1f} Z" style="fill:var(--accent);opacity:0.7"/>',
+              f'<path class="ax" d="M{cx},{cy} L{pts[0][0]:.1f},{pts[0][1]:.1f}"/>',
+              f'<text x="{cx + 20}" y="{cy - 12}" class="t-ink">$r$</text>',
+              f'<text x="{cx + 6}" y="{cy - R - 8}" text-anchor="middle" class="t-acc">$dA = r\\,dr\\,d\\theta$</text>',
+              f'<path class="c4" d="M{cx - 7},{yc - 7:.1f} l14,14 M{cx + 7},{yc - 7:.1f} l-14,14" style="stroke-width:2.2"/>',
+              f'<text x="{cx - 12}" y="{yc + 5:.0f}" text-anchor="end" class="t-warn">$4R/3\\pi$</text>',
+              f'<text x="{cx}" y="{cy + 20}" text-anchor="middle" class="t-ink">반원판</text>']
+    return svg(w, h, "\n".join(inner), "막대, 반원 고리, 반원판을 작은 조각으로 나누어 질량 중심을 구하는 그림")
+
+
 FIGS = {
     "traj": traj, "vterm": vterm, "potential": potential,
     "gauss_sphere": lambda: radial("E"), "ampere_cyl": lambda: radial("B"),
@@ -476,4 +714,6 @@ FIGS = {
     "lens": lens, "mirror": mirror, "slits": slits, "grating": grating,
     "blackbody": blackbody, "hlevels": hlevels, "box": box, "tunnel": tunnel,
     "bands": bands, "twin": twin,
+    "ring_e": lambda: ring_field("E"), "ring_b": lambda: ring_field("B"), "disk_rings": disk_rings,
+    "biot_wire": biot_wire, "inertia_slices": inertia_slices, "cm_slices": cm_slices,
 }
