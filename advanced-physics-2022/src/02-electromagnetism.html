@@ -74,6 +74,37 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 연속 전하 분포 · 참고 Halliday 22-4, Griffiths 2.1.4</p><h2>고리 전하가 축 위에 만드는 전기장</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>반지름 $R$ 인 고리에 전하 $Q$ 가 고르게 퍼져 있다. 작은 조각 $dq$ 에서 축 위 높이 $z$ 인 점까지 거리는 모두 같다.</p><div class="eq">$$dE = \frac{k\,dq}{R^2 + z^2}$$</div></li>
+        <li><p>맞은편 조각과 짝지으면 축에 수직인 성분은 지워지고, 축 성분만 남는다.</p><div class="eq">$$dE_z = dE\cos\alpha = \frac{k\,dq}{R^2 + z^2}\cdot\frac{z}{\sqrt{R^2 + z^2}}$$</div></li>
+        <li><p>모든 조각에서 $z$ 와 거리가 같으므로 $dq$ 만 더하면 된다 ($\int dq = Q$).</p><div class="eq">$$E_z = \frac{kQz}{(R^2 + z^2)^{3/2}}$$</div></li>
+        <li><p>먼 곳($z \gg R$)에서는 점전하로 보인다. 중심($z = 0$)에서는 대칭으로 0이다.</p><div class="eq">$$E_z \approx \frac{kQ}{z^2},\qquad E_z(0) = 0$$</div></li>
+        <li><p>예: $Q = 5.0$ nC, $R = 5.0$ cm, $z = 10$ cm.</p><div class="eq">$$E_z = \frac{(8.99\times10^9)(5.0\times10^{-9})(0.10)}{(0.10^2 + 0.050^2)^{3/2}} = 3.2\times10^3\ \text{N/C}$$</div></li>
+      </ol>
+      <p class="small">비오-사바르 법칙으로 구한 원형 고리의 자기장(II-3)과 같은 방법, 같은 꼴의 적분입니다. 비교해서 보여 주세요.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 연속 전하 분포 · 참고 Halliday 22-5</p><h2>고리를 쌓아 원판으로, 원판을 넓혀 무한 평면으로</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>면전하 밀도 $\sigma$ 인 반지름 $R$ 의 원판을 반지름 $r$, 폭 $dr$ 인 고리로 쪼갠다.</p><div class="eq">$$dq = \sigma\,(2\pi r\,dr)$$</div></li>
+        <li><p>앞 슬라이드의 고리 결과를 그대로 쓴다.</p><div class="eq">$$dE_z = \frac{k\,z\,\sigma\,2\pi r\,dr}{(r^2 + z^2)^{3/2}}$$</div></li>
+        <li><p>$r = 0$ 부터 $R$ 까지 적분한다 ($u = r^2 + z^2$ 로 치환).</p><div class="eq">$$E_z = \pi k\sigma z\int_{z^2}^{R^2 + z^2}u^{-3/2}\,du = \frac{\sigma}{2\varepsilon_0}\Big(1 - \frac{z}{\sqrt{R^2 + z^2}}\Big)$$</div></li>
+        <li><p>원판이 무한히 넓으면 ($R\to\infty$) 거리에 무관한 값. 가우스 법칙의 결과와 같다.</p><div class="eq">$$E_z\to\frac{\sigma}{2\varepsilon_0}$$</div></li>
+        <li><p>원판 가까이($z \ll R$)에서도 거의 무한 평면처럼 보인다. 평행판 축전기에서 가장자리 효과를 무시할 수 있는 근거다.</p><div class="eq">$$z \ll R\ \Rightarrow\ \frac{z}{\sqrt{R^2 + z^2}} \approx \frac zR \approx 0$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">전기 선속과 가우스 법칙 · 교과서 99~104쪽</p><h2>닫힌 곡면을 나가는 전기 선속 = 안의 전하 / ε₀</h2></header>
@@ -183,6 +214,21 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
           <tr><td>티탄산 바륨</td><td class="mono">1000 이상</td></tr>
         </tbody>
       </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 유전체와 가우스 법칙 · 교과서 99쪽 학습 목표, 115쪽 식 (Ⅱ. 2-10) · 참고 Halliday 25-6, Griffiths 4.2~4.3</p><h2>속박 전하까지 세어 넣는 가우스 법칙</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>평행판 사이를 유전 상수 $\kappa$ 인 유전체로 채운다. 판의 자유 전하 $q$ 맞은편 유전체 표면에 반대 부호의 속박 전하 $q'$ 이 유도된다.</p><div class="eq">$$Q_{in} = q - q'$$</div></li>
+        <li><p>판과 유전체 표면을 감싸는 가우스 상자 (넓이 $A$).</p><div class="eq">$$\varepsilon_0EA = q - q'$$</div></li>
+        <li><p>실험 사실: 유전체 속 전기장은 $1/\kappa$ 로 줄어든다 ($E = E_0/\kappa = q/\kappa\varepsilon_0A$). 그래서 속박 전하의 크기.</p><div class="eq">$$q' = q\Big(1 - \frac1\kappa\Big)$$</div></li>
+        <li><p>속박 전하를 따로 세지 않으려면 $\kappa$ 를 전기장에 붙인 꼴로 쓴다. 자유 전하만 남는다.</p><div class="eq">$$\oint\kappa\varepsilon_0\vec E\cdot d\vec A = q_{자유}\qquad(\vec D = \kappa\varepsilon_0\vec E)$$</div></li>
+        <li><p>예: 폴리스타이렌 ($\kappa = 2.6$) 이면 자유 전하의 62 % 만큼 속박 전하가 생겨 전기장을 줄인다.</p><div class="eq">$$\frac{q'}{q} = 1 - \frac{1}{2.6} = 0.62$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -308,6 +354,21 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
           <p>1 F 를 만들려면 판 한 변이 약 10 km 여야 합니다. 그래서 실제 축전기는 얇은 유전체를 감아 만듭니다.</p>
         </div></details>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 구형·원통형 축전기 · 교과서 119쪽 중단원 평가 · 참고 Halliday 25-2</p><h2>가우스 법칙 → 전위차 → 전기 용량, 세 단계 공식</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>구형 축전기 (안 반지름 $a$, 바깥 반지름 $b$): 두 구 사이에서 전기장은 점전하와 같다.</p><div class="eq">$$E = \frac{Q}{4\pi\varepsilon_0r^2}\qquad(a \lt r \lt b)$$</div></li>
+        <li><p>안쪽에서 바깥쪽까지 적분해 전위차를 구하고, $C = Q/\Delta V$.</p><div class="eq">$$\Delta V = \frac{Q}{4\pi\varepsilon_0}\Big(\frac1a - \frac1b\Big)\ \Rightarrow\ C = 4\pi\varepsilon_0\frac{ab}{b - a}$$</div></li>
+        <li><p>점검 두 가지: $b\to\infty$ 이면 고립된 도체 구, 간격 $d = b - a$ 가 작으면 평행판($A = 4\pi a^2$).</p><div class="eq">$$C\to4\pi\varepsilon_0a,\qquad C \approx \frac{\varepsilon_0(4\pi a^2)}{d}$$</div></li>
+        <li><p>원통형(동축) 축전기 (길이 $L$): 가우스 원통으로 $E = \lambda/2\pi\varepsilon_0r$, 적분하면 로그가 나온다.</p><div class="eq">$$\Delta V = \frac{\lambda}{2\pi\varepsilon_0}\ln\frac ba\ \Rightarrow\ C = \frac{2\pi\varepsilon_0L}{\ln(b/a)}$$</div></li>
+        <li><p>예: $a = 10$ cm, $b = 11$ cm 인 구형 축전기, 고립된 도체 구로 본 지구 ($a = 6.37\times10^6$ m), $b/a = 4$ 인 동축 케이블.</p><div class="eq">$$C = 122\ \text{pF},\qquad C_{지구} = 710\ \mu\text{F},\qquad \frac CL = 40\ \text{pF/m}$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -449,6 +510,21 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
         <div class="eq">$$\vec F = I\vec L\times\vec B$$</div>
         <p>전류 고리가 받는 돌림힘은 $\vec\tau = \vec\mu\times\vec B$, 자기 쌍극자 모멘트 $\vec\mu = I\vec A$ 입니다. 전동기와 아날로그 전류계의 원리입니다.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 홀 효과 · 참고 Halliday 28-3</p><h2>자기장 속 도체의 옆면에 생기는 전압</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>두께 $t$, 폭 $w$ 인 띠에 전류 $I$ 가 흐르고, 면에 수직으로 자기장 $B$ 가 있다. 운반자는 유동 속도 $v_d$ 로 움직이며 옆으로 자기력을 받는다.</p><div class="eq">$$F_B = qv_dB$$</div></li>
+        <li><p>운반자가 한쪽 옆면에 쌓여 가로 전기장 $E_H$ 가 생기고, 전기력과 자기력이 같아지면 멈춘다.</p><div class="eq">$$qE_H = qv_dB,\qquad V_H = E_Hw = v_dBw$$</div></li>
+        <li><p>전류를 운반자 밀도 $n$ 으로 쓴다 ($I = nqv_d\,wt$).</p><div class="eq">$$V_H = \frac{IB}{nqt}$$</div></li>
+        <li><p>구리 ($n = 8.5\times10^{28}$ m⁻³), $I = 10$ A, $B = 1.0$ T, $t = 1.0$ mm: 아주 작다.</p><div class="eq">$$V_H = \frac{(10)(1.0)}{(8.5\times10^{28})(1.6\times10^{-19})(1.0\times10^{-3})} = 0.73\ \mu\text{V}$$</div></li>
+        <li><p>반도체는 $n$ 이 작아 ($\sim10^{21}$ m⁻³) 1 mA 에서도 수 mV 가 나온다. 그래서 자기장 센서(스마트폰 나침반)는 반도체로 만든다. $V_H$ 의 부호로 운반자가 전자(n형)인지 양공(p형)인지 가릴 수 있다 (IV-2 반도체와 연계).</p><div class="eq">$$V_H \approx 6\ \text{mV}\quad(n = 10^{21}\ \text{m}^{-3},\ I = 1\ \text{mA})$$</div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -610,6 +686,22 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
         <li><p>회로 저항이 $R$ 이면 전류가 흐르고, 막대는 운동을 방해하는 힘을 받는다 (렌츠 법칙).</p><div class="eq">$$I = \frac{BLv}{R},\qquad F = ILB = \frac{B^2L^2v}{R}$$</div></li>
         <li><p>에너지 확인: 막대를 끄는 일률이 저항에서 나는 열과 같다.</p><div class="eq">$$Fv = \frac{B^2L^2v^2}{R} = I^2R\ \ \checkmark$$</div></li>
         <li><p>발전기: $N$ 번 감은 코일(넓이 $A$)이 $\omega$ 로 돌면 선속이 $NBA\cos\omega t$.</p><div class="eq">$$\mathcal E = -\frac{d}{dt}\big(NBA\cos\omega t\big) = NBA\omega\sin\omega t$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 유도 전기장 · 교과서 155쪽 · 참고 Halliday 30-3, Griffiths 7.2.2</p><h2>변하는 자기장이 만드는, 맴도는 전기장</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>도선이 없어도 패러데이 법칙은 성립한다. 기전력을 전기장의 선적분으로 쓴 꼴.</p><div class="eq">$$\oint\vec E\cdot d\vec l = -\frac{d\Phi_B}{dt}$$</div></li>
+        <li><p>반지름 $R$ 인 긴 솔레노이드 속 자기장이 $dB/dt$ 로 변한다. 대칭에 맞춰 같은 축의 원 (반지름 $r$)을 고리로 잡으면 $E$ 는 원을 따라 일정하다.</p><div class="eq">$$E\cdot2\pi r = \Big|\frac{d\Phi_B}{dt}\Big|$$</div></li>
+        <li><p>솔레노이드 안 ($r \lt R$): 고리를 지나는 선속은 $B\pi r^2$.</p><div class="eq">$$E = \frac r2\Big|\frac{dB}{dt}\Big|$$</div></li>
+        <li><p>바깥 ($r \gt R$): 자기장이 없는 곳에도 전기장이 생긴다. 선속은 $B\pi R^2$ 로 일정.</p><div class="eq">$$E = \frac{R^2}{2r}\Big|\frac{dB}{dt}\Big|$$</div></li>
+        <li><p>예: $R = 5.0$ cm, $dB/dt = 0.10$ T/s 이면 가장자리와 $r = 10$ cm 에서</p><div class="eq">$$E(R) = 2.5\ \text{mV/m},\qquad E(10\ \text{cm}) = 1.3\ \text{mV/m}$$</div></li>
+        <li><p>이 전기장은 닫힌 고리를 따라 일을 하므로($\oint\vec E\cdot d\vec l \ne 0$) 보존장이 아니고 전위로 쓸 수 없다. 미분형으로는 $\nabla\times\vec E = -\partial\vec B/\partial t$ (OT 벡터의 미분).</p><div class="eq">$$\oint\vec E\cdot d\vec l \ne 0\ \Rightarrow\ \nabla\times\vec E \ne 0$$</div></li>
       </ol>
     </div>
   </div>
@@ -960,6 +1052,21 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 포인팅 벡터 · 참고 Griffiths 8.1.2, Halliday 33-2</p><h2>저항선의 열에너지는 바깥 공간에서 흘러 들어온다</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>반지름 $a$, 길이 $L$ 인 저항선에 전압 $V$, 전류 $I$. 도선 속(그리고 표면)의 전기장은 도선을 따라 고르다.</p><div class="eq">$$E = \frac VL$$</div></li>
+        <li><p>표면의 자기장은 도선을 감아 돈다 (암페어 법칙).</p><div class="eq">$$B = \frac{\mu_0I}{2\pi a}$$</div></li>
+        <li><p>$\vec E$ 는 도선 방향, $\vec B$ 는 원 방향이라 $\vec S = \vec E\times\vec B/\mu_0$ 는 도선 표면을 향해 안쪽을 가리킨다.</p><div class="eq">$$S = \frac{EB}{\mu_0} = \frac{VI}{2\pi aL}$$</div></li>
+        <li><p>표면 전체(넓이 $2\pi aL$)로 들어오는 에너지의 일률.</p><div class="eq">$$P = S\cdot2\pi aL = VI = I^2R$$</div></li>
+        <li class="wide"><p>저항에서 나는 열과 정확히 같다. 에너지는 도선 속을 따라 흐르는 것이 아니라, 전지에서 나와 도선 바깥의 전기장·자기장을 타고 와서 옆면으로 들어간다는 뜻입니다. 전자기파가 에너지를 나르는 것과 같은 원리입니다.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">전자기파의 발생 · 교과서 160~162쪽</p><h2>가속하는 전하가 전자기파를 낸다</h2></header>
@@ -984,6 +1091,21 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
           </tbody>
         </table></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">심화 · 교과서 밖 · 가속 전하의 복사 · 참고 Griffiths 11.1~11.2 (라모어 공식) · 교과서 160~162쪽 연계</p><h2>얼마나, 어느 쪽으로 복사하는가, 그리고 하늘이 파란 이유</h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>가속도 $a$ 인 전하 $q$ 가 내는 복사의 일률 (라모어 공식). 속도가 아니라 가속도에 달려 있다.</p><div class="eq">$$P = \frac{q^2a^2}{6\pi\varepsilon_0c^3}$$</div></li>
+        <li><p>방향: 가속도와 $\theta$ 를 이루는 방향으로 나가는 세기는 $\sin^2\theta$ 에 비례한다. 가속도 방향(안테나 축)으로는 나가지 않는다.</p><div class="eq">$$\frac{dP}{d\Omega}\propto\sin^2\theta$$</div></li>
+        <li><p>진동하는 쌍극자 ($x = x_0\cos\omega t$)의 가속도 크기는 $\omega^2x_0$ 이므로 평균 일률은 $\omega^4$ 에 비례한다.</p><div class="eq">$$\langle P\rangle\propto q^2x_0^2\,\omega^4\propto\frac{1}{\lambda^4}$$</div></li>
+        <li><p>공기 분자의 전자가 햇빛에 흔들려 다시 내는 빛(산란)도 이 꼴이다. 파란빛(450 nm)이 빨간빛(700 nm)보다 몇 배 세게 산란되는가.</p><div class="eq">$$\Big(\frac{700}{450}\Big)^4 = 5.9$$</div></li>
+        <li class="wide"><p>그래서 낮 하늘은 파랗고, 빛이 대기를 길게 지나는 해 질 녘에는 파란빛이 빠져 붉게 보입니다. 산란광이 편광되는 것(III-3 브루스터 각과 하늘의 편광)도 2단계의 $\sin^2\theta$ 방향성 때문입니다.</p></li>
+      </ol>
     </div>
   </div>
 </section>

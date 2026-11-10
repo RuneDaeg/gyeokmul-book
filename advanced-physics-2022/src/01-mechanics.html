@@ -376,6 +376,21 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide derive">
   <div class="sl">
+    <header><p class="kicker">유도 · 연속체의 질량 중심 · 교과서 40~41쪽 · 참고 Halliday 9-1, Boas 5.3~5.4</p><h2>합을 적분으로: 막대, 반원 고리, 반원판의 질량 중심</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>질량이 연속적으로 퍼져 있으면 질점의 합을 작은 질량 요소 $dm$ 의 적분으로 바꾼다.</p><div class="eq">$$\vec r_{cm} = \frac1M\sum m_i\vec r_i\ \to\ \frac1M\int\vec r\,dm$$</div></li>
+        <li><p>길이 $L$ 인 막대, 선밀도 $\lambda = \lambda_0x/L$ (끝으로 갈수록 무거움). $dm = \lambda\,dx$.</p><div class="eq">$$x_{cm} = \frac{\int_0^Lx\,\lambda_0\frac xL\,dx}{\int_0^L\lambda_0\frac xL\,dx} = \frac{\lambda_0L^2/3}{\lambda_0L/2} = \frac23L$$</div></li>
+        <li><p>반지름 $R$ 인 반원 고리: 각 $\theta$ 에서 $d\theta$ 만큼의 호, $dm = \lambda R\,d\theta$, $y = R\sin\theta$.</p><div class="eq">$$y_{cm} = \frac{1}{\lambda\pi R}\int_0^\pi R\sin\theta\,\lambda R\,d\theta = \frac{2R}{\pi} = 0.64R$$</div></li>
+        <li><p>반원판: 극좌표의 넓이 요소는 $dA = r\,dr\,d\theta$ (야코비안 $r$ 을 빠뜨리지 않는다).</p><div class="eq">$$y_{cm} = \frac{1}{\pi R^2/2}\int_0^\pi\!\!\int_0^Rr\sin\theta\;r\,dr\,d\theta = \frac{2}{\pi R^2}\cdot\frac{R^3}{3}\cdot2 = \frac{4R}{3\pi}$$</div></li>
+        <li><p>비교: 질량이 바깥 테두리에 몰린 고리($0.64R$)가 속이 찬 판($0.42R$)보다 질량 중심이 멀다. 질량 중심은 물체 밖에 있을 수도 있다 (고리).</p><div class="eq">$$\frac{4}{3\pi} = 0.42 \lt \frac2\pi = 0.64$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
     <header><p class="kicker">유도 · 질량 중심의 운동 · 교과서 39~43쪽</p><h2>내력은 쌍으로 지워지고 외력만 남는다</h2></header>
     <div class="body">
       <ol class="steps">
@@ -385,6 +400,22 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
         <li><p>제3법칙 $\vec F_{ij} = -\vec F_{ji}$: 내력은 쌍으로 묶으면 0이다.</p><div class="eq">$$\sum_i\sum_{j\ne i}\vec F_{ij} = \sum_{i\lt j}\big(\vec F_{ij} + \vec F_{ji}\big) = 0$$</div></li>
         <li><p>결과: 질량 중심은 외력만 받는 질점처럼 움직인다.</p><div class="eq">$$M\vec a_{cm} = \sum\vec F^{\,외},\qquad \sum\vec F^{\,외} = 0\ \Rightarrow\ \vec P = \text{일정}$$</div></li>
         <li><p>예: 매끄러운 빙판 위에 정지한 60 kg 학생이 3.0 kg 공을 6.0 m/s 로 던지면</p><div class="eq">$$0 = (3.0)(6.0) + (60)\,v\ \Rightarrow\ v = -0.30\ \text{m/s}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 로켓 방정식 · 교과서 43쪽 심화 탐구 · 참고 Halliday 9-9</p><h2>질량이 줄어드는 로켓의 속력 구하기</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>외력이 없다고 하자. 시각 $t$ 에 로켓(연료 포함)의 질량 $M$, 속도 $v$. 짧은 시간 $dt$ 동안 질량 $-dM$ $(\gt0)$ 의 가스를 로켓에 대해 속력 $u$ 로 뒤로 뿜는다.</p><div class="eq">$$\text{가스의 속도(지면 기준)} = (v + dv) - u$$</div></li>
+        <li><p>로켓과 가스로 이루어진 계의 운동량이 보존된다.</p><div class="eq">$$Mv = (M + dM)(v + dv) + (-dM)(v + dv - u)$$</div></li>
+        <li><p>정리하면 (아주 작은 양의 곱 $dM\,dv$ 는 지워진다)</p><div class="eq">$$M\,dv = -u\,dM$$</div></li>
+        <li><p>$dt$ 로 나누면 추력. $R = -dM/dt$ 는 연료를 태우는 빠르기다 (제1 로켓 방정식).</p><div class="eq">$$Ma = Ru\qquad(\text{추력 } Ru)$$</div></li>
+        <li><p>3단계를 변수 분리해 처음 질량 $M_i$ 부터 나중 질량 $M_f$ 까지 적분한다 (제2 로켓 방정식).</p><div class="eq">$$\int_{v_i}^{v_f}dv = -u\int_{M_i}^{M_f}\frac{dM}{M}\ \Rightarrow\ v_f - v_i = u\ln\frac{M_i}{M_f}$$</div></li>
+        <li><p>예: $u = 2.5$ km/s, 질량비 $M_i/M_f = 5$ 이면 $\Delta v = 4.0$ km/s 로, 지표 원 궤도 속력 7.9 km/s 에 모자란다. 그래서 다 쓴 연료통을 버리는 다단 로켓을 쓴다.</p><div class="eq">$$\Delta v = 2.5\ln5 = 4.0\ \text{km/s}$$</div></li>
       </ol>
     </div>
   </div>
@@ -884,6 +915,30 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
         <li><p>실험식 $PV = NkT$ 와 비교한다 ($M$: 몰질량).</p><div class="eq">$$\langle K\rangle = \tfrac32kT,\qquad v_{rms} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{M}}$$</div></li>
       </ol>
       <aside class="note">교과서 73쪽 '더 알아보기'는 300 K 수소 분자의 rms 속력을 약 2200 m/s로 적었는데, √(3RT/M)에 M = 2.016 g/mol을 넣으면 1.93 km/s입니다. 탈출 속력의 1/6(1.87 km/s)보다 크다는 결론은 같습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">심화 · 교과서 밖 · 분자 속력 분포 · 참고 Halliday 19-6 · 교과서 73쪽 더 알아보기와 연계</p><h2>맥스웰 속력 분포: 분자마다 속력이 다르다</h2></header>
+    <div class="body cols">
+      <div>
+        <p>같은 온도의 기체에서도 분자의 속력은 제각각입니다. 속력이 $v$ 와 $v + dv$ 사이인 분자의 비율은 $P(v)\,dv$ 로, $M$ 은 몰질량입니다.</p>
+        <div class="eq">$$P(v) = 4\pi\Big(\frac{M}{2\pi RT}\Big)^{3/2}v^2\,e^{-Mv^2/2RT}$$</div>
+        <div class="tbl-wrap"><table class="tbl lab">
+          <thead><tr><th>대표 속력</th><th>식</th><th class="nw">N₂, 300 K</th></tr></thead>
+          <tbody>
+            <tr><td>가장 흔한 속력</td><td>$v_p = \sqrt{2RT/M}$</td><td class="mono">422 m/s</td></tr>
+            <tr><td>평균 속력</td><td>$\bar v = \sqrt{8RT/\pi M}$</td><td class="mono">476 m/s</td></tr>
+            <tr><td>제곱 평균 제곱근</td><td>$v_{rms} = \sqrt{3RT/M}$</td><td class="mono">517 m/s</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="box def"><span class="tag">왜 알아야 하나</span>
+        <p>분포의 꼬리: $v_{rms}$ 가 탈출 속력보다 훨씬 작아도 아주 빠른 분자가 조금씩 있어서, 오랜 시간이 지나면 가벼운 기체가 빠져나갑니다. 교과서 73쪽의 '$v_{rms}$ 가 탈출 속력의 1/6 이하라야 대기가 남는다'는 기준이 여기서 나옵니다.</p>
+        <p class="small">온도가 오르면 봉우리가 낮아지며 빠른 쪽으로 넓게 퍼집니다. 화학 반응의 속도가 온도에 민감한 이유도 이 꼬리입니다.</p>
+      </div>
     </div>
   </div>
 </section>

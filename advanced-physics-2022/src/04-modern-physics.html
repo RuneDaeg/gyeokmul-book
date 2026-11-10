@@ -640,6 +640,21 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 브래그 법칙 · 교과서 261쪽 식 (Ⅳ. 2-15) · 참고 Halliday 36-7</p><h2>결정면에서 반사한 파동의 경로차로 브래그 법칙 얻기</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>간격 $d$ 인 결정면에 파동이 면과 각 $\theta$ (법선이 아니라 면에서 잰 각)로 들어와 같은 각으로 반사한다. 한 층 아래 면에서 반사한 파동은 들어갈 때와 나올 때 $d\sin\theta$ 씩 더 간다.</p><div class="eq">$$\Delta = 2d\sin\theta$$</div></li>
+        <li><p>경로차가 파장의 정수배이면 모든 층의 반사파가 보강된다 (브래그 법칙).</p><div class="eq">$$2d\sin\theta = m\lambda\qquad(m = 1, 2, 3, \dots)$$</div></li>
+        <li><p>예: NaCl ($d = 0.282$ nm)에 구리 X선 ($\lambda = 0.154$ nm). $\sin\theta \le 1$ 이므로 $m \le 2d/\lambda = 3.7$, 세 차수만 보인다.</p><div class="eq">$$\sin\theta_1 = \frac{0.154}{2(0.282)} = 0.273\ \Rightarrow\ \theta_1 = 15.8^\circ$$</div></li>
+        <li><p>데이비슨-거머 (교과서 261쪽): 산란각 $50^\circ$ 는 입사선과 반사선 사이의 각이므로 면과의 각은 $\theta = (180^\circ - 50^\circ)/2 = 65^\circ$. 니켈 속 면 간격 $d = 0.091$ nm 로</p><div class="eq">$$\lambda = 2(0.091\ \text{nm})\sin65^\circ = 0.165\ \text{nm}$$</div></li>
+        <li><p>표면 격자로 계산한 앞 슬라이드($D\sin50^\circ$)와 같은 값이고 드브로이 파장 $0.167$ nm 와 맞는다. 회절하려면 $\lambda \lt 2d$ 여야 하므로 가시광선으로는 결정 구조를 볼 수 없다.</p><div class="eq">$$\lambda \lt 2d \approx 0.5\ \text{nm}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">원자 모형 · 교과서 267~271쪽</p><h2>보어의 수소 원자 모형 (1913)</h2></header>
@@ -707,6 +722,22 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
         <p class="small">발머(1885)는 가시광선 네 줄을 $\lambda = Bn^2/(n^2-4)$ 로 맞혔고, 뤼드베리(1888)가 위의 일반식으로 정리했습니다. 보어는 $R$ 을 기본 상수로 계산해 냈습니다.</p>
       </div>
       <figure class="fig">{{fig:hlevels}}<figcaption>화살표 하나가 스펙트럼선 하나. 아래 준위로 갈수록 간격이 넓어 라이먼 계열의 에너지가 가장 큽니다.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 양자수와 배타 원리 · 교과서 272쪽 심화 탐구, 273쪽, 281쪽 · 참고 Halliday 39-5, 40-2, 40-4~40-5</p><h2>양자수 네 개로 껍질마다 전자 수 세기</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>보어 모형에는 주 양자수 $n$ 하나뿐이다. 슈뢰딩거 방정식의 풀이에서는 양자수가 둘 더 나오지만 (교과서 273쪽), 에너지는 $n$ 만으로 정해진다.</p><div class="eq">$$E_n = -\frac{13.6\ \text{eV}}{n^2}\qquad(n = 1, 2, 3, \dots)$$</div></li>
+        <li><p>궤도 양자수 $l$: 각운동량의 크기와 전자 구름 모양(s, p, d, …). 바닥 상태는 $l = 0$ 이라 각운동량이 0으로, 보어의 $L = \hbar$ 와 다르다.</p><div class="eq">$$l = 0, 1, \dots, n - 1,\qquad L = \sqrt{l(l + 1)}\,\hbar$$</div></li>
+        <li><p>궤도 자기 양자수 $m_l$ 은 각운동량의 $z$ 성분을 정한다. 자기장 속에서 이 상태들의 에너지가 갈라진다 (제만 효과).</p><div class="eq">$$m_l = -l, \dots, +l\ \ (2l + 1\ \text{개}),\qquad L_z = m_l\hbar$$</div></li>
+        <li><p>$n$ 하나에 들어 있는 $(l, m_l)$ 의 수를 센다. 첫 항 1, 끝 항 $2n - 1$ 인 등차수열의 합이다.</p><div class="eq">$$\sum_{l=0}^{n-1}(2l + 1) = \frac{n\,(1 + 2n - 1)}{2} = n^2$$</div></li>
+        <li><p>심화 탐구의 답: 넷째 양자수인 스핀 $m_s = \pm\frac12$ (은 원자 빔이 두 갈래로 나뉜 슈테른-게를라흐 실험, 1922). 상태 수가 두 배가 된다.</p><div class="eq">$$2n^2 = 2,\ 8,\ 18,\ \dots\quad(n = 1, 2, 3)$$</div></li>
+        <li><p>파울리 배타 원리 (교과서 281쪽): 네 양자수가 모두 같은 전자는 둘일 수 없다. 그래서 껍질마다 전자가 2, 8, … 개씩 찬다. 고체에서 준위가 갈라져 띠가 되는 것도 이 때문이다.</p><div class="eq">$$n = 2:\ \ l = 0\ (1\text{개}) + l = 1\ (3\text{개}) = 4\ \Rightarrow\ 4\times2 = 8$$</div></li>
+      </ol>
     </div>
   </div>
 </section>

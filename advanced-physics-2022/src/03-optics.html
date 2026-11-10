@@ -502,6 +502,23 @@ desc: 교과서 Ⅲ단원: 기하 광학(거울, 렌즈, 광학 기구), 간섭�
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 단일 슬릿의 세기 · 교과서 201~202쪽 식 (Ⅲ. 2-5~7) · 참고 Halliday 36-2</p><h2>위상자를 이어 붙여 회절 무늬의 세기 구하기</h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>틈을 아주 많은 띠로 나눈다. 각 띠에서 오는 작은 파동은 진폭이 같고, 이웃끼리 위상이 조금씩 다르다. 맨 위와 맨 아래 띠의 위상차는</p><div class="eq">$$\phi = \frac{2\pi}{\lambda}\,a\sin\theta$$</div></li>
+        <li><p>$\theta = 0$ 이면 위상차가 없어 작은 위상자들이 일직선으로 이어진다. 그 길이가 가운데 극대의 진폭이다.</p><div class="eq">$$E_\theta(0) = E_m$$</div></li>
+        <li><p>$\theta \ne 0$ 이면 같은 길이의 사슬이 휘어 원호가 된다. 호의 양 끝 접선이 이루는 각이 $\phi$ 이므로 반지름을 $R$ 이라 하면</p><div class="eq">$$E_m = R\,\phi\qquad(\text{호의 길이})$$</div></li>
+        <li><p>합성 진폭은 호의 양 끝을 잇는 현이다. 두 식에서 $R$ 을 지우고 $\alpha = \phi/2$ 로 둔다.</p><div class="eq">$$E_\theta = 2R\sin\frac\phi2 = E_m\frac{\sin\alpha}{\alpha},\qquad \alpha = \frac{\pi a\sin\theta}{\lambda}$$</div></li>
+        <li><p>세기는 진폭의 제곱에 비례한다.</p><div class="eq">$$I(\theta) = I_m\Big(\frac{\sin\alpha}{\alpha}\Big)^2$$</div></li>
+        <li><p>점검: $\sin\alpha = 0$ ($\alpha = m\pi$) 이면 사슬이 원을 $m$ 바퀴 돌아 제자리로 와서 어둡다. 앞 슬라이드의 $a\sin\theta = m\lambda$ 와 같다. 버금 극대는 $\alpha \approx 1.43\pi,\ 2.46\pi$ 에서</p><div class="eq">$$\frac{I}{I_m} = 0.047,\quad 0.016$$</div></li>
+      </ol>
+      <p class="small">가운데 무늬에 빛의 대부분이 모입니다. 원형 구멍에서는 같은 합이 베셀 함수가 되어, 첫 어두운 무늬가 $\sin\theta = 1.22\lambda/D$ 에 생깁니다 (레일리 기준).</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">이중 슬릿 + 회절</p><h2>실제 이중 슬릿 무늬는 회절 포락선 안에 있다</h2></header>
