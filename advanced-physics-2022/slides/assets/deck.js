@@ -8,6 +8,46 @@
   var notesBtn = document.getElementById("btn-notes");
   var hint = document.querySelector(".present-hint");
 
+  // ---------- 단계별 표시 (발표 모드) ----------
+  // 유도 단계(ol.steps)와 번호 목록의 항목을 한 줄씩 보여 준다. 단계 목록 뒤에 붙은 문단은 마지막 단계로 친다.
+  var stepsOf = slides.map(function (s) {
+    var out = [];
+    s.querySelectorAll(".body ol > li").forEach(function (li) {
+      if (li.closest("details, aside, .toc")) return;
+      out.push(li);
+    });
+    s.querySelectorAll(".body ol.steps").forEach(function (ol) {
+      for (var el = ol.nextElementSibling; el; el = el.nextElementSibling) {
+        if (el.matches("aside, script")) continue;
+        out.push(el);
+      }
+    });
+    out.forEach(function (el) { el.classList.add("step"); });
+    return out;
+  });
+  var rev = 0;   // 지금 슬라이드에서 보이는 단계 수
+
+  function setRevealed(n) {
+    var list = stepsOf[idx];
+    rev = Math.max(0, Math.min(list.length, n));
+    list.forEach(function (el, k) { el.classList.toggle("shown", k < rev); });
+    updateHint();
+  }
+  function updateHint() {
+    if (!hint) return;
+    var n = stepsOf[idx].length;
+    hint.textContent = (idx + 1) + " / " + slides.length +
+      (n ? "  ·  단계 " + rev + "/" + n : "") + "  ·  ← → 이동  ·  Esc 끝내기";
+  }
+  function next(skipSteps) {
+    if (!skipSteps && rev < stepsOf[idx].length) setRevealed(rev + 1);
+    else if (idx < slides.length - 1) show(idx + 1, "start");
+  }
+  function prev(skipSteps) {
+    if (!skipSteps && rev > 0) setRevealed(rev - 1);
+    else if (idx > 0) show(idx - 1, skipSteps ? "start" : "end");
+  }
+
   function store(key, val) {
     try {
       if (val === undefined) return window.localStorage.getItem(key);
@@ -16,10 +56,10 @@
     return null;
   }
 
-  function show(i) {
+  function show(i, at) {
     idx = Math.max(0, Math.min(slides.length - 1, i));
     slides.forEach(function (s, k) { s.classList.toggle("current", k === idx); });
-    if (hint) hint.textContent = (idx + 1) + " / " + slides.length + "  ·  ← → 이동  ·  Esc 끝내기";
+    setRevealed(at === "end" ? stepsOf[idx].length : 0);
     var id = slides[idx].id;
     if (id && location.hash !== "#" + id) {
       try { history.replaceState(null, "", "#" + id); } catch (e) { /* 무시 */ }
@@ -38,7 +78,7 @@
   function enterPresent() {
     body.classList.add("present");
     if (presentBtn) presentBtn.setAttribute("aria-pressed", "true");
-    show(nearestSlide());
+    show(nearestSlide(), "start");
     var el = document.documentElement;
     if (el.requestFullscreen) {
       el.requestFullscreen().catch(function () { /* 전체 화면이 막힌 환경 */ });
@@ -76,10 +116,12 @@
     if (e.key === "p" || e.key === "P") { inPresent ? exitPresent() : enterPresent(); e.preventDefault(); return; }
     if (e.key === "n" || e.key === "N") { setNotes(!body.classList.contains("show-notes")); return; }
     if (!inPresent) return;
-    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { show(idx + 1); e.preventDefault(); }
-    else if (e.key === "ArrowLeft" || e.key === "PageUp") { show(idx - 1); e.preventDefault(); }
-    else if (e.key === "Home") { show(0); e.preventDefault(); }
-    else if (e.key === "End") { show(slides.length - 1); e.preventDefault(); }
+    if ((e.key === " " || e.key === "Enter") && e.target.closest && e.target.closest("summary, button, a")) return;
+    // Shift 를 누르면 단계를 건너뛰고 슬라이드 단위로 이동
+    if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "Enter") { next(e.shiftKey); e.preventDefault(); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp" || e.key === "Backspace") { prev(e.shiftKey); e.preventDefault(); }
+    else if (e.key === "Home") { show(0, "start"); e.preventDefault(); }
+    else if (e.key === "End") { show(slides.length - 1, "end"); e.preventDefault(); }
     else if (e.key === "Escape") { exitPresent(); }
   });
 
@@ -91,9 +133,19 @@
   document.addEventListener("touchend", function (e) {
     if (x0 === null) return;
     var dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); swiped = true; }
     x0 = null;
   }, { passive: true });
+
+  // 발표 모드에서 슬라이드를 누르면 다음 줄 (풀이 보기, 링크, 판서 중에는 제외)
+  var swiped = false;
+  document.addEventListener("click", function (e) {
+    if (!body.classList.contains("present") || body.classList.contains("ink-on")) return;
+    if (swiped) { swiped = false; return; }
+    if (e.button !== 0 || e.target.closest("a, button, summary, details, input, label, .ink-bar, .ink-fab")) return;
+    if (!e.target.closest(".slide")) return;
+    next(e.shiftKey);
+  });
 
   document.addEventListener("fullscreenchange", function () {
     if (!document.fullscreenElement && body.classList.contains("present")) { /* 전체 화면만 끝나고 발표 모드는 유지 */ }

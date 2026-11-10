@@ -346,6 +346,11 @@ body.present .slide {
 }
 body.present .slide.current { display: block; }
 body.present .sl { overflow: auto; }
+/* 단계별 표시: 자리는 그대로 두고 감춰서, 한 줄이 나올 때 화면이 흔들리지 않게 */
+body.present .slide .step { transition: opacity 0.25s ease, transform 0.25s ease; }
+body.present .slide .step:not(.shown) { visibility: hidden; opacity: 0; transform: translateY(0.3em); }
+body.present .slide { cursor: pointer; }
+body.present.ink-on .slide { cursor: crosshair; }
 .present-hint {
   position: fixed;
   left: max(12px, env(safe-area-inset-left, 0px));
@@ -609,9 +614,10 @@ body.present .ink-bar .pres-only { display: inline-flex; }
 .ink-fab {
   position: fixed;
   right: max(14px, env(safe-area-inset-right, 0px));
-  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  top: calc(12px + env(safe-area-inset-top, 0px));
   z-index: 40;
   display: none;
+  opacity: 0.55;
   font: 500 13px/1 var(--f-body);
   color: var(--ink);
   background: var(--paper);
@@ -622,3 +628,4 @@ body.present .ink-bar .pres-only { display: inline-flex; }
   cursor: pointer;
 }
 body.present:not(.ink-on) .ink-fab { display: inline-flex; }
+.ink-fab:hover, .ink-fab:focus-visible { opacity: 1; }
