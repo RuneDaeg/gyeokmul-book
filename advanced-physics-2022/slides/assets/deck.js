@@ -190,7 +190,7 @@
 
   document.addEventListener("keydown", function (e) {
     var tag = (e.target && e.target.tagName) || "";
-    if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || e.metaKey || e.ctrlKey || e.altKey) return;
     var inPresent = body.classList.contains("present");
     if (tocIsOpen()) {
       if (e.key === "Escape" || e.key === "t" || e.key === "T") { closeToc(); e.preventDefault(); }

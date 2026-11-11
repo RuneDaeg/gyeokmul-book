@@ -408,6 +408,23 @@ body.present .present-hint { display: block; }
 
 .site-foot { max-width: 1120px; margin: 0 auto; padding-block: 0 48px; font-size: 13px; color: var(--muted); }
 
+/* ---------- 시뮬레이터 ---------- */
+.sim { display: grid; grid-template-columns: minmax(0, 1fr) 15em; gap: 0.6em 1.2em; align-items: start; }
+.sim-view { position: relative; aspect-ratio: 640 / 340; border: 1px solid var(--line); border-radius: 0.5em; background: var(--paper); overflow: hidden; }
+.sim-view canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sim-lab { position: absolute; font-size: 0.62em; line-height: 1.2; color: var(--muted); white-space: nowrap; pointer-events: none; }
+.sim-lab.end { transform: translateX(-100%); }
+.sim-side { display: flex; flex-direction: column; gap: 0.55em; font-size: 0.72em; line-height: 1.35; }
+.sim-ctl { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.15em 0.5em; align-items: baseline; }
+.sim-ctl input[type="range"], .sim-ctl select { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--accent); }
+.sim-ctl select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 0.4em; padding: 0.25em 0.4em; }
+.sim-ctl output { font-family: var(--f-mono); color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sim-btn { align-self: flex-start; font-size: 1em; }
+.sim-outs { border-top: 1px solid var(--line); padding-top: 0.5em; display: flex; flex-direction: column; gap: 0.3em; }
+.sim-out { display: flex; justify-content: space-between; gap: 0.6em; align-items: baseline; }
+.sim-out > span { color: var(--muted); }
+.sim-out b { font: 600 1em/1.2 var(--f-mono); color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
 /* ---------- 목차 ---------- */
 .toc-panel {
   position: fixed; inset: 0; z-index: 60;
@@ -469,6 +486,8 @@ body.toc-open { overflow: hidden; }
   :where(body:not(.present-land)) .slide.cover h2 { font-size: 2.2em; }
   :where(body:not(.present-land)) .slide.divider .roman { font-size: 3.2em; }
   :where(body:not(.present-land)) .toc { columns: 1; }
+  :where(body:not(.present-land)) .sim { grid-template-columns: 1fr; }
+  :where(body:not(.present-land)) .sim-side { font-size: 0.9em; }
   :where(body:not(.present-land)) figure.fig svg { max-height: none; }
   /* 좁은 화면: 긴 식은 줄이지 않고 옆으로 밀어서 본다 */
   :where(body:not(.present-land)) .eq mjx-container[display="true"] > svg { max-width: none; }

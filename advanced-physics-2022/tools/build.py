@@ -74,6 +74,7 @@ window.MathJax = {{
   <p>{foot}</p>
 </footer>
 <div class="present-hint" aria-live="polite"></div>
+<script src="assets/sims.js"></script>
 <script src="assets/deck.js"></script>
 <script src="assets/ink.js"></script>
 </body>
