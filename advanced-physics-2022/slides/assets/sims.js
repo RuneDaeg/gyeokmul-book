@@ -477,6 +477,191 @@
     step: function () { return true; }
   };
 
+  // ---------- 12. 두 점전하의 전기력선 ----------
+  SIMS.charges = {
+    aria: "두 점전하의 전하량과 간격에 따른 전기력선",
+    labs: [],
+    controls: [{ id: "q1", label: "왼쪽 전하 $q_1$", min: -4, max: 4, step: 1, value: 2, d: 0, unit: " nC" },
+               { id: "q2", label: "오른쪽 전하 $q_2$", min: -4, max: 4, step: 1, value: -2, d: 0, unit: " nC" },
+               { id: "d", label: "간격 $d$", min: 4, max: 20, step: 1, value: 10, d: 0, unit: " cm" }],
+    outs: [["E", "가운데 점의 전기장"], ["V", "가운데 점의 전위"], ["z", "전기장이 0인 점"]],
+    draw: function (c, v, t) {
+      var sc = 16, cx = W / 2, cy = H / 2, d = v.d, Q = [[-d / 2, 0, v.q1], [d / 2, 0, v.q2]], XM = W / 2 / sc + 1, YM = H / 2 / sc + 1;
+      function field(x, y) {
+        var ex = 0, ey = 0;
+        Q.forEach(function (q) { var dx = x - q[0], dy = y - q[1], r2 = dx * dx + dy * dy, r = Math.sqrt(r2) || 1e-9; ex += q[2] * dx / (r2 * r); ey += q[2] * dy / (r2 * r); });
+        return [ex, ey];
+      }
+      function trace(q, ang, dir) {            // 전하 q 에서 각 ang 으로 출발. dir=+1 이면 전기장 방향, −1 이면 거꾸로
+        var x = q[0] + 0.55 * Math.cos(ang), y = q[1] + 0.55 * Math.sin(ang), pts = [[x, y]], k, end = "out";
+        for (k = 0; k < 2600; k++) {
+          var e = field(x, y), n = Math.hypot(e[0], e[1]); if (!n) break;
+          x += dir * 0.12 * e[0] / n; y += dir * 0.12 * e[1] / n; pts.push([x, y]);
+          if (Math.abs(x) > XM || Math.abs(y) > YM) break;
+          var hit = Q.filter(function (o) { return o !== q && o[2] * q[2] < 0 && Math.hypot(x - o[0], y - o[1]) < 0.55; });
+          if (hit.length) { end = "charge"; break; }
+        }
+        return { pts: pts, end: end };
+      }
+      function drawLine(L, dir) {
+        var p = L.pts, i; if (p.length < 3) return;
+        c.beginPath(); c.strokeStyle = t.accent; c.lineWidth = 1.3;
+        for (i = 0; i < p.length; i++) { var X = cx + sc * p[i][0], Y = cy - sc * p[i][1]; if (i) c.lineTo(X, Y); else c.moveTo(X, Y); }
+        c.stroke();
+        var m = Math.min(p.length - 2, Math.max(1, Math.round(p.length * 0.4))), a = p[m], b = p[m + 1];
+        var ang = Math.atan2(-(b[1] - a[1]) * dir, (b[0] - a[0]) * dir), X0 = cx + sc * a[0], Y0 = cy - sc * a[1];
+        c.fillStyle = t.accent; c.beginPath(); c.moveTo(X0 + 7 * Math.cos(ang), Y0 + 7 * Math.sin(ang));
+        c.lineTo(X0 + 6 * Math.cos(ang + 2.5), Y0 + 6 * Math.sin(ang + 2.5)); c.lineTo(X0 + 6 * Math.cos(ang - 2.5), Y0 + 6 * Math.sin(ang - 2.5)); c.closePath(); c.fill();
+      }
+      Q.forEach(function (q) {
+        var n = 4 * Math.abs(q[2]), k;
+        for (k = 0; k < n; k++) {
+          var ang = 2 * Math.PI * (k + 0.5) / n;
+          if (q[2] > 0) drawLine(trace(q, ang, 1), 1);
+          else if (q[2] < 0) { var L = trace(q, ang, -1); if (L.end === "out") drawLine(L, -1); }   // 양전하에서 온 선과 겹치지 않게, 먼 곳에서 오는 선만
+        }
+      });
+      Q.forEach(function (q) {
+        var col = q[2] > 0 ? t.warn : q[2] < 0 ? t.accent : t.muted;
+        dot(c, cx + sc * q[0], cy, 11, t.paper, col);
+        txt(c, q[2] > 0 ? "+" : q[2] < 0 ? "−" : "0", cx + sc * q[0], cy + 0.5, col, "center", 15, 700);
+      });
+      txt(c, "선의 수는 전하량에 비례 (1 nC 에 4개)", 14, H - 14, t.muted, "left", 11);
+      var r = d / 2, E = 89900 * (v.q1 - v.q2) / (r * r), V = 899 * (v.q1 + v.q2) / r, z = "없음";
+      var a1 = Math.abs(v.q1), a2 = Math.abs(v.q2);
+      if (a1 && a2) {
+        if (v.q1 * v.q2 > 0) z = "q₁ 에서 " + num(d * Math.sqrt(a1) / (Math.sqrt(a1) + Math.sqrt(a2)), 1) + " cm (사이)";
+        else if (a1 !== a2) { var s = Math.min(a1, a2), b = Math.max(a1, a2); z = (a1 < a2 ? "q₁" : "q₂") + " 바깥 " + num(d * Math.sqrt(s) / (Math.sqrt(b) - Math.sqrt(s)), 1) + " cm"; }
+      }
+      return { E: (Math.abs(E) < 0.5 ? "0" : num(Math.abs(E), 0) + " N/C " + (E > 0 ? "→" : "←")), V: num(V, 0) + " V", z: z };
+    }
+  };
+
+  // ---------- 13. 자기장 속 전하의 원운동 ----------
+  SIMS.lorentz = {
+    aria: "균일한 자기장 속에서 원운동하는 전하의 반지름과 주기",
+    labs: [],
+    controls: [{ id: "kind", label: "입자", options: [["p", "양성자 (+e, 1 u)"], ["a", "알파 입자 (+2e, 4 u)"], ["n", "반양성자 (−e, 1 u)"]], value: "p" },
+               { id: "v", label: "속력 $v$", min: 2, max: 10, step: 1, value: 5, d: 0, unit: " ×10⁵ m/s" },
+               { id: "B", label: "자기장 $B$", min: 50, max: 300, step: 10, value: 50, d: 0, unit: " mT" }],
+    outs: [["r", "반지름 $r = mv/|q|B$"], ["T", "주기 $T = 2\\pi m/|q|B$"], ["f", "회전수 $f$"], ["W", "자기력이 하는 일"]],
+    play: "돌리기",
+    draw: function (c, v, t, st) {
+      var K = { p: [1, 1], a: [4, 2], n: [1, -1] }[v.kind], m = 1.6726e-27 * K[0], q = 1.6022e-19 * K[1];
+      var r = m * v.v * 1e5 / (Math.abs(q) * v.B * 1e-3), T = 2 * Math.PI * m / (Math.abs(q) * v.B * 1e-3);
+      var sc = 378, cx = W / 2, cy = H / 2, x, y;
+      for (x = 40; x < W; x += 56) for (y = 30; y < H; y += 56) {     // 지면으로 들어가는 자기장
+        seg(c, x - 4, y - 4, x + 4, y + 4, t.line, 1.4); seg(c, x - 4, y + 4, x + 4, y - 4, t.line, 1.4);
+      }
+      txt(c, "× : 지면으로 들어가는 자기장", 14, H - 14, t.muted, "left", 11);
+      seg(c, 520, 24, 520 + 0.1 * sc, 24, t.ink, 1.6); txt(c, "10 cm", 520 + 0.05 * sc, 36, t.muted, "center", 11);
+      c.beginPath(); c.strokeStyle = t.accent; c.lineWidth = 2; c.arc(cx, cy, r * sc, 0, 2 * Math.PI); c.stroke();
+      var sgn = K[1] > 0 ? 1 : -1, ph = -Math.PI / 2 + sgn * 2 * Math.PI * st.t / (T * 2e6);   // 양전하는 반시계 방향
+      var px = cx + r * sc * Math.cos(ph), py = cy - r * sc * Math.sin(ph);
+      var vx = -sgn * Math.sin(ph), vy = sgn * Math.cos(ph), L = 12 + 5 * v.v;
+      arrow(c, px, py, px + L * vx, py - L * vy, t.ok, 2.2);
+      txt(c, "v", px + (L + 10) * vx, py - (L + 10) * vy, t.ok, "center", 13, 600);
+      if (r * sc > 20) { arrow(c, px, py, px + (cx - px) * 0.45, py + (cy - py) * 0.45, t.warn, 2.2); txt(c, "F", px + (cx - px) * 0.55, py + (cy - py) * 0.55, t.warn, "center", 13, 600); }
+      dot(c, px, py, 6, K[1] > 0 ? t.warn : t.accent);
+      return { r: num(r * 100, 1) + " cm", T: num(T * 1e6, 3) + " μs", f: num(1e-6 / T, 2) + " MHz", W: "0 (F ⊥ v)" };
+    },
+    step: function () { return true; }
+  };
+
+  // ---------- 14. 교류 발전기 ----------
+  SIMS.generator = {
+    aria: "자기장 속에서 도는 코일의 자기 선속과 유도 기전력",
+    labs: [["$t$ (ms)", 620, 323, "end"], ["$\\Phi_B / BA$", 236, 4], ["$\\mathcal{E}$ (V)", 236, 164]],
+    controls: [{ id: "N", label: "감은 수 $N$", min: 10, max: 100, step: 10, value: 100, d: 0, unit: "회" },
+               { id: "B", label: "자기장 $B$", min: 0.1, max: 1, step: 0.1, value: 0.8, d: 1, unit: " T" },
+               { id: "f", label: "회전수 $f$", min: 10, max: 60, step: 5, value: 40, d: 0, unit: " Hz" }],
+    outs: [["em", "최대 기전력 $NBA\\omega$"], ["er", "유횻값 $\\mathcal{E}_{max}/\\sqrt2$"], ["T", "주기 $1/f$"]],
+    play: "돌리기",
+    draw: function (c, v, t, st) {
+      var A = 0.01, w = 2 * Math.PI * v.f, em = v.N * v.B * A * w, TW = 0.1;
+      var tt = (st.t * TW / 6) % TW, th = w * tt, k;                 // 0.1초 구간을 6초에 걸쳐 보여 준다
+      for (k = 0; k < 4; k++) arrow(c, 24, 70 + 50 * k, 196, 70 + 50 * k, t.line, 1.4);     // 균일한 자기장
+      txt(c, "B", 204, 70, t.muted, "left", 12, 600);
+      var cx = 110, cy = 145, R = 62, nx = Math.cos(th), ny = Math.sin(th);                // 코일을 축 방향에서 본 모습
+      seg(c, cx - R * ny, cy - R * nx, cx + R * ny, cy + R * nx, t.ink, 4.5);
+      arrow(c, cx, cy, cx + 46 * nx, cy - 46 * ny, t.accent, 2);
+      txt(c, "면의 법선", cx + 58 * nx, cy - 58 * ny, t.accent, "center", 11);
+      dot(c, cx, cy, 3, t.ink);
+      txt(c, "코일 (넓이 100 cm²), 축 방향에서 본 모습", 110, 262, t.muted, "center", 11);
+      txt(c, "θ = ωt", 110, 280, t.muted, "center", 11);
+      var p = new Plot(c, t, [236, 28, 620, 140], [0, 100], [-1.15, 1.15]);
+      var q = new Plot(c, t, [236, 188, 620, 300], [0, 100], [-400, 400]);
+      p.axes([], [-1, 1], { zero: 0 }); q.axes([0, 25, 50, 75, 100], [-400, -200, 200, 400], { zero: 0 });
+      p.curve(function (x) { return Math.cos(w * x / 1000); }, t.ink, 2, null, 500);
+      q.curve(function (x) { return em * Math.sin(w * x / 1000); }, t.accent, 2.4, null, 500);
+      seg(c, p.X(tt * 1000), 28, p.X(tt * 1000), 300, t.warn, 1.2, [3, 3]);
+      dot(c, p.X(tt * 1000), p.Y(Math.cos(th)), 4, t.ink); dot(c, q.X(tt * 1000), q.Y(em * Math.sin(th)), 4.5, t.accent);
+      return { em: num(em, 0) + " V", er: num(em / Math.SQRT2, 0) + " V", T: num(1000 / v.f, 1) + " ms" };
+    },
+    step: function () { return true; }
+  };
+
+  // ---------- 15. LR 회로의 전류 변화 ----------
+  SIMS.lr = {
+    aria: "LR 회로에서 스위치를 닫거나 연 뒤의 전류 변화",
+    labs: [["$t$ (ms)", 620, 323, "end"], ["$I$ (A)", 62, 4]],
+    controls: [{ id: "mode", label: "스위치", options: [["on", "닫는다 (전류가 커짐)"], ["off", "전지를 뺀다 (전류가 줄어듦)"]], value: "on" },
+               { id: "E", label: "기전력 $\\mathcal{E}$", min: 1, max: 12, step: 1, value: 12, d: 0, unit: " V" },
+               { id: "R", label: "저항 $R$", min: 2, max: 20, step: 1, value: 4, d: 0, unit: " Ω" },
+               { id: "L", label: "코일 $L$", min: 20, max: 400, step: 20, value: 200, d: 0, unit: " mH" }],
+    outs: [["tau", "시간 상수 $\\tau = L/R$"], ["If", "$\\mathcal{E}/R$ (켤 때 끝값, 끌 때 처음 값)"], ["sl", "처음 기울기 $\\mathcal{E}/L$"], ["U", "저장 에너지 $\\frac12LI^2$"]],
+    draw: function (c, v, t) {
+      var tau = v.L / v.R, I0 = v.E / v.R, on = v.mode === "on";    // tau 는 ms
+      var p = new Plot(c, t, [56, 28, 620, 300], [0, 300], [0, 6.4]);
+      p.axes([0, 50, 100, 150, 200, 250, 300], [1, 2, 3, 4, 5, 6]);
+      p.curve(function () { return I0; }, t.muted, 1.3, [5, 4]);
+      p.clip(function () { seg(c, p.X(0), p.Y(on ? 0 : I0), p.X(tau), p.Y(on ? I0 : 0), t.warm, 1.5, [5, 4]); });    // t = 0 의 접선은 τ 에서 최종값에 닿는다
+      p.curve(function (x) { return on ? I0 * (1 - Math.exp(-x / tau)) : I0 * Math.exp(-x / tau); }, t.accent, 2.6, null, 500);
+      var yt = on ? I0 * (1 - 1 / Math.E) : I0 / Math.E;
+      if (tau <= 300) { seg(c, p.X(tau), p.Y(0), p.X(tau), p.Y(yt), t.warn, 1.2, [3, 3]); dot(c, p.X(tau), p.Y(yt), 4.5, t.warn);
+        txt(c, "τ: " + (on ? "63 %" : "37 %"), p.X(tau) + 8, p.Y(yt) + (on ? 12 : -10), t.warn, "left", 12, 600); }
+      legend(c, t, 440, on ? 250 : 60, [["전류 I(t)", t.accent], ["처음 접선", t.warm, [5, 4]], ["ℰ/R", t.muted, [5, 4]]]);
+      return { tau: num(tau, 1) + " ms", If: num(I0, 2) + " A", sl: num(v.E / (v.L * 1e-3), 0) + " A/s", U: num(0.5 * v.L * 1e-3 * I0 * I0, 2) + " J" };
+    }
+  };
+
+  // ---------- 16. RLC 직렬 회로의 위상자 ----------
+  SIMS.phasor = {
+    aria: "RLC 직렬 회로의 전압 위상자와 전압·전류의 시간 변화",
+    labs: [["$\\omega t$", 620, 323, "end"]],
+    controls: [{ id: "f", label: "진동수 $f$", min: 20, max: 400, step: 10, value: 60, d: 0, unit: " Hz" },
+               { id: "R", label: "저항 $R$", min: 10, max: 100, step: 5, value: 40, d: 0, unit: " Ω" },
+               { id: "L", label: "코일 $L$", min: 10, max: 200, step: 10, value: 100, d: 0, unit: " mH" },
+               { id: "C", label: "축전기 $C$", min: 1, max: 100, step: 1, value: 20, d: 0, unit: " μF" }],
+    outs: [["X", "$X_L$, $X_C$"], ["Z", "임피던스 $Z$"], ["phi", "위상각 $\\phi$"], ["I", "전류 진폭 $V_{max}/Z$"]],
+    play: "돌리기",
+    draw: function (c, v, t, st) {
+      var w = 2 * Math.PI * v.f, XL = w * v.L * 1e-3, XC = 1 / (w * v.C * 1e-6), Z = Math.hypot(v.R, XL - XC), V0 = 10, I = V0 / Z;
+      var phi = Math.atan2(XL - XC, v.R), VR = I * v.R, VL = I * XL, VC = I * XC;
+      var th = 2 * Math.PI * st.t / 5 + 0.5, cx = 140, cy = 170, sc = 112 / Math.max(V0, VL, VC);       // th: 전류 위상자의 각
+      dot(c, cx, cy, 120, null, t.line);
+      function ph(len, ang, col, lab, wdt) {
+        var x = cx + sc * len * Math.cos(ang), y = cy - sc * len * Math.sin(ang);
+        if (sc * len > 6) arrow(c, cx, cy, x, y, col, wdt || 2);
+        txt(c, lab, cx + (sc * len + 12) * Math.cos(ang), cy - (sc * len + 12) * Math.sin(ang), col, "center", 12, 600);
+      }
+      ph(VL, th + Math.PI / 2, t.warm, "VL"); ph(VC, th - Math.PI / 2, t.ok, "VC"); ph(VR, th, t.accent, "VR (전류 방향)");
+      ph(V0, th + phi, t.ink, "V", 2.8);
+      var p = new Plot(c, t, [300, 40, 620, 300], [0, 4 * Math.PI], [-1.25, 1.25]);
+      p.axes([0, Math.PI, 2 * Math.PI, 3 * Math.PI, 4 * Math.PI], [-1, 1], { zero: 0, xfmt: function (x) { var k = Math.round(x / Math.PI); return k === 0 ? "0" : k === 1 ? "π" : k + "π"; } });
+      p.curve(function (x) { return Math.sin(x); }, t.ink, 2.2, null, 400);
+      p.curve(function (x) { return Math.sin(x - phi); }, t.accent, 2.2, null, 400);
+      var xm = (th + phi) % (4 * Math.PI); if (xm < 0) xm += 4 * Math.PI;
+      seg(c, p.X(xm), 40, p.X(xm), 300, t.warn, 1.2, [3, 3]);
+      dot(c, p.X(xm), p.Y(Math.sin(xm)), 4, t.ink); dot(c, p.X(xm), p.Y(Math.sin(xm - phi)), 4, t.accent);
+      legend(c, t, 310, 18, [["전압 v / Vmax", t.ink]]); legend(c, t, 470, 18, [["전류 i / Imax", t.accent]]);
+      var deg = phi * 180 / Math.PI;
+      return { X: num(XL, 1) + " Ω, " + num(XC, 1) + " Ω", Z: num(Z, 1) + " Ω",
+               phi: signed(deg, 1) + "° (" + (Math.abs(deg) < 0.5 ? "공명" : deg > 0 ? "전류가 뒤짐" : "전류가 앞섬") + ")", I: num(I, 3) + " A" };
+    },
+    step: function () { return true; }
+  };
+
   // ---------- 화면에 붙이기 ----------
   var FONT = "sans-serif", all = [];
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }

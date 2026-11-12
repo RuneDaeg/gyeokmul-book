@@ -85,6 +85,16 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
   </div>
 </section>
 
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · 전기장의 중첩과 전기력선 · 교과서 100~101쪽</p><h2>전하량과 부호를 바꾸며 전기력선 그리기</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="charges"></div>
+      <p class="small">전기력선은 양전하에서 나와 음전하로 들어가고, 선이 촘촘한 곳의 전기장이 셉니다. 부호를 같게 하면 두 전하 사이에 전기장이 0인 점이 생깁니다. 크기가 같고 부호가 반대이면 전기 쌍극자입니다.</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide derive">
   <div class="sl">
     <header><p class="kicker">유도 · 연속 전하 분포 · 참고 Halliday 22-4, Griffiths 2.1.4</p><h2>고리 전하가 축 위에 만드는 전기장 <span class="part">1/2</span></h2></header>
@@ -630,6 +640,16 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
   </div>
 </section>
 
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · 자기력과 원운동 · 복습 (교과서 120쪽 단원 연계)</p><h2>속력과 자기장을 바꾸며 전하 돌리기</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="lorentz"></div>
+      <p class="small">자기력은 언제나 속도에 수직이라 속력을 바꾸지 못하고 방향만 바꿉니다. 속력을 올리면 원이 커지지만 한 바퀴 도는 시간은 그대로입니다 (사이클로트론의 원리). 전하의 부호를 바꾸면 도는 방향이 뒤집힙니다.</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide derive">
   <div class="sl">
     <header><p class="kicker">유도 · 심화 · 교과서 밖 · 홀 효과 · 참고 Halliday 28-3</p><h2>자기장 속 도체의 옆면에 생기는 전압 <span class="part">1/2</span></h2></header>
@@ -861,6 +881,16 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
   </div>
 </section>
 
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · 교류 발전기 · 교과서 128~130쪽</p><h2>코일을 돌려 교류 만들기</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="generator"></div>
+      <p class="small">$\Phi_B = BA\cos\omega t$, $\mathcal{E} = NBA\omega\sin\omega t$ 입니다. 선속이 가장 클 때(코일 면이 자기장에 수직) 기전력은 0이고, 선속이 0을 지날 때 기전력이 가장 큽니다. 회전수를 올리면 진동수와 함께 진폭도 커집니다.</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide derive">
   <div class="sl">
     <header><p class="kicker">유도 · 유도 전기장 · 교과서 155쪽 · 참고 Halliday 30-3, Griffiths 7.2.2</p><h2>변하는 자기장이 만드는, 맴도는 전기장 <span class="part">1/2</span></h2></header>
@@ -929,6 +959,16 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
         <li><p>전지가 코일의 역기전력을 거슬러 하는 일률을 적분하면 코일에 저장된 에너지.</p><div class="eq">$$U_B = \int_0^t I\,L\frac{dI}{dt'}\,dt' = \int_0^I LI'\,dI' = \tfrac12LI^2$$</div></li>
         <li><p>솔레노이드 ($L = \mu_0n^2Al$, $B = \mu_0nI$) 로 바꿔 쓰면 자기장의 에너지 밀도.</p><div class="eq">$$U_B = \frac{B^2}{2\mu_0}(Al)\ \Rightarrow\ u_B = \frac{B^2}{2\mu_0}$$</div></li>
       </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · LR 회로 · 교과서 132쪽 식 (Ⅱ. 3-26, 27)</p><h2>코일은 전류의 변화를 늦춘다</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="lr"></div>
+      <p class="small">$R$ 을 바꾸면 최종 전류와 시간 상수가 함께 바뀌고, $L$ 을 바꾸면 최종 전류는 그대로인 채 도달하는 빠르기만 바뀝니다. 처음 접선은 $t = \tau$ 에서 최종값에 닿습니다. 처음 기울기 $\mathcal{E}/L$ 에는 $R$ 이 들어 있지 않습니다.</p>
     </div>
   </div>
 </section>
@@ -1078,6 +1118,16 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
         <li><p>$\cos\phi = R/Z$ 를 넣으면 저항에서만 전력이 쓰인다는 뜻이 된다. 코일과 축전기는 에너지를 주고받기만 한다.</p><div class="eq">$$\langle p\rangle = I_{rms}(I_{rms}Z)\frac RZ = I_{rms}^2R$$</div></li>
         <li><p>공진: $X_L = X_C$ 이면 $Z$ 가 가장 작은 $R$ 이 되고 $\phi = 0$.</p><div class="eq">$$\omega_0L = \frac{1}{\omega_0C}\ \Rightarrow\ \omega_0 = \frac{1}{\sqrt{LC}}$$</div></li>
       </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · RLC 직렬 회로의 위상자 · 교과서 149~152쪽</p><h2>위상자를 돌리며 전압과 전류의 위상차 보기</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="phasor"></div>
+      <p class="small">전원 전압의 진폭은 10 V 입니다. 진동수를 올리면 $V_L$ 이 길어지고 $V_C$ 가 짧아져 전류가 전압보다 뒤집니다. $V_L = V_C$ 가 되는 진동수가 공명이고, 이때 $V_L$ 과 $V_C$ 는 전원 전압보다 클 수 있습니다.</p>
     </div>
   </div>
 </section>
