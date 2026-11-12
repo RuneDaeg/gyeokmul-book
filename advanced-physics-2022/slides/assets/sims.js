@@ -447,6 +447,36 @@
     }
   };
 
+  // ---------- 11. 뉴턴의 요람 ----------
+  SIMS.cradle = {
+    aria: "뉴턴의 요람: 들어 올린 구슬 수만큼 반대편에서 튀어나오는 모습",
+    labs: [],
+    controls: [{ id: "n", label: "들어 올린 구슬 수 $n$", min: 1, max: 4, step: 1, value: 1, d: 0, unit: "개" },
+               { id: "th", label: "놓는 각 $\\theta_0$", min: 10, max: 40, step: 5, value: 30, d: 0, unit: "°" }],
+    outs: [["v", "충돌 직전 속력 $v$"], ["p", "들어가는 운동량 $nmv$"], ["out", "나오는 구슬"], ["alt", "1개가 $nv$ 로 나온다면"]],
+    play: "놓기",
+    restart: true,
+    draw: function (c, v, t, st) {
+      var N = 5, n = v.n, th0 = v.th * Math.PI / 180, py = 42, Lp = 190, r = 17, i;
+      var a = th0 * Math.cos(2 * Math.PI * st.t / 2.0);      // 왼쪽 묶음의 각(+). 음수가 되면 오른쪽 묶음이 나간다
+      seg(c, 190, py, 450, py, t.ink, 5);
+      for (i = 0; i < N; i++) {
+        var px = 320 + (i - 2) * 2 * r, ang = 0, moving = false;
+        if (a > 0 && i < n) { ang = -a; moving = true; }
+        if (a < 0 && i >= N - n) { ang = -a; moving = true; }
+        var x = px + Lp * Math.sin(ang), y = py + Lp * Math.cos(ang);
+        seg(c, px, py, x, y, t.muted, 1.2);
+        dot(c, x, y, r - 1, moving ? t.accent : t.soft, t.ink);
+      }
+      txt(c, "구슬 5개 (각 50 g), 줄 길이 25 cm, 탄성 충돌", 16, H - 14, t.muted, "left", 11);
+      txt(c, a > 0 ? "들어가는 구슬 " + n + "개" : "나오는 구슬 " + n + "개", a > 0 ? 150 : 490, 290, t.accent, "center", 12, 600);
+      var sp = Math.sqrt(2 * 9.8 * 0.25 * (1 - Math.cos(th0)));
+      return { v: num(sp, 2) + " m/s", p: num(n * 0.05 * sp, 3) + " kg·m/s", out: n + "개, 속력 v",
+               alt: n === 1 ? "지금과 같다" : "운동 에너지가 " + n + "배: 불가능" };
+    },
+    step: function () { return true; }
+  };
+
   // ---------- 화면에 붙이기 ----------
   var FONT = "sans-serif", all = [];
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
@@ -514,7 +544,7 @@
     }
     function start() { if (def.reset) st.t = 0; st.playing = true; btn.textContent = "■ 멈춤"; last = performance.now(); requestAnimationFrame(tick); }
     function stop(done) { st.playing = false; if (btn) btn.textContent = "▶ " + def.play; if (done && def.reset) { st.t = 0; redraw(); } }
-    function changed() { if (def.reset) { st.t = 0; if (st.playing) stop(); } redraw(); }
+    function changed() { if (def.reset) { st.t = 0; if (st.playing) stop(); } else if (def.restart) st.t = 0; redraw(); }
     if (window.ResizeObserver) new ResizeObserver(redraw).observe(view);
     all.push(redraw);
     redraw();

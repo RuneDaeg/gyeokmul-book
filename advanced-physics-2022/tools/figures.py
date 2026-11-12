@@ -707,6 +707,34 @@ def cm_slices():
     return svg(w, h, "\n".join(inner), "막대, 반원 고리, 반원판을 작은 조각으로 나누어 질량 중심을 구하는 그림")
 
 
+
+def cradle():
+    """뉴턴의 요람: 왼쪽 하나를 놓으면 오른쪽 하나만 튀어나온다."""
+    w, h = 400, 250
+    py, L, r, gap, cx = 30, 150, 15, 30, 200
+    th = math.radians(36)
+    xs = [cx + (i - 2) * gap for i in range(5)]
+    lx, ly = xs[0] - L * math.sin(th), py + L * math.cos(th)
+    rx, ry = xs[4] + L * math.sin(th), ly
+    inner = [f'<path class="c2" d="M{xs[0] - 50},{py} H{xs[4] + 50}" style="stroke-width:5"/>']
+    for x in xs[1:]:
+        inner.append(f'<path class="ax" d="M{x},{py} V{py + L}"/>')
+        inner.append(f'<circle class="c2" cx="{x}" cy="{py + L}" r="{r}" style="fill:var(--accent-soft)"/>')
+    inner += [  # 왼쪽: 들어 올린 구슬(실선)과 원래 자리(점선). 오른쪽: 튀어나온 구슬(점선)
+        f'<circle class="ax dash" cx="{xs[0]}" cy="{py + L}" r="{r}"/>',
+        f'<path class="c2" d="M{xs[0]},{py} L{lx:.1f},{ly:.1f}" style="stroke-width:1.2"/>',
+        f'<circle class="c1" cx="{lx:.1f}" cy="{ly:.1f}" r="{r}" style="fill:var(--accent);fill-opacity:0.55"/>',
+        f'<path class="c3 dash" d="M{xs[4]},{py} L{rx:.1f},{ry:.1f}" style="stroke-width:1.2"/>',
+        f'<circle class="c3 dash" cx="{rx:.1f}" cy="{ry:.1f}" r="{r}"/>',
+        _arrow(lx + 20, ly + 22, xs[0] - 22, py + L + 8, "c1"),
+        _arrow(xs[4] + 22, py + L + 8, rx - 20, ry + 22, "c3"),
+        f'<text x="8" y="{py + 40}" class="t-acc">① 하나를 놓는다</text>',
+        f'<text x="{w - 8}" y="{py + 40}" text-anchor="end" class="t-warm">② 하나만 나온다</text>',
+        f'<text x="{cx + 15}" y="{py + L + r + 24}" text-anchor="middle">가운데 구슬은 거의 움직이지 않는다</text>',
+        f'<text x="{cx}" y="{py + L + r + 46}" text-anchor="middle" class="t-ink">같은 높이까지 올라간다: $v\' = v$</text>']
+    return svg(w, h, "\n".join(inner), "뉴턴의 요람: 왼쪽 구슬 하나를 놓으면 오른쪽 끝 구슬 하나만 같은 높이까지 튀어나오는 그림")
+
+
 FIGS = {
     "traj": traj, "vterm": vterm, "potential": potential,
     "gauss_sphere": lambda: radial("E"), "ampere_cyl": lambda: radial("B"),
@@ -715,5 +743,5 @@ FIGS = {
     "blackbody": blackbody, "hlevels": hlevels, "box": box, "tunnel": tunnel,
     "bands": bands, "twin": twin,
     "ring_e": lambda: ring_field("E"), "ring_b": lambda: ring_field("B"), "disk_rings": disk_rings,
-    "biot_wire": biot_wire, "inertia_slices": inertia_slices, "cm_slices": cm_slices,
+    "biot_wire": biot_wire, "inertia_slices": inertia_slices, "cm_slices": cm_slices, "cradle": cradle,
 }

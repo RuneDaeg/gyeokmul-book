@@ -577,6 +577,65 @@ desc: 교과서 Ⅰ단원: 힘과 운동, 일과 에너지, 입자계의 운동,
 
 <section class="slide">
   <div class="sl">
+    <header><p class="kicker">충돌의 예 · 교과서 밖 · 1차원 탄성 충돌의 응용 (교과서 44~46쪽 연계)</p><h2>뉴턴의 요람: 놓은 만큼만 튀어나온다</h2></header>
+    <div class="body cols">
+      <div>
+        <ul>
+          <li>구슬을 <strong>한 개</strong>만 들었다 놓으면 반대편에서 구슬이 <strong>한 개</strong>만 튀어나옵니다.</li>
+          <li>구슬을 <strong>두 개</strong> 들었다 놓으면 반대편에서 <strong>두 개</strong>가 튀어나옵니다.</li>
+        </ul>
+        <div class="box def"><span class="tag">질문</span>
+          <p>왜 그럴까요? 두 개를 놓았을 때 구슬 <strong>한 개가 속력 2배</strong>로 튀어나올 수는 없을까요? 운동량은 $2mv$ 로 똑같은데요.</p>
+        </div>
+        <p class="small">먼저 예상을 적게 한 뒤 실물이나 다음 쪽의 시뮬레이터로 확인하고, 그다음 쪽에서 보존 법칙으로 풉니다.</p>
+      </div>
+      <figure class="fig">{{fig:cradle}}<figcaption>같은 질량의 구슬이 한 줄로 닿아 매달려 있습니다.</figcaption></figure>
+      <aside class="note">2015 역학 자료 p66 '충돌의 예: 뉴턴의 요람'의 질문을 그대로 가져왔습니다. 원자료는 질문만 던지고 풀이가 없어서 다음 쪽들에 시뮬레이터와 풀이를 붙였습니다. 같은 자료 p65의 Q 부호는 바로잡은 규약($Q = K_i - K_f$, 비탄성이면 $Q \gt 0$)을 씁니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · 뉴턴의 요람 · 교과서 밖</p><h2>구슬을 몇 개 놓든 같은 수가 같은 속력으로 나온다</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="cradle"></div>
+      <p class="small">구슬 수를 3개, 4개로 올려 보세요. 가운데 구슬이 들어가는 쪽과 나오는 쪽에 모두 끼어 계속 움직입니다. 실제 요람은 충돌마다 운동 에너지를 조금씩 잃어($e \lt 1$) 얼마 뒤에는 모든 구슬이 함께 흔들립니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 뉴턴의 요람 · 교과서 밖 · 교과서 44~46쪽의 보존 법칙 적용</p><h2>두 보존 법칙으로 뉴턴의 요람 풀기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <p>질량 $m$ 인 구슬 $n$ 개가 속력 $v$ 로 들어와, $k$ 개가 속력 $v'$ 으로 나가고 나머지는 멈춘다고 하자.</p>
+      <ol class="steps">
+        <li><p>충돌하는 짧은 순간에는 수평 방향 외력이 없으므로 운동량이 보존된다.</p><div class="eq">$$nmv = kmv'\ \Rightarrow\ v' = \frac nk\,v$$</div></li>
+        <li><p>쇠구슬의 충돌은 거의 탄성 충돌이라 운동 에너지도 보존된다 ($Q = 0$).</p><div class="eq">$$\tfrac12nmv^2 = \tfrac12kmv'^2$$</div></li>
+        <li><p>1단계의 $v'$ 을 넣으면 나오는 구슬 수가 정해진다. 놓은 만큼, 같은 속력으로 나온다.</p><div class="eq">$$nv^2 = k\Big(\frac nk\Big)^2v^2\ \Rightarrow\ k = n,\quad v' = v$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 뉴턴의 요람 · 교과서 밖 · 교과서 44~46쪽의 보존 법칙 적용</p><h2>두 보존 법칙으로 뉴턴의 요람 풀기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">질량 $m$ 인 구슬 $n$ 개가 속력 $v$ 로 들어와, $k$ 개가 속력 $v'$ 으로 나가고 나머지는 멈춘다고 하자.</p>
+      <ol start="4" class="steps">
+        <li><p>질문의 경우: 2개가 들어와 1개가 $2v$ 로 나간다면 운동량은 맞지만 운동 에너지가 두 배가 된다. 에너지를 줄 곳이 없으니 일어날 수 없다.</p><div class="eq">$$p:\ 2mv = m(2v)\ \checkmark\qquad K:\ \tfrac12m(2v)^2 = 2mv^2 \ne mv^2$$</div></li>
+        <li><p>'나머지는 멈춘다'는 어디서 오는가. 구슬이 둘씩 차례로 부딪친다고 보면, 질량이 같은 두 물체의 탄성 충돌은 속도를 맞바꾼다.</p><div class="eq">$$m_1 = m_2:\quad v_1' = v_2,\quad v_2' = v_1$$</div></li>
+        <li><p>그래서 속도가 옆 구슬로 차례로 넘어가 끝 구슬만 나간다. 두 개를 놓으면 속도 두 개가 잇달아 넘어가 두 개가 나간다.</p><div class="eq">$$(v, 0, 0, 0, 0)\to(0, v, 0, 0, 0)\to\cdots\to(0, 0, 0, 0, v)$$</div></li>
+      </ol>
+      <p class="small">보존 법칙 두 개만으로는 구슬 5개의 속도가 정해지지 않습니다. 둘씩 차례로 충돌한다는 모형이 더해져야 답이 하나로 정해집니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
     <header><p class="kicker">2차원 충돌 · 실험실 좌표계</p><h2>성분마다 운동량 보존</h2></header>
     <div class="body cols">
       <div>
