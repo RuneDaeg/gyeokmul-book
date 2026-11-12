@@ -1,0 +1,884 @@
+<!--
+title: 오리엔테이션과 물리 수학
+short: OT
+file: 00-ot-math.html
+desc: 교과서의 단원 구성과 진도 계획, 그리고 벡터·미분·근사·벡터의 미분(기울기·발산·회전)·적분·미분방정식 등 수업에 필요한 수학 도구
+-->
+<section class="slide cover">
+  <div class="sl">
+    <p class="kicker">2022 개정 교육과정 · 과학 계열 진로 선택</p>
+    <h2>고급 물리학<br>오리엔테이션</h2>
+    <p class="sub">과목 지도와 진도, 그리고 한 학기 동안 계속 쓸 물리 수학 도구: 벡터, 미분과 근사, 벡터의 미분, 적분, 미분방정식</p>
+    <p class="meta">고급 물리학 · OT</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">과목 지도 · 교과서 (대전광역시교육감 인정, 조영원 외)</p><h2>네 개의 대단원, 16개의 중단원</h2></header>
+    <div class="body">
+      <div class="cols">
+        <div class="box def"><span class="tag">Ⅰ 역학 · 11~95쪽</span><p>힘과 운동 · 일과 에너지 · 입자계의 운동 · 회전 운동과 행성의 운동 · 이상 기체와 열역학 제1법칙 · 엔트로피와 열기관</p></div>
+        <div class="box def"><span class="tag">Ⅱ 전자기학 · 97~165쪽</span><p>전기장 · 전기 회로 · 자기장 · 교류와 전자기파</p></div>
+        <div class="box def"><span class="tag">Ⅲ 광학 · 169~227쪽</span><p>기하 광학 · 간섭과 회절 · 영상 물리</p></div>
+        <div class="box def"><span class="tag">Ⅳ 현대 물리 · 229~301쪽</span><p>상대성 이론 · 양자 역학 · 기본 입자와 핵반응</p></div>
+      </div>
+      <p class="small">선수 과목: 물리학 (일반 선택) · 연계 과목: 역학과 에너지, 전자기와 양자 (진로 선택), 물리학 실험 (융합 선택)</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">진도 계획 (예시 · 3학점 17주 51차시)</p><h2>한 학기 흐름</h2></header>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>주</th><th class="nw">대단원</th><th>중단원 (교과서 쪽)</th><th class="nw">차시</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">1</td><td>OT</td><td>과목 안내, 벡터·미분·적분·미분방정식</td><td class="mono">3</td></tr>
+          <tr><td class="mono">2–6</td><td class="nw">Ⅰ 역학</td><td>힘과 운동 (11) · 일과 에너지 (25) · 입자계의 운동 (39) · 회전 운동과 행성의 운동 (53) · 이상 기체와 열역학 제1법칙 (69) · 엔트로피와 열기관 (84)</td><td class="mono">15</td></tr>
+          <tr><td class="mono">7–10</td><td class="nw">Ⅱ 전자기학</td><td>전기장 (99) · 전기 회로 (112) · 자기장 (121) · 교류와 전자기파 (137)</td><td class="mono">12</td></tr>
+          <tr><td class="mono">11–13</td><td class="nw">Ⅲ 광학</td><td>기하 광학 (171) · 간섭과 회절 (188) · 영상 물리 (216)</td><td class="mono">9</td></tr>
+          <tr><td class="mono">14–17</td><td class="nw">Ⅳ 현대 물리</td><td>상대성 이론 (231) · 양자 역학 (251) · 기본 입자와 핵반응 (291)</td><td class="mono">12</td></tr>
+        </tbody>
+      </table></div>
+      <aside class="note">학교 일정에 맞춰 주차를 조정하세요. 기존 OT 유인물 p1의 "2학점이므로 총 51차시"는 3학점의 오기였습니다. 2015 시절 진도표의 순서(역학 3주 → 열역학 1주 → 전자기 3주 → 광학 2주 → 현대물리 4주)와 거의 같고, 교과서는 열역학을 Ⅰ단원 안에 둡니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">1</span>
+    <h2>벡터와 좌표계</h2>
+    <p class="std">힘, 전기장, 자기장, 운동량: 크기와 방향이 함께 있는 양</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터 · 1</p><h2>성분, 크기, 단위 벡터</h2></header>
+    <div class="body cols wide-l">
+      <div>
+        <p>직교 좌표에서 벡터는 세 성분으로 씁니다.</p>
+        <div class="eq">$$\vec A = A_x\hat x + A_y\hat y + A_z\hat z,\qquad A = |\vec A| = \sqrt{A_x^2 + A_y^2 + A_z^2}$$</div>
+        <p>크기가 1인 <em class="term">단위 벡터</em>는 방향만 나타냅니다.</p>
+        <div class="eq">$$\hat A = \frac{\vec A}{A}$$</div>
+        <p>벡터는 크기와 방향만 같으면 어디로 옮겨도 같은 벡터입니다. 덧셈은 교환·결합 법칙이 성립합니다.</p>
+      </div>
+      <div>
+        <div class="box"><span class="tag">물리량 분류</span>
+          <p><strong>벡터</strong>: 변위, 속도, 가속도, 힘, 운동량, 전기장 $\vec E$, 자기장 $\vec B$, 유속(속도장)</p>
+          <p><strong>스칼라</strong>: 질량, 시간, 에너지, 일, 전하, 전위, 체적 유량</p>
+        </div>
+        <aside class="note">기존 유인물 p3은 '유량'을 벡터의 예로 들었는데 체적 유량은 스칼라입니다. 벡터인 것은 유속(속도장)입니다.</aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터 · 2</p><h2>내적: 같은 방향 성분끼리의 곱</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\vec A\cdot\vec B = AB\cos\theta = A_xB_x + A_yB_y + A_zB_z$$</div>
+        <ul>
+          <li>결과는 <strong>스칼라</strong>입니다.</li>
+          <li>$\vec A\perp\vec B$ 이면 0입니다.</li>
+          <li>$\hat x\cdot\hat x = 1,\ \hat x\cdot\hat y = 0$</li>
+        </ul>
+      </div>
+      <div class="box def"><span class="tag">물리에서 쓰는 곳</span>
+        <p>일: $W = \vec F\cdot\Delta\vec r = F\,\Delta r\cos\theta$</p>
+        <p>전기 선속: $\Phi_E = \vec E\cdot\vec A$</p>
+        <p>일률: $P = \vec F\cdot\vec v$</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터 · 3</p><h2>외적: 두 벡터에 수직인 벡터</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$|\vec A\times\vec B| = AB\sin\theta$$</div>
+        <p>방향은 오른손 법칙을 따릅니다. 네 손가락을 $\vec A$ 에서 $\vec B$ 쪽으로 감으면 엄지가 가리키는 쪽입니다.</p>
+        <div class="eq">$$\vec A\times\vec B = \begin{vmatrix}\hat x & \hat y & \hat z\\ A_x & A_y & A_z\\ B_x & B_y & B_z\end{vmatrix},\qquad \vec B\times\vec A = -\vec A\times\vec B$$</div>
+        <p class="small">$\hat x\times\hat y = \hat z,\ \hat y\times\hat z = \hat x,\ \hat z\times\hat x = \hat y$. 같은 벡터끼리의 외적은 0입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">물리에서 쓰는 곳</span>
+        <p>돌림힘: $\vec\tau = \vec r\times\vec F$</p>
+        <p>각운동량: $\vec L = \vec r\times\vec p$</p>
+        <p>로런츠 힘: $\vec F = q\vec v\times\vec B$</p>
+        <p>비오-사바르 법칙: $d\vec B\propto I\,d\vec l\times\hat r$</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">좌표계</p><h2>대칭에 맞는 좌표를 고르면 계산이 짧아진다</h2></header>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>좌표계 · 잘 맞는 대칭</th><th>좌표와 범위</th><th>직교 좌표로</th></tr></thead>
+        <tbody>
+          <tr><td>평면 극좌표<span class="sub">원운동, 행성 궤도</span></td><td>$r\ge0,\ 0\le\phi\lt2\pi$</td><td>$x=r\cos\phi,\ y=r\sin\phi$</td></tr>
+          <tr><td>원통 좌표<span class="sub">긴 직선 도선, 솔레노이드</span></td><td>$s\ge0,\ 0\le\phi\lt2\pi,\ z$</td><td>$x=s\cos\phi,\ y=s\sin\phi,\ z=z$</td></tr>
+          <tr><td>구면 좌표<span class="sub">점전하, 대전된 구</span></td><td>$r\ge0,\ 0\le\theta\le\pi,\ 0\le\phi\lt2\pi$</td><td>$x=r\sin\theta\cos\phi,\ y=r\sin\theta\sin\phi,\ z=r\cos\theta$</td></tr>
+        </tbody>
+      </table></div>
+      <div class="box"><span class="tag">미소 요소</span>
+        <p>원통: $dV = s\,ds\,d\phi\,dz$ · 구면: $dV = r^2\sin\theta\,dr\,d\theta\,d\phi$, 반지름 $r$ 인 구면의 면적 요소 $dA = r^2\sin\theta\,d\theta\,d\phi$</p>
+      </div>
+      <aside class="note">기존 OT 슬라이드 p60은 제목이 '구면좌표계'인데 내용이 원통좌표계였습니다. 원통 좌표의 반지름 기호는 여기서 $s$ 로 통일했습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">2</span>
+    <h2>미분</h2>
+    <p class="std">순간의 변화율: 속도, 가속도, 힘과 퍼텐셜의 관계</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">미분 · 1</p><h2>미분계수와 도함수</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$f'(a) = \lim_{h\to0}\frac{f(a+h)-f(a)}{h}$$</div>
+        <p>$x=a$ 에서 미분 가능하려면 좌·우 미분계수가 같아야 합니다.</p>
+        <div class="eq">$$\lim_{h\to0^-}\frac{f(a+h)-f(a)}{h} = \lim_{h\to0^+}\frac{f(a+h)-f(a)}{h}$$</div>
+        <p class="small">미분 가능하면 연속이지만, 연속이라고 미분 가능한 것은 아닙니다 (예: $|x|$ 의 $x=0$).</p>
+      </div>
+      <div class="box def"><span class="tag">운동에서</span>
+        <p>속도 $\vec v = \dfrac{d\vec r}{dt}$, 가속도 $\vec a = \dfrac{d\vec v}{dt} = \dfrac{d^2\vec r}{dt^2}$</p>
+        <p>1차원의 $v_x = dx/dt$ 는 부호가 있는 <strong>속도 성분</strong>입니다. 순간 <strong>속력</strong>은 $|\vec v| = ds/dt$ (경로 길이의 변화율)입니다.</p>
+      </div>
+      <aside class="note">기존 OT p28과 유인물 p7은 미분 가능 조건을 '도함수의 좌·우 극한'으로 썼고, 순간 속력을 $dx/dt$ 로 썼습니다. 여기서 바로잡았습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">미분 · 2</p><h2>자주 쓰는 규칙</h2></header>
+    <div class="body cols">
+      <div class="tbl-wrap"><table class="tbl lab">
+        <tbody>
+          <tr><td>상수</td><td>$\dfrac{d}{dx}c = 0$</td></tr>
+          <tr><td>거듭제곱</td><td>$\dfrac{d}{dx}x^n = nx^{n-1}$</td></tr>
+          <tr><td>지수·로그</td><td>$\dfrac{d}{dx}e^{kx} = ke^{kx},\ \ \dfrac{d}{dx}\ln x = \dfrac1x$</td></tr>
+          <tr><td>삼각함수</td><td>$\dfrac{d}{dx}\sin kx = k\cos kx,\ \ \dfrac{d}{dx}\cos kx = -k\sin kx$</td></tr>
+          <tr><td>곱</td><td>$(fg)' = f'g + fg'$</td></tr>
+        </tbody>
+      </table></div>
+      <div>
+        <div class="box def"><span class="tag">연쇄 법칙</span>
+          <p>합성함수 $F = f\circ g$, 곧 $F(x) = f(g(x))$ 이면</p>
+          <div class="eq">$$\frac{dF}{dx} = \frac{df}{dg}\frac{dg}{dx}$$</div>
+          <p>예: $\dfrac{d}{dt}\cos(\omega t+\phi) = -\omega\sin(\omega t+\phi)$</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 정의로 직접 미분하기</p><h2>거듭제곱, 사인, 곱의 미분을 정의에서 끌어내기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>출발점은 미분계수의 정의다.</p><div class="eq">$$f'(x) = \lim_{h\to0}\frac{f(x+h) - f(x)}{h}$$</div></li>
+        <li><p>$f = x^n$: 이항 전개한다.</p><div class="eq">$$(x+h)^n = x^n + nx^{n-1}h + \tfrac{n(n-1)}{2}x^{n-2}h^2 + \cdots$$</div></li>
+        <li><p>$x^n$ 을 빼고 $h$ 로 나누면, $h$ 가 곱해진 항은 $h\to0$ 에서 모두 사라진다.</p><div class="eq">$$\frac{(x+h)^n - x^n}{h} = nx^{n-1} + \big(h\text{ 가 곱해진 항}\big)\ \to\ nx^{n-1}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 정의로 직접 미분하기</p><h2>거듭제곱, 사인, 곱의 미분을 정의에서 끌어내기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
+        <li><p>$f = \sin x$: 덧셈 정리로 펼친다.</p><div class="eq">$$\frac{\sin(x+h) - \sin x}{h} = \sin x\,\frac{\cos h - 1}{h} + \cos x\,\frac{\sin h}{h}$$</div></li>
+        <li><p>작은 각에서 $\dfrac{\sin h}{h}\to1$, $\dfrac{\cos h - 1}{h}\to0$ 이다 ($h$ 는 라디안).</p><div class="eq">$$\frac{d}{dx}\sin x = \cos x$$</div></li>
+        <li class="wide"><p>곱 $fg$: 가운데에 $f(x)g(x+h)$ 를 빼고 더해 두 덩어리로 나눈다.</p><div class="eq">$$\frac{f(x{+}h)g(x{+}h) - fg}{h} = \frac{f(x{+}h) - f}{h}\,g(x{+}h) + f\,\frac{g(x{+}h) - g}{h} \to f'g + fg'$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">미분 · 3</p><h2>편미분과 기울기: 퍼텐셜에서 힘으로</h2></header>
+    <div class="body cols">
+      <div>
+        <p>여러 변수 함수 $f(x,y,z)$ 에서 한 변수만 바꿀 때의 변화율이 편미분입니다.</p>
+        <div class="eq">$$\nabla f = \frac{\partial f}{\partial x}\hat x + \frac{\partial f}{\partial y}\hat y + \frac{\partial f}{\partial z}\hat z$$</div>
+        <p>$\nabla f$ 는 $f$ 가 가장 빨리 커지는 방향을 가리키고, 크기는 그 변화율입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">보존력과 퍼텐셜</span>
+        <div class="eq">$$\vec F = -\nabla U,\qquad \vec E = -\nabla V$$</div>
+        <p>예: $U = \tfrac12 k(x^2+y^2)$ 이면 $\vec F = -k(x\hat x + y\hat y)$ 로 원점을 향합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">미분 · 4 · 참고 Boas 1장 (멱급수)</p><h2>근사의 도구: 테일러 급수</h2></header>
+    <div class="body cols">
+      <div>
+        <p>매끄러운 함수는 한 점 근처에서 다항식으로 펼칠 수 있습니다.</p>
+        <div class="eq">$$f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \cdots$$</div>
+        <div class="tbl-wrap"><table class="tbl lab">
+          <thead><tr><th>$|x| \ll 1$ 일 때</th><th>처음 몇 항</th></tr></thead>
+          <tbody>
+            <tr><td>이항 근사</td><td>$(1 + x)^n \approx 1 + nx$</td></tr>
+            <tr><td>지수·로그</td><td>$e^x \approx 1 + x + \tfrac12x^2,\quad \ln(1 + x) \approx x - \tfrac12x^2$</td></tr>
+            <tr><td>삼각함수</td><td>$\sin x \approx x - \tfrac16x^3,\quad \cos x \approx 1 - \tfrac12x^2$</td></tr>
+          </tbody>
+        </table></div>
+        <p class="small">근사를 쓸 때는 버린 항이 얼마나 작은지 함께 적어 둡니다. $10^\circ$ 에서 $\sin\theta \approx \theta$ 의 오차는 0.5 % 입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">이 수업에서 쓰는 곳</span>
+        <p>단진자: $\sin\theta \approx \theta$ 로 $\ddot\theta = -\tfrac gl\theta$, 주기 $2\pi\sqrt{l/g}$</p>
+        <p>상대론: $\gamma \approx 1 + \dfrac{v^2}{2c^2}$ 이라 $K \approx \tfrac12mv^2$</p>
+        <p>중력: $U(R + h) - U(R) \approx mgh$ ($h \ll R$)</p>
+        <p>쌍극자: $r \gg d$ 에서 $E \approx 2kp/r^3$</p>
+        <p>마이컬슨-몰리: $(1 - x)^{-1} \approx 1 + x$</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">3</span>
+    <h2>벡터의 미분</h2>
+    <p class="std">시간에 따라 변하는 벡터, 그리고 공간에 퍼진 장의 기울기·발산·회전 · 참고 Boas 6장 벡터해석, Griffiths 1.2~1.3절</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터의 미분 · 1 · 참고 Boas 6.4</p><h2>시간에 따라 변하는 벡터를 미분하기</h2></header>
+    <div class="body cols">
+      <div>
+        <p>$\hat x,\ \hat y,\ \hat z$ 는 방향이 고정이라 성분마다 미분하면 되고, 곱의 미분 규칙도 그대로 성립합니다.</p>
+        <div class="eq">$$\frac{d\vec A}{dt} = \frac{dA_x}{dt}\hat x + \frac{dA_y}{dt}\hat y + \frac{dA_z}{dt}\hat z$$</div>
+        <div class="eq">$$\frac{d}{dt}(f\vec A) = \frac{df}{dt}\vec A + f\frac{d\vec A}{dt}$$</div>
+        <div class="eq">$$\frac{d}{dt}(\vec A\cdot\vec B) = \frac{d\vec A}{dt}\cdot\vec B + \vec A\cdot\frac{d\vec B}{dt}$$</div>
+        <div class="eq">$$\frac{d}{dt}(\vec A\times\vec B) = \frac{d\vec A}{dt}\times\vec B + \vec A\times\frac{d\vec B}{dt}$$</div>
+      </div>
+      <div>
+        <div class="box def"><span class="tag">크기가 일정한 벡터</span>
+          <p>$\vec A\cdot\vec A = A^2$ 이 일정하면 미분해서 $2\vec A\cdot\dfrac{d\vec A}{dt} = 0$, 곧 $\dfrac{d\vec A}{dt}\perp\vec A$ 입니다.</p>
+          <p class="small">반지름이 일정하면 속도가 위치에 수직, 속력이 일정하면 가속도가 속도에 수직.</p>
+        </div>
+        <div class="box"><span class="tag">물리에서</span>
+          <p>$\vec v = \dfrac{d\vec r}{dt}$, $\vec a = \dfrac{d\vec v}{dt}$, $\vec F = \dfrac{d\vec p}{dt}$, $\dfrac{d\vec L}{dt} = \vec r\times\vec F$</p>
+          <p class="small">외적의 미분은 순서를 바꾸면 부호가 바뀌므로 곱의 순서를 그대로 지킵니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 내적의 미분 · 참고 Boas 6.4 예제</p><h2>좌표 없이 등속 원운동의 가속도 구하기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>원점에서 거리가 일정하다: $\vec r\cdot\vec r = r^2$ 을 미분한다.</p><div class="eq">$$2\,\vec r\cdot\vec v = 0\ \Rightarrow\ \vec r\perp\vec v$$</div></li>
+        <li><p>속력이 일정하다: $\vec v\cdot\vec v = v^2$ 을 미분한다.</p><div class="eq">$$2\,\vec v\cdot\vec a = 0\ \Rightarrow\ \vec a\perp\vec v$$</div></li>
+        <li><p>1단계의 $\vec r\cdot\vec v = 0$ 을 한 번 더 미분한다.</p><div class="eq">$$\vec v\cdot\vec v + \vec r\cdot\vec a = 0\ \Rightarrow\ \vec r\cdot\vec a = -v^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 내적의 미분 · 참고 Boas 6.4 예제</p><h2>좌표 없이 등속 원운동의 가속도 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
+        <li><p>운동은 평면에서 일어나고 $\vec a\perp\vec v$ 이므로 $\vec a$ 는 $\vec r$ 과 나란하다. 내적이 음수라 반대 방향(중심 쪽)이다.</p><div class="eq">$$\vec r\cdot\vec a = ra\cos180^\circ = -ra$$</div></li>
+        <li><p>3단계와 4단계를 같게 놓으면 구심 가속도의 크기.</p><div class="eq">$$a = \frac{v^2}{r}$$</div></li>
+        <li><p>검산: 성분으로 $\vec r = r(\cos\omega t,\ \sin\omega t)$ 를 두 번 미분해도 같다 ($v = r\omega$).</p><div class="eq">$$\vec a = -\omega^2\vec r,\qquad a = r\omega^2 = \frac{v^2}{r}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 극좌표의 단위 벡터 · 참고 Boas 6.4 식 (4.11~13)</p><h2>방향이 변하는 단위 벡터까지 미분해 속도·가속도 구하기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>평면 극좌표의 단위 벡터를 고정된 $\hat x$, $\hat y$ 로 쓴다.</p><div class="eq">$$\hat r = \cos\theta\,\hat x + \sin\theta\,\hat y,\qquad \hat\theta = -\sin\theta\,\hat x + \cos\theta\,\hat y$$</div></li>
+        <li><p>$\theta$ 가 시간에 따라 변하므로 연쇄 법칙을 쓴다. 단위 벡터도 미분하면 0이 아니다.</p><div class="eq">$$\frac{d\hat r}{dt} = \dot\theta\,\hat\theta,\qquad \frac{d\hat\theta}{dt} = -\dot\theta\,\hat r$$</div></li>
+        <li><p>위치 $\vec r = r\,\hat r$ 을 곱의 미분으로.</p><div class="eq">$$\vec v = \dot r\,\hat r + r\dot\theta\,\hat\theta$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 극좌표의 단위 벡터 · 참고 Boas 6.4 식 (4.11~13)</p><h2>방향이 변하는 단위 벡터까지 미분해 속도·가속도 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps tight">
+        <li><p>한 번 더 미분하고 2단계를 다시 쓴다.</p><div class="eq">$$\vec a = \big(\ddot r - r\dot\theta^2\big)\hat r + \big(r\ddot\theta + 2\dot r\dot\theta\big)\hat\theta$$</div></li>
+        <li><p>원운동 ($r$ 일정, $\dot\theta = \omega$, $\ddot\theta = \alpha$): 구심 성분과 접선 성분.</p><div class="eq">$$\vec a = -r\omega^2\,\hat r + r\alpha\,\hat\theta$$</div></li>
+        <li><p>중심력이면 $\hat\theta$ 성분 가속도가 0이다. 그 식은 $r^2\dot\theta$ 의 미분과 같아서 면적 속도가 일정하다 (케플러 제2법칙).</p><div class="eq">$$r\ddot\theta + 2\dot r\dot\theta = \frac1r\frac{d}{dt}\big(r^2\dot\theta\big) = 0$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 나선 운동 · 자기장 속 하전 입자의 궤적</p><h2>나선 궤적의 속도와 가속도 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <p>위치가 $\vec r(t) = R\cos\omega t\,\hat x + R\sin\omega t\,\hat y + ut\,\hat z$ 인 입자. $R = 2.0$ cm, $\omega = 50$ rad/s, $u = 0.60$ m/s.</p>
+      <ol class="steps">
+        <li><p>성분마다 미분한다.</p><div class="eq">$$\vec v = -R\omega\sin\omega t\,\hat x + R\omega\cos\omega t\,\hat y + u\,\hat z$$</div></li>
+        <li><p>속력은 시간에 무관하다.</p><div class="eq">$$|\vec v| = \sqrt{R^2\omega^2 + u^2} = \sqrt{1.0^2 + 0.60^2} = 1.17\ \text{m/s}$$</div></li>
+        <li><p>한 번 더 미분하면 $z$ 성분이 사라지고 축을 향한다.</p><div class="eq">$$\vec a = -\omega^2\big(x\,\hat x + y\,\hat y\big),\qquad |\vec a| = R\omega^2 = 50\ \text{m/s}^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 나선 운동 · 자기장 속 하전 입자의 궤적</p><h2>나선 궤적의 속도와 가속도 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">위치가 $\vec r(t) = R\cos\omega t\,\hat x + R\sin\omega t\,\hat y + ut\,\hat z$ 인 입자. $R = 2.0$ cm, $\omega = 50$ rad/s, $u = 0.60$ m/s.</p>
+      <ol start="4" class="steps">
+        <li><p>$\vec a\cdot\vec v = 0$ 이다. 가속도가 속도에 늘 수직이면 속력은 변하지 않는다.</p><div class="eq">$$\vec a\cdot\vec v = R^2\omega^3(\cos\omega t\sin\omega t - \sin\omega t\cos\omega t) = 0$$</div></li>
+        <li><p>균일한 자기장 $B\hat z$ 속의 하전 입자가 바로 이 운동을 한다 ($\omega = qB/m$). 한 바퀴에 나아가는 거리(나선의 피치).</p><div class="eq">$$p = u\cdot\frac{2\pi}{\omega} = 0.60\times\frac{2\pi}{50} = 7.5\ \text{cm}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터의 미분 · 2 · 기울기 · 참고 Griffiths 1.2.2, Boas 6.6</p><h2>기울기: 가장 가파르게 오르는 방향</h2></header>
+    <div class="body cols">
+      <div>
+        <p>세 변수 함수 $T(x,y,z)$ 를 위치 $d\vec l$ 만큼 옮기면</p>
+        <div class="eq">$$dT = \frac{\partial T}{\partial x}dx + \frac{\partial T}{\partial y}dy + \frac{\partial T}{\partial z}dz = \nabla T\cdot d\vec l$$</div>
+        <div class="eq">$$dT = |\nabla T|\,|d\vec l|\cos\theta$$</div>
+        <ul>
+          <li>같은 거리를 움직일 때 $\theta = 0$, 곧 $\nabla T$ 방향으로 갈 때 $T$ 가 가장 많이 변한다.</li>
+          <li>그 방향의 변화율이 $|\nabla T|$ 이다.</li>
+          <li>등위면(등고선, 등전위면)을 따라가면 $dT = 0$ 이므로 $\nabla T$ 는 등위면에 수직이다.</li>
+          <li>$\nabla T = 0$ 인 점은 정지점: 극대, 극소, 안장점.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="box def"><span class="tag">방향 도함수</span>
+          <p>단위 벡터 $\hat u$ 방향으로 단위 길이 갈 때의 변화율.</p>
+          <div class="eq">$$D_{\hat u}T = \nabla T\cdot\hat u$$</div>
+        </div>
+        <div class="box"><span class="tag">물리에서</span>
+          <p>보존력 $\vec F = -\nabla U$, 전기장 $\vec E = -\nabla V$: 퍼텐셜이 가장 빨리 낮아지는 쪽.</p>
+          <p class="small">열은 온도가 가장 빨리 낮아지는 쪽으로 흐른다: $\vec J = -\kappa\nabla T$ (푸리에 법칙).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 기울기와 방향 도함수</p><h2>언덕의 등고선에서, 그리고 점전하의 전위에서 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <p>언덕의 높이 $h(x,y) = 50 - 0.02x^2 - 0.01y^2$ (단위 m, $x$ 는 동쪽, $y$ 는 북쪽). 점 P$(10,\ 20)$ 에 서 있다.</p>
+      <ol class="steps tight">
+        <li><p>편미분으로 기울기를 구한다.</p><div class="eq">$$\nabla h = -0.04x\,\hat x - 0.02y\,\hat y\ \Rightarrow\ \nabla h(\text{P}) = -0.4\,\hat x - 0.4\,\hat y$$</div></li>
+        <li><p>가장 가파른 오르막은 남서쪽, 그 경사는 $|\nabla h|$.</p><div class="eq">$$|\nabla h| = 0.57\ \ (\text{경사각 } 29.5^\circ)$$</div></li>
+        <li><p>동쪽으로 걸을 때의 방향 도함수.</p><div class="eq">$$D_{\hat x}h = \nabla h\cdot\hat x = -0.4\ \ (1\ \text{m 에 } 0.4\ \text{m 내려감})$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 기울기와 방향 도함수</p><h2>언덕의 등고선에서, 그리고 점전하의 전위에서 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">언덕의 높이 $h(x,y) = 50 - 0.02x^2 - 0.01y^2$ (단위 m, $x$ 는 동쪽, $y$ 는 북쪽). 점 P$(10,\ 20)$ 에 서 있다.</p>
+      <ol start="4" class="steps tight">
+        <li><p>$\nabla h$ 에 수직인 방향 $\hat u = (\hat x - \hat y)/\sqrt2$ 로 가면 높이가 변하지 않는다: 등고선 방향.</p><div class="eq">$$D_{\hat u}h = \frac{-0.4 + 0.4}{\sqrt2} = 0$$</div></li>
+        <li><p>점전하의 전위: $r = \sqrt{x^2 + y^2 + z^2}$ 에서 $\partial r/\partial x = x/r$ 이므로 $\nabla r = \hat r$.</p><div class="eq">$$\nabla\frac1r = -\frac{1}{r^2}\nabla r = -\frac{\hat r}{r^2}$$</div></li>
+        <li><p>그래서 전위에서 쿨롱 전기장이 바로 나온다.</p><div class="eq">$$\vec E = -\nabla\Big(\frac{kq}{r}\Big) = \frac{kq}{r^2}\,\hat r$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터의 미분 · 3 · 발산 · 참고 Griffiths 1.2.4, Boas 6.10</p><h2>발산: 한 점에서 얼마나 퍼져 나가는가</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\nabla\cdot\vec v = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z}\qquad(\text{스칼라})$$</div>
+        <p>흐르는 물에 톱밥을 뿌렸을 때 톱밥이 서로 멀어지는 곳은 발산이 양(샘), 모여드는 곳은 음(빨려 드는 곳)입니다.</p>
+        <div class="tbl-wrap"><table class="tbl lab">
+          <thead><tr><th>벡터장</th><th>발산</th><th>모습</th></tr></thead>
+          <tbody>
+            <tr><td>$2x\,\hat x$</td><td>$2$</td><td>$x$ 방향으로 갈수록 빨라진다</td></tr>
+            <tr><td>$y\,\hat x$</td><td>$0$</td><td>층마다 속도만 다른 흐름</td></tr>
+            <tr><td>$\hat r/r^2$</td><td>$0\ (r\ne0)$</td><td>퍼지지만 넓이가 $r^2$ 로 커져 상쇄</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="box deep"><span class="tag">심화 · 미분형 법칙</span>
+        <div class="eq">$$\nabla\cdot\vec E = \frac{\rho}{\varepsilon_0},\qquad \nabla\cdot\vec B = 0$$</div>
+        <p>전하가 있는 점이 전기장의 샘입니다. 자기장에는 샘이 없습니다.</p>
+        <div class="eq">$$\nabla\cdot\vec J = -\frac{\partial\rho}{\partial t}$$</div>
+        <p class="small">연속 방정식: 전류가 퍼져 나가는 만큼 그 점의 전하가 줄어든다 (전하 보존).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 발산 정리 · 참고 Griffiths 1.3.4, Boas 6.10</p><h2>작은 상자의 선속에서 발산 정리까지 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>변이 $dx,\ dy,\ dz$ 인 작은 상자. $x$ 축에 수직인 두 면으로 나가는 선속은 두 면의 $v_x$ 차이다.</p><div class="eq">$$\big[v_x(x + dx) - v_x(x)\big]\,dy\,dz = \frac{\partial v_x}{\partial x}\,dV$$</div></li>
+        <li><p>세 방향을 모두 더한다. 발산은 '단위 부피당 나가는 선속'이다.</p><div class="eq">$$d\Phi = \Big(\frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z}\Big)dV = (\nabla\cdot\vec v)\,dV$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 발산 정리 · 참고 Griffiths 1.3.4, Boas 6.10</p><h2>작은 상자의 선속에서 발산 정리까지 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="3" class="steps">
+        <li><p>작은 상자를 쌓아 큰 부피를 만들면, 맞닿은 면에서 나가는 선속과 들어오는 선속이 지워져 바깥 면만 남는다.</p><div class="eq">$$\oint_S\vec v\cdot d\vec A = \int_V(\nabla\cdot\vec v)\,dV$$</div></li>
+        <li><p>확인: $\vec v = x\hat x + y\hat y + z\hat z$ ($\nabla\cdot\vec v = 3$), 반지름 $R$ 인 구.</p><div class="eq">$$\oint\vec v\cdot d\vec A = R\cdot4\pi R^2 = 3\cdot\tfrac43\pi R^3\ \ \checkmark$$</div></li>
+        <li><p>가우스 법칙에 쓴다: $Q_{in} = \int\rho\,dV$ 이고 아무 부피에서나 성립하므로</p><div class="eq">$$\int(\nabla\cdot\vec E)\,dV = \int\frac{\rho}{\varepsilon_0}\,dV\ \Rightarrow\ \nabla\cdot\vec E = \frac{\rho}{\varepsilon_0}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터의 미분 · 4 · 회전 · 참고 Griffiths 1.2.5, Boas 6.11</p><h2>회전: 한 점 둘레를 얼마나 맴도는가</h2></header>
+    <div class="body cols wide-l">
+      <div>
+        <div class="eq">$$\nabla\times\vec v = \begin{vmatrix}\hat x&\hat y&\hat z\\ \partial_x&\partial_y&\partial_z\\ v_x&v_y&v_z\end{vmatrix},\qquad (\nabla\times\vec v)_z = \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}$$</div>
+        <p>흐름 위에 작은 물레방아를 띄우면 도는 곳이 회전이 있는 곳이고, 도는 축의 방향(오른손 규칙)이 회전 벡터의 방향입니다.</p>
+        <div class="tbl-wrap"><table class="tbl lab">
+          <thead><tr><th>벡터장</th><th>회전</th><th>모습</th></tr></thead>
+          <tbody>
+            <tr><td>$\vec\omega\times\vec r$ (강체 회전)</td><td>$2\vec\omega$</td><td>각속도의 두 배</td></tr>
+            <tr><td>$y\,\hat x$ (층 흐름)</td><td>$-\hat z$</td><td>속도 차로 물레방아가 돈다</td></tr>
+            <tr><td>$\hat\phi/s$</td><td>$0\ (s\ne0)$</td><td>도선 둘레 $\vec B$ 꼴, 회전은 축에만</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="box deep"><span class="tag">심화 · 미분형 법칙</span>
+        <div class="eq">$$\nabla\times\vec E = -\frac{\partial\vec B}{\partial t}$$</div>
+        <div class="eq">$$\nabla\times\vec B = \mu_0\vec J + \mu_0\varepsilon_0\frac{\partial\vec E}{\partial t}$$</div>
+        <p>정전기장은 $\nabla\times\vec E = 0$ 이라 퍼텐셜로 쓸 수 있고, 자기장이 변하면 맴도는 전기장(유도 전기장)이 생깁니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 스토크스 정리 · 참고 Griffiths 1.3.5, Boas 6.11</p><h2>작은 고리의 순환에서 스토크스 정리까지 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>$xy$ 평면의 작은 직사각형($dx\times dy$)을 시계 반대 방향으로 돈다. 아래·위 두 변의 기여.</p><div class="eq">$$\big[v_x(y) - v_x(y + dy)\big]dx = -\frac{\partial v_x}{\partial y}\,dx\,dy$$</div></li>
+        <li><p>오른쪽·왼쪽 두 변의 기여.</p><div class="eq">$$\big[v_y(x + dx) - v_y(x)\big]dy = \frac{\partial v_y}{\partial x}\,dx\,dy$$</div></li>
+        <li><p>더하면 회전의 $z$ 성분. 회전은 '단위 넓이당 순환'이다.</p><div class="eq">$$\oint\vec v\cdot d\vec l = \Big(\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}\Big)dA = (\nabla\times\vec v)\cdot d\vec A$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 스토크스 정리 · 참고 Griffiths 1.3.5, Boas 6.11</p><h2>작은 고리의 순환에서 스토크스 정리까지 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
+        <li><p>작은 고리를 이어 붙이면 맞닿은 변은 반대로 돌아 지워지고 바깥 테두리만 남는다.</p><div class="eq">$$\oint_C\vec v\cdot d\vec l = \int_S(\nabla\times\vec v)\cdot d\vec A$$</div></li>
+        <li><p>확인: $\vec v = -y\hat x + x\hat y$ ($\nabla\times\vec v = 2\hat z$), 반지름 $R$ 인 원.</p><div class="eq">$$\oint\vec v\cdot d\vec l = R\cdot2\pi R = 2\cdot\pi R^2\ \ \checkmark$$</div></li>
+        <li><p>암페어 법칙에 쓴다: $I_{enc} = \int\vec J\cdot d\vec A$ 이고 아무 곡면에서나 성립하므로</p><div class="eq">$$\int(\nabla\times\vec B)\cdot d\vec A = \int\mu_0\vec J\cdot d\vec A\ \Rightarrow\ \nabla\times\vec B = \mu_0\vec J$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 보존력 판정 · 참고 Griffiths 1.3.3, Boas 6.8 · 교과서 30~31쪽 보존력</p><h2>회전이 0이면 보존력이다 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>기울기 정리: 기울기를 선적분하면 끝점의 값 차이만 남는다 (경로 무관).</p><div class="eq">$$\int_a^b\nabla f\cdot d\vec l = f(b) - f(a)$$</div></li>
+        <li><p>그래서 $\vec F = -\nabla U$ 이면 닫힌 경로의 일이 0이고, 스토크스 정리로 회전도 0이다.</p><div class="eq">$$\oint\vec F\cdot d\vec l = 0\ \Leftrightarrow\ \nabla\times\vec F = 0$$</div></li>
+        <li><p>예: $\vec F = (2xy + 3)\hat x + x^2\hat y$ (N, 좌표는 m). 회전을 계산한다.</p><div class="eq">$$(\nabla\times\vec F)_z = \frac{\partial(x^2)}{\partial x} - \frac{\partial(2xy + 3)}{\partial y} = 2x - 2x = 0$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 보존력 판정 · 참고 Griffiths 1.3.3, Boas 6.8 · 교과서 30~31쪽 보존력</p><h2>회전이 0이면 보존력이다 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps tight">
+        <li><p>보존력이므로 퍼텐셜 에너지를 찾는다 ($-\partial U/\partial x = F_x$, $-\partial U/\partial y = F_y$).</p><div class="eq">$$U = -(x^2y + 3x)$$</div></li>
+        <li><p>$(0,0)$ 에서 $(1,2)$ 까지 한 일은 어느 경로로 가도 같다.</p><div class="eq">$$W = U(0,0) - U(1,2) = 0 - (-5) = 5\ \text{J}$$</div></li>
+        <li><p>반례: $\vec F = y\hat x - x\hat y$ 는 $(\nabla\times\vec F)_z = -2$. 단위원을 시계 반대 방향으로 한 바퀴 돌면 일이 0이 아니다.</p><div class="eq">$$\oint\vec F\cdot d\vec l = \int_0^{2\pi}(-\sin^2t - \cos^2t)\,dt = -2\pi = (-2)(\pi)\ \ \checkmark$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">벡터의 미분 · 5 · 곱 규칙과 2계 도함수 · 참고 Griffiths 1.2.6~1.2.7</p><h2>항등식 하나하나에 물리가 들어 있다</h2></header>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>항등식</th><th>물리적 뜻</th></tr></thead>
+        <tbody>
+          <tr><td>$\nabla\times(\nabla f) = 0$</td><td>퍼텐셜로 쓴 힘($\vec F = -\nabla U$, $\vec E = -\nabla V$)은 회전이 없다</td></tr>
+          <tr><td>$\nabla\cdot(\nabla\times\vec A) = 0$</td><td>$\vec B = \nabla\times\vec A$ 로 쓰면 $\nabla\cdot\vec B = 0$ 이 저절로 성립 (자기 홀극 없음)</td></tr>
+          <tr><td>$\nabla\cdot(\nabla f) = \nabla^2f$</td><td>라플라시안. 전하가 없는 곳의 전위는 $\nabla^2V = 0$</td></tr>
+          <tr><td>$\nabla\times(\nabla\times\vec A) = \nabla(\nabla\cdot\vec A) - \nabla^2\vec A$</td><td>진공의 맥스웰 방정식에 쓰면 $\nabla^2\vec E = \mu_0\varepsilon_0\,\partial^2\vec E/\partial t^2$ (파동 방정식)</td></tr>
+          <tr><td>$\nabla(fg) = f\nabla g + g\nabla f$</td><td>보통 미분의 곱 규칙과 같은 꼴</td></tr>
+          <tr><td>$\nabla\cdot(f\vec A) = f\,\nabla\cdot\vec A + \vec A\cdot\nabla f$</td><td>예: $\nabla\cdot(\hat r/r^2)$ 를 $f = 1/r^3$, $\vec A = \vec r$ 로 계산하면 $3/r^3 - 3/r^3 = 0$</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small">고급 물리학 교과서는 적분형 법칙을 씁니다. 이 단원은 적분형과 미분형이 같은 내용임을 보여 주는 심화 내용으로 다루세요.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제 · 벡터의 미분</p><h2>벡터 미분 점검</h2></header>
+    <div class="body cols c3">
+      <div class="q"><span class="qn">Q1</span>
+        <p>$\vec v = x^2y\,\hat x + yz\,\hat y + xz^2\,\hat z$ 의 발산과 회전을 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\nabla\cdot\vec v = 2xy + z + 2xz$</p>
+          <p>$\nabla\times\vec v = -y\,\hat x - z^2\,\hat y - x^2\,\hat z$</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>반지름 2.0 m 인 원 위에서 $\theta = 3t^2$ (rad) 로 움직이는 입자의 $t = 1$ s 일 때 가속도의 반지름·접선 성분은?</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\dot\theta = 6t = 6$ rad/s, $\ddot\theta = 6$ rad/s²</p>
+          <p>$a_r = -r\dot\theta^2 = -72$ m/s², $a_\theta = r\ddot\theta = 12$ m/s²</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q3</span>
+        <p>$\vec F = (y^2 + 2x)\,\hat x + 2xy\,\hat y$ 는 보존력인가? 그렇다면 퍼텐셜 에너지를 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$(\nabla\times\vec F)_z = 2y - 2y = 0$ 이므로 보존력.</p>
+          <p>$U = -(xy^2 + x^2)$ (상수는 자유)</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">4</span>
+    <h2>적분</h2>
+    <p class="std">작은 조각을 모두 더하기: 변위, 일, 선속, 질량</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">적분 · 1</p><h2>정적분과 부정적분</h2></header>
+    <div class="body cols">
+      <div>
+        <p>$F'(x) = f(x)$ 이면</p>
+        <div class="eq">$$\int f(x)\,dx = F(x) + C,\qquad \int_a^b f(x)\,dx = F(b) - F(a)$$</div>
+        <p><strong>순변화 정리</strong>: 변화율을 적분하면 순변화량이 됩니다.</p>
+        <div class="eq">$$x(t) - x(0) = \int_0^t v_x(t')\,dt'$$</div>
+      </div>
+      <div class="box def"><span class="tag">등가속도 운동</span>
+        <div class="eq">$$v = v_0 + at,\qquad x = x_0 + v_0t + \tfrac12at^2$$</div>
+        <p>두 번 적분할 때마다 적분 상수가 하나씩 생기고, 초기 조건 $x_0,\ v_0$ 가 그 상수를 정합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">시뮬레이션 · 구분구적 · 적분</p><h2>조각을 잘게 나눌수록 합이 적분값에 다가간다</h2></header>
+    <div class="body">
+      <div class="sim" data-sim="riemann"></div>
+      <p class="small">$N$ 을 키우면서 차이가 줄어드는 빠르기를 보세요. 가운데 값으로 재면 차이가 $1/N^2$ 로, 끝값으로 재면 $1/N$ 로 줄어듭니다. 전기장이나 회전 관성의 적분도 이렇게 조각의 합에서 출발합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 적분과 운동 · 교과서 13~14쪽</p><h2>등가속도 운동의 세 식을 적분으로 얻기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>가속도 $a$ 가 일정하다. $a = dv/dt$ 의 양변을 $0$ 부터 $t$ 까지 적분한다.</p><div class="eq">$$\int_{v_0}^{v}dv' = \int_0^t a\,dt'\ \Rightarrow\ v = v_0 + at$$</div></li>
+        <li><p>$v = dx/dt$ 를 다시 적분한다.</p><div class="eq">$$x - x_0 = \int_0^t(v_0 + at')\,dt' = v_0t + \tfrac12at^2$$</div></li>
+        <li><p>그래프로 보면: $v$-$t$ 그래프 아래 사다리꼴의 넓이가 변위다.</p><div class="eq">$$x - x_0 = \frac{(v_0 + v)\,t}{2}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 적분과 운동 · 교과서 13~14쪽</p><h2>등가속도 운동의 세 식을 적분으로 얻기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
+        <li><p>시간이 없는 식: 연쇄 법칙으로 가속도를 위치에 대한 미분으로 바꾼다.</p><div class="eq">$$a = \frac{dv}{dt} = \frac{dv}{dx}\frac{dx}{dt} = v\frac{dv}{dx}$$</div></li>
+        <li><p>$v\,dv = a\,dx$ 를 적분한다.</p><div class="eq">$$\tfrac12\big(v^2 - v_0^2\big) = a(x - x_0)\ \Rightarrow\ v^2 = v_0^2 + 2a(x - x_0)$$</div></li>
+        <li><p>예: 20 m/s 로 달리던 차가 $-5.0$ m/s² 로 제동한다. 정지 거리와 시간은?</p><div class="eq">$$x - x_0 = \frac{0 - 20^2}{2(-5.0)} = 40\ \text{m},\qquad t = \frac{0 - 20}{-5.0} = 4.0\ \text{s}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">적분 · 2</p><h2>선적분과 면적분</h2></header>
+    <div class="body cols">
+      <div class="box def"><span class="tag">선적분: 경로를 따라</span>
+        <div class="eq">$$W = \int_{A}^{B}\vec F\cdot d\vec l$$</div>
+        <p>보존력이면 경로에 관계없이 같고, 닫힌 경로에서는 $\oint\vec F\cdot d\vec l = 0$ 입니다.</p>
+        <p>암페어 법칙 $\oint\vec B\cdot d\vec l = \mu_0 I_{enc}$ 도 선적분입니다.</p>
+      </div>
+      <div class="box def"><span class="tag">면적분: 곡면을 지나는 양</span>
+        <div class="eq">$$\Phi_E = \int_S\vec E\cdot d\vec A$$</div>
+        <p>$d\vec A$ 는 면적 요소의 크기와 면에 수직인 방향을 함께 가집니다. 닫힌 곡면에서는 바깥쪽이 양의 방향입니다.</p>
+        <p>가우스 법칙 $\oint\vec E\cdot d\vec A = Q_{in}/\varepsilon_0$ 이 면적분입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">적분 · 3</p><h2>미소 질량과 미소 전하</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>분포</th><th>밀도</th><th>미소 질량</th></tr></thead>
+          <tbody>
+            <tr><td>선</td><td>$\lambda$ (kg/m)</td><td>$dm = \lambda\,dx$</td></tr>
+            <tr><td>면</td><td>$\sigma$ (kg/m²)</td><td>$dm = \sigma\,dA$</td></tr>
+            <tr><td>부피</td><td>$\rho$ (kg/m³)</td><td>$dm = \rho\,dV$</td></tr>
+          </tbody>
+        </table></div>
+        <p class="small">전하도 같은 방식으로 $dq = \lambda\,dl,\ \sigma\,dA,\ \rho\,dV$ 로 씁니다.</p>
+      </div>
+      <div class="box ex"><span class="tag">예: 반지름 R인 원판 (면밀도 σ)</span>
+        <p>폭 $dr$ 인 고리의 넓이는 $2\pi r\,dr$ 이므로</p>
+        <div class="eq">$$dm = \sigma\,2\pi r\,dr,\qquad M = \int_0^R\sigma\,2\pi r\,dr = \sigma\pi R^2$$</div>
+        <p>중심각 $d\theta$ 인 부채꼴 조각이면 $dm = \tfrac12\sigma R^2\,d\theta$ 입니다.</p>
+      </div>
+      <aside class="note">기존 유인물 p21의 답 "dm = ½R²dθ"에는 면밀도 σ가 빠져 있었습니다.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide divider">
+  <div class="sl">
+    <span class="roman">5</span>
+    <h2>미분방정식</h2>
+    <p class="std">운동 방정식은 미분방정식이다: 저항력, 진동, RC·LR·LC 회로</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">미분방정식 · 1</p><h2>1계 선형: 지수 함수로 다가가기</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\frac{dy}{dt} = -\frac{y}{\tau}\quad\Longrightarrow\quad y(t) = y(0)\,e^{-t/\tau}$$</div>
+        <p>변수를 나누어 적분합니다: $\displaystyle\int\frac{dy}{y} = -\int\frac{dt}{\tau}$, 곧 $\ln y = -t/\tau + C$.</p>
+        <div class="eq">$$\frac{dy}{dt} = \frac{y_\infty - y}{\tau}\quad\Longrightarrow\quad y(t) = y_\infty + \big(y(0)-y_\infty\big)e^{-t/\tau}$$</div>
+      </div>
+      <div class="box def"><span class="tag">같은 꼴의 물리</span>
+        <p>선형 저항 속 낙하: $\dfrac{dv}{dt} = g - \dfrac bm v$, $\tau = m/b$</p>
+        <p>LR 회로 (교과서 132쪽): $L\dfrac{dI}{dt} = \mathcal E - IR$, $\tau = L/R$</p>
+        <p>RC 회로: $R\dfrac{dq}{dt} = \mathcal E - \dfrac qC$, $\tau = RC$</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 1계 미분방정식 · 교과서 20쪽, 132쪽에서 다시 씀</p><h2>치환과 변수 분리로 일반해 구하기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>저항력 속 낙하, LR 회로가 모두 이 꼴이다. $y_\infty$ 는 충분히 지난 뒤의 값.</p><div class="eq">$$\frac{dy}{dt} = \frac{y_\infty - y}{\tau}$$</div></li>
+        <li><p>목표값과의 차이 $u = y - y_\infty$ 로 바꾸면 ($du = dy$) 더 단순해진다.</p><div class="eq">$$\frac{du}{dt} = -\frac u\tau$$</div></li>
+        <li><p>변수를 양변으로 나눈다.</p><div class="eq">$$\frac{du}{u} = -\frac{dt}{\tau}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 1계 미분방정식 · 교과서 20쪽, 132쪽에서 다시 씀</p><h2>치환과 변수 분리로 일반해 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
+        <li><p>$t = 0$ 에서 $u_0$ 라 하고 적분한다.</p><div class="eq">$$\ln\frac{u}{u_0} = -\frac t\tau\ \Rightarrow\ u = u_0e^{-t/\tau}$$</div></li>
+        <li><p>원래 변수로 돌린다. 시간 $\tau$ 가 지날 때마다 남은 차이가 $1/e \approx 37\,\%$ 로 준다.</p><div class="eq">$$y(t) = y_\infty + \big(y_0 - y_\infty\big)e^{-t/\tau}$$</div></li>
+        <li><p>예: LR 회로 ($\mathcal E = 12$ V, $R = 10\ \Omega$, $L = 0.50$ H). $y_\infty = 1.2$ A, $\tau = L/R = 0.050$ s, $y_0 = 0$.</p><div class="eq">$$I(0.10\ \text{s}) = 1.2\big(1 - e^{-2}\big) = 1.04\ \text{A}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 복소수와 오일러 공식 · 참고 Boas 2장 · 교과서 276쪽 (복소수 파동 함수)</p><h2>복소 지수 함수로 교류 회로 풀기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps tight">
+        <li><p>복소수를 크기와 각으로 쓴다 (오일러 공식).</p><div class="eq">$$z = x + iy = re^{i\theta},\qquad e^{i\theta} = \cos\theta + i\sin\theta,\qquad |z|^2 = zz^*$$</div></li>
+        <li><p>곱하면 크기는 곱해지고 각은 더해진다. $i = e^{i\pi/2}$ 를 곱하는 것은 $90^\circ$ 돌리는 것이다.</p><div class="eq">$$r_1e^{i\theta_1}\cdot r_2e^{i\theta_2} = r_1r_2\,e^{i(\theta_1 + \theta_2)}$$</div></li>
+        <li><p>교류를 $I_0e^{i\omega t}$ 로 쓰고 실수 부분만 본다. 미분은 $i\omega$ 를 곱하는 일이 된다.</p><div class="eq">$$\frac{d}{dt}e^{i\omega t} = i\omega\,e^{i\omega t},\qquad \int e^{i\omega t}dt = \frac{1}{i\omega}e^{i\omega t}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 복소수와 오일러 공식 · 참고 Boas 2장 · 교과서 276쪽 (복소수 파동 함수)</p><h2>복소 지수 함수로 교류 회로 풀기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps tight">
+        <li><p>그래서 코일과 축전기의 '복소 저항'. 코일은 $+90^\circ$, 축전기는 $-90^\circ$.</p><div class="eq">$$Z_L = \frac{L\,dI/dt}{I} = i\omega L,\qquad Z_C = \frac{1}{i\omega C} = -\frac{i}{\omega C}$$</div></li>
+        <li><p>직렬이면 그냥 더한다. 크기와 각이 임피던스와 위상각이다.</p><div class="eq">$$Z = R + i\Big(\omega L - \frac{1}{\omega C}\Big),\quad |Z| = \sqrt{R^2 + (X_L - X_C)^2},\quad \phi = \arg Z$$</div></li>
+        <li><p>예: $R = 100\ \Omega$, $L = 0.50$ H, $C = 10\ \mu$F, 60 Hz (전자기학 덱의 예제와 같은 회로).</p><div class="eq">$$Z = 100 - 76.8i\ \Omega,\qquad |Z| = 126\ \Omega,\qquad \phi = -37.5^\circ$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">미분방정식 · 2</p><h2>2계 선형: 진동</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\frac{d^2x}{dt^2} + 2\gamma\frac{dx}{dt} + \omega_0^2x = 0$$</div>
+        <p>$x = e^{\lambda t}$ 를 넣으면 보조방정식 $\lambda^2 + 2\gamma\lambda + \omega_0^2 = 0$ 이 나옵니다.</p>
+        <div class="eq">$$\lambda = -\gamma\pm\sqrt{\gamma^2-\omega_0^2}$$</div>
+      </div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>경우</th><th>해</th></tr></thead>
+        <tbody>
+          <tr><td>$\gamma=0$ (단진동)</td><td>$x = A\cos(\omega_0t+\phi)$</td></tr>
+          <tr><td>$\gamma\lt\omega_0$ (미급감쇠)</td><td>$x = Ae^{-\gamma t}\cos(\omega_dt+\phi)$, $\omega_d = \sqrt{\omega_0^2-\gamma^2}$</td></tr>
+          <tr><td>$\gamma=\omega_0$ (임계감쇠)</td><td>$x = (A+Bt)e^{-\gamma t}$</td></tr>
+          <tr><td>$\gamma\gt\omega_0$ (과감쇠)</td><td>두 실근의 지수 함수 합 (진동 없음)</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 2계 미분방정식</p><h2>보조방정식과 오일러 공식으로 감쇠 진동 풀기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>$x = e^{\lambda t}$ 를 넣으면 모든 항에 $e^{\lambda t}$ 가 붙어 나온다.</p><div class="eq">$$\big(\lambda^2 + 2\gamma\lambda + \omega_0^2\big)e^{\lambda t} = 0$$</div></li>
+        <li><p>$e^{\lambda t}\ne0$ 이므로 괄호가 0. 근의 공식.</p><div class="eq">$$\lambda = -\gamma\pm\sqrt{\gamma^2 - \omega_0^2}$$</div></li>
+        <li><p>$\gamma \lt \omega_0$ 이면 근호 안이 음수라 근이 복소수다.</p><div class="eq">$$\lambda = -\gamma\pm i\omega_d,\qquad \omega_d = \sqrt{\omega_0^2 - \gamma^2}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 2계 미분방정식</p><h2>보조방정식과 오일러 공식으로 감쇠 진동 풀기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <ol start="4" class="steps">
+        <li><p>오일러 공식 $e^{i\theta} = \cos\theta + i\sin\theta$ 로 펼친다.</p><div class="eq">$$e^{\lambda t} = e^{-\gamma t}\big(\cos\omega_dt \pm i\sin\omega_dt\big)$$</div></li>
+        <li><p>두 해를 더하고 빼서 실수 해 두 개를 만든 뒤 합친다.</p><div class="eq">$$x = e^{-\gamma t}\big(C_1\cos\omega_dt + C_2\sin\omega_dt\big) = Ae^{-\gamma t}\cos(\omega_dt + \phi)$$</div></li>
+        <li><p>예: $m = 1.0$ kg, $k = 16$ N/m, 저항 계수 $b = 0.40$ kg/s ($2\gamma = b/m$).</p><div class="eq">$$\gamma = 0.20\ \text{s}^{-1},\quad \omega_0 = 4.0\ \text{s}^{-1},\quad \omega_d = 3.995\ \text{s}^{-1},\quad 1/\gamma = 5.0\ \text{s}$$</div></li>
+      </ol>
+      <p class="small">$\gamma = 0$ 이면 $\omega_d = \omega_0$ 인 단진동으로 돌아갑니다. 진폭이 $1/e$ 로 주는 데 5.0 s, 그동안 약 3번 진동합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">심화 · 읽을거리 · 앞의 '벡터의 미분' 단원에 이어</p><h2>발산, 회전, 라플라시안</h2></header>
+    <div class="body cols">
+      <div>
+        <div class="eq">$$\nabla\cdot\vec A = \frac{\partial A_x}{\partial x}+\frac{\partial A_y}{\partial y}+\frac{\partial A_z}{\partial z},\qquad \nabla\times\vec A = \begin{vmatrix}\hat x&\hat y&\hat z\\ \partial_x&\partial_y&\partial_z\\ A_x&A_y&A_z\end{vmatrix}$$</div>
+        <div class="eq">$$\nabla^2V = \nabla\cdot\nabla V = \frac{\partial^2V}{\partial x^2}+\frac{\partial^2V}{\partial y^2}+\frac{\partial^2V}{\partial z^2}$$</div>
+        <p>구 대칭이면 $\nabla^2V = \dfrac{1}{r^2}\dfrac{\partial}{\partial r}\Big(r^2\dfrac{\partial V}{\partial r}\Big)$ 입니다.</p>
+      </div>
+      <div class="box warn"><span class="tag">헷갈리기 쉬운 점</span>
+        <p>$\nabla^2V$ 는 $\partial^2V/\partial r^2$ 와 다릅니다.</p>
+        <p>점전하 $V = \dfrac{q}{4\pi\varepsilon_0r}$ 에서 $\dfrac{\partial^2V}{\partial r^2} = \dfrac{2q}{4\pi\varepsilon_0r^3}\ne0$ 이지만, $\nabla^2V = 0$ 입니다. 이 결과는 $r\ne0$ 에서만 성립하고, 원점에서는 $\nabla^2V = -\rho/\varepsilon_0$ 입니다.</p>
+      </div>
+      <aside class="note">기존 OT p11~12는 ∂²V/∂r²와 ∇²V를 같은 것으로 썼고, 직교좌표 계산의 괄호 부호도 반대였습니다: ∂²(1/r)/∂x_i² = 3x_i²/r⁵ − 1/r³. 2022 전자기학은 적분형 법칙이 중심이라 이 슬라이드는 선택으로 두세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">확인 문제</p><h2>수학 도구 점검</h2></header>
+    <div class="body cols c3">
+      <div class="q"><span class="qn">Q1</span>
+        <p>$\vec A = 3\hat x + 4\hat y$, $\vec B = \hat x - 2\hat z$ 일 때 $\vec A\cdot\vec B$ 와 $\vec A\times\vec B$ 를 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$\vec A\cdot\vec B = 3$</p>
+          <p>$\vec A\times\vec B = (4)(-2)\hat x - (3)(-2)\hat y + (0-4)\hat z = -8\hat x + 6\hat y - 4\hat z$</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q2</span>
+        <p>$x(t) = 2\cos(3t)$ (m) 인 물체의 $v(t)$, $a(t)$ 를 구하고 $a = -\omega^2x$ 임을 보이시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$v = -6\sin 3t$, $a = -18\cos 3t = -9x$ 이므로 $\omega^2 = 9$.</p>
+        </div></details>
+      </div>
+      <div class="q"><span class="qn">Q3</span>
+        <p>길이 $L$, 선밀도 $\lambda = \lambda_0 x/L$ 인 막대의 질량을 구하시오.</p>
+        <details class="answer"><summary>풀이 보기</summary><div>
+          <p>$M = \int_0^L\lambda_0\dfrac{x}{L}dx = \tfrac12\lambda_0L$</p>
+        </div></details>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>2015 자료 물리 오류 목록</title>
+<meta name="description" content="2015 개정 고급물리학 수업자료 6종의 물리 오류 126건을 자료·등급별로 찾아보고, 2022 슬라이드에서 바로잡은 곳으로 이동하는 목록">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/deck.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [["$", "$"]], displayMath: [["$$", "$$"]] },
+  svg: { fontCache: "global" }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" defer></script>
+</head>
+<body>
+<header class="bar">
+  <div class="crumb"><a href="index.html">고급 물리학 · 2022 개정</a></div>
+  <h1>물리 오류 목록</h1>
+</header>
+<main class="errs">
+  <section class="errs-head">
+    <p class="kicker">2015 개정 고급물리학 수업자료 검증 · 6종 1,046쪽</p>
+    <h2>2015 자료에서 찾은 물리 오류 126건</h2>
+    <p class="lede">OT 슬라이드·유인물, 역학, 전자기학, 양자역학, 상대성 이론 자료의 모든 쪽을 이미지로 확인했고, 계산이 의심스러운 곳은 수치로 검산했습니다. 쪽 번호는 Notion에 올린 PDF의 페이지 번호입니다. 오른쪽 <strong>바로잡은 곳</strong> 링크를 누르면 같은 내용을 고쳐 쓴 2022 슬라이드로 갑니다.</p>
+    <ul class="tally">
+      <li class="g2"><span class="gr">★★</span><span class="n">27</span><span class="l"><strong>중대</strong> 식이나 결론이 물리적으로 틀렸습니다. 학생이 그대로 외우면 틀립니다.</span></li>
+      <li class="g1"><span class="gr">★</span><span class="n">34</span><span class="l"><strong>보통</strong> 성립 조건이 빠졌거나 오개념을 부를 수 있는 서술입니다.</span></li>
+      <li class="g0"><span class="gr">·</span><span class="n">65</span><span class="l"><strong>경미</strong> 오타, 기호 불일치, 연도·인명 오기입니다.</span></li>
+    </ul>
+    <div class="tbl-wrap"><table class="tbl matrix">
+      <thead><tr><th>자료 (쪽수)</th><th class="nw">★★ 중대</th><th class="nw">★ 보통</th><th class="nw">· 경미</th><th>합계</th></tr></thead>
+      <tbody>
+        <tr><td class="nw">OT 슬라이드 (104쪽)</td><td class="mono">2</td><td class="mono">1</td><td class="mono">8</td><td class="mono">11</td></tr>
+        <tr><td class="nw">OT 유인물 (29쪽)</td><td class="mono">1</td><td class="mono">1</td><td class="mono">5</td><td class="mono">7</td></tr>
+        <tr><td class="nw">역학 (308쪽)</td><td class="mono">9</td><td class="mono">12</td><td class="mono">25</td><td class="mono">46</td></tr>
+        <tr><td class="nw">전자기학 (357쪽)</td><td class="mono">7</td><td class="mono">12</td><td class="mono">12</td><td class="mono">31</td></tr>
+        <tr><td class="nw">양자역학 (147쪽)</td><td class="mono">6</td><td class="mono">4</td><td class="mono">9</td><td class="mono">19</td></tr>
+        <tr><td class="nw">상대성 이론 (101쪽)</td><td class="mono">2</td><td class="mono">4</td><td class="mono">6</td><td class="mono">12</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">보고서 5장 집계 표는 OT 슬라이드 p63·p66 처럼 한 항목에 묶인 오류를 따로 세어 ★★ 29건(겹침을 빼면 27건)으로 적었습니다. 이 목록은 항목 단위로 셉니다.</p>
+  </section>
+
+  <section class="errs-top" id="top">
+    <h2>가장 먼저 고칠 것: 중대 오류 ★★</h2>
+    <ol class="fixes">
+      <li class="fix" id="top-1">
+        <div class="fix-h"><span class="no">1</span><span class="where">역학 p50</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s27" title="E ≥ U 인 곳에서만 움직일 수 있다">역학 27</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"역학적 에너지가 퍼텐셜 곡선보다 <strong>아래</strong>에 있다면 입자는 자유롭게 운동"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>반대입니다. 운동 가능 영역은 $E \ge U(x)$ 인 구간이고, $E&lt;U$ 인 구간은 금지 영역입니다 ($K=E-U\ge 0$).</p></div></div>
+      </li>
+      <li class="fix" id="top-2">
+        <div class="fix-h"><span class="no">2</span><span class="where">역학 p65</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s36" title="반발 계수와 운동 에너지 손실 Q">역학 36</a> <a href="01-mechanics.html#s39" title="뉴턴의 요람: 놓은 만큼만 튀어나온다">역학 39</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>식은 $K_i = K_f + Q$ 인데 "$Q&lt;0$: 비탄성, $Q&gt;0$: 폭발"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>이 식에서는 $Q = K_i - K_f$ 이므로 <strong>비탄성이면 $Q&gt;0$, 폭발이면 $Q&lt;0$</strong> 입니다. 핵물리 관례 $Q=K_f-K_i$ 를 쓰려면 식을 $K_i + Q = K_f$ 로 바꾸세요.</p></div></div>
+      </li>
+      <li class="fix" id="top-3">
+        <div class="fix-h"><span class="no">3</span><span class="where">역학 p43</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s24" title="경로에 무관한 일, 퍼텐셜 에너지">역학 24</a> <a href="04-modern-physics.html#s2" title="이 단원에서 할 일">현대 물리 2</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"질량-에너지 보존 법칙 성립 (비보존력은 성립 X)", "강한·약한 상호작용은 역학적 에너지 보존 법칙이 성립하지 않음"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>총에너지(질량-에너지)는 비보존력이 있어도 <strong>항상 보존</strong>됩니다. 비보존력이 깨는 것은 '역학적 에너지 보존'뿐입니다. 약한 상호작용의 특징은 CP 대칭성 깨짐이지, 에너지가 보존되지 않는 것이 아닙니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-4">
+        <div class="fix-h"><span class="no">4</span><span class="where">역학 p106</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s53" title="평행축 정리와 수직축 정리">역학 53</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>수직축 정리 $I_z = I_x + I_y$ 를 "서로 수직한 세 회전축"에 대한 일반 관계로 제시</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p><strong>얇은 평면 물체(판)</strong> 에서만 성립합니다. 일반 3차원 물체에서는 $I_x + I_y = I_z + 2\int z^2\,dm$ 입니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-5">
+        <div class="fix-h"><span class="no">5</span><span class="where">역학 p121~122</span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>자전거가 넘어지지 않는 이유가 "각운동량이 보존되므로"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>중력 돌림힘이 있으므로 각운동량은 보존되지 않고 세차합니다. 자전거의 자기 안정성은 주로 조향 기하(트레일)와 질량 분포, 그리고 운전자의 조향에서 옵니다 (Kooijman et al., <em>Science</em> 2011).</p></div></div>
+      </li>
+      <li class="fix" id="top-6">
+        <div class="fix-h"><span class="no">6</span><span class="where">역학 p135</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s61" title="미끄러짐 없이 구르기: 병진 + 회전">역학 61</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"순수한 회전 운동이란 미끄러짐 없이 굴러가는 물체의 회전"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>용어가 틀렸습니다. 순수 회전은 고정축 둘레 회전이고, 미끄러짐 없이 구르는 것은 <strong>굴림 운동</strong>입니다 ($v_{CM}=R\omega$).</p></div></div>
+      </li>
+      <li class="fix" id="top-7">
+        <div class="fix-h"><span class="no">7</span><span class="where">역학 p250</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s90" title="S = k ln W: 확률이 큰 상태로 간다">역학 90</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>분자 하나의 운동량을 "반지름 $\sqrt{2mU}$ 인 구 <strong>표면</strong> 위의 점"으로 보고 $V_p \propto U^{3/2}$, $N$개면 $U^{3N/2}$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>논리 오류입니다. 표면 위의 점이면 부피가 아니라 넓이로 세야 하고, $U$ 는 계 전체의 에너지입니다. 전체 에너지 조건은 <strong>3N차원 초구 하나</strong>로 걸어야 합니다(p254의 처리가 맞습니다).</p></div></div>
+      </li>
+      <li class="fix" id="top-8">
+        <div class="fix-h"><span class="no">8</span><span class="where">역학 p268</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s84" title="열효율과 카르노 기관">역학 84</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$\lvert Q_c\rvert = nRT_{\mathbf h}\ln(V_C/V_D)$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>저온 등온 압축이므로 $T_c$ 입니다 (p270에서는 맞게 씀).</p></div></div>
+      </li>
+      <li class="fix" id="top-9">
+        <div class="fix-h"><span class="no">9</span><span class="where">역학 p286</span><span class="fixed">바로잡은 곳 <a href="01-mechanics.html#s90" title="S = k ln W: 확률이 큰 상태로 간다">역학 90</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>엔트로피 전개 마지막 줄 "$S = k_B\ln\frac{N-N_\uparrow}{N_\uparrow}$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>그 식은 $S$ 가 아니라 $\partial S/\partial N_\uparrow$ 입니다. 둘째 줄의 $\ln N_\uparrow$ 도 $\ln N_\uparrow!$ 의 오기입니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-10">
+        <div class="fix-h"><span class="no">10</span><span class="where">전자기 p3</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s2" title="이 단원에서 할 일">현대 물리 2</a> <a href="04-modern-physics.html#s88" title="네 가지 힘과 매개 입자">현대 물리 88</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>약력의 상대적 세기 "$\sim 10^{-2}$" (전자기력과 같은 값)</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>강력을 1로 두면 약력은 교과서(293쪽) 기준 약 $10^{-5}$ 입니다 (교재에 따라 $10^{-6}\sim10^{-13}$). $10^{-2}$ 는 전자기력($\alpha\approx1/137$)의 값입니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-11">
+        <div class="fix-h"><span class="no">11</span><span class="where">전자기 p10</span><span class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s83" title="전자기학 전체를 네 줄로">전자기학 83</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$\nabla\times\vec B = -\mu_0\vec J + \varepsilon_0\mu_0\,\partial\vec E/\partial t$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>부호 오류입니다: $\nabla\times\vec B = +\mu_0\vec J + \mu_0\varepsilon_0\,\partial\vec E/\partial t$ (p318은 맞게 씀).</p></div></div>
+      </li>
+      <li class="fix" id="top-12">
+        <div class="fix-h"><span class="no">12</span><span class="where">전자기 p25, 28~29</span><span class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s14" title="구, 원통(선), 평면">전자기학 14</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"가우스 법칙에 쓸 수 있는 대칭성은 단 두 가지(구, 원통)"라 하고 무한 평면을 원통 대칭에 포함</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>대칭성은 <strong>구·원통(선)·평면</strong> 세 가지입니다. 납작한 원통(필박스)은 가우스 곡면의 모양일 뿐입니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-13">
+        <div class="fix-h"><span class="no">13</span><span class="where">전자기 p99</span><span class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s25" title="크기가 같고 부호가 반대인 두 전하">전자기학 25</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"멀리 있는 곳이므로 $\theta\to0$ … $\vec E = \frac{p}{2\pi\varepsilon_0 r^3}\hat r$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>멀리 있다는 것($r\gg d$)과 $\theta$ 는 무관합니다. 일반 방향의 쌍극자 장은 $\vec E = \frac{p}{4\pi\varepsilon_0 r^3}(2\cos\theta\,\hat r + \sin\theta\,\hat\theta)$ 이고, 제시한 식은 축 위($\theta=0$)의 값입니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-14">
+        <div class="fix-h"><span class="no">14</span><span class="where">전자기 p269</span><span class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s68" title="저항, 코일, 축전기: 리액턴스와 위상">전자기학 68</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$\Delta V_{rms} = \Delta V_{\mathbf{rms}}/\sqrt2$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>$\Delta V_{rms} = \Delta V_{\max}/\sqrt2$</p></div></div>
+      </li>
+      <li class="fix" id="top-15">
+        <div class="fix-h"><span class="no">15</span><span class="where">전자기 p304~305</span><span class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s78" title="두 가지 &#x27;진동수&#x27;를 구분하자">전자기학 78</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>RLC 특수해 $q_p = -\frac{V_0/L}{\square}[\cos\Delta\cos\omega t - \sin\Delta\sin\omega t]$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>수치로 검산해 보면 미분방정식을 만족하지 않습니다. p303의 $A$, $B$ 와 $\sin\Delta = 2\gamma\omega/\square$, $\cos\Delta=(\omega_0^2-\omega^2)/\square$ 로부터 <strong>$q_p = \frac{V_0/L}{\square}\sin(\omega t - \Delta)$</strong> 입니다. p305 일반해의 특수해 항도 고치세요.</p></div></div>
+      </li>
+      <li class="fix" id="top-16">
+        <div class="fix-h"><span class="no">16</span><span class="where">전자기 p318</span><span class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s83" title="전자기학 전체를 네 줄로">전자기학 83</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$\oint\vec B\cdot d\vec l = \mu_0 + \mu_0\varepsilon_0\frac{d\Phi_E}{dt}$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>$I_{enc}$ 가 빠졌습니다: $\mu_0 I_{enc} + \mu_0\varepsilon_0\frac{d\Phi_E}{dt}$</p></div></div>
+      </li>
+      <li class="fix" id="top-17">
+        <div class="fix-h"><span class="no">17</span><span class="where">양자 p88</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s65" title="위치와 운동량은 동시에 정확할 수 없다">현대 물리 65</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"$x_1=\pi/k$, $\Delta x = 2\pi/k$, $\Delta x\Delta k = 4\pi \ge \hbar/2$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>폭을 정하는 값은 대문자 $K$ 이므로 $\Delta x = 2\pi/K$ 입니다. 또 $\Delta x\Delta k$ 는 무차원이라 비교 대상은 $1/2$ 입니다 ($\hbar/2$ 는 $\Delta x\Delta p$ 의 하한).</p></div></div>
+      </li>
+      <li class="fix" id="top-18">
+        <div class="fix-h"><span class="no">18</span><span class="where">양자 p103</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s69" title="파동 함수가 시간에 따라 변하는 규칙">현대 물리 69</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>변수 분리식의 우변이 "$= E$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>$= E\,X(x)T(t)$ 입니다 (p102·p104와 불일치).</p></div></div>
+      </li>
+      <li class="fix" id="top-19">
+        <div class="fix-h"><span class="no">19</span><span class="where">양자 p114</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s69" title="파동 함수가 시간에 따라 변하는 규칙">현대 물리 69</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"어떤 파동함수에 위치·운동량·에너지 연산자를 취하면 그 물리량과 원래 파동함수가 함께 나온다"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p><strong>고유함수일 때만</strong> 성립합니다. 일반 상태는 고유값 방정식을 만족하지 않습니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-20">
+        <div class="fix-h"><span class="no">20</span><span class="where">양자 p122</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s76" title="영점 에너지와 불확정성">현대 물리 76</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"운동량 기댓값 $\langle p\rangle = h/\lambda = n\pi\hbar/L$, $\Delta x\Delta p = n\pi\hbar$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>정상파에서는 $\langle p\rangle = 0$ 이고, $n\pi\hbar/L$ 은 $\Delta p=\sqrt{\langle p^2\rangle}$ 입니다. $\Delta x = L\sqrt{\tfrac1{12}-\tfrac1{2n^2\pi^2}}$ 이므로 $\Delta x\Delta p = \tfrac{\hbar}{2}\sqrt{\tfrac{n^2\pi^2}{3}-2}$ 입니다 ($n=1$ 이면 $0.568\hbar$, $n=2$ 이면 $1.67\hbar$; 수치 검산).</p></div></div>
+      </li>
+      <li class="fix" id="top-21">
+        <div class="fix-h"><span class="no">21</span><span class="where">양자 p128~129</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s73" title="경계 조건이 에너지를 양자화한다">현대 물리 73</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$\psi = \sqrt{2/L}\,[\cos(n\pi x/L) + \sin(n\pi x/L)]$, "$\psi_n = \psi_e+\psi_o$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>이 합은 어떤 $n$ 에서도 고유함수가 아닙니다 (홀수 $n$ 은 cos만, 짝수 $n$ 은 sin만 해). 한 식으로 쓰려면 $\psi_n = \sqrt{2/L}\,\sin\frac{n\pi(x+L/2)}{L}$ 입니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-22">
+        <div class="fix-h"><span class="no">22</span><span class="where">양자 p142~143</span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"브라는 $\lvert\psi\rangle$ (열벡터), 켓은 $\langle\phi\rvert$ (행벡터)"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>이름이 뒤바뀌었습니다. <strong>켓</strong> $\lvert\psi\rangle$ 이 열벡터이고, <strong>브라</strong> $\langle\phi\rvert = (\phi_1^*\ \phi_2^*\ \cdots)$ 가 행벡터이며 성분마다 켤레가 붙습니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-23">
+        <div class="fix-h"><span class="no">23</span><span class="where">상대론 p51</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s22" title="왜 우주선에 탄 쪽이 젊은가">현대 물리 22</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"쌍둥이 역설의 해결 방법은 일반 상대성 이론에 있다… 겉보기 중력 때문에"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>특수 상대론만으로 완전히 해결됩니다. B가 관성계를 바꾸므로 대칭이 깨지고, B 세계선의 고유시간 $\int d\tau$ 가 더 짧습니다 (p52의 동시선 그림이 바른 설명). 가속 구간을 아무리 짧게 해도 결과는 같습니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-24">
+        <div class="fix-h"><span class="no">24</span><span class="where">상대론 p93</span><span class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s29" title="빛의 휨과 중력 렌즈">현대 물리 29</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>태양을 스치는 빛의 휨 "$0.005^\circ$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>10배 큽니다. 일반 상대론 값은 $4GM_\odot/(c^2R_\odot) = 1.75'' \approx 4.9\times10^{-4}\,^\circ$ 입니다 (검산함). 같은 줄의 '1마일 거리 10센트 동전'(약 $2.3''$) 비유와도 맞지 않습니다.</p></div></div>
+      </li>
+      <li class="fix" id="top-25">
+        <div class="fix-h"><span class="no">25</span><span class="where">OT p11~12</span><span class="fixed">바로잡은 곳 <a href="00-ot-math.html#s53" title="발산, 회전, 라플라시안">OT 53</a></span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>"$\partial^2V/\partial r^2 = \sum_i \partial^2 V/\partial x_i^2$", "구대칭: $\partial^2V/\partial r^2 = \frac1{r^2}\partial_r(r^2\partial_rV) = 0$"</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>좌변은 라플라시안 $\nabla^2V$ 입니다. 실제로 $V\propto1/r$ 이면 $\partial^2V/\partial r^2 = 2q/(4\pi\varepsilon_0 r^3) \ne 0$ 입니다. $\nabla^2(1/r)=0$ 도 $r\ne0$ 에서만 성립합니다. 직교좌표 계산의 괄호 부호도 반대입니다: $\partial^2_{x_i}(1/r) = 3x_i^2/r^5 - 1/r^3$.</p></div></div>
+      </li>
+      <li class="fix" id="top-26">
+        <div class="fix-h"><span class="no">26</span><span class="where">OT p63 (유인물 p19)</span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$z=f(x,y)$ 곡면의 면적 벡터 $(f_x\hat x - f_y\hat y + \hat z)\,dxdy$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>$(\hat x + f_x\hat z)\times(\hat y + f_y\hat z) = (-f_x\hat x - f_y\hat y + \hat z)\,dxdy$</p></div></div>
+      </li>
+      <li class="fix" id="top-27">
+        <div class="fix-h"><span class="no">27</span><span class="where">OT p66 (유인물 p20)</span></div>
+        <div class="fix-b"><div class="now"><span class="tag">2015 자료</span><p>$da_\theta = (dr\,\hat r)\times(r\sin\theta\,d\phi\,\hat\phi) = r\sin\theta\,dr\,d\phi\,\hat\theta$</p></div>
+        <div class="ok"><span class="tag">바로잡은 서술</span><p>$\hat r\times\hat\phi = -\hat\theta$ 이므로 순서를 $(r\sin\theta\,d\phi\,\hat\phi)\times(dr\,\hat r)$ 로 바꿔야 $+\hat\theta$ 가 나옵니다.</p></div></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="errs-all" id="all">
+    <h2>자료별 전체 목록</h2>
+    <div class="filters" role="search">
+      <div class="chips" data-key="mat" role="group" aria-label="자료">
+        <button type="button" class="chip" data-val="" aria-pressed="true">전체</button>
+        <button type="button" class="chip" data-val="ot" aria-pressed="false">OT 슬라이드</button>
+        <button type="button" class="chip" data-val="oth" aria-pressed="false">OT 유인물</button>
+        <button type="button" class="chip" data-val="mech" aria-pressed="false">역학</button>
+        <button type="button" class="chip" data-val="em" aria-pressed="false">전자기학</button>
+        <button type="button" class="chip" data-val="qm" aria-pressed="false">양자역학</button>
+        <button type="button" class="chip" data-val="rel" aria-pressed="false">상대성 이론</button>
+      </div>
+      <div class="chips" data-key="grade" role="group" aria-label="등급">
+        <button type="button" class="chip" data-val="" aria-pressed="true">모든 등급</button>
+        <button type="button" class="chip g2" data-val="★★" aria-pressed="false">★★ 중대</button>
+        <button type="button" class="chip g1" data-val="★" aria-pressed="false">★ 보통</button>
+        <button type="button" class="chip g0" data-val="·" aria-pressed="false">· 경미</button>
+      </div>
+      <label class="search"><span>찾기</span><input type="search" id="q" placeholder="쪽, 용어, 식 (예: p268, 수직축, 부호)" autocomplete="off"></label>
+      <p class="count" aria-live="polite"><span id="shown">126</span>건 / 전체 126건</p>
+    </div>
+    <section class="mat" data-mat="ot" id="m-ot">
+      <h3>OT 슬라이드 <span>· 2015 자료 104쪽</span></h3>
+      <div class="topic">
+        <ul class="items">
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p9·10 ·  0lephile2pi 는 0lephi&lt;2pi 로 바꾸세요 (경계가 중복됨). ">
+            <span class="pg">p9·10</span><span class="gr">·</span>
+            <div class="tx"><p>$0\le\phi\le2\pi$ 는 $0\le\phi&lt;2\pi$ 로 바꾸세요 (경계가 중복됨).</p></div>
+          </li>
+          <li class="item g2" data-mat="ot" data-grade="★★" data-q="ot 슬라이드 p11~12 ★★  좌변은 라플라시안 nabla^2v 입니다. 실제로 vpropto1/r 이면 partial^2v/partial r^2 = 2q/(4pivarepsilon_0 r^3) ne 0 입니다. nabla^2(1/r)=0 도 rne0 에서만 성립합니다. 직교좌표 계산의 괄호 부호도 반대입니다: partial^2_{x_i}(1/r) = 3x_i^2/r^5 - 1/r^3. ">
+            <span class="pg">p11~12</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-25">중대 오류 25번</a> 좌변은 라플라시안 $\nabla^2V$ 입니다. 실제로 $V\propto1/r$ 이면 $\partial^2V/\partial r^2 = 2q/(4\pi\varepsilon_0 r^3) \ne 0$ 입니다. $\nabla^2(1/r)=0$ 도 $r\ne0$ 에서만 성립합니다. 직교좌표 계산의 괄호 부호도 반대입니다: $\partial^2_{x_i}(1/r) = 3x_i^2/r^5 - 1/r^3$.</p><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s53" title="발산, 회전, 라플라시안">OT 53</a></p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p20 ·  hat x_itimeshat x_j = varepsilon_{ijk}hat x_k 에 k 에 대한 합(아인슈타인 규약)을 명시하세요. varepsilon_{ijk}=0 조건은 &quot;두 첨자가 같으면 0&quot;으로 쓰는 편이 명확합니다. ">
+            <span class="pg">p20</span><span class="gr">·</span>
+            <div class="tx"><p>$\hat x_i\times\hat x_j = \varepsilon_{ijk}\hat x_k$ 에 $k$ 에 대한 합(아인슈타인 규약)을 명시하세요. $\varepsilon_{ijk}=0$ 조건은 "두 첨자가 같으면 0"으로 쓰는 편이 명확합니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="ot" data-grade="★" data-q="ot 슬라이드 p28 ★  미분 가능 조건을 &quot;lim_{xto a^-} df/dx = lim_{xto a^+} df/dx&quot;(도함수의 좌·우 극한)로 썼습니다. 좌·우 미분계수 lim_{hto0^pm}frac{f(a+h)-f(a)}{h} 로 정의해야 합니다. 반례: x^2sin(1/x) 는 x=0 에서 미분 가능하지만 f&#x27; 의 극한은 없습니다.">
+            <span class="pg">p28</span><span class="gr">★</span>
+            <div class="tx"><p>미분 가능 조건을 "$\lim_{x\to a^-} df/dx = \lim_{x\to a^+} df/dx$"(도함수의 좌·우 극한)로 썼습니다.</p><ul><li>좌·우 <strong>미분계수</strong> $\lim_{h\to0^\pm}\frac{f(a+h)-f(a)}{h}$ 로 정의해야 합니다.</li><li>반례: $x^2\sin(1/x)$ 는 $x=0$ 에서 미분 가능하지만 $f'$ 의 극한은 없습니다.</li></ul><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s10" title="미분계수와 도함수">OT 10</a></p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p35 ·  합성함수를 fcdot g(x) 로 썼습니다. 곱셈과 헷갈리니 fcirc g 로 바꾸세요. ">
+            <span class="pg">p35</span><span class="gr">·</span>
+            <div class="tx"><p>합성함수를 $f\cdot g(x)$ 로 썼습니다. 곱셈과 헷갈리니 $f\circ g$ 로 바꾸세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p40 ·  함수는 f 로 두고 기울기는 nabla t 로 써서 기호가 맞지 않습니다. ">
+            <span class="pg">p40</span><span class="gr">·</span>
+            <div class="tx"><p>함수는 $f$ 로 두고 기울기는 $\nabla T$ 로 써서 기호가 맞지 않습니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p60 ·  제목은 &#x27;구면좌표계&#x27;인데 내용(dvec l = drho,hatrho + rho,dphi,hatphi + dz,hat z)은 원통좌표계입니다. 그림은 s, 식은 rho 를 써서 기호도 섞여 있습니다. ">
+            <span class="pg">p60</span><span class="gr">·</span>
+            <div class="tx"><p>제목은 '구면좌표계'인데 내용($d\vec l = d\rho\,\hat\rho + \rho\,d\phi\,\hat\phi + dz\,\hat z$)은 <strong>원통좌표계</strong>입니다. 그림은 $s$, 식은 $\rho$ 를 써서 기호도 섞여 있습니다.</p><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s8" title="대칭에 맞는 좌표를 고르면 계산이 짧아진다">OT 8</a></p></div>
+          </li>
+          <li class="item g2" data-mat="ot" data-grade="★★" data-q="ot 슬라이드 p63, p66 ★★  (hat x + f_xhat z)times(hat y + f_yhat z) = (-f_xhat x - f_yhat y + hat z),dxdy hat rtimeshatphi = -hattheta 이므로 순서를 (rsintheta,dphi,hatphi)times(dr,hat r) 로 바꿔야 +hattheta 가 나옵니다. ">
+            <span class="pg">p63, p66</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-26">중대 오류 26번</a> <a class="toplink" href="#top-27">중대 오류 27번</a> $(\hat x + f_x\hat z)\times(\hat y + f_y\hat z) = (-f_x\hat x - f_y\hat y + \hat z)\,dxdy$ $\hat r\times\hat\phi = -\hat\theta$ 이므로 순서를 $(r\sin\theta\,d\phi\,\hat\phi)\times(dr\,\hat r)$ 로 바꿔야 $+\hat\theta$ 가 나옵니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p70 ·  partialvec l/partial u 보다 위치 벡터 partialvec r/partial u 가 정확합니다. ">
+            <span class="pg">p70</span><span class="gr">·</span>
+            <div class="tx"><p>$\partial\vec l/\partial u$ 보다 위치 벡터 $\partial\vec r/\partial u$ 가 정확합니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p83 ·  &quot;df(x)/dt = f(x)&quot;는 df/dx 의 오기입니다. 부정적분에 +c 도 빠졌습니다. ">
+            <span class="pg">p83</span><span class="gr">·</span>
+            <div class="tx"><p>"$dF(x)/dt = f(x)$"는 $dF/dx$ 의 오기입니다. 부정적분에 $+C$ 도 빠졌습니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="ot" data-grade="·" data-q="ot 슬라이드 p95 ·  iint a(t) 에 dt,dt 가 빠졌습니다. ">
+            <span class="pg">p95</span><span class="gr">·</span>
+            <div class="tx"><p>$\iint a(t)$ 에 $dt\,dt$ 가 빠졌습니다.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="mat" data-mat="oth" id="m-oth">
+      <h3>OT 유인물 <span>· 2015 자료 29쪽</span></h3>
+      <div class="topic">
+        <ul class="items">
+          <li class="item g0" data-mat="oth" data-grade="·" data-q="ot 유인물 p1 ·  &quot;2학점이므로 … 총 51차시&quot;는 &#x27;3학점&#x27;의 오기입니다 (51차시 = 3학점 × 17주, 슬라이드 ot p3과도 맞지 않음). ">
+            <span class="pg">p1</span><span class="gr">·</span>
+            <div class="tx"><p>"2학점이므로 … 총 51차시"는 '3학점'의 오기입니다 (51차시 = 3학점 × 17주, 슬라이드 OT p3과도 맞지 않음).</p><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s3" title="한 학기 흐름">OT 3</a></p></div>
+          </li>
+          <li class="item g0" data-mat="oth" data-grade="·" data-q="ot 유인물 p3 ·  벡터의 예로 든 &#x27;유량&#x27;(체적 유량)은 스칼라입니다. 유속(속도장)이나 질량 선속 밀도로 바꾸세요. ">
+            <span class="pg">p3</span><span class="gr">·</span>
+            <div class="tx"><p>벡터의 예로 든 '유량'(체적 유량)은 스칼라입니다. 유속(속도장)이나 질량 선속 밀도로 바꾸세요.</p><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s5" title="성분, 크기, 단위 벡터">OT 5</a></p></div>
+          </li>
+          <li class="item g1" data-mat="oth" data-grade="★" data-q="ot 유인물 p7 ★  &quot;순간 속력 v = dx/dt&quot;라고 썼습니다. dx/dt 는 부호가 있는 x 방향 속도 성분이고, 순간 속력은 lvert dvec r/dtrvert = ds/dt 입니다. ">
+            <span class="pg">p7</span><span class="gr">★</span>
+            <div class="tx"><p>"순간 속력 $v = dx/dt$"라고 썼습니다. $dx/dt$ 는 부호가 있는 $x$ 방향 속도 성분이고, 순간 속력은 $\lvert d\vec r/dt\rvert = ds/dt$ 입니다.</p><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s10" title="미분계수와 도함수">OT 10</a></p></div>
+          </li>
+          <li class="item g0" data-mat="oth" data-grade="·" data-q="ot 유인물 p8 ·  &quot;x^0 = c&quot;는 틀렸습니다 (x^0=1). 상수함수의 미분은 별도 규칙으로 제시하세요. ">
+            <span class="pg">p8</span><span class="gr">·</span>
+            <div class="tx"><p>"$x^0 = c$"는 틀렸습니다 ($x^0=1$). 상수함수의 미분은 별도 규칙으로 제시하세요.</p></div>
+          </li>
+          <li class="item g2" data-mat="oth" data-grade="★★" data-q="ot 유인물 p19·20 ★★  슬라이드 p63·p66과 같은 부호 오류입니다. ">
+            <span class="pg">p19·20</span><span class="gr">★★</span>
+            <div class="tx"><p>슬라이드 p63·p66과 같은 부호 오류입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="oth" data-grade="·" data-q="ot 유인물 p21 ·  연습 답 &quot;dm = tfrac12r^2dtheta&quot;에 면밀도가 빠졌습니다: dm = tfrac12sigma r^2,dtheta. ">
+            <span class="pg">p21</span><span class="gr">·</span>
+            <div class="tx"><p>연습 답 "$dm = \tfrac12R^2d\theta$"에 면밀도가 빠졌습니다: $dm = \tfrac12\sigma R^2\,d\theta$.</p><p class="fixed">바로잡은 곳 <a href="00-ot-math.html#s43" title="미소 질량과 미소 전하">OT 43</a></p></div>
+          </li>
+          <li class="item g0" data-mat="oth" data-grade="·" data-q="ot 유인물 p23 ·  부정적분에 +c 가 빠졌습니다. ">
+            <span class="pg">p23</span><span class="gr">·</span>
+            <div class="tx"><p>부정적분에 $+C$ 가 빠졌습니다.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="mat" data-mat="mech" id="m-mech">
+      <h3>역학 <span>· 2015 자료 308쪽</span></h3>
+      <div class="topic"><h4>힘과 운동</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p3 · 힘과 운동 운동학의 영어는 kinematics 입니다. kinetics 는 힘과 운동의 관계를 다룹니다. ">
+            <span class="pg">p3</span><span class="gr">·</span>
+            <div class="tx"><p>운동학의 영어는 <em>Kinematics</em> 입니다. <em>Kinetics</em> 는 힘과 운동의 관계를 다룹니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p4 · 힘과 운동 &quot;소규모 입자계 → 입자물리학&quot;은 질점(입자) 역학, 이체 문제의 오역입니다. 입자물리학은 기본 입자를 다루는 별개 분야입니다. ">
+            <span class="pg">p4</span><span class="gr">·</span>
+            <div class="tx"><p>"소규모 입자계 → 입자물리학"은 질점(입자) 역학, 이체 문제의 오역입니다. 입자물리학은 기본 입자를 다루는 별개 분야입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p5 · 힘과 운동 프린키피아 출간은 1687년입니다. &#x27;최소 작용 원리&#x27;는 엄밀히 정류(정상) 작용 원리입니다. ">
+            <span class="pg">p5</span><span class="gr">·</span>
+            <div class="tx"><p>프린키피아 출간은 1687년입니다. '최소 작용 원리'는 엄밀히 정류(정상) 작용 원리입니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p6 ★ 힘과 운동 &quot;공간의 역학적 성질이 균일하지 않음 → 비등방성&quot;이라고 썼습니다. 균일하지 않은 것은 비균질성이고 비등방성은 별개 개념입니다. 비관성계에서는 둘 다 성립하지 않습니다. ">
+            <span class="pg">p6</span><span class="gr">★</span>
+            <div class="tx"><p>"공간의 역학적 성질이 균일하지 않음 → 비등방성"이라고 썼습니다. 균일하지 않은 것은 비균질성이고 비등방성은 별개 개념입니다. 비관성계에서는 둘 다 성립하지 않습니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p11 · 힘과 운동 제목은 &#x27;등속 원운동&#x27;인데 식은 일반 평면 극좌표 운동입니다. &#x27;구면좌표계&#x27;보다 &#x27;평면 극좌표&#x27;가 정확합니다. ">
+            <span class="pg">p11</span><span class="gr">·</span>
+            <div class="tx"><p>제목은 '등속 원운동'인데 식은 일반 평면 극좌표 운동입니다. '구면좌표계'보다 '평면 극좌표'가 정확합니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p14 · 힘과 운동 제3법칙에서 &quot;힘의 크기는 같다&quot;만 쓰고 &quot;방향은 반대이고 같은 작용선 위에 있다&quot;가 빠졌습니다. ">
+            <span class="pg">p14</span><span class="gr">·</span>
+            <div class="tx"><p>제3법칙에서 "힘의 크기는 같다"만 쓰고 "방향은 반대이고 같은 작용선 위에 있다"가 빠졌습니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p18 ★ 힘과 운동 혼돈(카오스)을 결정론의 반례로 제시했습니다. 카오스는 결정론적 계에서 나타나는 초기 조건 민감성입니다. &#x27;원리적 결정론&#x27;과 &#x27;실질적 예측 불가능성&#x27;을 구분하세요.">
+            <span class="pg">p18</span><span class="gr">★</span>
+            <div class="tx"><p>혼돈(카오스)을 결정론의 반례로 제시했습니다.</p><ul><li>카오스는 결정론적 계에서 나타나는 초기 조건 민감성입니다.</li><li>'원리적 결정론'과 '실질적 예측 불가능성'을 구분하세요.</li></ul></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p26 · 힘과 운동 제곱형 저항 f=-cv^2 에서는 방향 정보가 사라집니다. vec f = -clvertvec vrvertvec v 로 쓰세요. ">
+            <span class="pg">p26</span><span class="gr">·</span>
+            <div class="tx"><p>제곱형 저항 $F=-cv^2$ 에서는 방향 정보가 사라집니다. $\vec F = -c\lvert\vec v\rvert\vec v$ 로 쓰세요.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s12" title="제곱형 저항과 포물선 궤적의 변화">역학 12</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>일과 에너지</h4>
+        <ul class="items">
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p40 ★ 일과 에너지 &quot;들어 올릴 때 물체와 지구가 포함된 계의 에너지 총합은 항상 일정&quot;이라고 썼습니다. 외력이 일을 하면 계의 에너지는 w_{ext}=mgh 만큼 증가합니다. 바로 뒤의 &quot;mgh만큼 장에 저장&quot;과도 모순입니다.">
+            <span class="pg">p40</span><span class="gr">★</span>
+            <div class="tx"><p>"들어 올릴 때 물체와 지구가 포함된 계의 에너지 총합은 항상 일정"이라고 썼습니다.</p><ul><li>외력이 일을 하면 계의 에너지는 $W_{ext}=mgh$ 만큼 증가합니다.</li><li>바로 뒤의 "mgh만큼 장에 저장"과도 모순입니다.</li></ul><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s21" title="알짜힘이 한 일 = 운동 에너지 변화">역학 21</a></p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p41 · 일과 에너지 &quot;비보존력 → 에너지 보존 성립 x&quot;는 &#x27;역학적 에너지 보존 성립 x&#x27;로 고치세요. ">
+            <span class="pg">p41</span><span class="gr">·</span>
+            <div class="tx"><p>"비보존력 → 에너지 보존 성립 X"는 '<strong>역학적</strong> 에너지 보존 성립 X'로 고치세요.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s24" title="경로에 무관한 일, 퍼텐셜 에너지">역학 24</a></p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p43 ★★ 일과 에너지 p43은 자기력을 &#x27;보존력&#x27;으로, p44는 &#x27;-nabla u 로 쓸 수 없는 힘&#x27;으로 서술해 서로 충돌합니다. 자기력은 일을 하지 않는 속도 의존 힘으로 따로 정리하세요. ">
+            <span class="pg">p43</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-3">중대 오류 3번</a> p43은 자기력을 '보존력'으로, p44는 '$-\nabla U$ 로 쓸 수 없는 힘'으로 서술해 서로 충돌합니다. 자기력은 <strong>일을 하지 않는 속도 의존 힘</strong>으로 따로 정리하세요.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s24" title="경로에 무관한 일, 퍼텐셜 에너지">역학 24</a> <a href="04-modern-physics.html#s2" title="이 단원에서 할 일">현대 물리 2</a></p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p50 ★★ 일과 에너지 반대입니다. 운동 가능 영역은 e ge u(x) 인 구간이고, e&lt;u 인 구간은 금지 영역입니다 (k=e-uge 0). ">
+            <span class="pg">p50</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-1">중대 오류 1번</a> 반대입니다. 운동 가능 영역은 $E \ge U(x)$ 인 구간이고, $E&lt;U$ 인 구간은 금지 영역입니다 ($K=E-U\ge 0$).</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s27" title="E ≥ U 인 곳에서만 움직일 수 있다">역학 27</a></p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p51 · 일과 에너지 &quot;역학적 에너지가 퍼텐셜 에너지보다 낮다면 속박&quot;은 &#x27;양쪽 퍼텐셜 장벽(극댓값)보다 낮으면 속박&#x27;으로 정확히 쓰세요. ">
+            <span class="pg">p51</span><span class="gr">·</span>
+            <div class="tx"><p>"역학적 에너지가 퍼텐셜 에너지보다 낮다면 속박"은 '양쪽 퍼텐셜 장벽(극댓값)보다 낮으면 속박'으로 정확히 쓰세요.</p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p52 ★ 일과 에너지 &quot;외력이 한 일 = δk&quot;라고 썼습니다. 일-에너지 정리는 알짜힘(합력) 이 한 일입니다. p34의 w_{ext} 정의와 섞였습니다. ">
+            <span class="pg">p52</span><span class="gr">★</span>
+            <div class="tx"><p>"외력이 한 일 = ΔK"라고 썼습니다. 일-에너지 정리는 <strong>알짜힘(합력)</strong> 이 한 일입니다. p34의 $W_{ext}$ 정의와 섞였습니다.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s21" title="알짜힘이 한 일 = 운동 에너지 변화">역학 21</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>입자계와 충돌</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p64 · 입자계와 충돌 &quot;충돌 ⇒ 외력 = 0&quot;이라고 썼습니다. 외력이 있어도 충돌 시간 동안 그 충격량을 무시할 수 있으므로 운동량이 근사적으로 보존된다고 쓰세요. ">
+            <span class="pg">p64</span><span class="gr">·</span>
+            <div class="tx"><p>"충돌 ⇒ 외력 = 0"이라고 썼습니다. 외력이 있어도 충돌 시간 동안 그 충격량을 무시할 수 있으므로 운동량이 근사적으로 보존된다고 쓰세요.</p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p65 ★★ 입자계와 충돌 이 식에서는 q = k_i - k_f 이므로 비탄성이면 q&gt;0, 폭발이면 q&lt;0 입니다. 핵물리 관례 q=k_f-k_i 를 쓰려면 식을 k_i + q = k_f 로 바꾸세요. ">
+            <span class="pg">p65</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-2">중대 오류 2번</a> 이 식에서는 $Q = K_i - K_f$ 이므로 <strong>비탄성이면 $Q&gt;0$, 폭발이면 $Q&lt;0$</strong> 입니다. 핵물리 관례 $Q=K_f-K_i$ 를 쓰려면 식을 $K_i + Q = K_f$ 로 바꾸세요.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s36" title="반발 계수와 운동 에너지 손실 Q">역학 36</a> <a href="01-mechanics.html#s39" title="뉴턴의 요람: 놓은 만큼만 튀어나온다">역학 39</a></p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p81·88 · 입자계와 충돌 로켓 식에서 (m+delta m), dm, dm 이 섞여 있습니다. 기호를 하나로 통일하세요 (dm&lt;0). ">
+            <span class="pg">p81·88</span><span class="gr">·</span>
+            <div class="tx"><p>로켓 식에서 $(M+\Delta M)$, $dM$, $dm$ 이 섞여 있습니다. 기호를 하나로 통일하세요 ($dM&lt;0$).</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>회전 운동</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p91 · 회전 운동 &quot;motion of planetary&quot;는 &quot;planetary motion&quot;으로 고치세요. ">
+            <span class="pg">p91</span><span class="gr">·</span>
+            <div class="tx"><p>"motion of planetary"는 "planetary motion"으로 고치세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p94 · 회전 운동 각속도 정의 &quot;단위 시간당 각속도의 변화&quot;는 &#x27;각위치의 변화&#x27;의 오기입니다 (그 표현은 각가속도의 정의). ">
+            <span class="pg">p94</span><span class="gr">·</span>
+            <div class="tx"><p>각속도 정의 "단위 시간당 <strong>각속도</strong>의 변화"는 '각위치의 변화'의 오기입니다 (그 표현은 각가속도의 정의).</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s49" title="각위치, 각속도, 각가속도">역학 49</a></p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p95 ★ 회전 운동 &quot;v = dr/dt = romega (반지름이 일정한 원운동)&quot;이라고 썼습니다. 반지름이 일정하면 dr/dt=0 이므로 v = ds/dt = romega 로 쓰세요. ">
+            <span class="pg">p95</span><span class="gr">★</span>
+            <div class="tx"><p>"$v = dr/dt = r\omega$ (반지름이 일정한 원운동)"이라고 썼습니다. 반지름이 일정하면 $dr/dt=0$ 이므로 $v = ds/dt = r\omega$ 로 쓰세요.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s49" title="각위치, 각속도, 각가속도">역학 49</a></p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p97·98·110·117 ★ 회전 운동 vec l = vec rtimesvec p = ivecomega, vectau = dvec l/dt = ivecalpha 를 &#x27;정의&#x27;로 제시했습니다. vec l = ivecomega 와 tau = ialpha 는 고정축(주축) 회전에서만 성립합니다. 돌림힘의 정의는 vec rtimesvec f 이고, dvec l/dt=vectau 는 정리입니다.">
+            <span class="pg">p97·98·110·117</span><span class="gr">★</span>
+            <div class="tx"><p>$\vec L = \vec r\times\vec p = I\vec\omega$, $\vec\tau = d\vec L/dt = I\vec\alpha$ 를 '정의'로 제시했습니다.</p><ul><li>$\vec L = I\vec\omega$ 와 $\tau = I\alpha$ 는 고정축(주축) 회전에서만 성립합니다.</li><li>돌림힘의 정의는 $\vec r\times\vec F$ 이고, $d\vec L/dt=\vec\tau$ 는 정리입니다.</li></ul><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s57" title="정의와, 거기서 나오는 법칙">역학 57</a></p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p106 ★★ 회전 운동 얇은 평면 물체(판) 에서만 성립합니다. 일반 3차원 물체에서는 i_x + i_y = i_z + 2int z^2,dm 입니다. ">
+            <span class="pg">p106</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-4">중대 오류 4번</a> <strong>얇은 평면 물체(판)</strong> 에서만 성립합니다. 일반 3차원 물체에서는 $I_x + I_y = I_z + 2\int z^2\,dm$ 입니다.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s53" title="평행축 정리와 수직축 정리">역학 53</a></p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p114 ★ 회전 운동 회전 일-에너지 유도가 성립하지 않습니다. &quot;f,dr to mrfrac{domega}{dt}dr to dots&quot;에서 고정축 회전의 변위는 호 길이 ds = r,dtheta 이고 dr=0 입니다. f_t,ds = mfrac{dv}{dt}ds = mv,dv = mr^2omega,domega 로 고치세요.">
+            <span class="pg">p114</span><span class="gr">★</span>
+            <div class="tx"><p>회전 일-에너지 유도가 성립하지 않습니다.</p><ul><li>"$F\,dr \to mr\frac{d\omega}{dt}dr \to \dots$"에서 고정축 회전의 변위는 호 길이 $ds = r\,d\theta$ 이고 $dr=0$ 입니다.</li><li>$F_t\,ds = m\frac{dv}{dt}ds = mv\,dv = mr^2\omega\,d\omega$ 로 고치세요.</li></ul></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p121~122 ★★ 회전 운동 3.85 km/h는 &#x27;홀로 굴러가는 얇은 원판&#x27;의 안정 조건(v^2&gt;gr/3)입니다. ">
+            <span class="pg">p121~122</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-5">중대 오류 5번</a> 3.85 km/h는 '홀로 굴러가는 얇은 원판'의 안정 조건($v^2&gt;gR/3$)입니다.</p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p135 ★★ 회전 운동 용어가 틀렸습니다. 순수 회전은 고정축 둘레 회전이고, 미끄러짐 없이 구르는 것은 굴림 운동입니다 (v_{cm}=romega). ">
+            <span class="pg">p135</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-6">중대 오류 6번</a> 용어가 틀렸습니다. 순수 회전은 고정축 둘레 회전이고, 미끄러짐 없이 구르는 것은 <strong>굴림 운동</strong>입니다 ($v_{CM}=R\omega$).</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s61" title="미끄러짐 없이 구르기: 병진 + 회전">역학 61</a></p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p138 ★ 회전 운동 &quot;sumvec p_i=0 rightarrow sumvec l_i = 0&quot;은 성립하지 않습니다. 반례: 중심이 고정된 채 회전하는 바퀴는 sumvec p=0 이지만 vec lne0 입니다. 정적 평형은 모든 부분이 정지(vec p_i=0)해 있는 상태입니다.">
+            <span class="pg">p138</span><span class="gr">★</span>
+            <div class="tx"><p>"$\sum\vec p_i=0 \Rightarrow \sum\vec L_i = 0$"은 성립하지 않습니다.</p><ul><li>반례: 중심이 고정된 채 회전하는 바퀴는 $\sum\vec p=0$ 이지만 $\vec L\ne0$ 입니다.</li><li>정적 평형은 모든 부분이 정지($\vec p_i=0$)해 있는 상태입니다.</li></ul></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>행성과 위성</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p139 · 행성과 위성 &quot;tacho brahe&quot;는 tycho brahe로 고치세요. ">
+            <span class="pg">p139</span><span class="gr">·</span>
+            <div class="tx"><p>"Tacho Brahe"는 Tycho Brahe로 고치세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p166 · 행성과 위성 &quot;v = 2pi r_e/t&quot;는 궤도 반지름 r 을 써서 v=2pi r/t 로 고치세요. ">
+            <span class="pg">p166</span><span class="gr">·</span>
+            <div class="tx"><p>"$v = 2\pi R_E/T$"는 궤도 반지름 $r$ 을 써서 $v=2\pi r/T$ 로 고치세요.</p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p167 ★ 행성과 위성 정지궤도 계산에 태양일 86 400 s를 썼습니다. 정지궤도의 주기는 항성일 86 164 s 입니다. 그러면 rapprox4.216times10^7 m, 고도 approx3.58times10^7 m 입니다.">
+            <span class="pg">p167</span><span class="gr">★</span>
+            <div class="tx"><p>정지궤도 계산에 태양일 86 400 s를 썼습니다.</p><ul><li>정지궤도의 주기는 <strong>항성일 86 164 s</strong> 입니다.</li><li>그러면 $r\approx4.216\times10^7$ m, 고도 $\approx3.58\times10^7$ m 입니다.</li></ul><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s68" title="원 궤도의 속력과 정지 궤도">역학 68</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>열역학 (교과서 Ⅰ-5·Ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것)</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p172 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 단위 &quot;j/mol·k&quot;는 j/(mol·k)로 고치세요. ">
+            <span class="pg">p172</span><span class="gr">·</span>
+            <div class="tx"><p>단위 "J/mol·k"는 J/(mol·K)로 고치세요.</p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p190 ★ 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 볼츠만 인자를 &quot;확률의 비례 상수&quot;라고 설명했습니다. 볼츠만 인자는 확률에 비례하는 상대 가중치(p=e^{-betavarepsilon}/z)이고, 비례 상수는 1/z 입니다. ">
+            <span class="pg">p190</span><span class="gr">★</span>
+            <div class="tx"><p>볼츠만 인자를 "확률의 비례 상수"라고 설명했습니다. 볼츠만 인자는 확률에 비례하는 상대 가중치($P=e^{-\beta\varepsilon}/Z$)이고, 비례 상수는 $1/Z$ 입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p195 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 슈테판-볼츠만 법칙은 &#x27;단위 면적·단위 시간당&#x27; 복사 에너지입니다. ">
+            <span class="pg">p195</span><span class="gr">·</span>
+            <div class="tx"><p>슈테판-볼츠만 법칙은 '단위 면적·<strong>단위 시간당</strong>' 복사 에너지입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p198 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) &quot;c = q/0 = infty&quot;라는 표기는 피하세요. &quot;delta tto0 이므로 열용량이 정의되지 않는다&quot;로 쓰면 됩니다. ">
+            <span class="pg">p198</span><span class="gr">·</span>
+            <div class="tx"><p>"$C = Q/0 = \infty$"라는 표기는 피하세요. "$\Delta T\to0$ 이므로 열용량이 정의되지 않는다"로 쓰면 됩니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p205 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) &quot;물리학1과 물리학1&quot;은 오기입니다. ">
+            <span class="pg">p205</span><span class="gr">·</span>
+            <div class="tx"><p>"물리학1과 물리학1"은 오기입니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p208 ★ 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) &quot;준정적 과정 = 가역 과정&quot;이라고 썼습니다. 마찰이 있으면 준정적이어도 비가역입니다. ">
+            <span class="pg">p208</span><span class="gr">★</span>
+            <div class="tx"><p>"준정적 과정 = 가역 과정"이라고 썼습니다. 마찰이 있으면 준정적이어도 비가역입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p230 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 습윤단열감률 &quot;100 m당 0.5~6 k&quot;는 0.5~0.6 k의 오기입니다. &quot;건조단열체증률&quot;도 건조단열감률로 고치세요. ">
+            <span class="pg">p230</span><span class="gr">·</span>
+            <div class="tx"><p>습윤단열감률 "100 m당 0.5~6 K"는 0.5~0.6 K의 오기입니다. "건조단열체증률"도 건조단열감률로 고치세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p237 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 3원자 분자의 γ &quot;8/6&quot;은 4/3으로 약분하세요. 이 값은 비선형 분자에서만 맞고, co₂ 같은 선형 분자는 7/5입니다. ">
+            <span class="pg">p237</span><span class="gr">·</span>
+            <div class="tx"><p>3원자 분자의 γ "8/6"은 4/3으로 약분하세요. 이 값은 <strong>비선형</strong> 분자에서만 맞고, CO₂ 같은 선형 분자는 7/5입니다.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s76" title="자유도와 에너지 등분배">역학 76</a></p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p250 ★★ 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 논리 오류입니다. 표면 위의 점이면 부피가 아니라 넓이로 세야 하고, u 는 계 전체의 에너지입니다. 전체 에너지 조건은 3n차원 초구 하나로 걸어야 합니다(p254의 처리가 맞습니다). ">
+            <span class="pg">p250</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-7">중대 오류 7번</a> 논리 오류입니다. 표면 위의 점이면 부피가 아니라 넓이로 세야 하고, $U$ 는 계 전체의 에너지입니다. 전체 에너지 조건은 <strong>3N차원 초구 하나</strong>로 걸어야 합니다(p254의 처리가 맞습니다).</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s90" title="S = k ln W: 확률이 큰 상태로 간다">역학 90</a></p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p261 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 맥스웰 도깨비 역설의 해결 핵심은 측정이 아니라 기억의 소거입니다 (란다우어 원리, 베넷 1982). ">
+            <span class="pg">p261</span><span class="gr">·</span>
+            <div class="tx"><p>맥스웰 도깨비 역설의 해결 핵심은 측정이 아니라 <strong>기억의 소거</strong>입니다 (란다우어 원리, 베넷 1982).</p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p268 ★★ 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 저온 등온 압축이므로 t_c 입니다 (p270에서는 맞게 씀). ">
+            <span class="pg">p268</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-8">중대 오류 8번</a> 저온 등온 압축이므로 $T_c$ 입니다 (p270에서는 맞게 씀).</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s84" title="열효율과 카르노 기관">역학 84</a></p></div>
+          </li>
+          <li class="item g1" data-mat="mech" data-grade="★" data-q="역학 p273 ★ 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) ds = dq/t 를 ds = delta q_{rev}/t 로 고치세요. 비가역 과정의 ds &gt; delta q/t 도 함께 제시하세요. ">
+            <span class="pg">p273</span><span class="gr">★</span>
+            <div class="tx"><p>$dS = dQ/T$ 를 $dS = \delta Q_{rev}/T$ 로 고치세요. 비가역 과정의 $dS &gt; \delta Q/T$ 도 함께 제시하세요.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s87" title="가역 경로로 계산하는 상태 함수">역학 87</a></p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p280 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 총 열용량 c_v 와 몰 열용량 nc_v 의 기호를 구분하세요. ">
+            <span class="pg">p280</span><span class="gr">·</span>
+            <div class="tx"><p>총 열용량 $C_V$ 와 몰 열용량 $nC_V$ 의 기호를 구분하세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p285 · 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 자화 m 을 &#x27;총 자기모멘트&#x27;와 &#x27;단위 부피당 자기모멘트&#x27;로 동시에 정의했습니다. 하나로 정하세요. ">
+            <span class="pg">p285</span><span class="gr">·</span>
+            <div class="tx"><p>자화 $M$ 을 '총 자기모멘트'와 '단위 부피당 자기모멘트'로 동시에 정의했습니다. 하나로 정하세요.</p></div>
+          </li>
+          <li class="item g2" data-mat="mech" data-grade="★★" data-q="역학 p286 ★★ 열역학 (교과서 ⅰ-5·ⅰ-6, 68~95쪽에 그대로 있으므로 꼭 고칠 것) 그 식은 s 가 아니라 partial s/partial n_uparrow 입니다. 둘째 줄의 ln n_uparrow 도 ln n_uparrow! 의 오기입니다. ">
+            <span class="pg">p286</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-9">중대 오류 9번</a> 그 식은 $S$ 가 아니라 $\partial S/\partial N_\uparrow$ 입니다. 둘째 줄의 $\ln N_\uparrow$ 도 $\ln N_\uparrow!$ 의 오기입니다.</p><p class="fixed">바로잡은 곳 <a href="01-mechanics.html#s90" title="S = k ln W: 확률이 큰 상태로 간다">역학 90</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>복잡계 (교과서 밖)</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p290 · 복잡계 (교과서 밖) langle krangle = 2m/n 은 ntoinfty 가 아니어도 무방향 그래프에서 항상 성립합니다. ">
+            <span class="pg">p290</span><span class="gr">·</span>
+            <div class="tx"><p>$\langle k\rangle = 2M/N$ 은 $N\to\infty$ 가 아니어도 무방향 그래프에서 항상 성립합니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="mech" data-grade="·" data-q="역학 p298 · 복잡계 (교과서 밖) &quot;k=np&quot;는 확률변수 k 와 평균을 혼동한 것입니다. langle krangle = p(n-1)approx pn 으로 쓰세요. ">
+            <span class="pg">p298</span><span class="gr">·</span>
+            <div class="tx"><p>"$k=np$"는 확률변수 $k$ 와 평균을 혼동한 것입니다. $\langle k\rangle = p(N-1)\approx pN$ 으로 쓰세요.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="mat" data-mat="em" id="m-em">
+      <h3>전자기학 <span>· 2015 자료 357쪽</span></h3>
+      <div class="topic"><h4>개요와 역사</h4>
+        <ul class="items">
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p3 ★★ 개요와 역사 강력을 1로 두면 약력은 교과서(293쪽) 기준 약 10^{-5} 입니다 (교재에 따라 10^{-6}sim10^{-13}). 10^{-2} 는 전자기력(alphaapprox1/137)의 값입니다. ">
+            <span class="pg">p3</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-10">중대 오류 10번</a> 강력을 1로 두면 약력은 교과서(293쪽) 기준 약 $10^{-5}$ 입니다 (교재에 따라 $10^{-6}\sim10^{-13}$). $10^{-2}$ 는 전자기력($\alpha\approx1/137$)의 값입니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s2" title="이 단원에서 할 일">현대 물리 2</a> <a href="04-modern-physics.html#s88" title="네 가지 힘과 매개 입자">현대 물리 88</a></p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p7 · 개요와 역사 쿨롱의 역제곱 법칙 논문은 1785년입니다 (1784년은 비틀림 저울 논문). ">
+            <span class="pg">p7</span><span class="gr">·</span>
+            <div class="tx"><p>쿨롱의 역제곱 법칙 논문은 1785년입니다 (1784년은 비틀림 저울 논문).</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p8 ★ 개요와 역사 &quot;비오와 사바르는 자기장이 거리의 제곱에 반비례함을 알아냈다&quot;고 썼습니다. 1820년 실험 결과는 긴 직선 도선에서 bpropto 1/r 이었고, 1/r^2 는 전류 요소에 대한 미분형입니다. ">
+            <span class="pg">p8</span><span class="gr">★</span>
+            <div class="tx"><p>"비오와 사바르는 자기장이 거리의 <strong>제곱</strong>에 반비례함을 알아냈다"고 썼습니다. 1820년 실험 결과는 긴 직선 도선에서 $B\propto 1/r$ 이었고, $1/r^2$ 는 전류 요소에 대한 미분형입니다.</p></div>
+          </li>
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p10 ★★ 개요와 역사 부호 오류입니다: nablatimesvec b = +mu_0vec j + mu_0varepsilon_0,partialvec e/partial t (p318은 맞게 씀). ">
+            <span class="pg">p10</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-11">중대 오류 11번</a> 부호 오류입니다: $\nabla\times\vec B = +\mu_0\vec J + \mu_0\varepsilon_0\,\partial\vec E/\partial t$ (p318은 맞게 씀).</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s83" title="전자기학 전체를 네 줄로">전자기학 83</a></p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p13 ★ 개요와 역사 &quot;7.3e, e/2 등은 결코 되지 않는다&quot;에는 쿼크의 분수 전하(pm e/3, pm 2e/3, 가둠 현상)를 함께 언급하세요. ">
+            <span class="pg">p13</span><span class="gr">★</span>
+            <div class="tx"><p>"7.3e, e/2 등은 결코 되지 않는다"에는 쿼크의 분수 전하($\pm e/3$, $\pm 2e/3$, 가둠 현상)를 함께 언급하세요.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>전기장과 가우스 법칙</h4>
+        <ul class="items">
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p17 ★ 전기장과 가우스 법칙 varepsilon_0 를 &quot;진공이 전하를 얼마나 잘 저장하는가&quot;로 설명했습니다. 진공은 전하를 저장하지 않으니 si 단위계의 비례 상수(전기 상수)로 설명하세요. ">
+            <span class="pg">p17</span><span class="gr">★</span>
+            <div class="tx"><p>$\varepsilon_0$ 를 "진공이 전하를 얼마나 잘 저장하는가"로 설명했습니다. 진공은 전하를 저장하지 않으니 SI 단위계의 비례 상수(전기 상수)로 설명하세요.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p19 ★ 전기장과 가우스 법칙 전기장을 &quot;단위 전하(+1 c)가 받는 힘의 크기&quot;로 정의했습니다. 전기장은 벡터이고, 원천을 교란하지 않는 작은 시험 전하에 대해 vec e=limvec f/q 로 정의합니다. ">
+            <span class="pg">p19</span><span class="gr">★</span>
+            <div class="tx"><p>전기장을 "단위 전하(+1 C)가 받는 힘의 <strong>크기</strong>"로 정의했습니다. 전기장은 벡터이고, 원천을 교란하지 않는 작은 시험 전하에 대해 $\vec E=\lim\vec F/q$ 로 정의합니다.</p></div>
+          </li>
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p25·28·29 ★★ 전기장과 가우스 법칙 대칭성은 구·원통(선)·평면 세 가지입니다. 납작한 원통(필박스)은 가우스 곡면의 모양일 뿐입니다. ">
+            <span class="pg">p25·28·29</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-12">중대 오류 12번</a> 대칭성은 <strong>구·원통(선)·평면</strong> 세 가지입니다. 납작한 원통(필박스)은 가우스 곡면의 모양일 뿐입니다.</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s14" title="구, 원통(선), 평면">전자기학 14</a></p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p32 · 전기장과 가우스 법칙 δ함수 정의에 intdelta(x-a),dx = 1 조건이 빠졌습니다. ">
+            <span class="pg">p32</span><span class="gr">·</span>
+            <div class="tx"><p>δ함수 정의에 $\int\delta(x-a)\,dx = 1$ 조건이 빠졌습니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p37~40 ★ 전기장과 가우스 법칙 &quot;균일하게 대전된 유전체 구&quot;의 내부 장을 varepsilon_0 로 계산했습니다. 유전체라면 편극 때문에 e = rho r/(3varepsilon) 입니다. &#x27;편극을 무시한 부도체 구&#x27;로 표현을 바꾸세요. 교과서 ⅱ-1(99쪽 학습 목표: 도체와 유전체 주위의 전기장)이 유전체를 다루므로 특히 중요합니다.">
+            <span class="pg">p37~40</span><span class="gr">★</span>
+            <div class="tx"><p>"균일하게 대전된 <strong>유전체</strong> 구"의 내부 장을 $\varepsilon_0$ 로 계산했습니다.</p><ul><li>유전체라면 편극 때문에 $E = \rho r/(3\varepsilon)$ 입니다.</li><li>'편극을 무시한 부도체 구'로 표현을 바꾸세요. 교과서 Ⅱ-1(99쪽 학습 목표: 도체와 유전체 주위의 전기장)이 유전체를 다루므로 특히 중요합니다.</li></ul><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s17" title="고르게 대전된 부도체 구">전자기학 17</a></p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p84 · 전기장과 가우스 법칙 &quot;magentic&quot;은 magnetic으로 고치세요. ">
+            <span class="pg">p84</span><span class="gr">·</span>
+            <div class="tx"><p>"Magentic"은 Magnetic으로 고치세요.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>도체와 전기 쌍극자</h4>
+        <ul class="items">
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p86 ★ 도체와 전기 쌍극자 도체 내부 e=0 은 &#x27;정전기적 평형 조건&#x27;입니다. 정전기 차폐는 그 결과로 도체가 둘러싼 공동이 외부 장으로부터 보호되는 현상입니다 (p91의 설명이 맞음). ">
+            <span class="pg">p86</span><span class="gr">★</span>
+            <div class="tx"><p>도체 내부 $E=0$ 은 '정전기적 평형 조건'입니다. 정전기 차폐는 그 결과로 도체가 둘러싼 공동이 외부 장으로부터 보호되는 현상입니다 (p91의 설명이 맞음).</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s18" title="정전기적 평형과 정전기 차폐">전자기학 18</a></p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p95 · 도체와 전기 쌍극자 코사인 법칙의 좌변은 eta_pm^2 입니다. ">
+            <span class="pg">p95</span><span class="gr">·</span>
+            <div class="tx"><p>코사인 법칙의 좌변은 $\eta_\pm^2$ 입니다.</p></div>
+          </li>
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p99 ★★ 도체와 전기 쌍극자 멀리 있다는 것(rgg d)과 theta 는 무관합니다. 일반 방향의 쌍극자 장은 vec e = frac{p}{4pivarepsilon_0 r^3}(2costheta,hat r + sintheta,hattheta) 이고, 제시한 식은 축 위(theta=0)의 값입니다. ">
+            <span class="pg">p99</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-13">중대 오류 13번</a> 멀리 있다는 것($r\gg d$)과 $\theta$ 는 무관합니다. 일반 방향의 쌍극자 장은 $\vec E = \frac{p}{4\pi\varepsilon_0 r^3}(2\cos\theta\,\hat r + \sin\theta\,\hat\theta)$ 이고, 제시한 식은 축 위($\theta=0$)의 값입니다.</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s25" title="크기가 같고 부호가 반대인 두 전하">전자기학 25</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>전기 회로와 자성</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p130 · 전기 회로와 자성 &#x27;전압 강하&#x27;는 ir(양수)입니다. 부호를 붙이려면 &quot;전위 변화 delta v=-ir&quot;로 쓰세요. ">
+            <span class="pg">p130</span><span class="gr">·</span>
+            <div class="tx"><p>'전압 강하'는 $IR$(양수)입니다. 부호를 붙이려면 "전위 변화 $\Delta V=-IR$"로 쓰세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p151 · 전기 회로와 자성 자극 쿨롱 법칙은 자극 세기를 wb로 둘 때의 식입니다. 단위를 명시하세요. ">
+            <span class="pg">p151</span><span class="gr">·</span>
+            <div class="tx"><p>자극 쿨롱 법칙은 자극 세기를 Wb로 둘 때의 식입니다. 단위를 명시하세요.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p153 ★ 전기 회로와 자성 전이금속의 궤도 각운동량이 사라지는 원인은 &quot;궤도-격자 결합&quot;이 아니라 결정장에 의한 궤도 각운동량 소멸(quenching) 입니다. 희토류 예시 la은 4f 전자가 0개입니다. ">
+            <span class="pg">p153</span><span class="gr">★</span>
+            <div class="tx"><p>전이금속의 궤도 각운동량이 사라지는 원인은 "궤도-격자 결합"이 아니라 <strong>결정장에 의한 궤도 각운동량 소멸(quenching)</strong> 입니다. 희토류 예시 La은 4f 전자가 0개입니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p156 ★ 전기 회로와 자성 전자는 음전하이므로 vecmu_s = -frac{g e}{2m_e}vec s 입니다. 슬라이드 그림과도 맞지 않습니다. ">
+            <span class="pg">p156</span><span class="gr">★</span>
+            <div class="tx"><p>전자는 음전하이므로 $\vec\mu_S = -\frac{g e}{2m_e}\vec S$ 입니다. 슬라이드 그림과도 맞지 않습니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p159 ★ 전기 회로와 자성 자구는 강자성체(페리자성체)에만 있습니다. &#x27;금속 결정, 물질 일반&#x27;이 아닙니다. ">
+            <span class="pg">p159</span><span class="gr">★</span>
+            <div class="tx"><p>자구는 강자성체(페리자성체)에만 있습니다. '금속 결정, 물질 일반'이 아닙니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p161 · 전기 회로와 자성 &quot;자기장은 전기장이 변형된 것&quot;이라는 표현을 다듬으세요. 상대론에서 vec e 와 vec b 는 하나의 전자기장의 두 성분입니다. ">
+            <span class="pg">p161</span><span class="gr">·</span>
+            <div class="tx"><p>"자기장은 전기장이 변형된 것"이라는 표현을 다듬으세요. 상대론에서 $\vec E$ 와 $\vec B$ 는 하나의 전자기장의 두 성분입니다.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>자기력과 자기장</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p179 · 자기력과 자기장 &#x27;표면 전류 밀도 j=rho v&#x27;는 &#x27;부피 전류 밀도&#x27;의 복사 오기입니다. ">
+            <span class="pg">p179</span><span class="gr">·</span>
+            <div class="tx"><p>'표면 전류 밀도 $J=\rho v$'는 '부피 전류 밀도'의 복사 오기입니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p209 ★ 자기력과 자기장 &quot;∇·b=0 ⇒ 자기력선은 항상 폐곡선&quot;이라고 썼습니다. ∇·b=0 이 보장하는 것은 &#x27;닫힌 곡면을 지나는 알짜 자기 선속이 0(홀극 없음)&#x27;이라는 것입니다. ">
+            <span class="pg">p209</span><span class="gr">★</span>
+            <div class="tx"><p>"∇·B=0 ⇒ 자기력선은 항상 폐곡선"이라고 썼습니다. ∇·B=0 이 보장하는 것은 '닫힌 곡면을 지나는 알짜 자기 선속이 0(홀극 없음)'이라는 것입니다.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>전자기 유도와 교류 회로</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p227 · 전자기 유도와 교류 회로 렌츠 법칙은 패러데이(1831) 뒤 3년 뒤인 1834년에 발표되었습니다. ">
+            <span class="pg">p227</span><span class="gr">·</span>
+            <div class="tx"><p>렌츠 법칙은 패러데이(1831) 뒤 <strong>3년</strong> 뒤인 1834년에 발표되었습니다.</p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p255 ★ 전자기 유도와 교류 회로 미급감쇠 해 q_{max}e^{-gamma t}cosomega_d t 는 같은 초기 조건에서 근사식입니다(gammallomega_0). 정확한 해는 q_{max}e^{-gamma t}[cosomega_d t + frac{gamma}{omega_d}sinomega_d t] 입니다. ">
+            <span class="pg">p255</span><span class="gr">★</span>
+            <div class="tx"><p>미급감쇠 해 $Q_{max}e^{-\gamma t}\cos\omega_d t$ 는 같은 초기 조건에서 근사식입니다($\gamma\ll\omega_0$). 정확한 해는 $Q_{max}e^{-\gamma t}[\cos\omega_d t + \frac{\gamma}{\omega_d}\sin\omega_d t]$ 입니다.</p></div>
+          </li>
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p269 ★★ 전자기 유도와 교류 회로 delta v_{rms} = delta v_{max}/sqrt2 ">
+            <span class="pg">p269</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-14">중대 오류 14번</a> $\Delta V_{rms} = \Delta V_{\max}/\sqrt2$</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s68" title="저항, 코일, 축전기: 리액턴스와 위상">전자기학 68</a></p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p283 · 전자기 유도와 교류 회로 자유 진동의 고유 진동수와 강제 진동의 공진(x_l=x_c)을 한 식에 섞었습니다. 결과는 같지만 논리를 구분하세요. ">
+            <span class="pg">p283</span><span class="gr">·</span>
+            <div class="tx"><p>자유 진동의 고유 진동수와 강제 진동의 공진($X_L=X_C$)을 한 식에 섞었습니다. 결과는 같지만 논리를 구분하세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p284 · 전자기 유도와 교류 회로 i = i_{max}sin(omega t-phi) 로 두고 delta v_r = i_{max}rsinomega t 라 써서 위상 기준이 맞지 않습니다. ">
+            <span class="pg">p284</span><span class="gr">·</span>
+            <div class="tx"><p>$i = I_{max}\sin(\omega t-\phi)$ 로 두고 $\Delta v_R = I_{max}R\sin\omega t$ 라 써서 위상 기준이 맞지 않습니다.</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s72" title="임피던스와 위상각">전자기학 72</a></p></div>
+          </li>
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p304~305 ★★ 전자기 유도와 교류 회로 수치로 검산해 보면 미분방정식을 만족하지 않습니다. p303의 a, b 와 sindelta = 2gammaomega/square, cosdelta=(omega_0^2-omega^2)/square 로부터 q_p = frac{v_0/l}{square}sin(omega t - delta) 입니다. p305 일반해의 특수해 항도 고치세요. ">
+            <span class="pg">p304~305</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-15">중대 오류 15번</a> 수치로 검산해 보면 미분방정식을 만족하지 않습니다. p303의 $A$, $B$ 와 $\sin\Delta = 2\gamma\omega/\square$, $\cos\Delta=(\omega_0^2-\omega^2)/\square$ 로부터 <strong>$q_p = \frac{V_0/L}{\square}\sin(\omega t - \Delta)$</strong> 입니다. p305 일반해의 특수해 항도 고치세요.</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s78" title="두 가지 &#x27;진동수&#x27;를 구분하자">전자기학 78</a></p></div>
+          </li>
+          <li class="item g0" data-mat="em" data-grade="·" data-q="전자기학 p306 · 전자기 유도와 교류 회로 과도 항 xe^{-gamma t}cos(omega_d t-alpha) 는 미급감쇠일 때만 이 형태라는 단서를 붙이세요. ">
+            <span class="pg">p306</span><span class="gr">·</span>
+            <div class="tx"><p>과도 항 $Xe^{-\gamma t}\cos(\omega_d t-\alpha)$ 는 미급감쇠일 때만 이 형태라는 단서를 붙이세요.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>맥스웰 방정식과 상대론 연결</h4>
+        <ul class="items">
+          <li class="item g2" data-mat="em" data-grade="★★" data-q="전자기학 p318 ★★ 맥스웰 방정식과 상대론 연결 i_{enc} 가 빠졌습니다: mu_0 i_{enc} + mu_0varepsilon_0frac{dphi_e}{dt} ">
+            <span class="pg">p318</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-16">중대 오류 16번</a> $I_{enc}$ 가 빠졌습니다: $\mu_0 I_{enc} + \mu_0\varepsilon_0\frac{d\Phi_E}{dt}$</p><p class="fixed">바로잡은 곳 <a href="02-electromagnetism.html#s83" title="전자기학 전체를 네 줄로">전자기학 83</a></p></div>
+          </li>
+          <li class="item g1" data-mat="em" data-grade="★" data-q="전자기학 p344 ★ 맥스웰 방정식과 상대론 연결 &quot;도선 내 전자가 정지한 것처럼 보이므로 자기력을 받지 않음&quot;은 이유가 틀렸습니다. s&#x27; 에서는 양이온이 움직이므로 전류와 자기장은 여전히 있습니다. 자기력이 0인 이유는 점전하가 정지해 있기 때문입니다 (p345의 설명이 맞음).">
+            <span class="pg">p344</span><span class="gr">★</span>
+            <div class="tx"><p>"도선 내 전자가 정지한 것처럼 보이므로 자기력을 받지 않음"은 이유가 틀렸습니다.</p><ul><li>$S'$ 에서는 양이온이 움직이므로 전류와 자기장은 여전히 있습니다.</li><li>자기력이 0인 이유는 <strong>점전하가 정지</strong>해 있기 때문입니다 (p345의 설명이 맞음).</li></ul></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="mat" data-mat="qm" id="m-qm">
+      <h3>양자역학 <span>· 2015 자료 147쪽</span></h3>
+      <div class="topic"><h4>양자론의 배경</h4>
+        <ul class="items">
+          <li class="item g1" data-mat="qm" data-grade="★" data-q="양자역학 p11 ★ 양자론의 배경 플랑크(1900)가 양자화한 것은 공동 벽 진동자의 에너지(e=nhnu)입니다. 빛(복사장) 자체의 양자화는 아인슈타인(1905)입니다. ">
+            <span class="pg">p11</span><span class="gr">★</span>
+            <div class="tx"><p>플랑크(1900)가 양자화한 것은 공동 벽 <strong>진동자</strong>의 에너지($E=nh\nu$)입니다. 빛(복사장) 자체의 양자화는 아인슈타인(1905)입니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s37" title="플랑크의 양자 가설 (1900)">현대 물리 37</a></p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p16 · 양자론의 배경 u=at^4(에너지 밀도)와 슈테판-볼츠만 법칙 e=sigma t^4(방출률, =tfrac c4u)을 구분하세요. ">
+            <span class="pg">p16</span><span class="gr">·</span>
+            <div class="tx"><p>$U=aT^4$(에너지 밀도)와 슈테판-볼츠만 법칙 $E=\sigma T^4$(방출률, $=\tfrac c4U$)을 구분하세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p25 · 양자론의 배경 &quot;poetntial&quot;은 potential로 고치세요. ">
+            <span class="pg">p25</span><span class="gr">·</span>
+            <div class="tx"><p>"Poetntial"은 Potential로 고치세요.</p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p32 · 양자론의 배경 1916~17년 아인슈타인의 업적은 복사의 양자론(자극 방출, 광자의 운동량)입니다. 양자 기체는 1924~25년이고, &#x27;광자&#x27;라는 이름은 1926년 루이스가 붙였습니다. ">
+            <span class="pg">p32</span><span class="gr">·</span>
+            <div class="tx"><p>1916~17년 아인슈타인의 업적은 복사의 양자론(자극 방출, 광자의 운동량)입니다. 양자 기체는 1924~25년이고, '광자'라는 이름은 1926년 루이스가 붙였습니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p33 · 양자론의 배경 콤프턴 실험은 1922~23년입니다 (논문 1923년). ">
+            <span class="pg">p33</span><span class="gr">·</span>
+            <div class="tx"><p>콤프턴 실험은 1922~23년입니다 (논문 1923년).</p></div>
+          </li>
+          <li class="item g1" data-mat="qm" data-grade="★" data-q="양자역학 p56 ★ 양자론의 배경 데이비슨-거머 실험의 50°는 입사 빔과 산란 빔 사이의 산란각입니다. 브래그 면이 표면과 25° 기울어 있어서 theta=65^circ 가 됩니다. &#x27;결정면 각도 15°&#x27;는 오기입니다 (계산 결과 0.167 nm 자체는 맞음). ">
+            <span class="pg">p56</span><span class="gr">★</span>
+            <div class="tx"><p>데이비슨-거머 실험의 50°는 입사 빔과 산란 빔 사이의 <strong>산란각</strong>입니다. 브래그 면이 표면과 25° 기울어 있어서 $\theta=65^\circ$ 가 됩니다. '결정면 각도 15°'는 오기입니다 (계산 결과 0.167 nm 자체는 맞음).</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s49" title="드브로이 파와 데이비슨-거머 실험">현대 물리 49</a></p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p59 · 양자론의 배경 톰슨 원자 모형은 보통 1904년으로 씁니다 (1897년은 전자 발견). ">
+            <span class="pg">p59</span><span class="gr">·</span>
+            <div class="tx"><p>톰슨 원자 모형은 보통 1904년으로 씁니다 (1897년은 전자 발견).</p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p62 · 양자론의 배경 발머(1885)의 식은 lambda = bn^2/(n^2-4) 입니다. 일반화한 1/lambda = r(1/n_1^2-1/n_2^2) 는 뤼드베리(1888)의 식입니다. ">
+            <span class="pg">p62</span><span class="gr">·</span>
+            <div class="tx"><p>발머(1885)의 식은 $\lambda = Bn^2/(n^2-4)$ 입니다. 일반화한 $1/\lambda = R(1/n_1^2-1/n_2^2)$ 는 뤼드베리(1888)의 식입니다.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>파동함수와 불확정성</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p78 · 파동함수와 불확정성 파동 방정식의 해 &quot;e^{if(x,t)}&quot;에서 f 는 임의 함수가 아니라 f = kx-omega t 꼴이어야 합니다 (일반적으로 f(xpm vt)). ">
+            <span class="pg">p78</span><span class="gr">·</span>
+            <div class="tx"><p>파동 방정식의 해 "$e^{if(x,t)}$"에서 $f$ 는 임의 함수가 아니라 $f = kx-\omega t$ 꼴이어야 합니다 (일반적으로 $f(x\pm vt)$).</p></div>
+          </li>
+          <li class="item g2" data-mat="qm" data-grade="★★" data-q="양자역학 p88 ★★ 파동함수와 불확정성 폭을 정하는 값은 대문자 k 이므로 delta x = 2pi/k 입니다. 또 delta xdelta k 는 무차원이라 비교 대상은 1/2 입니다 (hbar/2 는 delta xdelta p 의 하한). ">
+            <span class="pg">p88</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-17">중대 오류 17번</a> 폭을 정하는 값은 대문자 $K$ 이므로 $\Delta x = 2\pi/K$ 입니다. 또 $\Delta x\Delta k$ 는 무차원이라 비교 대상은 $1/2$ 입니다 ($\hbar/2$ 는 $\Delta x\Delta p$ 의 하한).</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s65" title="위치와 운동량은 동시에 정확할 수 없다">현대 물리 65</a></p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p92 · 파동함수와 불확정성 lvertpsirvert^2 = (psi_1+psi_2)^(psi_1+psi_2) 로 고치세요 (절댓값 기호 오용). ">
+            <span class="pg">p92</span><span class="gr">·</span>
+            <div class="tx"><p>$\lvert\Psi\rvert^2 = (\psi_1+\psi_2)^*(\psi_1+\psi_2)$ 로 고치세요 (절댓값 기호 오용).</p></div>
+          </li>
+          <li class="item g1" data-mat="qm" data-grade="★" data-q="양자역학 p95 ★ 파동함수와 불확정성 간섭항을 &quot;파동함수 간 상호작용에 의한 항&quot;이라 했습니다. 간섭은 선형 중첩의 결과일 뿐 상호작용이 아닙니다. ">
+            <span class="pg">p95</span><span class="gr">★</span>
+            <div class="tx"><p>간섭항을 "파동함수 간 <strong>상호작용</strong>에 의한 항"이라 했습니다. 간섭은 선형 중첩의 결과일 뿐 상호작용이 아닙니다.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>슈뢰딩거 방정식과 퍼텐셜 상자</h4>
+        <ul class="items">
+          <li class="item g2" data-mat="qm" data-grade="★★" data-q="양자역학 p103 ★★ 슈뢰딩거 방정식과 퍼텐셜 상자 = e,x(x)t(t) 입니다 (p102·p104와 불일치). ">
+            <span class="pg">p103</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-18">중대 오류 18번</a> $= E\,X(x)T(t)$ 입니다 (p102·p104와 불일치).</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s69" title="파동 함수가 시간에 따라 변하는 규칙">현대 물리 69</a></p></div>
+          </li>
+          <li class="item g2" data-mat="qm" data-grade="★★" data-q="양자역학 p114 ★★ 슈뢰딩거 방정식과 퍼텐셜 상자 고유함수일 때만 성립합니다. 일반 상태는 고유값 방정식을 만족하지 않습니다. ">
+            <span class="pg">p114</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-19">중대 오류 19번</a> <strong>고유함수일 때만</strong> 성립합니다. 일반 상태는 고유값 방정식을 만족하지 않습니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s69" title="파동 함수가 시간에 따라 변하는 규칙">현대 물리 69</a></p></div>
+          </li>
+          <li class="item g2" data-mat="qm" data-grade="★★" data-q="양자역학 p122 ★★ 슈뢰딩거 방정식과 퍼텐셜 상자 정상파에서는 langle prangle = 0 이고, npihbar/l 은 delta p=sqrt{langle p^2rangle} 입니다. delta x = lsqrt{tfrac1{12}-tfrac1{2n^2pi^2}} 이므로 delta xdelta p = tfrac{hbar}{2}sqrt{tfrac{n^2pi^2}{3}-2} 입니다 (n=1 이면 0.568hbar, n=2 이면 1.67hbar; 수치 검산). ">
+            <span class="pg">p122</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-20">중대 오류 20번</a> 정상파에서는 $\langle p\rangle = 0$ 이고, $n\pi\hbar/L$ 은 $\Delta p=\sqrt{\langle p^2\rangle}$ 입니다. $\Delta x = L\sqrt{\tfrac1{12}-\tfrac1{2n^2\pi^2}}$ 이므로 $\Delta x\Delta p = \tfrac{\hbar}{2}\sqrt{\tfrac{n^2\pi^2}{3}-2}$ 입니다 ($n=1$ 이면 $0.568\hbar$, $n=2$ 이면 $1.67\hbar$; 수치 검산).</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s76" title="영점 에너지와 불확정성">현대 물리 76</a></p></div>
+          </li>
+          <li class="item g2" data-mat="qm" data-grade="★★" data-q="양자역학 p128~129 ★★ 슈뢰딩거 방정식과 퍼텐셜 상자 이 합은 어떤 n 에서도 고유함수가 아닙니다 (홀수 n 은 cos만, 짝수 n 은 sin만 해). 한 식으로 쓰려면 psi_n = sqrt{2/l},sinfrac{npi(x+l/2)}{l} 입니다. ">
+            <span class="pg">p128~129</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-21">중대 오류 21번</a> 이 합은 어떤 $n$ 에서도 고유함수가 아닙니다 (홀수 $n$ 은 cos만, 짝수 $n$ 은 sin만 해). 한 식으로 쓰려면 $\psi_n = \sqrt{2/L}\,\sin\frac{n\pi(x+L/2)}{L}$ 입니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s73" title="경계 조건이 에너지를 양자화한다">현대 물리 73</a></p></div>
+          </li>
+          <li class="item g1" data-mat="qm" data-grade="★" data-q="양자역학 p141 ★ 슈뢰딩거 방정식과 퍼텐셜 상자 광학 현미경의 분해능 &quot;약 500 nm&quot;는 틀렸습니다. 회절 한계는 약 lambda/2approx200sim250 nm 입니다. ">
+            <span class="pg">p141</span><span class="gr">★</span>
+            <div class="tx"><p>광학 현미경의 분해능 "약 500 nm"는 틀렸습니다. 회절 한계는 약 $\lambda/2\approx200\sim250$ nm 입니다.</p><p class="fixed">바로잡은 곳 <a href="03-optics.html#s44" title="레일리 기준: 두 점을 구별할 수 있는 최소 각">광학 44</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>브라-켓 표기법</h4>
+        <ul class="items">
+          <li class="item g2" data-mat="qm" data-grade="★★" data-q="양자역학 p142~143 ★★ 브라-켓 표기법 이름이 뒤바뀌었습니다. 켓 lvertpsirangle 이 열벡터이고, 브라 langlephirvert = (phi_1^ phi_2^ cdots) 가 행벡터이며 성분마다 켤레가 붙습니다. ">
+            <span class="pg">p142~143</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-22">중대 오류 22번</a> 이름이 뒤바뀌었습니다. <strong>켓</strong> $\lvert\psi\rangle$ 이 열벡터이고, <strong>브라</strong> $\langle\phi\rvert = (\phi_1^*\ \phi_2^*\ \cdots)$ 가 행벡터이며 성분마다 켤레가 붙습니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="qm" data-grade="·" data-q="양자역학 p144 · 브라-켓 표기법 hat hlvertpsirangle = elvertpsirangle 은 에너지 고유상태일 때만 성립합니다. ">
+            <span class="pg">p144</span><span class="gr">·</span>
+            <div class="tx"><p>$\hat H\lvert\psi\rangle = E\lvert\psi\rangle$ 은 에너지 고유상태일 때만 성립합니다.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="mat" data-mat="rel" id="m-rel">
+      <h3>상대성 이론 <span>· 2015 자료 101쪽</span></h3>
+      <div class="topic"><h4>특수 상대론의 배경과 로런츠 변환</h4>
+        <ul class="items">
+          <li class="item g1" data-mat="rel" data-grade="★" data-q="상대성 이론 p27 ★ 특수 상대론의 배경과 로런츠 변환 &quot;무늬 이동 없음 ⇒ 빛에는 매질이 없다!&quot;는 비약입니다. 영 결과만으로 에테르가 없다는 것이 증명되지는 않습니다 (로런츠-피츠제럴드 수축 가설로도 설명을 시도했음). &quot;광속 불변 가정으로 가장 자연스럽게 설명된다&quot;로 쓰세요.">
+            <span class="pg">p27</span><span class="gr">★</span>
+            <div class="tx"><p>"무늬 이동 없음 ⇒ 빛에는 매질이 없다!"는 비약입니다.</p><ul><li>영 결과만으로 에테르가 없다는 것이 증명되지는 않습니다 (로런츠-피츠제럴드 수축 가설로도 설명을 시도했음).</li><li>"광속 불변 가정으로 가장 자연스럽게 설명된다"로 쓰세요.</li></ul><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s10" title="마이컬슨-몰리 실험 (1887)">현대 물리 10</a></p></div>
+          </li>
+          <li class="item g0" data-mat="rel" data-grade="·" data-q="상대성 이론 p29 · 특수 상대론의 배경과 로런츠 변환 갈릴레이 변환의 불변량은 &#x27;동시각 사건 사이의 공간 거리&#x27;와 &#x27;시간 간격&#x27;입니다. ">
+            <span class="pg">p29</span><span class="gr">·</span>
+            <div class="tx"><p>갈릴레이 변환의 불변량은 '동시각 사건 사이의 공간 거리'와 '시간 간격'입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="rel" data-grade="·" data-q="상대성 이론 p31 · 특수 상대론의 배경과 로런츠 변환 &quot;b=+sinhphi 이면 모순&quot;은 모순이 아니라 부호 규약 문제입니다. ">
+            <span class="pg">p31</span><span class="gr">·</span>
+            <div class="tx"><p>"$b=+\sinh\phi$ 이면 모순"은 모순이 아니라 부호 규약 문제입니다.</p></div>
+          </li>
+          <li class="item g0" data-mat="rel" data-grade="·" data-q="상대성 이론 p32 · 특수 상대론의 배경과 로런츠 변환 cosh, tanh^2 에 인수 phi 가 빠졌습니다. ">
+            <span class="pg">p32</span><span class="gr">·</span>
+            <div class="tx"><p>$\cosh$, $\tanh^2$ 에 인수 $\phi$ 가 빠졌습니다.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>특수 상대론의 결과</h4>
+        <ul class="items">
+          <li class="item g2" data-mat="rel" data-grade="★★" data-q="상대성 이론 p51 ★★ 특수 상대론의 결과 특수 상대론만으로 완전히 해결됩니다. b가 관성계를 바꾸므로 대칭이 깨지고, b 세계선의 고유시간 int dtau 가 더 짧습니다 (p52의 동시선 그림이 바른 설명). 가속 구간을 아무리 짧게 해도 결과는 같습니다. ">
+            <span class="pg">p51</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-23">중대 오류 23번</a> 특수 상대론만으로 완전히 해결됩니다. B가 관성계를 바꾸므로 대칭이 깨지고, B 세계선의 고유시간 $\int d\tau$ 가 더 짧습니다 (p52의 동시선 그림이 바른 설명). 가속 구간을 아무리 짧게 해도 결과는 같습니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s22" title="왜 우주선에 탄 쪽이 젊은가">현대 물리 22</a></p></div>
+          </li>
+          <li class="item g1" data-mat="rel" data-grade="★" data-q="상대성 이론 p75 ★ 특수 상대론의 결과 4×4 로런츠 행렬로 변환되는 것은 4-속도 u^mu = gamma_u(c,vec u) 입니다. 3-속도 dx&#x27;/dt&#x27; 는 행렬로 선형 변환되지 않습니다 (p76의 속도 덧셈식이 비선형인 이유). ">
+            <span class="pg">p75</span><span class="gr">★</span>
+            <div class="tx"><p>4×4 로런츠 행렬로 변환되는 것은 <strong>4-속도</strong> $U^\mu = \gamma_u(c,\vec u)$ 입니다. 3-속도 $dx'/dt'$ 는 행렬로 선형 변환되지 않습니다 (p76의 속도 덧셈식이 비선형인 이유).</p></div>
+          </li>
+          <li class="item g0" data-mat="rel" data-grade="·" data-q="상대성 이론 p79 · 특수 상대론의 결과 &#x27;상대론적 질량 gamma m_0&#x27;은 오류는 아닙니다. 다만 요즘 교재는 불변 질량 m 하나만 쓰고 vec p=gamma mvec u 로 표기하는 추세입니다. ">
+            <span class="pg">p79</span><span class="gr">·</span>
+            <div class="tx"><p>'상대론적 질량 $\gamma m_0$'은 오류는 아닙니다. 다만 요즘 교재는 불변 질량 $m$ 하나만 쓰고 $\vec p=\gamma m\vec u$ 로 표기하는 추세입니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s23" title="상대론적 운동량과 에너지">현대 물리 23</a></p></div>
+          </li>
+          <li class="item chk" data-mat="rel" data-grade="chk" data-q="상대성 이론 p56, p59~71 (확인) 특수 상대론의 결과 뮤온 677 m, 헛간 역설(gamma=2, v=tfrac{sqrt3}{2}c), 2025학년도 수능 9번 풀이(ㄴ, ㄷ), 쌍둥이 13.15년을 검산했고 모두 맞습니다. ">
+            <span class="pg">p56, p59~71</span><span class="gr">확인</span>
+            <div class="tx"><p>뮤온 677 m, 헛간 역설($\gamma=2$, $v=\tfrac{\sqrt3}{2}c$), 2025학년도 수능 9번 풀이(ㄴ, ㄷ), 쌍둥이 13.15년을 검산했고 모두 맞습니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s26" title="터널을 지나는 우주선">현대 물리 26</a></p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="topic"><h4>일반 상대론</h4>
+        <ul class="items">
+          <li class="item g0" data-mat="rel" data-grade="·" data-q="상대성 이론 p88 · 일반 상대론 등가 원리 검증 정밀도는 microscope 위성(2022)으로 약 10^{-15} 까지 갱신되었습니다. ">
+            <span class="pg">p88</span><span class="gr">·</span>
+            <div class="tx"><p>등가 원리 검증 정밀도는 MICROSCOPE 위성(2022)으로 약 $10^{-15}$ 까지 갱신되었습니다.</p></div>
+          </li>
+          <li class="item g2" data-mat="rel" data-grade="★★" data-q="상대성 이론 p93 ★★ 일반 상대론 10배 큽니다. 일반 상대론 값은 4gm_odot/(c^2r_odot) = 1.75&#x27;&#x27; approx 4.9times10^{-4},^circ 입니다 (검산함). 같은 줄의 &#x27;1마일 거리 10센트 동전&#x27;(약 2.3&#x27;&#x27;) 비유와도 맞지 않습니다. ">
+            <span class="pg">p93</span><span class="gr">★★</span>
+            <div class="tx"><p><a class="toplink" href="#top-24">중대 오류 24번</a> 10배 큽니다. 일반 상대론 값은 $4GM_\odot/(c^2R_\odot) = 1.75'' \approx 4.9\times10^{-4}\,^\circ$ 입니다 (검산함). 같은 줄의 '1마일 거리 10센트 동전'(약 $2.3''$) 비유와도 맞지 않습니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s29" title="빛의 휨과 중력 렌즈">현대 물리 29</a></p></div>
+          </li>
+          <li class="item g1" data-mat="rel" data-grade="★" data-q="상대성 이론 p96 ★ 일반 상대론 &quot;슈바르츠실트 반지름보다 작게 압축되면 중력이 무한대가 되는 특이점&quot;이라고 썼습니다. r_s 는 사건의 지평선이고, 곡률이 발산하는 특이점은 중심(r=0)입니다. ">
+            <span class="pg">p96</span><span class="gr">★</span>
+            <div class="tx"><p>"슈바르츠실트 반지름보다 작게 압축되면 중력이 무한대가 되는 특이점"이라고 썼습니다. $r_s$ 는 <strong>사건의 지평선</strong>이고, 곡률이 발산하는 특이점은 중심($r=0$)입니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s33" title="블랙홀과 중력파">현대 물리 33</a></p></div>
+          </li>
+          <li class="item g1" data-mat="rel" data-grade="★" data-q="상대성 이론 p97 ★ 일반 상대론 &quot;시간이 멈추는 지점&quot;은 멀리 있는 관측자가 볼 때의 이야기입니다. 떨어지는 관측자 자신은 아무 일 없이 지평선을 통과합니다. ">
+            <span class="pg">p97</span><span class="gr">★</span>
+            <div class="tx"><p>"시간이 멈추는 지점"은 <strong>멀리 있는 관측자가 볼 때</strong>의 이야기입니다. 떨어지는 관측자 자신은 아무 일 없이 지평선을 통과합니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s33" title="블랙홀과 중력파">현대 물리 33</a></p></div>
+          </li>
+          <li class="item g0" data-mat="rel" data-grade="·" data-q="상대성 이론 p98 · 일반 상대론 ligo의 검출은 2015년 9월 14일(gw150914)이고, 2016년 2월은 발표 시점입니다. ">
+            <span class="pg">p98</span><span class="gr">·</span>
+            <div class="tx"><p>LIGO의 검출은 2015년 9월 14일(GW150914)이고, 2016년 2월은 발표 시점입니다.</p><p class="fixed">바로잡은 곳 <a href="04-modern-physics.html#s33" title="블랙홀과 중력파">현대 물리 33</a></p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <p class="empty" hidden>조건에 맞는 항목이 없습니다.</p>
+  </section>
+  <p class="small">원문은 같은 폴더 위의 verification-report.md 4장에 있습니다. 보고서를 고친 뒤 <code>python3 tools/build.py</code> 를 실행하면 이 페이지도 다시 만들어집니다.</p>
+</main>
+<script>
+(function () {
+  var state = { mat: "", grade: "" };
+  var items = Array.prototype.slice.call(document.querySelectorAll(".item"));
+  var q = document.getElementById("q");
+  function apply() {
+    var needle = (q.value || "").trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function (li) {
+      var ok = (!state.mat || li.dataset.mat === state.mat) &&
+               (!state.grade || li.dataset.grade === state.grade) &&
+               (!needle || li.dataset.q.indexOf(needle) !== -1);
+      li.hidden = !ok;
+      if (ok) shown++;
+    });
+    document.querySelectorAll(".topic, .mat").forEach(function (box) {
+      box.hidden = !box.querySelector(".item:not([hidden])");
+    });
+    document.getElementById("shown").textContent = shown;
+    document.querySelector(".empty").hidden = shown !== 0;
+  }
+  document.querySelectorAll(".chips").forEach(function (group) {
+    group.addEventListener("click", function (e) {
+      var b = e.target.closest(".chip");
+      if (!b) return;
+      group.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", c === b ? "true" : "false"); });
+      state[group.dataset.key] = b.dataset.val;
+      apply();
+    });
+  });
+  q.addEventListener("input", apply);
+})();
+</script>
+</body>
+</html>
