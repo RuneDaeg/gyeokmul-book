@@ -49,6 +49,12 @@ python3 tools/build.py
 python3 tools/make_standalone.py 경로/tex-svg.js
 ```
 
+고친 뒤에는 자동 검사로 기능이 그대로인지 확인합니다 (넘치는 슬라이드, 수식 오류, 휴대폰 화면, 발표 모드 다섯 가지 화면 크기, 시뮬레이터, 목차). 문제가 있으면 종료 코드 1 로 끝납니다.
+
+```bash
+node tools/check.js
+```
+
 PDF는 Node.js와 Playwright로 다시 만듭니다 (처음 한 번 `npm install playwright` 와 `npx playwright install chromium`).
 
 ```bash
