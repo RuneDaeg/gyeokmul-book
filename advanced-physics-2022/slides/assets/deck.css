@@ -16,6 +16,13 @@
   --ok: #2c7650;
   --ok-soft: rgba(44, 118, 80, 0.08);
   --shadow: 0 1px 2px rgba(27, 42, 54, 0.08), 0 8px 24px rgba(27, 42, 54, 0.06);
+  /* 그래프 색: 파랑·주황·청록 (색각 이상에서도 구별됨, dataviz 검사 통과). 라벨 글자는 --ink/--muted 로 쓴다 */
+  --s1: #256abf;
+  --s2: #d95926;
+  --s3: #199e70;
+  --s1-soft: rgba(37, 106, 191, 0.12);
+  --s2-soft: rgba(217, 89, 38, 0.12);
+  --s3-soft: rgba(25, 158, 112, 0.12);
 
   --f-display: "Hahmlet", "Noto Serif KR", "AppleMyungjo", "Batang", serif;
   --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
@@ -38,6 +45,12 @@
     --ok: #82cfa2;
     --ok-soft: rgba(130, 207, 162, 0.1);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+    --s1: #3987e5;
+    --s2: #d95926;
+    --s3: #199e70;
+    --s1-soft: rgba(57, 135, 229, 0.18);
+    --s2-soft: rgba(217, 89, 38, 0.18);
+    --s3-soft: rgba(25, 158, 112, 0.18);
     color-scheme: dark;
   }
 }
@@ -57,6 +70,12 @@
   --ok: #82cfa2;
   --ok-soft: rgba(130, 207, 162, 0.1);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+  --s1: #3987e5;
+  --s2: #d95926;
+  --s3: #199e70;
+  --s1-soft: rgba(57, 135, 229, 0.18);
+  --s2-soft: rgba(217, 89, 38, 0.18);
+  --s3-soft: rgba(25, 158, 112, 0.18);
   color-scheme: dark;
 }
 
@@ -252,26 +271,26 @@ figure.fig figcaption { font-size: 0.72em; color: var(--muted); }
 figure.fig.sm > svg { max-height: 19cqw; }
 .fig > svg .ax { stroke: var(--muted); stroke-width: 1.2; fill: none; }
 .fig > svg .gr { stroke: var(--line); stroke-width: 0.8; fill: none; }
-.fig > svg .c1 { stroke: var(--accent); stroke-width: 2.2; fill: none; }
+.fig > svg .c1 { stroke: var(--s1); stroke-width: 2.2; fill: none; }
 .fig > svg .c2 { stroke: var(--ink); stroke-width: 1.8; fill: none; }
-.fig > svg .c3 { stroke: var(--warm); stroke-width: 2; fill: none; }
-.fig > svg .c4 { stroke: var(--warn); stroke-width: 2; fill: none; }
+.fig > svg .c3 { stroke: var(--s2); stroke-width: 2; fill: none; }
+.fig > svg .c4 { stroke: var(--s3); stroke-width: 2; fill: none; }
 .fig > svg .dash { stroke-dasharray: 5 4; }
-.fig > svg .fA { fill: var(--accent-soft); stroke: none; }
-.fig > svg .fW { fill: var(--warn-soft); stroke: none; }
+.fig > svg .fA { fill: var(--s1-soft); stroke: none; }
+.fig > svg .fW { fill: var(--s3-soft); stroke: none; }
 .fig > svg .fInk { fill: var(--ink); stroke: none; }
-.fig > svg .fAcc { fill: var(--accent); stroke: none; }
-.fig > svg text { fill: var(--muted); font-family: var(--f-body); font-size: 13px; }
+.fig > svg .fAcc { fill: var(--s1); stroke: none; }
+.fig > svg text { fill: var(--muted); font-family: var(--f-body); font-size: 14px; }
 .fig > svg text.t-ink { fill: var(--ink); }
-.fig > svg text.t-acc { fill: var(--accent); }
-.fig > svg text.t-warm { fill: var(--warm); }
-.fig > svg text.t-warn { fill: var(--warn); }
+.fig > svg text.t-acc { fill: var(--ink); font-weight: 600; }
+.fig > svg text.t-warm { fill: var(--ink); font-weight: 600; }
+.fig > svg text.t-warn { fill: var(--ink); font-weight: 600; }
 /* 라벨 속 수식 (MathJax SVG, currentColor) */
 .fig > svg g.mlab { color: var(--muted); }
 .fig > svg g.mlab.t-ink { color: var(--ink); }
-.fig > svg g.mlab.t-acc { color: var(--accent); }
-.fig > svg g.mlab.t-warm { color: var(--warm); }
-.fig > svg g.mlab.t-warn { color: var(--warn); }
+.fig > svg g.mlab.t-acc { color: var(--ink); }
+.fig > svg g.mlab.t-warm { color: var(--ink); }
+.fig > svg g.mlab.t-warn { color: var(--ink); }
 .fig > svg g.mlab svg [stroke-width="0"] { stroke: none; }
 
 /* 단계별 유도: 번호 · 설명 한 줄 · 그 아래 식. 한 쪽을 넘으면 다음 쪽으로 나누고 번호를 잇는다 */
@@ -518,6 +537,13 @@ body.toc-open { overflow: hidden; }
   --ok: #2c7650;
   --ok-soft: rgba(44, 118, 80, 0.08);
   --shadow: 0 1px 2px rgba(27, 42, 54, 0.08), 0 8px 24px rgba(27, 42, 54, 0.06);
+  /* 그래프 색: 파랑·주황·청록 (색각 이상에서도 구별됨, dataviz 검사 통과). 라벨 글자는 --ink/--muted 로 쓴다 */
+  --s1: #256abf;
+  --s2: #d95926;
+  --s3: #199e70;
+  --s1-soft: rgba(37, 106, 191, 0.12);
+  --s2-soft: rgba(217, 89, 38, 0.12);
+  --s3-soft: rgba(25, 158, 112, 0.12);
 
   }
   html, body { background: #fff !important; }
@@ -558,12 +584,20 @@ body.toc-open { overflow: hidden; }
 }
 
 /* ---------- 목록 페이지 ---------- */
-.home { max-width: 980px; margin: 0 auto; padding-block: 48px 72px; display: flex; flex-direction: column; gap: 40px; }
+.home { max-width: 980px; margin: 0 auto; padding-block: 48px 72px; display: flex; flex-direction: column; gap: 40px; word-break: keep-all; overflow-wrap: break-word; }
 .home-head { display: flex; flex-direction: column; gap: 10px; }
 .home-head .kicker { font-size: 12px; }
 .home-head h1 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(32px, 6vw, 52px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
 .home-head .lede { margin: 0; max-width: 62ch; color: var(--muted); font-size: 17px; }
-.decks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.decks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+/* OT 는 네 단원 앞의 준비 단계라 한 줄 전체를 쓰고, 단원 Ⅰ~Ⅳ 가 한 줄에 나란히 선다 */
+.decks > .deck-card:first-child { grid-column: 1 / -1; }
+.decks > .deck-card:first-child .d { max-width: 60em; }
+/* 단원 카드: 좁은 칸이므로 번호를 제목 위에 두고 설명이 칸 너비를 다 쓰게 한다 */
+.decks > .deck-card:not(:first-child) a { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; }
+.decks > .deck-card:not(:first-child) .no { grid-row: auto; font-size: 26px; min-width: 0; }
+@media (max-width: 980px) { .decks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .decks { grid-template-columns: minmax(0, 1fr); } }
 .deck-card a {
   height: 100%;
   display: grid;
