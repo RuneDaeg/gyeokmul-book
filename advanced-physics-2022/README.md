@@ -43,6 +43,12 @@ python3 tools/build.py
 
 를 실행하면 `slides/` 가 다시 만들어집니다. 오류 목록 페이지(`slides/errors.html`)도 이때 `verification-report.md` 4장에서 새로 만들어집니다. 원고에서 `{{fig:이름}}` 자리에 그림이 들어가고, 쪽 번호와 머리말은 자동으로 붙습니다.
 
+인터넷 없이 파일 하나로 열리는 HTML(덱마다 한 파일, 수식 엔진과 시뮬레이터 포함)은 다음으로 만듭니다. `dist/고급물리학-2022-html/` 폴더와 같은 이름의 zip 이 생기고, 저장소에는 올리지 않습니다. MathJax 3.2.2 의 `es5/tex-svg.js` 경로를 주면 수식도 파일 안에 넣습니다 (`npm pack mathjax@3.2.2` 로 받을 수 있음).
+
+```bash
+python3 tools/make_standalone.py 경로/tex-svg.js
+```
+
 PDF는 Node.js와 Playwright로 다시 만듭니다 (처음 한 번 `npm install playwright` 와 `npx playwright install chromium`).
 
 ```bash
