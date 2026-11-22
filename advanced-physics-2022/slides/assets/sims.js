@@ -3,16 +3,19 @@
 (function () {
   "use strict";
   var W = 640, H = 340;
-  var LIGHT = { ink: "#1b2a36", muted: "#586a73", line: "#c6d3d1", accent: "#1f5fa6", soft: "rgba(31,95,166,0.12)",
-                warm: "#9a5b12", warn: "#b3452c", ok: "#2c7650", paper: "#fbfcfa" };
+  // 그래프 색: accent·warm·ok 는 그래프 세 색(파랑·주황·청록), warn 은 표시선·강조점이라 무채색(글자 색)으로 둔다
+  var LIGHT = { ink: "#1b2a36", muted: "#586a73", line: "#c6d3d1", accent: "#256abf", soft: "rgba(37,106,191,0.12)",
+                warm: "#d95926", warn: "#1b2a36", ok: "#199e70", paper: "#fbfcfa" };
+  var FS = 1.18;      // 라벨 글자 배율: 본문 글자와 너무 차이 나지 않게
+  var CUR = LIGHT;    // 지금 그리는 테마 (txt 가 라벨 글자 색을 고를 때 씀)
   var printing = false;
 
   function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
   function theme() {
     if (printing) return LIGHT;
-    var t = { ink: cssVar("--ink"), muted: cssVar("--muted"), line: cssVar("--line"), accent: cssVar("--accent"),
-              soft: cssVar("--accent-soft"), warm: cssVar("--warm"), warn: cssVar("--warn"), ok: cssVar("--ok"), paper: cssVar("--paper") };
-    return t.ink ? t : LIGHT;
+    var t = { ink: cssVar("--ink"), muted: cssVar("--muted"), line: cssVar("--line"), accent: cssVar("--s1"),
+              soft: cssVar("--s1-soft"), warm: cssVar("--s2"), warn: cssVar("--ink"), ok: cssVar("--s3"), paper: cssVar("--paper") };
+    return t.ink && t.accent ? t : LIGHT;
   }
   function num(x, d) { return (Math.abs(x) < 0.5 * Math.pow(10, -d) ? 0 : x).toFixed(d).replace("-", "−"); }
   function signed(x, d) { return (x >= 0 ? "+" : "") + num(x, d); }
@@ -22,9 +25,12 @@
     c.save(); c.beginPath(); c.setLineDash(dash || []); c.strokeStyle = color; c.lineWidth = w || 1.5;
     c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke(); c.restore();
   }
+  // 라벨 글자는 그래프 색이 아니라 글자 색으로 쓴다 (선 옆에 놓아 어느 선인지 알 수 있게 한다)
   function txt(c, s, x, y, color, align, size, weight) {
-    c.save(); c.fillStyle = color; c.textAlign = align || "left"; c.textBaseline = "middle";
-    c.font = (weight || 400) + " " + (size || 12) + "px " + FONT; c.fillText(s, x, y); c.restore();
+    var col = color === CUR.accent || color === CUR.warm || color === CUR.ok ? CUR.ink : color;
+    var w = weight || (col !== color ? 600 : 400);
+    c.save(); c.fillStyle = col; c.textAlign = align || "left"; c.textBaseline = "middle";
+    c.font = w + " " + ((size || 12) * FS).toFixed(1) + "px " + FONT; c.fillText(s, x, y); c.restore();
   }
   function dot(c, x, y, r, fill, stroke) {
     c.save(); c.beginPath(); c.arc(x, y, r, 0, 2 * Math.PI);
@@ -178,7 +184,7 @@
         c.beginPath(); c.rect(xa, p.Y(r2), wd, p.Y(0) - p.Y(r2)); c.fill(); c.stroke();
       }
       p.curve(function (x) { return (x - a) * (x - a); }, t.ink, 2.2);
-      seg(c, p.X(a), 22, p.X(a), 300, t.warn, 1.8, [7, 4]);
+      seg(c, p.X(a), 22, p.X(a), 300, t.warm, 2, [7, 4]);
       txt(c, "회전축", p.X(a) + (a > 0.85 ? -8 : 8), 26, t.warn, a > 0.85 ? "right" : "left", 12, 600);
       dot(c, p.X(0.5), 53, 4, t.paper, t.ink);
       txt(c, "질량 중심", p.X(0.5), 80, t.muted, "center", 11);
@@ -379,7 +385,7 @@
       }
       c.restore();
       if (Math.abs(q) <= XR && Math.abs(hi) <= 33) {
-        arrow(c, X(q), cy, X(q), Y(hi), t.warn, 2.6, virt ? [5, 4] : null);
+        arrow(c, X(q), cy, X(q), Y(hi), t.ok, 2.6, virt ? [5, 4] : null);
         txt(c, virt ? "허상" : "실상", X(q), Y(hi) + (hi > 0 ? -12 : 13), t.warn, "center", 12, 600);
       } else txt(c, "상이 화면 밖에 있다", cx, 22, t.warn, "center", 12);
       var am = Math.abs(q / pp);
@@ -522,7 +528,7 @@
         }
       });
       Q.forEach(function (q) {
-        var col = q[2] > 0 ? t.warn : q[2] < 0 ? t.accent : t.muted;
+        var col = q[2] > 0 ? t.warm : q[2] < 0 ? t.accent : t.muted;
         dot(c, cx + sc * q[0], cy, 11, t.paper, col);
         txt(c, q[2] > 0 ? "+" : q[2] < 0 ? "−" : "0", cx + sc * q[0], cy + 0.5, col, "center", 15, 700);
       });
@@ -562,7 +568,7 @@
       arrow(c, px, py, px + L * vx, py - L * vy, t.ok, 2.2);
       txt(c, "v", px + (L + 10) * vx, py - (L + 10) * vy, t.ok, "center", 13, 600);
       if (r * sc > 20) { arrow(c, px, py, px + (cx - px) * 0.45, py + (cy - py) * 0.45, t.warn, 2.2); txt(c, "F", px + (cx - px) * 0.55, py + (cy - py) * 0.55, t.warn, "center", 13, 600); }
-      dot(c, px, py, 6, K[1] > 0 ? t.warn : t.accent);
+      dot(c, px, py, 6, K[1] > 0 ? t.warm : t.accent);
       return { r: num(r * 100, 1) + " cm", T: num(T * 1e6, 3) + " μs", f: num(1e-6 / T, 2) + " MHz", W: "0 (F ⊥ v)" };
     },
     step: function () { return true; }
@@ -890,14 +896,14 @@
       for (var x = 380; x < 750; x += 3) { var q = waveRGB(x); c.save(); c.globalAlpha = 0.18; c.fillStyle = "rgb(" + q.map(Math.round).join(",") + ")"; c.fillRect(p.X(x), 28, p.X(x + 3) - p.X(x) + 0.5, 272); c.restore(); }
       p.axes([0, 500, 1000, 1500, 2000, 2500, 3000], ticks);
       if (Math.abs(T - 5800) > 1) p.curve(function (l) { return B(l, 5800) / sunPk; }, t.muted, 1.4, [5, 4], 400, 1, 3000);
-      if (v.rj === "1") p.curve(function (l) { return RJ(l, T) / sunPk; }, t.warn, 1.8, [6, 4], 400, 100, 3000);
+      if (v.rj === "1") p.curve(function (l) { return RJ(l, T) / sunPk; }, t.warm, 2, [6, 4], 400, 100, 3000);
       p.curve(function (l) { return B(l, T) / sunPk; }, t.accent, 2.6, null, 500, 1, 3000);
       var lp = 2.898e6 / T;
       seg(c, p.X(lp), p.Y(0), p.X(lp), p.Y(pk), t.accent, 1.2, [3, 3]);
       txt(c, "λmax = " + num(lp, 0) + " nm", p.X(lp) + 6, p.Y(pk) - 10, t.accent, "left", 12, 600);
       var items = [["플랑크 (" + T + " K)", t.accent]];
       if (Math.abs(T - 5800) > 1) items.push(["태양 5800 K", t.muted, [5, 4]]);
-      if (v.rj === "1") items.push(["고전 이론: 짧은 파장에서 무한대", t.warn, [6, 4]]);
+      if (v.rj === "1") items.push(["고전 이론: 짧은 파장에서 무한대", t.warm, [6, 4]]);
       legend(c, t, 380, 50, items);
       var P = 5.67e-8 * Math.pow(T, 4);
       return { wien: num(lp, 0) + " nm", P: num(P / 1e6, 1) + " MW", sun: num(Math.pow(T / 5800, 4), 2) + " 배",
@@ -986,7 +992,7 @@
       labRegions.forEach(function (r) { var a = lamOf(r[0], 40), b = lamOf(r[0], r[0] + 1); if (a < 2200) txt(c, r[1], (X(a) + X(Math.min(b, 2200))) / 2, 206 + 14 * (r[0] % 2), t.muted, "center", 11); });
       if (ni === nf) { txt(c, "같은 준위: 전이가 없다", 145, 320, t.warn, "center", 12, 600); return { dE: "0", lam: "–", ser: "–", reg: "–" }; }
       var x0 = 150, ya = Y(E(ni)), yb = Y(E(nf));
-      arrow(c, x0, ya, x0, yb, em ? t.warn : t.ok, 2.6);
+      arrow(c, x0, ya, x0, yb, em ? t.warm : t.ok, 2.6);
       txt(c, em ? "빛을 낸다 (방출)" : "빛을 흡수한다", x0 + 10, (ya + yb) / 2, em ? t.warn : t.ok, "left", 12, 600);
       var lam = lamOf(lo, hi), dE = 13.6 * (1 / (lo * lo) - 1 / (hi * hi));
       txt(c, (em ? "방출선 " : "흡수선 ") + num(lam, 1) + " nm", X(lam), 240, t.ink, X(lam) > 560 ? "right" : "center", 12, 600);
@@ -1027,7 +1033,7 @@
       p.axes([], [2, 4, 6]);
       c.fillStyle = t.soft; c.fillRect(p.X(0), p.Y(U), p.X(L) - p.X(0), p.Y(0) - p.Y(U));
       c.beginPath(); c.strokeStyle = t.ink; c.lineWidth = 2; c.moveTo(p.X(-1.5), p.Y(0)); c.lineTo(p.X(0), p.Y(0)); c.lineTo(p.X(0), p.Y(U)); c.lineTo(p.X(L), p.Y(U)); c.lineTo(p.X(L), p.Y(0)); c.lineTo(p.X(3), p.Y(0)); c.stroke();
-      seg(c, p.X(-1.5), p.Y(v.E), p.X(3), p.Y(v.E), t.warn, 1.6, [6, 4]);
+      seg(c, p.X(-1.5), p.Y(v.E), p.X(3), p.Y(v.E), t.warm, 2, [6, 4]);
       txt(c, "E", p.X(-1.4), p.Y(v.E) - 8, t.warn, "left", 12, 600); txt(c, "U", p.X(L) + 6, p.Y(U) + 8, t.ink, "left", 12, 600);
       var q = new Plot(c, t, [56, 140, 620, 300], [-1.5, 3], [0, 4.4]);
       q.axes([-1, 0, 1, 2, 3], [1, 2, 3, 4]);
@@ -1101,7 +1107,8 @@
       var c = canvas.getContext("2d");
       c.setTransform(pw / W, 0, 0, pw / W, 0, 0); c.clearRect(0, 0, W, H);
       c.lineJoin = "round"; c.lineCap = "round";
-      var res = def.draw(c, v, theme(), st) || {};
+      CUR = theme();
+      var res = def.draw(c, v, CUR, st) || {};
       Object.keys(outs).forEach(function (k) { if (k in res) outs[k].textContent = res[k]; });
     }
     function tick(ts) {

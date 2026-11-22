@@ -53,6 +53,11 @@ class Plot:
         return svg(self.w, self.h, inner, label)
 
 
+def _swatch(x, y, cls):
+    """범례 선 견본: 글자(기준선 y, 왼쪽 끝 x) 바로 앞에 짧은 선을 그린다."""
+    return f'<path class="{cls}" d="M{x - 30:.0f},{y - 5:.0f} H{x - 8:.0f}"/>'
+
+
 TEXT_RE = re.compile(r"<text([^>]*)>([^<]*\$[^<]*)</text>")
 
 
@@ -204,11 +209,12 @@ def resonance():
         labels.append((Q, cls))
     inner.append(f'<path class="ax dash" d="M{p.X(1):.0f},{p.Y(0):.0f} V{p.Y(1.04):.0f}"/>')
     inner.append(f'<text x="{p.X(1):.0f}" y="{p.h - 18}" text-anchor="middle">1</text>')
-    y = 44
+    y = 46
     for Q, cls in labels:
-        tcls = {"c1": "t-acc", "c3": "t-warm", "c2": "t-ink"}[cls]
-        inner.append(f'<text x="{p.X(0.44):.0f}" y="{y}" class="{tcls}">$Q = {Q}$</text>')
-        y += 18
+        x0 = p.X(0.44) + 30
+        inner.append(_swatch(x0, y, cls))
+        inner.append(f'<text x="{x0:.0f}" y="{y}" class="t-ink">$Q = {Q}$</text>')
+        y += 20
     return p.svg("\n".join(inner), "RLC 직렬 회로의 공진 곡선, Q 인자 10, 4, 2")
 
 
@@ -244,11 +250,11 @@ def lens():
     hi = -ho * si / s
     ox, ix = cx - s, cx + si
     inner = [f'<path class="ax" d="M10,{ay} H{w - 10}"/>',
-             f'<path class="c2" d="M{cx},{ay - 92} Q{cx + 16},{ay} {cx},{ay + 92} Q{cx - 16},{ay} {cx},{ay - 92} Z" style="fill:var(--accent-soft)"/>',
+             f'<path class="c2" d="M{cx},{ay - 92} Q{cx + 16},{ay} {cx},{ay + 92} Q{cx - 16},{ay} {cx},{ay - 92} Z" style="fill:var(--s1-soft)"/>',
              f'<path class="c2" d="M{ox},{ay} V{ay - ho}"/>',
              f'<path class="fInk" d="M{ox - 5},{ay - ho + 8} L{ox},{ay - ho} L{ox + 5},{ay - ho + 8} Z"/>',
              f'<path class="c4" d="M{ix:.1f},{ay} V{ay - hi:.1f}"/>',
-             f'<path class="fW" d="M{ix - 5:.1f},{ay - hi - 8:.1f} L{ix:.1f},{ay - hi:.1f} L{ix + 5:.1f},{ay - hi - 8:.1f} Z" style="fill:var(--warn)"/>']
+             f'<path class="fW" d="M{ix - 5:.1f},{ay - hi - 8:.1f} L{ix:.1f},{ay - hi:.1f} L{ix + 5:.1f},{ay - hi - 8:.1f} Z" style="fill:var(--s3)"/>']
     for fx, lab in ((cx - f, "$F$"), (cx + f, "$F'$")):
         inner.append(f'<circle cx="{fx}" cy="{ay}" r="3" class="fInk"/>')
         inner.append(f'<text x="{fx}" y="{ay + 18}" text-anchor="middle" class="t-ink">{lab}</text>')
@@ -312,9 +318,12 @@ def slits():
     inner = [p.axes("$a\\sin\\theta/\\lambda$", "$I$"), p.curve(two, n=1600), p.curve(single, cls="c3 dash", n=600)]
     for u in (-3, -2, -1, 1, 2, 3):
         inner.append(f'<text x="{p.X(u):.0f}" y="{p.h - 18}" text-anchor="middle">{u}</text>')
-    inner += [f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.78):.0f}" class="t-warm">단일 슬릿 회절 포락선</text>',
-              f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.62):.0f}" class="t-acc">이중 슬릿 ($d = 4a$)</text>',
-              f'<text x="{p.X(1.15):.0f}" y="{p.Y(0.48):.0f}">4번째 밝은 무늬가 사라진다</text>']
+    x0 = p.X(0.85) + 30
+    inner += [_swatch(x0, p.Y(0.80), "c3 dash"),
+              f'<text x="{x0:.0f}" y="{p.Y(0.80):.0f}" class="t-ink">단일 슬릿 회절 포락선</text>',
+              _swatch(x0, p.Y(0.64), "c1"),
+              f'<text x="{x0:.0f}" y="{p.Y(0.64):.0f}" class="t-ink">이중 슬릿 ($d = 4a$)</text>',
+              f'<text x="{x0:.0f}" y="{p.Y(0.48):.0f}">$m = \\pm4$ 차수가 빠진다</text>']
     return p.svg("\n".join(inner), "이중 슬릿 간섭 무늬와 단일 슬릿 회절 포락선")
 
 
@@ -331,8 +340,10 @@ def grating():
              p.curve(lambda u: g(u, 8), cls="c1", n=1600)]
     for u in (-1, 0, 1):
         inner.append(f'<text x="{p.X(u):.0f}" y="{p.h - 18}" text-anchor="middle">$m = {u}$</text>')
-    inner += [f'<text x="{p.X(-0.62):.0f}" y="{p.t - 6}" class="t-warm">$N = 2$</text>',
-              f'<text x="{p.X(0.2):.0f}" y="{p.t - 6}" class="t-acc">$N = 8$: 극대가 날카롭다</text>']
+    inner += [_swatch(p.X(-0.62) + 30, p.t - 6, "c3"),
+              f'<text x="{p.X(-0.62) + 30:.0f}" y="{p.t - 6}" class="t-ink">$N = 2$</text>',
+              _swatch(p.X(0.2) + 30, p.t - 6, "c1"),
+              f'<text x="{p.X(0.2) + 30:.0f}" y="{p.t - 6}" class="t-ink">$N = 8$: 극대가 날카롭다</text>']
     return p.svg("\n".join(inner), "슬릿 수 N이 2와 8일 때 회절격자의 세기 분포")
 
 
@@ -352,7 +363,8 @@ def blackbody():
         lm = 2.898e-3 / T * 1e9
         inner.append(f'<circle cx="{p.X(lm):.1f}" cy="{p.Y(B(lm, T) / peak):.1f}" r="3" class="fInk"/>')
         # 범례는 곡선이 없는 오른쪽 위에 모은다
-        inner.append(f'<text x="{p.X(1550):.0f}" y="{p.Y(1.0 - 0.13 * i):.0f}" class="{tc}">{T} K · $\\lambda_{{max}} \\approx {lm:.0f}$ nm</text>')
+        inner.append(_swatch(p.X(1550), p.Y(1.0 - 0.13 * i), cls))
+        inner.append(f'<text x="{p.X(1550):.0f}" y="{p.Y(1.0 - 0.13 * i):.0f}" class="t-ink">{T} K · $\\lambda_{{max}} \\approx {lm:.0f}$ nm</text>')
     inner.append(f'<path class="fA" d="M{p.X(380):.1f},{p.Y(0):.1f} H{p.X(750):.1f} V{p.Y(1.1):.1f} H{p.X(380):.1f} Z"/>')
     inner.append(f'<text x="{p.X(565):.0f}" y="{p.h - 18}" text-anchor="middle" class="t-acc">가시광</text>')
     for lv in (1000, 2000):
@@ -440,9 +452,9 @@ def bands():
         bw = 110
         # 전도띠 (위), 원자가띠 (아래); y 는 위로 갈수록 에너지 큼
         inner.append(f'<path class="c2" d="M{x},{cb[0]} H{x + bw} V{cb[1]} H{x} Z" style="fill:var(--paper)"/>')
-        inner.append(f'<path class="c2" d="M{x},{vb[0]} H{x + bw} V{vb[1]} H{x} Z" style="fill:var(--accent-soft)"/>')
+        inner.append(f'<path class="c2" d="M{x},{vb[0]} H{x + bw} V{vb[1]} H{x} Z" style="fill:var(--s1-soft)"/>')
         if overlap:
-            inner.append(f'<path class="fA" d="M{x},{cb[1] - 26} H{x + bw} V{cb[1]} H{x} Z" style="fill:var(--accent-soft)"/>')
+            inner.append(f'<path class="fA" d="M{x},{cb[1] - 26} H{x + bw} V{cb[1]} H{x} Z" style="fill:var(--s1-soft)"/>')
             inner.append(f'<text x="{x + bw / 2}" y="{cb[1] - 32}" text-anchor="middle" class="t-acc">일부만 채워짐</text>')
         else:
             gap = vb[0] - cb[1]
@@ -471,7 +483,7 @@ def twin():
 
 
 # ---------------------------------------------------------------- 조각으로 나누어 더하기 (구분구적)
-_COL = {"c1": "var(--accent)", "c2": "var(--ink)", "c3": "var(--warm)", "c4": "var(--warn)", "ax": "var(--muted)"}
+_COL = {"c1": "var(--s1)", "c2": "var(--ink)", "c3": "var(--s2)", "c4": "var(--s3)", "ax": "var(--muted)"}
 
 
 def _arrow(x1, y1, x2, y2, cls="c2", head=8, dash=False):
@@ -562,7 +574,7 @@ def disk_rings():
     def ell(r):
         return f"M{cx},{cy - r} A{r * k:.1f},{r} 0 1 1 {cx},{cy + r} A{r * k:.1f},{r} 0 1 1 {cx},{cy - r} Z"
     inner = [f'<ellipse class="fA" cx="{cx}" cy="{cy}" rx="{R * k:.1f}" ry="{R}"/>',
-             f'<path d="{ell(r1)} {ell(r0)}" fill-rule="evenodd" style="fill:var(--accent);opacity:0.55"/>',
+             f'<path d="{ell(r1)} {ell(r0)}" fill-rule="evenodd" style="fill:var(--s1);opacity:0.55"/>',
              f'<ellipse class="c2" cx="{cx}" cy="{cy}" rx="{R * k:.1f}" ry="{R}"/>',
              _arrow(24, cy, 388, cy, "ax", head=7),
              f'<text x="386" y="{cy + 18}" text-anchor="end">축</text>',
@@ -604,7 +616,7 @@ def biot_wire():
              _arc(ox, py, 36, -90, -90 + th),
              f'<text x="{ox + 14}" y="{py + 54}" class="t-ink">$\\theta$</text>',
              f'<circle cx="{ox}" cy="{py}" r="8" class="c3" style="fill:var(--paper)"/>',
-             f'<circle cx="{ox}" cy="{py}" r="2.6" style="fill:var(--warm)"/>',
+             f'<circle cx="{ox}" cy="{py}" r="2.6" style="fill:var(--s2)"/>',
              f'<text x="{ox - 14}" y="{py + 4}" text-anchor="end" class="t-ink">P</text>',
              f'<text x="{ox + 16}" y="{py - 6}" class="t-warm">$d\\vec B$: 지면에서 나오는 방향</text>']
     return svg(w, h, "\n".join(inner), "직선 도선의 전류 요소 dx 가 거리 s 인 점 P에 만드는 자기장의 기하")
@@ -621,7 +633,7 @@ def inertia_slices():
     inner = [  # 원판 (위에서 본 모습): 축은 중심을 지나 지면에 수직
         f'<circle class="fA" cx="{c1x}" cy="{cy}" r="{R}"/>',
         f'<path d="M{c1x - r1},{cy} a{r1},{r1} 0 1 0 {2 * r1},0 a{r1},{r1} 0 1 0 {-2 * r1},0 Z '
-        f'M{c1x - r0},{cy} a{r0},{r0} 0 1 0 {2 * r0},0 a{r0},{r0} 0 1 0 {-2 * r0},0 Z" fill-rule="evenodd" style="fill:var(--accent);opacity:0.55"/>',
+        f'M{c1x - r0},{cy} a{r0},{r0} 0 1 0 {2 * r0},0 a{r0},{r0} 0 1 0 {-2 * r0},0 Z" fill-rule="evenodd" style="fill:var(--s1);opacity:0.55"/>',
         f'<circle class="c2" cx="{c1x}" cy="{cy}" r="{R}"/>',
         f'<circle cx="{c1x}" cy="{cy}" r="3.5" class="fInk"/>',
         f'<text x="{c1x - 8}" y="{cy + 16}" text-anchor="end">축</text>',
@@ -635,7 +647,7 @@ def inertia_slices():
         f'<text x="{c1x}" y="{cy + R + 48}" text-anchor="middle" class="t-acc">$dm = \\sigma\\,2\\pi r\\,dr$</text>',
         # 구 (옆에서 본 모습): 축은 세로
         f'<circle class="fA" cx="{c2x}" cy="{cy}" r="{R}"/>',
-        f'<ellipse cx="{c2x}" cy="{cy - z}" rx="{rz:.1f}" ry="9" style="fill:var(--accent);opacity:0.55"/>',
+        f'<ellipse cx="{c2x}" cy="{cy - z}" rx="{rz:.1f}" ry="9" style="fill:var(--s1);opacity:0.55"/>',
         f'<ellipse class="c1" cx="{c2x}" cy="{cy - z}" rx="{rz:.1f}" ry="9" style="stroke-width:1.4"/>',
         f'<circle class="c2" cx="{c2x}" cy="{cy}" r="{R}"/>',
         f'<path class="ax" d="M{c2x},{cy - R - 16} V{cy + R + 8}" stroke-dasharray="8 3 2 3"/>',
@@ -644,7 +656,6 @@ def inertia_slices():
         f'<text x="{c2x - 6}" y="{cy - z / 2 + 6:.0f}" text-anchor="end" class="t-ink">$z$</text>',
         f'<path class="ax" d="M{c2x},{cy} L{c2x + rz:.1f},{cy - z}"/>',
         f'<text x="{c2x + rz / 2 + 4:.0f}" y="{cy - z / 2 + 16:.0f}" class="t-ink">$R$</text>',
-        f'<text x="{c2x}" y="{cy + 44}" text-anchor="middle" class="t-ink">조각의 반지름 $\\sqrt{{R^2 - z^2}}$</text>',
         f'<text x="{c2x + rz + 6:.0f}" y="{cy - z + 5}" class="t-acc">$dz$</text>',
         f'<text x="{c2x}" y="{cy + R + 26}" text-anchor="middle" class="t-ink">구 → 얇은 원판</text>',
         f'<text x="{c2x}" y="{cy + R + 48}" text-anchor="middle" class="t-acc">$dm = \\rho\\,\\pi(R^2 - z^2)\\,dz$</text>']
@@ -661,7 +672,7 @@ def cm_slices():
     for i in range(n):
         xa = x0 + (x1 - x0) * i / n
         inner.append(f'<rect x="{xa:.1f}" y="{ry - 9}" width="{(x1 - x0) / n + 0.5:.1f}" height="18" '
-                     f'style="fill:var(--accent);opacity:{0.08 + 0.62 * (i + 0.5) / n:.2f}"/>')
+                     f'style="fill:var(--s1);opacity:{0.08 + 0.62 * (i + 0.5) / n:.2f}"/>')
     xe = x0 + (x1 - x0) * 0.56
     xc = x0 + (x1 - x0) * 2 / 3
     inner += [f'<rect class="c2" x="{x0}" y="{ry - 9}" width="{x1 - x0}" height="18"/>',
@@ -697,7 +708,7 @@ def cm_slices():
     inner += [f'<path class="fA" d="M{cx - R},{cy} A{R},{R} 0 0 1 {cx + R},{cy} Z"/>',
               f'<path class="c2" d="M{cx - R},{cy} A{R},{R} 0 0 1 {cx + R},{cy} Z"/>',
               f'<path d="M{pts[0][0]:.1f},{pts[0][1]:.1f} L{pts[1][0]:.1f},{pts[1][1]:.1f} A{r1},{r1} 0 0 0 {pts[2][0]:.1f},{pts[2][1]:.1f} '
-              f'L{pts[3][0]:.1f},{pts[3][1]:.1f} A{r0},{r0} 0 0 1 {pts[0][0]:.1f},{pts[0][1]:.1f} Z" style="fill:var(--accent);opacity:0.7"/>',
+              f'L{pts[3][0]:.1f},{pts[3][1]:.1f} A{r0},{r0} 0 0 1 {pts[0][0]:.1f},{pts[0][1]:.1f} Z" style="fill:var(--s1);opacity:0.7"/>',
               f'<path class="ax" d="M{cx},{cy} L{pts[0][0]:.1f},{pts[0][1]:.1f}"/>',
               f'<text x="{cx + 20}" y="{cy - 12}" class="t-ink">$r$</text>',
               f'<text x="{cx + 6}" y="{cy - R - 8}" text-anchor="middle" class="t-acc">$dA = r\\,dr\\,d\\theta$</text>',
@@ -719,11 +730,11 @@ def cradle():
     inner = [f'<path class="c2" d="M{xs[0] - 50},{py} H{xs[4] + 50}" style="stroke-width:5"/>']
     for x in xs[1:]:
         inner.append(f'<path class="ax" d="M{x},{py} V{py + L}"/>')
-        inner.append(f'<circle class="c2" cx="{x}" cy="{py + L}" r="{r}" style="fill:var(--accent-soft)"/>')
+        inner.append(f'<circle class="c2" cx="{x}" cy="{py + L}" r="{r}" style="fill:var(--s1-soft)"/>')
     inner += [  # 왼쪽: 들어 올린 구슬(실선)과 원래 자리(점선). 오른쪽: 튀어나온 구슬(점선)
         f'<circle class="ax dash" cx="{xs[0]}" cy="{py + L}" r="{r}"/>',
         f'<path class="c2" d="M{xs[0]},{py} L{lx:.1f},{ly:.1f}" style="stroke-width:1.2"/>',
-        f'<circle class="c1" cx="{lx:.1f}" cy="{ly:.1f}" r="{r}" style="fill:var(--accent);fill-opacity:0.55"/>',
+        f'<circle class="c1" cx="{lx:.1f}" cy="{ly:.1f}" r="{r}" style="fill:var(--s1);fill-opacity:0.55"/>',
         f'<path class="c3 dash" d="M{xs[4]},{py} L{rx:.1f},{ry:.1f}" style="stroke-width:1.2"/>',
         f'<circle class="c3 dash" cx="{rx:.1f}" cy="{ry:.1f}" r="{r}"/>',
         _arrow(lx + 20, ly + 22, xs[0] - 22, py + L + 8, "c1"),
