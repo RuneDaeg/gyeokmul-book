@@ -662,6 +662,390 @@
     step: function () { return true; }
   };
 
+  // ---------- 17. 굴절과 전반사 ----------
+  SIMS.snell = {
+    aria: "두 매질의 굴절률과 입사각에 따른 반사광과 굴절광, 전반사",
+    labs: [],
+    controls: [{ id: "n1", label: "위 매질 $n_1$", min: 1, max: 2, step: 0.01, value: 1.5, d: 2 },
+               { id: "n2", label: "아래 매질 $n_2$", min: 1, max: 2, step: 0.01, value: 1, d: 2 },
+               { id: "th", label: "입사각 $\\theta_1$", min: 0, max: 89, step: 1, value: 30, d: 0, unit: "°" }],
+    outs: [["th2", "굴절각 $\\theta_2$"], ["c", "임계각 $\\sin\\theta_c = n_2/n_1$"], ["B", "브루스터 각 $\\tan\\theta_B = n_2/n_1$"], ["R", "반사율 (편광 안 된 빛)"]],
+    draw: function (c, v, t) {
+      var n1 = v.n1, n2 = v.n2, th = v.th * Math.PI / 180, ox = 320, oy = 170, L = 150;
+      c.save(); c.globalAlpha = 0.06 + 0.3 * (n1 - 1); c.fillStyle = t.accent; c.fillRect(0, 0, W, oy); c.restore();
+      c.save(); c.globalAlpha = 0.06 + 0.3 * (n2 - 1); c.fillStyle = t.accent; c.fillRect(0, oy, W, H - oy); c.restore();
+      seg(c, 0, oy, W, oy, t.ink, 1.4);
+      seg(c, ox, 20, ox, H - 20, t.muted, 1.1, [5, 4]);
+      txt(c, "n₁ = " + num(n1, 2), 16, 22, t.ink, "left", 13, 600);
+      txt(c, "n₂ = " + num(n2, 2), 16, H - 18, t.ink, "left", 13, 600);
+      var s2 = n1 * Math.sin(th) / n2, tir = s2 > 1, th2 = tir ? 0 : Math.asin(s2), R;
+      if (tir) R = 1;
+      else {
+        var ci = Math.cos(th), ct = Math.cos(th2);
+        var rs = (n1 * ci - n2 * ct) / (n1 * ci + n2 * ct), rp = (n2 * ci - n1 * ct) / (n2 * ci + n1 * ct);
+        R = (rs * rs + rp * rp) / 2;
+      }
+      var sx = ox - L * Math.sin(th), sy = oy - L * Math.cos(th);
+      arrow(c, sx, sy, ox - 0.45 * (ox - sx), oy - 0.45 * (oy - sy), t.warm, 2.6);
+      seg(c, ox - 0.45 * (ox - sx), oy - 0.45 * (oy - sy), ox, oy, t.warm, 2.6);
+      c.save(); c.globalAlpha = 0.25 + 0.75 * Math.sqrt(R);
+      arrow(c, ox, oy, ox + L * Math.sin(th), oy - L * Math.cos(th), t.warm, 2.4); c.restore();
+      if (!tir) { c.save(); c.globalAlpha = 0.25 + 0.75 * Math.sqrt(1 - R);
+        arrow(c, ox, oy, ox + L * Math.sin(th2), oy + L * Math.cos(th2), t.warm, 2.4); c.restore(); }
+      c.strokeStyle = t.ink; c.lineWidth = 1;
+      if (th > 0.01) { c.beginPath(); c.arc(ox, oy, 42, -Math.PI / 2 - th, -Math.PI / 2); c.stroke(); txt(c, "θ₁", ox - 20 - 8 * Math.sin(th), oy - 56, t.ink, "center", 12); }
+      if (!tir && th2 > 0.01) { c.beginPath(); c.arc(ox, oy, 42, Math.PI / 2 - th2, Math.PI / 2); c.stroke(); txt(c, "θ₂", ox + 18 + 8 * Math.sin(th2), oy + 58, t.ink, "center", 12); }
+      txt(c, "반사 " + num(R * 100, 1) + " %", ox + L * Math.sin(th) + 8, oy - L * Math.cos(th) - 10, t.warm, "left", 12, 600);
+      if (tir) txt(c, "전반사: 굴절광이 없다", ox + 20, oy + 40, t.warn, "left", 13, 700);
+      else txt(c, "굴절 " + num((1 - R) * 100, 1) + " %", ox + L * Math.sin(th2) + 8, oy + L * Math.cos(th2) + 6, t.warm, "left", 12, 600);
+      var B = Math.atan(n2 / n1) * 180 / Math.PI;
+      if (!tir && Math.abs(v.th - B) < 1.5 && Math.abs(n1 - n2) > 0.05) txt(c, "브루스터 각 근처: 반사광이 거의 완전 편광", W - 16, 22, t.ok, "right", 12, 600);
+      return { th2: tir ? "없음 (전반사)" : num(th2 * 180 / Math.PI, 1) + "°",
+               c: n1 > n2 ? num(Math.asin(n2 / n1) * 180 / Math.PI, 1) + "°" : "없음 (n₁ ≤ n₂)",
+               B: num(B, 1) + "°", R: num(R * 100, 1) + " %" };
+    }
+  };
+
+  // ---------- 18. 얇은 막의 간섭색 ----------
+  SIMS.thinfilm = {
+    aria: "막의 두께와 굴절률에 따른 반사율 스펙트럼과 반사광의 색",
+    labs: [["$\\lambda$ (nm)", 470, 323, "end"], ["반사율 $R$", 62, 106]],
+    controls: [{ id: "sub", label: "막의 아래", options: [["1", "공기 (비누막)"], ["1.52", "유리 (렌즈 코팅)"]], value: "1" },
+               { id: "n", label: "막의 굴절률 $n$", min: 1.2, max: 1.6, step: 0.01, value: 1.33, d: 2 },
+               { id: "d", label: "막의 두께 $t$", min: 0, max: 1000, step: 10, value: 300, d: 0, unit: " nm" }],
+    outs: [["mx", "가장 세게 반사되는 빛"], ["mn", "가장 약하게 반사되는 빛"], ["cond", "보강 조건"]],
+    draw: function (c, v, t) {
+      var n = v.n, ns = parseFloat(v.sub), r1 = (1 - n) / (1 + n), r2 = (n - ns) / (n + ns), i, x;
+      function R(lam, d) { var cd = Math.cos(4 * Math.PI * n * d / lam); return (r1 * r1 + r2 * r2 + 2 * r1 * r2 * cd) / (1 + r1 * r1 * r2 * r2 + 2 * r1 * r2 * cd); }
+      function col(d) {
+        var s = [0, 0, 0], w = [0, 0, 0], lam;
+        for (lam = 400; lam <= 700; lam += 10) { var q = waveRGB(lam), rr = R(lam, d); for (i = 0; i < 3; i++) { s[i] += rr * q[i]; w[i] += q[i]; } }
+        return [s[0] / w[0], s[1] / w[1], s[2] / w[2]];
+      }
+      var strip = [], mx = 1e-9;
+      for (x = 0; x <= 282; x++) { var cc = col(1000 * x / 282); strip.push(cc); mx = Math.max(mx, cc[0], cc[1], cc[2]); }
+      function rgb(cc) { return "rgb(" + cc.map(function (q) { return Math.round(255 * Math.pow(Math.min(1, q / mx), 0.7)); }).join(",") + ")"; }
+      for (x = 0; x <= 282; x++) { c.fillStyle = rgb(strip[x]); c.fillRect(56 + 2 * x, 24, 2.2, 40); }
+      c.strokeStyle = t.line; c.strokeRect(56, 24, 566, 40);
+      var mxp = 56 + 564 * v.d / 1000;
+      seg(c, mxp, 18, mxp, 70, t.ink, 2);
+      [0, 200, 400, 600, 800, 1000].forEach(function (d) { txt(c, String(d), 56 + 564 * d / 1000, 78, t.muted, "center", 11); });
+      txt(c, "막의 두께 (nm): 반사광의 색", 622, 92, t.muted, "right", 11);
+      var p = new Plot(c, t, [56, 116, 470, 300], [380, 780], [0, ns > 1.1 ? 0.065 : 0.18]);
+      p.axes([400, 500, 600, 700], ns > 1.1 ? [0.02, 0.04, 0.06] : [0.05, 0.1, 0.15]);
+      for (x = 400; x < 700; x += 2) { var q = waveRGB(x); c.fillStyle = "rgb(" + q.map(Math.round).join(",") + ")"; c.fillRect(p.X(x), 302, p.X(x + 2) - p.X(x) + 0.5, 5); }
+      p.curve(function (lam) { return R(lam, v.d); }, t.accent, 2.4, null, 400);
+      var bare = Math.pow((1 - ns) / (1 + ns), 2);
+      if (ns > 1.1) { p.curve(function () { return bare; }, t.muted, 1.3, [5, 4]); txt(c, "코팅 없는 유리 4 %", 466, p.Y(bare) - 8, t.muted, "right", 11); }
+      var here = col(v.d);
+      c.fillStyle = rgb(here); c.fillRect(500, 140, 110, 110); c.strokeStyle = t.line; c.strokeRect(500, 140, 110, 110);
+      txt(c, "반사광의 색", 555, 266, t.ink, "center", 12, 600);
+      txt(c, "(밝기는 강조함)", 555, 284, t.muted, "center", 11);
+      var best = 400, worst = 400, lam;
+      for (lam = 400; lam <= 700; lam++) { if (R(lam, v.d) > R(best, v.d)) best = lam; if (R(lam, v.d) < R(worst, v.d)) worst = lam; }
+      var flip = r1 * r2 < 0;
+      return { mx: v.d === 0 ? "–" : best + " nm", mn: v.d === 0 ? "–" : worst + " nm",
+               cond: flip ? "2nt = (m + ½)λ" : "2nt = mλ" };
+    }
+  };
+
+  // ---------- 19. 레일리 기준 ----------
+  var AIRY = null;
+  function airy(x) {
+    if (!AIRY) {
+      AIRY = new Float32Array(6001);
+      for (var k = 0; k <= 6000; k++) {
+        var xx = k / 100, s = 0, N = 400, j;
+        if (xx < 1e-6) { AIRY[k] = 1; continue; }
+        for (j = 0; j <= N; j++) { var tau = Math.PI * j / N, f = Math.cos(tau - xx * Math.sin(tau)); s += (j === 0 || j === N ? 1 : j % 2 ? 4 : 2) * f; }
+        var J1 = s * (Math.PI / N) / 3 / Math.PI;
+        AIRY[k] = Math.pow(2 * J1 / xx, 2);
+      }
+    }
+    x = Math.abs(x);
+    if (x >= 60) return 0;
+    var i = Math.floor(x * 100), f = x * 100 - i;
+    return AIRY[i] * (1 - f) + AIRY[Math.min(6000, i + 1)] * f;
+  }
+  SIMS.rayleigh = {
+    aria: "원형 구멍을 지난 두 점광원의 회절 무늬가 겹치는 모습과 레일리 기준",
+    labs: [["각 (μrad)", 620, 323, "end"]],
+    controls: [{ id: "D", label: "구멍의 지름 $D$", min: 1, max: 10, step: 0.5, value: 3, d: 1, unit: " mm" },
+               { id: "lam", label: "파장 $\\lambda$", min: 400, max: 700, step: 10, value: 550, d: 0, unit: " nm" },
+               { id: "a", label: "두 점 사이의 각 $\\alpha$", min: 20, max: 600, step: 5, value: 250, d: 0, unit: " μrad" }],
+    outs: [["R", "최소 분해각 $1.22\\lambda/D$"], ["ratio", "$\\alpha / \\theta_R$"], ["dip", "가운데 밝기 / 봉우리"], ["ok", "판정"]],
+    draw: function (c, v, t) {
+      var k = Math.PI * v.D * 1e-3 / (v.lam * 1e-9), thR = 1.22 * v.lam * 1e-9 / (v.D * 1e-3) * 1e6, a = v.a;
+      var Rg = a / 2 + 2.6 * thR, q = waveRGB(v.lam);
+      function I(xu, yu) { return airy(k * 1e-6 * Math.hypot(xu + a / 2, yu)) + airy(k * 1e-6 * Math.hypot(xu - a / 2, yu)); }
+      var off = document.createElement("canvas"), iw = 282, ih = 53; off.width = iw; off.height = ih;
+      var oc = off.getContext("2d"), img = oc.createImageData(iw, ih), px, py;
+      for (py = 0; py < ih; py++) for (px = 0; px < iw; px++) {
+        var xu = -Rg + 2 * Rg * (px + 0.5) / iw, yu = (2 * Rg * ih / iw) * ((py + 0.5) / ih - 0.5);
+        var b = Math.pow(Math.min(1, I(xu, yu)), 0.5), o = 4 * (py * iw + px);
+        img.data[o] = q[0] * b; img.data[o + 1] = q[1] * b; img.data[o + 2] = q[2] * b; img.data[o + 3] = 255;
+      }
+      oc.putImageData(img, 0, 0);
+      c.drawImage(off, 56, 22, 564, 106);
+      var p = new Plot(c, t, [56, 150, 620, 300], [-Rg, Rg], [0, 2.1]);
+      var st = Rg > 600 ? 400 : Rg > 300 ? 200 : Rg > 150 ? 100 : 50, ticks = [], x;
+      for (x = -Math.floor(Rg / st) * st; x <= Rg; x += st) ticks.push(x);
+      p.axes(ticks, [1, 2]);
+      p.curve(function (x) { return airy(k * 1e-6 * (x + a / 2)); }, t.muted, 1.3, [5, 4], 600);
+      p.curve(function (x) { return airy(k * 1e-6 * (x - a / 2)); }, t.muted, 1.3, [5, 4], 600);
+      p.curve(function (x) { return I(x, 0); }, t.accent, 2.4, null, 800);
+      var pk = 0; for (x = -Rg; x <= Rg; x += Rg / 400) pk = Math.max(pk, I(x, 0));
+      var dip = I(0, 0) / pk, r = a / thR;
+      legend(c, t, 470, 166, [["두 무늬의 합", t.accent], ["각 점의 무늬", t.muted, [5, 4]]]);
+      return { R: num(thR, 0) + " μrad", ratio: num(r, 2), dip: num(dip, 2),
+               ok: r >= 1 ? "두 점으로 보인다" : dip < 0.97 ? "겨우 갈라진다" : "한 점으로 보인다" };
+    }
+  };
+
+  // ---------- 20. 편광판과 말뤼스 법칙 ----------
+  SIMS.malus = {
+    aria: "편광판 두 장 또는 세 장을 지나는 빛의 세기",
+    labs: [["$\\theta$ (마지막 편광판)", 620, 323, "end"], ["$I/I_0$", 62, 176]],
+    controls: [{ id: "mid", label: "가운데 편광판", options: [["0", "없음 (두 장)"], ["1", "있음 (세 장)"]], value: "0" },
+               { id: "phi", label: "가운데 편광판의 각 $\\varphi$", min: 0, max: 90, step: 5, value: 45, d: 0, unit: "°" },
+               { id: "th", label: "마지막 편광판의 각 $\\theta$", min: 0, max: 180, step: 5, value: 60, d: 0, unit: "°" }],
+    outs: [["I1", "첫 장 뒤"], ["I2", "가운데 장 뒤"], ["I3", "마지막 장 뒤"]],
+    draw: function (c, v, t) {
+      var mid = v.mid === "1", ph = v.phi * Math.PI / 180, th = v.th * Math.PI / 180, cy = 92;
+      var I1 = 0.5, I2 = mid ? I1 * Math.pow(Math.cos(ph), 2) : I1, I3 = mid ? I2 * Math.pow(Math.cos(th - ph), 2) : I1 * Math.pow(Math.cos(th), 2);
+      var P = mid ? [[180, 0, I1], [340, ph, I2], [500, th, I3]] : [[200, 0, I1], [460, th, I3]];
+      function beam(x1, x2, I) {
+        c.save(); c.globalAlpha = 0.08 + 0.9 * Math.min(1, I); c.fillStyle = t.warm; c.fillRect(x1, cy - 9, x2 - x1, 18); c.restore();
+      }
+      beam(40, P[0][0] - 44, 1);
+      txt(c, "자연광 I₀", 70, cy - 22, t.ink, "center", 12, 600);
+      P.forEach(function (q, k) {
+        var nx = k + 1 < P.length ? P[k + 1][0] - 44 : 620;
+        beam(q[0] + 44, nx, q[2]);
+        c.beginPath(); c.arc(q[0], cy, 42, 0, 2 * Math.PI); c.fillStyle = t.paper; c.fill(); c.strokeStyle = t.ink; c.lineWidth = 2; c.stroke();
+        var dx = 36 * Math.sin(q[1]), dy = -36 * Math.cos(q[1]);
+        seg(c, q[0] - dx, cy - dy, q[0] + dx, cy + dy, t.accent, 3);
+        txt(c, num(q[1] * 180 / Math.PI, 0) + "°", q[0], cy + 58, t.accent, "center", 12, 600);
+        txt(c, num(q[2], 3) + " I₀", (q[0] + 44 + nx) / 2, cy - 22, t.ink, "center", 12, 600);
+      });
+      var p = new Plot(c, t, [56, 190, 620, 300], [0, 180], [0, 0.55]);
+      p.axes([0, 45, 90, 135, 180], [0.25, 0.5]);
+      p.curve(function (x) { return 0.5 * Math.pow(Math.cos(x * Math.PI / 180), 2); }, mid ? t.muted : t.accent, mid ? 1.3 : 2.4, mid ? [5, 4] : null);
+      if (mid) p.curve(function (x) { return 0.5 * Math.pow(Math.cos(ph), 2) * Math.pow(Math.cos(x * Math.PI / 180 - ph), 2); }, t.accent, 2.4);
+      dot(c, p.X(v.th), p.Y(I3), 5, t.warn);
+      return { I1: num(I1, 3) + " I₀", I2: mid ? num(I2, 3) + " I₀" : "–", I3: num(I3, 3) + " I₀" };
+    }
+  };
+
+  // ---------- 21. 시간 지연과 길이 수축 ----------
+  SIMS.gamma = {
+    aria: "속력에 따른 로런츠 인자, 움직이는 시계와 막대",
+    labs: [["$v/c$", 330, 323, "end"], ["$\\gamma$", 62, 4]],
+    controls: [{ id: "b", label: "속력 $v/c$", min: 0, max: 0.995, step: 0.005, value: 0.8, d: 3 }],
+    outs: [["g", "$\\gamma = 1/\\sqrt{1 - v^2/c^2}$"], ["t", "지구의 1년 동안 우주선 시계"], ["L", "100 m 막대의 길이 (지구에서)"], ["mu", "뮤온 이동 거리 $\\gamma v\\tau$"], ["mu0", "상대론 없이 $v\\tau$"]],
+    play: "시계 돌리기",
+    draw: function (c, v, t, st) {
+      var b = v.b, g = 1 / Math.sqrt(1 - b * b);
+      var p = new Plot(c, t, [56, 28, 330, 300], [0, 1], [0, 8]);
+      p.axes([0, 0.25, 0.5, 0.75, 1], [1, 2, 4, 6, 8]);
+      p.curve(function (x) { return 1 / Math.sqrt(1 - x * x); }, t.accent, 2.4, null, 400, 0, 0.9999);
+      seg(c, p.X(b), p.Y(0), p.X(b), p.Y(Math.min(8, g)), t.warn, 1.2, [3, 3]);
+      dot(c, p.X(b), p.Y(Math.min(8, g)), 5, t.warn);
+      function clock(x, y, frac, lab) {
+        c.beginPath(); c.arc(x, y, 44, 0, 2 * Math.PI); c.fillStyle = t.paper; c.fill(); c.strokeStyle = t.ink; c.lineWidth = 2; c.stroke();
+        for (var k = 0; k < 12; k++) { var a = k * Math.PI / 6; seg(c, x + 38 * Math.sin(a), y - 38 * Math.cos(a), x + 43 * Math.sin(a), y - 43 * Math.cos(a), t.muted, 1.2); }
+        var a2 = 2 * Math.PI * frac; seg(c, x, y, x + 34 * Math.sin(a2), y - 34 * Math.cos(a2), t.accent, 3); dot(c, x, y, 3, t.ink);
+        txt(c, lab, x, y + 60, t.ink, "center", 12, 600);
+      }
+      var yr = st.t / 4;      // 4초가 지구의 1년
+      clock(420, 82, yr % 1, "지구의 시계");
+      clock(560, 82, (yr / g) % 1, "우주선의 시계");
+      txt(c, "지구 " + num(yr, 2) + " 년 / 우주선 " + num(yr / g, 2) + " 년", 490, 166, t.muted, "center", 11);
+      seg(c, 380, 214, 600, 214, t.ink, 10); txt(c, "정지한 막대 100 m", 490, 198, t.ink, "center", 12);
+      var Lm = 220 / g; seg(c, 380, 266, 380 + Lm, 266, t.accent, 10);
+      arrow(c, 380 + Lm + 8, 266, 380 + Lm + 44, 266, t.warn, 2);
+      txt(c, "v 로 움직이는 막대 " + num(100 / g, 1) + " m", 490, 290, t.accent, "center", 12);
+      var tau = 2.2e-6, cc = 2.998e8;
+      return { g: num(g, 3), t: num(1 / g, 3) + " 년", L: num(100 / g, 1) + " m",
+               mu: num(g * b * cc * tau / 1000, 2) + " km", mu0: num(b * cc * tau / 1000, 2) + " km" };
+    },
+    step: function () { return true; }
+  };
+
+  // ---------- 22. 흑체 복사 ----------
+  SIMS.blackbody = {
+    aria: "온도에 따른 흑체 복사 스펙트럼과 고전 이론의 자외선 파탄",
+    labs: [["$\\lambda$ (nm)", 620, 323, "end"], ["복사 세기 (태양의 봉우리 = 1)", 66, 4]],
+    controls: [{ id: "T", label: "온도 $T$", min: 2000, max: 10000, step: 100, value: 5800, d: 0, unit: " K" },
+               { id: "rj", label: "고전 이론 (레일리-진스)", options: [["0", "그리지 않음"], ["1", "같이 그림"]], value: "1" }],
+    outs: [["wien", "봉우리 파장 $b/T$"], ["P", "표면 1 m² 의 일률 $\\sigma T^4$"], ["sun", "태양(5800 K) 대비"], ["band", "봉우리가 있는 곳"]],
+    draw: function (c, v, t) {
+      var h = 6.626e-34, cc = 2.998e8, kB = 1.381e-23, T = v.T;
+      function B(lnm, TT) { var l = lnm * 1e-9; return 2 * h * cc * cc / Math.pow(l, 5) / (Math.exp(h * cc / (l * kB * TT)) - 1); }
+      function RJ(lnm, TT) { var l = lnm * 1e-9; return 2 * cc * kB * TT / Math.pow(l, 4); }
+      var sunPk = B(2.898e6 / 5800, 5800), pk = B(2.898e6 / T, T) / sunPk, ymax = Math.max(1, pk) * 1.15;
+      var stp = ymax > 6 ? 2 : ymax > 3 ? 1 : 0.5, ticks = [], y;
+      for (y = stp; y < ymax; y += stp) ticks.push(+y.toFixed(1));
+      var p = new Plot(c, t, [60, 28, 620, 300], [0, 3000], [0, ymax]);
+      for (var x = 380; x < 750; x += 3) { var q = waveRGB(x); c.save(); c.globalAlpha = 0.18; c.fillStyle = "rgb(" + q.map(Math.round).join(",") + ")"; c.fillRect(p.X(x), 28, p.X(x + 3) - p.X(x) + 0.5, 272); c.restore(); }
+      p.axes([0, 500, 1000, 1500, 2000, 2500, 3000], ticks);
+      if (Math.abs(T - 5800) > 1) p.curve(function (l) { return B(l, 5800) / sunPk; }, t.muted, 1.4, [5, 4], 400, 1, 3000);
+      if (v.rj === "1") p.curve(function (l) { return RJ(l, T) / sunPk; }, t.warn, 1.8, [6, 4], 400, 100, 3000);
+      p.curve(function (l) { return B(l, T) / sunPk; }, t.accent, 2.6, null, 500, 1, 3000);
+      var lp = 2.898e6 / T;
+      seg(c, p.X(lp), p.Y(0), p.X(lp), p.Y(pk), t.accent, 1.2, [3, 3]);
+      txt(c, "λmax = " + num(lp, 0) + " nm", p.X(lp) + 6, p.Y(pk) - 10, t.accent, "left", 12, 600);
+      var items = [["플랑크 (" + T + " K)", t.accent]];
+      if (Math.abs(T - 5800) > 1) items.push(["태양 5800 K", t.muted, [5, 4]]);
+      if (v.rj === "1") items.push(["고전 이론: 짧은 파장에서 무한대", t.warn, [6, 4]]);
+      legend(c, t, 380, 50, items);
+      var P = 5.67e-8 * Math.pow(T, 4);
+      return { wien: num(lp, 0) + " nm", P: num(P / 1e6, 1) + " MW", sun: num(Math.pow(T / 5800, 4), 2) + " 배",
+               band: lp < 380 ? "자외선" : lp <= 750 ? "가시광선" : "적외선" };
+    }
+  };
+
+  // ---------- 23. 콤프턴 산란 ----------
+  SIMS.compton = {
+    aria: "산란각에 따른 콤프턴 산란의 파장 변화와 전자의 되튐",
+    labs: [["$\\phi$", 620, 300, "end"], ["$\\Delta\\lambda$ (pm)", 436, 26]],
+    controls: [{ id: "lam", label: "입사 X선 파장 $\\lambda$", min: 2, max: 100, step: 1, value: 71, d: 0, unit: " pm" },
+               { id: "ph", label: "산란각 $\\phi$", min: 0, max: 180, step: 5, value: 90, d: 0, unit: "°" }],
+    outs: [["dl", "$\\Delta\\lambda = \\lambda_C(1 - \\cos\\phi)$"], ["l2", "산란된 파장 $\\lambda'$"], ["E", "광자 에너지 (전 → 후)"], ["K", "전자의 운동 에너지"], ["te", "전자가 튀는 각"]],
+    draw: function (c, v, t) {
+      var lc = 2.426, lam = v.lam, ph = v.ph * Math.PI / 180, dl = lc * (1 - Math.cos(ph)), l2 = lam + dl;
+      var ex = 210, ey = 160;
+      function wave(x0, y0, ang, len, wl, col) {
+        c.beginPath(); c.strokeStyle = col; c.lineWidth = 2;
+        for (var s = 0; s <= len; s += 1) {
+          var w = 7 * Math.sin(2 * Math.PI * s / wl), x = x0 + s * Math.cos(ang) - w * Math.sin(ang), y = y0 - s * Math.sin(ang) - w * Math.cos(ang);
+          if (s) c.lineTo(x, y); else c.moveTo(x, y);
+        }
+        c.stroke();
+      }
+      seg(c, 20, ey, 400, ey, t.line, 1, [4, 4]);
+      wave(30, ey, 0, 160, 16, t.accent);
+      arrow(c, 182, ey, 194, ey, t.accent, 2);
+      txt(c, "λ = " + lam + " pm", 90, ey - 26, t.accent, "center", 12, 600);
+      var vis = 16 * Math.min(2.6, 1 + 8 * dl / lam);
+      wave(ex + 16 * Math.cos(ph), ey - 16 * Math.sin(ph), ph, 140, vis, t.warm);
+      var ax = ex + 168 * Math.cos(ph), ay = ey - 168 * Math.sin(ph);
+      arrow(c, ex + 156 * Math.cos(ph), ey - 156 * Math.sin(ph), ax, ay, t.warm, 2);
+      txt(c, "λ' = " + num(l2, 1) + " pm", ex + 120 * Math.cos(ph) + (ph > 2.6 ? 0 : 24), ey - 120 * Math.sin(ph) - 22, t.warm, "center", 12, 600);
+      var pxe = 1 / lam - Math.cos(ph) / l2, pye = -Math.sin(ph) / l2, pe = Math.hypot(pxe, pye), te = Math.atan2(-pye, pxe);
+      if (pe * lam > 1e-3) arrow(c, ex, ey, ex + 110 * pe * lam * Math.cos(te), ey + 110 * pe * lam * Math.sin(te), t.ink, 2.4);
+      dot(c, ex, ey, 9, t.paper, t.ink); txt(c, "e⁻", ex, ey + 1, t.ink, "center", 11, 700);
+      if (ph > 0.05) { c.strokeStyle = t.muted; c.lineWidth = 1; c.beginPath(); c.arc(ex, ey, 30, -ph, 0); c.stroke(); txt(c, "φ", ex + 40 * Math.cos(ph / 2), ey - 40 * Math.sin(ph / 2), t.muted, "center", 12); }
+      txt(c, "되튀는 전자", ex + 70 * Math.cos(te), ey + 70 * Math.sin(te) + 16, t.ink, "center", 11);
+      var p = new Plot(c, t, [436, 40, 620, 280], [0, 180], [0, 5.2]);
+      p.axes([0, 90, 180], [1, 2, 3, 4, 5], { xfmt: function (x) { return x + "°"; } });
+      p.curve(function (x) { return lc * (1 - Math.cos(x * Math.PI / 180)); }, t.accent, 2.2);
+      dot(c, p.X(v.ph), p.Y(dl), 4.5, t.warn);
+      var E1 = 1239.84 / lam, E2 = 1239.84 / l2;
+      return { dl: num(dl, 2) + " pm", l2: num(l2, 2) + " pm", E: num(E1, 2) + " → " + num(E2, 2) + " keV",
+               K: num(E1 - E2, 3) + " keV", te: pe * lam > 1e-3 ? num(te * 180 / Math.PI, 1) + "° (아래쪽)" : "–" };
+    }
+  };
+
+  // ---------- 24. 수소 원자의 스펙트럼 ----------
+  SIMS.hydrogen = {
+    aria: "수소 원자의 에너지 준위 사이 전이와 스펙트럼선",
+    labs: [],
+    controls: [{ id: "ni", label: "처음 준위 $n_i$", min: 1, max: 7, step: 1, value: 3, d: 0 },
+               { id: "nf", label: "나중 준위 $n_f$", min: 1, max: 7, step: 1, value: 2, d: 0 }],
+    outs: [["dE", "에너지 차 $|E_i - E_f|$"], ["lam", "빛의 파장 $\\lambda$"], ["ser", "계열"], ["reg", "영역"]],
+    draw: function (c, v, t) {
+      var ni = v.ni, nf = v.nf, n;
+      function E(n) { return -13.6 / (n * n); }
+      function Y(e) { return 30 + 268 * (e / -13.6); }
+      seg(c, 40, 30, 250, 30, t.muted, 1, [4, 3]); txt(c, "n = ∞   0 eV", 256, 30, t.muted, "left", 11);
+      for (n = 1; n <= 7; n++) {
+        var on = n === ni || n === nf;
+        seg(c, 40, Y(E(n)), 250, Y(E(n)), on ? t.ink : t.muted, on ? 2.4 : 1.2);
+        if (n <= 3) txt(c, "n = " + n + "   " + num(E(n), 2) + " eV", 256, Y(E(n)), on ? t.ink : t.muted, "left", 11, on ? 600 : 400);
+        else if (n === 4) txt(c, "n = 4, 5, 6, 7", 256, Y(E(n)), t.muted, "left", 11);
+      }
+      var lo = Math.min(ni, nf), hi = Math.max(ni, nf), em = ni > nf;
+      var labRegions = [[1, "라이먼"], [2, "발머"], [3, "파셴"], [4, "브래킷"]];
+      function lamOf(a, b) { return 1 / (1.097e-2 * (1 / (a * a) - 1 / (b * b))); }   // nm
+      function X(l) { return 330 + (Math.log(l) - Math.log(80)) / (Math.log(2200) - Math.log(80)) * 290; }
+      c.fillStyle = "#0b0f12"; c.fillRect(330, 92, 290, 70);
+      for (var nl = 1; nl <= 4; nl++) for (var nu = nl + 1; nu <= 12; nu++) {
+        var l = lamOf(nl, nu); if (l > 2200) continue;
+        var q = waveRGB(Math.max(380, Math.min(780, l))), vis = l >= 380 && l <= 750;
+        var colr = vis ? "rgb(" + q.map(Math.round).join(",") + ")" : "rgba(160,170,175,0.55)";
+        var cur = nl === lo && nu === hi;
+        seg(c, X(l), cur ? 86 : 96, X(l), cur ? 168 : 158, cur ? (vis ? colr : "#ffffff") : colr, cur ? 3 : 1.2);
+      }
+      [380, 750].forEach(function (l) { seg(c, X(l), 172, X(l), 186, t.muted, 1); });
+      txt(c, "자외선", (X(80) + X(380)) / 2, 182, t.muted, "center", 11);
+      txt(c, "가시광선", (X(380) + X(750)) / 2, 182, t.muted, "center", 11);
+      txt(c, "적외선", (X(750) + X(2200)) / 2, 182, t.muted, "center", 11);
+      [100, 200, 500, 1000, 2000].forEach(function (l) { seg(c, X(l), 162, X(l), 166, t.muted, 1); txt(c, String(l), X(l), 72, t.muted, "center", 10); });
+      txt(c, "파장 (nm, 로그 눈금)", 620, 58, t.muted, "right", 11);
+      labRegions.forEach(function (r) { var a = lamOf(r[0], 40), b = lamOf(r[0], r[0] + 1); if (a < 2200) txt(c, r[1], (X(a) + X(Math.min(b, 2200))) / 2, 206 + 14 * (r[0] % 2), t.muted, "center", 11); });
+      if (ni === nf) { txt(c, "같은 준위: 전이가 없다", 145, 320, t.warn, "center", 12, 600); return { dE: "0", lam: "–", ser: "–", reg: "–" }; }
+      var x0 = 150, ya = Y(E(ni)), yb = Y(E(nf));
+      arrow(c, x0, ya, x0, yb, em ? t.warn : t.ok, 2.6);
+      txt(c, em ? "빛을 낸다 (방출)" : "빛을 흡수한다", x0 + 10, (ya + yb) / 2, em ? t.warn : t.ok, "left", 12, 600);
+      var lam = lamOf(lo, hi), dE = 13.6 * (1 / (lo * lo) - 1 / (hi * hi));
+      txt(c, (em ? "방출선 " : "흡수선 ") + num(lam, 1) + " nm", X(lam), 240, t.ink, X(lam) > 560 ? "right" : "center", 12, 600);
+      var names = { 1: "라이먼", 2: "발머", 3: "파셴", 4: "브래킷", 5: "푼트", 6: "험프리스" };
+      return { dE: num(dE, 3) + " eV", lam: num(lam, 1) + " nm", ser: (names[lo] || "") + " 계열 (n = " + lo + ")",
+               reg: lam < 380 ? "자외선" : lam <= 750 ? "가시광선" : "적외선" };
+    }
+  };
+
+  // ---------- 25. 터널 효과 ----------
+  function cx(re, im) { return { re: re, im: im || 0 }; }
+  function cadd(a, b) { return cx(a.re + b.re, a.im + b.im); }
+  function csub(a, b) { return cx(a.re - b.re, a.im - b.im); }
+  function cmul(a, b) { return cx(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re); }
+  function cdiv(a, b) { var d = b.re * b.re + b.im * b.im; return cx((a.re * b.re + a.im * b.im) / d, (a.im * b.re - a.re * b.im) / d); }
+  function cexpi(K, x, sgn) { var z = cx(-sgn * K.im * x, sgn * K.re * x), e = Math.exp(z.re); return cx(e * Math.cos(z.im), e * Math.sin(z.im)); }   // exp(±iKx)
+  SIMS.tunnel = {
+    aria: "직사각형 장벽에 들어오는 전자의 확률 밀도와 투과 확률",
+    labs: [["$x$ (nm)", 620, 323, "end"], ["$E$ (eV)", 62, 4], ["$|\\psi|^2$", 62, 130]],
+    controls: [{ id: "U", label: "장벽 높이 $U$", min: 1, max: 5, step: 0.5, value: 3, d: 1, unit: " eV" },
+               { id: "E", label: "전자 에너지 $E$", min: 0.1, max: 6, step: 0.1, value: 2, d: 1, unit: " eV" },
+               { id: "L", label: "장벽 두께 $L$", min: 0.1, max: 1.5, step: 0.05, value: 0.5, d: 2, unit: " nm" }],
+    outs: [["T", "투과 확률 (정확한 값)"], ["Ta", "어림 $e^{-2\\kappa L}$"], ["d", "침투 깊이 $1/\\kappa$"], ["R", "반사 확률 $1 - T$"]],
+    draw: function (c, v, t) {
+      var U = v.U, E = v.E, L = v.L, a = 0.0381;            // ħ²/2m (eV·nm²)
+      if (Math.abs(E - U) < 1e-6) E += 1e-4;
+      var k0 = cx(Math.sqrt(E / a)), K2 = E > U ? cx(Math.sqrt((E - U) / a)) : cx(0, Math.sqrt((U - E) / a));
+      function back(Kl, Kr, Ar, Br, x0) {
+        var fr = cmul(Ar, cexpi(Kr, x0, 1)), gr = cmul(Br, cexpi(Kr, x0, -1)), S = cadd(fr, gr), Dd = cmul(cdiv(Kr, Kl), csub(fr, gr));
+        var fl = cx((S.re + Dd.re) / 2, (S.im + Dd.im) / 2), gl = cx((S.re - Dd.re) / 2, (S.im - Dd.im) / 2);
+        return [cmul(fl, cexpi(Kl, x0, -1)), cmul(gl, cexpi(Kl, x0, 1))];
+      }
+      var r2 = back(K2, k0, cx(1), cx(0), L), r1 = back(k0, K2, r2[0], r2[1], 0), tt = cdiv(cx(1), r1[0]);
+      var C = [[cmul(r1[0], tt), cmul(r1[1], tt), k0], [cmul(r2[0], tt), cmul(r2[1], tt), K2], [tt, cx(0), k0]];
+      function psi2(x) { var j = x < 0 ? 0 : x < L ? 1 : 2, q = C[j]; var z = cadd(cmul(q[0], cexpi(q[2], x, 1)), cmul(q[1], cexpi(q[2], x, -1))); return z.re * z.re + z.im * z.im; }
+      var T = tt.re * tt.re + tt.im * tt.im;
+      var p = new Plot(c, t, [56, 28, 620, 112], [-1.5, 3], [0, 6.4]);
+      p.axes([], [2, 4, 6]);
+      c.fillStyle = t.soft; c.fillRect(p.X(0), p.Y(U), p.X(L) - p.X(0), p.Y(0) - p.Y(U));
+      c.beginPath(); c.strokeStyle = t.ink; c.lineWidth = 2; c.moveTo(p.X(-1.5), p.Y(0)); c.lineTo(p.X(0), p.Y(0)); c.lineTo(p.X(0), p.Y(U)); c.lineTo(p.X(L), p.Y(U)); c.lineTo(p.X(L), p.Y(0)); c.lineTo(p.X(3), p.Y(0)); c.stroke();
+      seg(c, p.X(-1.5), p.Y(v.E), p.X(3), p.Y(v.E), t.warn, 1.6, [6, 4]);
+      txt(c, "E", p.X(-1.4), p.Y(v.E) - 8, t.warn, "left", 12, 600); txt(c, "U", p.X(L) + 6, p.Y(U) + 8, t.ink, "left", 12, 600);
+      var q = new Plot(c, t, [56, 140, 620, 300], [-1.5, 3], [0, 4.4]);
+      q.axes([-1, 0, 1, 2, 3], [1, 2, 3, 4]);
+      c.fillStyle = t.soft; c.fillRect(q.X(0), 140, q.X(L) - q.X(0), 160);
+      q.curve(psi2, t.accent, 2.2, null, 900);
+      var T0 = tt.re * tt.re + tt.im * tt.im, zoom = Math.pow(10, Math.floor(Math.log(4 / T0) / Math.LN10));
+      if (zoom >= 10) {                       // 투과한 쪽이 너무 작아 보이지 않으면 확대해서 점선으로 함께 그린다
+        q.curve(function (x) { return zoom * psi2(x); }, t.warm, 1.6, [5, 4], 500, 0, 3);
+        txt(c, "점선: " + zoom.toLocaleString("en-US") + "배 확대", q.X(2.2), 168, t.warm, "center", 11, 600);
+      }
+      txt(c, "들어오는 파동 + 반사파", q.X(-0.75), 152, t.muted, "center", 11);
+      txt(c, "투과한 파동", q.X(2.2), 152, t.muted, "center", 11);
+      function sci(x) { return x >= 0.001 ? num(x * 100, x >= 0.1 ? 1 : 2) + " %" : x.toExponential(1).replace("e-", " × 10^−"); }
+      var kap = K2.im;
+      return { T: sci(T), Ta: E < U ? sci(Math.exp(-2 * kap * L)) : "– (E > U)", d: E < U ? num(1 / kap, 3) + " nm" : "– (E > U)", R: sci(1 - T) };
+    }
+  };
+
   // ---------- 화면에 붙이기 ----------
   var FONT = "sans-serif", all = [];
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
