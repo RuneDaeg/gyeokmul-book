@@ -679,7 +679,7 @@ window.MathJax = {
       <ol class="steps tight">
         <li><p>외력이 없다고 하자. 시각 $t$ 에 로켓(연료 포함)의 질량 $M$, 속도 $v$. 짧은 시간 $dt$ 동안 질량 $-dM$ $(\gt0)$ 의 가스를 로켓에 대해 속력 $u$ 로 뒤로 뿜는다.</p><div class="eq">$$\text{가스의 속도(지면 기준)} = (v + dv) - u$$</div></li>
         <li><p>로켓과 가스로 이루어진 계의 운동량이 보존된다.</p><div class="eq">$$Mv = (M + dM)(v + dv) + (-dM)(v + dv - u)$$</div></li>
-        <li><p>정리하면 (아주 작은 양의 곱 $dM\,dv$ 는 지워진다)</p><div class="eq">$$M\,dv = -u\,dM$$</div></li>
+        <li><p>전개하면 $dM\,dv$ 항은 서로 상쇄되어</p><div class="eq">$$M\,dv = -u\,dM$$</div></li>
       </ol>
     </div>
   </div>
@@ -1626,7 +1626,7 @@ window.MathJax = {
         </div>
       </div>
       <div class="box def"><span class="tag">열역학 제2법칙</span>
-        <p>닫힌계의 엔트로피는 증가하거나 일정할 뿐 감소하지 않는다 ($\Delta S \ge 0$, 가역일 때만 등호).</p>
+        <p>고립계(계와 주위를 합친 전체)의 엔트로피는 증가하거나 일정할 뿐 감소하지 않는다 ($\Delta S \ge 0$, 가역일 때만 등호).</p>
         <p>열은 저절로 고온에서 저온으로만 흐릅니다. 그 방향일 때 전체 엔트로피가 늘기 때문입니다 (다음 슬라이드의 예).</p>
         <p class="small">효율 1인 열기관을 만들 수 없는 이유도 이것입니다. $Q_C = 0$ 이면 고온부의 엔트로피만 줄어듭니다.</p>
       </div>
