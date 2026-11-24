@@ -100,7 +100,7 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
     <header><p class="kicker">유도 · 연속 전하 분포 · 참고 Halliday 22-4, Griffiths 2.1.4</p><h2>고리 전하가 축 위에 만드는 전기장 <span class="part">1/2</span></h2></header>
     <div class="body cols fig-r">
       <ol class="steps">
-        <li><p>반지름 $R$ 인 고리에 전하 $Q$ 가 고르게 퍼져 있다. 작은 조각 $dq$ 에서 축 위 높이 $z$ 인 점까지 거리는 모두 같다.</p><div class="eq">$$dE = \frac{k\,dq}{R^2 + z^2}$$</div></li>
+        <li><p>반지름 $R$ 인 고리에 전하 $Q$ 가 고르게 퍼져 있다. 작은 조각 $dq$ 에서 축 위 높이 $z$ 인 점까지 거리는 모두 같다.</p><div class="eq">$$dE = \frac{k\,dq}{R^2 + z^2}\quad\Big(k = \frac{1}{4\pi\varepsilon_0}\Big)$$</div></li>
         <li><p>맞은편 조각과 짝지으면 축에 수직인 성분은 지워지고, 축 성분만 남는다.</p><div class="eq">$$dE_z = dE\cos\alpha = \frac{k\,dq}{R^2 + z^2}\cdot\frac{z}{\sqrt{R^2 + z^2}}$$</div></li>
         <li><p>모든 조각에서 $z$ 와 거리가 같으므로 $dq$ 만 더하면 된다 ($\int dq = Q$).</p><div class="eq">$$E_z = \frac{kQz}{(R^2 + z^2)^{3/2}}$$</div></li>
       </ol>
@@ -455,7 +455,7 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 구형·원통형 축전기 · 교과서 119쪽 중단원 평가 · 참고 Halliday 25-2</p><h2>가우스 법칙 → 전위차 → 전기 용량, 세 단계 공식 <span class="part">1/2</span></h2></header>
+    <header><p class="kicker">유도 · 구형 축전기(교과서 119쪽 중단원 평가) · 원통형은 심화 · 교과서 밖 · 참고 Halliday 25-2</p><h2>가우스 법칙 → 전위차 → 전기 용량, 세 단계 공식 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps tight">
         <li><p>구형 축전기 (안 반지름 $a$, 바깥 반지름 $b$): 두 구 사이에서 전기장은 점전하와 같다.</p><div class="eq">$$E = \frac{Q}{4\pi\varepsilon_0r^2}\qquad(a \lt r \lt b)$$</div></li>
@@ -468,7 +468,7 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
 
 <section class="slide derive">
   <div class="sl">
-    <header><p class="kicker">유도 · 구형·원통형 축전기 · 교과서 119쪽 중단원 평가 · 참고 Halliday 25-2</p><h2>가우스 법칙 → 전위차 → 전기 용량, 세 단계 공식 <span class="part">2/2</span></h2></header>
+    <header><p class="kicker">유도 · 구형 축전기(교과서 119쪽 중단원 평가) · 원통형은 심화 · 교과서 밖 · 참고 Halliday 25-2</p><h2>가우스 법칙 → 전위차 → 전기 용량, 세 단계 공식 <span class="part">2/2</span></h2></header>
     <div class="body">
       <ol start="4" class="steps tight">
         <li><p>원통형(동축) 축전기 (길이 $L$): 가우스 원통으로 $E = \lambda/2\pi\varepsilon_0r$, 적분하면 로그가 나온다.</p><div class="eq">$$\Delta V = \frac{\lambda}{2\pi\varepsilon_0}\ln\frac ba\ \Rightarrow\ C = \frac{2\pi\varepsilon_0L}{\ln(b/a)}$$</div></li>
@@ -1127,7 +1127,7 @@ desc: 교과서 Ⅱ단원: 전기장(가우스 법칙, 전위와 전기 쌍극�
     <header><p class="kicker">시뮬레이션 · RLC 직렬 회로의 위상자 · 교과서 149~152쪽</p><h2>위상자를 돌리며 전압과 전류의 위상차 보기</h2></header>
     <div class="body">
       <div class="sim" data-sim="phasor"></div>
-      <p class="small">전원 전압의 진폭은 10 V 입니다. 진동수를 올리면 $V_L$ 이 길어지고 $V_C$ 가 짧아져 전류가 전압보다 뒤집니다. $V_L = V_C$ 가 되는 진동수가 공명이고, 이때 $V_L$ 과 $V_C$ 는 전원 전압보다 클 수 있습니다.</p>
+      <p class="small">전원 전압의 진폭은 10 V 입니다. 진동수를 올리면 $X_L$ 은 커지고 $X_C$ 는 작아져, 공명 진동수를 넘으면 $V_L$ 이 $V_C$ 보다 길어지고 전류가 전압보다 뒤집니다. $V_L = V_C$ 가 되는 진동수가 공명이고, 이때 $V_L$ 과 $V_C$ 는 전원 전압보다 클 수 있습니다.</p>
     </div>
   </div>
 </section>

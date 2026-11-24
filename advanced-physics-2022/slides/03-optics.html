@@ -457,7 +457,7 @@ window.MathJax = {
         <div class="eq">$$\text{어두운 무늬: } d\sin\theta = \big(m+\tfrac12\big)\lambda$$</div>
         <p>각이 작으면 $\sin\theta \approx \tan\theta = y/L$ 이므로</p>
         <div class="eq">$$y_m = \frac{m\lambda L}{d},\qquad \Delta y = \frac{\lambda L}{d}$$</div>
-        <p>세기 분포: $I = I_0\cos^2\Big(\dfrac{\pi d\sin\theta}{\lambda}\Big)$</p>
+        <p>세기 분포: $I = 4I_0\cos^2\Big(\dfrac{\pi d\sin\theta}{\lambda}\Big)$ ($I_0$: 슬릿 하나의 세기)</p>
       </div>
       <div class="box ex"><span class="tag">예제</span>
         <p>He-Ne 레이저 $\lambda = 633$ nm, $d = 0.25$ mm, $L = 2.0$ m 일 때 무늬 간격은?</p>
@@ -476,7 +476,7 @@ window.MathJax = {
     <header><p class="kicker">유도 · 영의 이중 슬릿 · 교과서 190~193쪽</p><h2>경로차 d sin θ 에서 무늬 간격까지 <span class="part">1/2</span></h2></header>
     <div class="body">
       <ol class="steps">
-        <li><p>$L \gg d$ 이면 두 슬릿에서 점 P로 가는 광선은 거의 나란하다. 아래 슬릿에서 위 광선에 수선을 내리면 남는 길이가 경로차다.</p><div class="eq">$$\Delta = d\sin\theta$$</div></li>
+        <li><p>$L \gg d$ 이면 두 슬릿에서 점 P로 가는 광선은 거의 나란하다. 한 슬릿에서 다른 슬릿의 광선에 수선을 내리면, 더 긴 광선에 남는 길이가 경로차다.</p><div class="eq">$$\Delta = d\sin\theta$$</div></li>
         <li><p>보강 조건을 쓴다.</p><div class="eq">$$d\sin\theta_m = m\lambda\qquad(m = 0, \pm1, \pm2, \dots)$$</div></li>
         <li><p>스크린 위 높이 $y$ 는 $\tan\theta = y/L$. 각이 작으면 $\sin\theta\approx\tan\theta$.</p><div class="eq">$$y_m = L\tan\theta_m \approx \frac{m\lambda L}{d}$$</div></li>
       </ol>
@@ -725,7 +725,7 @@ window.MathJax = {
     <div class="body cols wide-r">
       <div>
         <p>슬릿마다 폭 $a$ 가 있으면 두 효과가 곱해집니다.</p>
-        <div class="eq">$$I = I_0\cos^2\beta\,\Big(\frac{\sin\alpha}{\alpha}\Big)^2,\quad \beta = \frac{\pi d\sin\theta}{\lambda}$$</div>
+        <div class="eq">$$I = I_m\cos^2\beta\,\Big(\frac{\sin\alpha}{\alpha}\Big)^2,\quad \beta = \frac{\pi d\sin\theta}{\lambda}$$</div>
         <p>간섭의 밝은 무늬가 회절의 어두운 무늬와 겹치면 그 차수가 사라집니다. $d = 4a$ 이면 $m = \pm4, \pm8, \dots$ 가 사라집니다.</p>
       </div>
       <figure class="fig"><svg viewBox="0 0 480 230" role="img" aria-label="이중 슬릿 간섭 무늬와 단일 슬릿 회절 포락선" xmlns="http://www.w3.org/2000/svg">
@@ -804,7 +804,7 @@ window.MathJax = {
     <header><p class="kicker">회절격자 · 교과서 207~211쪽</p><h2>슬릿이 많을수록 밝은 선이 날카롭다</h2></header>
     <div class="body cols wide-r">
       <div>
-        <p>간격 $d$ 로 $N$ 개의 슬릿이 있으면 주 극대의 위치는 이중 슬릿과 같지만, 폭은 $1/N$ 로 좁아집니다.</p>
+        <p>간격 $d$ 로 $N$ 개의 슬릿이 있으면 주 극대의 위치는 이중 슬릿과 같지만, 폭은 $1/N$ 에 비례해 좁아집니다.</p>
         <div class="eq">$$d\sin\theta = m\lambda$$</div>
         <p>분해능 (가까운 두 파장을 가르는 능력):</p>
         <div class="eq">$$R = \frac{\lambda}{\Delta\lambda} = Nm$$</div>
@@ -869,7 +869,7 @@ window.MathJax = {
       <div class="q"><span class="qn">Q2</span>
         <p>나트륨 D선 589.0 nm 와 589.6 nm 를 1차 스펙트럼에서 가르려면 슬릿이 몇 개 이상 필요한가? 사람 눈으로 30 km 떨어진 자동차 전조등 두 개(간격 1.5 m)를 구별할 수 있을까?</p>
         <details class="answer"><summary>풀이 보기</summary><div>
-          <p>$N \ge \dfrac{589.3}{0.6} \approx 980$ 개</p>
+          <p>$N \ge \dfrac{589.3}{0.6} \approx 982$, 곧 983개 이상</p>
           <p>전조등이 눈에 이루는 각은 $1.5/30000 = 5\times10^{-5}$ rad 로 $1.3\times10^{-4}$ rad 보다 작아 구별할 수 없습니다. 하나의 빛으로 보입니다.</p>
         </div></details>
       </div>
