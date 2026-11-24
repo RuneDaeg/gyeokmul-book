@@ -2,7 +2,8 @@
 
 쓰는 법 (advanced-physics-2022 폴더에서, 먼저 python3 tools/build.py):
     python3 tools/make_standalone.py [MathJax 의 tex-svg.js 경로]
-    python3 tools/make_standalone.py --share [경로]   # 공유판 (먼저 python3 tools/make_share.py)
+    python3 tools/make_standalone.py --share [경로]     # 교사용 공유판 (먼저 python3 tools/make_share.py)
+    python3 tools/make_standalone.py --student [경로]   # 학생용 (먼저 python3 tools/make_share.py --student)
 
 결과: dist/고급물리학-2022-html/ 에 덱 5개, 목록(index.html), 오류 목록(errors.html), pdf/ 를 두고
       dist/고급물리학-2022-html.zip 으로 묶는다.
@@ -48,10 +49,11 @@ def inline(html, mathjax):
 def main():
     global SLIDES, NAME, OUT
     args = sys.argv[1:]
-    if "--share" in args:          # 검증 자료와 교사용 메모를 뺀 공유판 (tools/make_share.py 의 결과)
-        args.remove("--share")
-        SLIDES, NAME = ROOT / "dist" / "share", "고급물리학-2022-공유판"
-        OUT = ROOT / "dist" / NAME
+    for flag, src, name in (("--share", "share", "고급물리학-2022-교사용"), ("--student", "student", "고급물리학-2022-학생용")):
+        if flag in args:           # tools/make_share.py 가 만든 교사용(공유판)·학생용 판
+            args.remove(flag)
+            SLIDES, NAME = ROOT / "dist" / src, name
+            OUT = ROOT / "dist" / NAME
     mj_path = pathlib.Path(args[0]) if args else None
     mathjax = safe_js(mj_path.read_text(encoding="utf-8")) if mj_path else None
     if OUT.exists():

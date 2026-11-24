@@ -58,10 +58,11 @@
   var pages = document.getElementById("pv-pages"), msg = document.getElementById("pv-msg");
   var info = document.getElementById("pv-info"), kind = document.getElementById("pv-kind");
   var loadId = 0, observer = null;
+  var STUDENT_ONLY = false;   // 학생용 판에서는 tools/make_share.py --student 가 true 로 바꾼다 (풀이 포함 PDF 가 없음)
 
   function parse() {
     var h = (location.hash || "").replace(/^#/, "");
-    var student = /-student$/.test(h), base = h.replace(/-student$/, "");
+    var student = STUDENT_ONLY || /-student$/.test(h), base = h.replace(/-student$/, "");
     if (!DECKS[base]) base = "01-mechanics";
     return { base: base, student: student, file: "pdf/" + base + (student ? "-student" : "") + ".pdf" };
   }
@@ -72,7 +73,8 @@
     document.getElementById("pv-title").textContent = DECKS[sel.base];
     document.title = DECKS[sel.base] + " PDF";
     kind.innerHTML = "";
-    [["", "풀이 포함"], ["-student", "학생용"]].forEach(function (k) {
+    kind.hidden = STUDENT_ONLY;
+    if (!STUDENT_ONLY) [["", "풀이 포함"], ["-student", "학생용"]].forEach(function (k) {
       var a = document.createElement("a");
       a.href = "#" + sel.base + k[0]; a.textContent = k[1];
       if ((k[0] === "-student") === sel.student) a.setAttribute("aria-current", "page");

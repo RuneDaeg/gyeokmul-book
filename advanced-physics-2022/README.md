@@ -49,10 +49,14 @@ python3 tools/build.py
 python3 tools/make_standalone.py 경로/tex-svg.js
 ```
 
-연수나 학생에게 공유할 때는 검증 자료(2015 자료 오류 목록, 검증 보고서 안내)와 교사용 메모를 뺀 공유판을 씁니다. `--web` 을 붙이면 claude.ai 아티팩트로 올릴 판(`dist/share-web/`)도 만듭니다. 아티팩트 보기 화면은 브라우저 PDF 뷰어와 내려받기를 막으므로, 이 판에서는 PDF 링크가 PDF.js 로 그리는 보기 페이지(`tools/web/pdf.html`)로 연결됩니다.
+연수나 학생에게 공유할 때는 검증 자료(2015 자료 오류 목록, 검증 보고서 안내)와 교사용 메모를 뺀 공유판을 씁니다. 교사용(`dist/share/`)은 확인 문제 풀이와 두 가지 PDF 를 모두 담고, 학생용(`--student`, `dist/student/`)은 풀이 보기와 풀이 포함 PDF 를 뺍니다. `--web` 을 붙이면 claude.ai 아티팩트로 올릴 판(`dist/share-web/`)도 만듭니다. 아티팩트 보기 화면은 브라우저 PDF 뷰어와 내려받기를 막으므로, 이 판에서는 PDF 링크가 PDF.js 로 그리는 보기 페이지(`tools/web/pdf.html`)로 연결됩니다.
 
 ```bash
 python3 tools/make_share.py --web
+```
+
+```bash
+python3 tools/make_share.py --student --web
 ```
 
 고친 뒤에는 자동 검사로 기능이 그대로인지 확인합니다 (넘치는 슬라이드, 수식 오류, 휴대폰 화면, 발표 모드 다섯 가지 화면 크기, 시뮬레이터, 목차). 문제가 있으면 종료 코드 1 로 끝납니다.
