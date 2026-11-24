@@ -2,6 +2,7 @@
 
 쓰는 법 (advanced-physics-2022 폴더에서, 먼저 python3 tools/build.py):
     python3 tools/make_standalone.py [MathJax 의 tex-svg.js 경로]
+    python3 tools/make_standalone.py --share [경로]   # 공유판 (먼저 python3 tools/make_share.py)
 
 결과: dist/고급물리학-2022-html/ 에 덱 5개, 목록(index.html), 오류 목록(errors.html), pdf/ 를 두고
       dist/고급물리학-2022-html.zip 으로 묶는다.
@@ -45,12 +46,18 @@ def inline(html, mathjax):
 
 
 def main():
-    mj_path = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else None
+    global SLIDES, NAME, OUT
+    args = sys.argv[1:]
+    if "--share" in args:          # 검증 자료와 교사용 메모를 뺀 공유판 (tools/make_share.py 의 결과)
+        args.remove("--share")
+        SLIDES, NAME = ROOT / "dist" / "share", "고급물리학-2022-공유판"
+        OUT = ROOT / "dist" / NAME
+    mj_path = pathlib.Path(args[0]) if args else None
     mathjax = safe_js(mj_path.read_text(encoding="utf-8")) if mj_path else None
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
-    pages = sorted(SLIDES.glob("0*.html")) + [SLIDES / "index.html", SLIDES / "errors.html"]
+    pages = sorted(SLIDES.glob("0*.html")) + [f for f in (SLIDES / "index.html", SLIDES / "errors.html") if f.exists()]
     for f in pages:
         out = OUT / f.name
         out.write_text(inline(f.read_text(encoding="utf-8"), mathjax), encoding="utf-8")

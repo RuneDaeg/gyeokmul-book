@@ -16,7 +16,8 @@ const path = require('path');
 const fs = require('fs');
 const { chromium } = require('playwright');
 
-const SLIDES = path.resolve(__dirname, '..', 'slides');
+// AP22_SLIDES=dist/share 처럼 주면 그 폴더(공유판 등)를 검사한다
+const SLIDES = path.resolve(process.env.AP22_SLIDES || path.join(__dirname, '..', 'slides'));
 const hook = process.env.AP22_ROUTE ? require(path.resolve(process.env.AP22_ROUTE)) : null;
 const want = process.argv.slice(2);
 const decks = fs.readdirSync(SLIDES).filter(f => /^0\d-.*\.html$/.test(f) && (!want.length || want.some(w => f.startsWith(w)))).sort();
