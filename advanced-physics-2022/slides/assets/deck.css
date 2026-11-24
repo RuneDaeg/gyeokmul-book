@@ -370,6 +370,8 @@ aside.note {
   background: transparent;
 }
 aside.note::before { content: "교사용 메모 · "; color: var(--warm); font-weight: 600; }
+aside.note.tip::before { content: "수업 팁 · "; color: var(--accent); }
+aside.note.tip { border-left-color: var(--accent); }
 body.show-notes aside.note { display: block; }
 
 /* 목차 */

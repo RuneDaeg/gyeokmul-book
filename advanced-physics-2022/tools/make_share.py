@@ -33,9 +33,16 @@ def cut(html, pattern, what, flags=re.S, count=None):
 
 
 def deck(html, student):
+    # 2015 자료 수정 기록 메모는 빼고, 교사용 판에는 수업 팁 메모(<aside class="note tip">)만 남긴다
     html = re.sub(r'\s*<aside class="note">.*?</aside>', "", html, flags=re.S)
-    html = cut(html, r'\s*<button type="button" class="btn" id="btn-notes"[^>]*>교사용 메모</button>', "교사용 메모 버튼")
     assert '<aside class="note">' not in html
+    if student:
+        html = re.sub(r'\s*<aside class="note tip">.*?</aside>', "", html, flags=re.S)
+        html = cut(html, r'\s*<button type="button" class="btn" id="btn-notes"[^>]*>교사용 메모</button>', "교사용 메모 버튼")
+        assert "<aside" not in html
+    else:
+        html, n = re.subn(r'(<button type="button" class="btn" id="btn-notes"[^>]*>)교사용 메모(</button>)', r"\1수업 팁\2", html)
+        assert n == 1, "교사용 메모 버튼"
     if student:
         html = cut(html, r'\s*<details class="answer">.*?</details>', "확인 문제 풀이")
         html, n = re.subn(r'href="pdf/([0-9a-z-]+?)\.pdf"', r'href="pdf/\1-student.pdf"', html)
@@ -48,7 +55,12 @@ def index(html, student):
     html = cut(html, r" 2015 개정 자료를 검증하며 찾은 오류는 바로잡은 서술로 다시 썼습니다\.", "목록 머리말의 검증 문장")
     html = cut(html, r'\s*<h2>검증 자료</h2>\s*<ul class="decks">.*?</ul>', "검증 자료 카드")
     html = cut(html, r'\s*<tr><td>오류 목록</td>.*?</tr>', "오류 목록 PDF 줄")
-    html = cut(html, r'\s*<li><strong>교사용 메모</strong>.*?</li>', "교사용 메모 안내")
+    if student:
+        html = cut(html, r'\s*<li><strong>교사용 메모</strong>.*?</li>', "교사용 메모 안내")
+    else:
+        html, n = re.subn(r'<li><strong>교사용 메모</strong>.*?</li>',
+                          '<li><strong>수업 팁</strong>: 버튼이나 <kbd>N</kbd>. 헷갈리기 쉬운 규약과 개념, 진도 조정, 활동 제안 같은 수업 운영 팁이 해당 슬라이드 아래에 보입니다 (23곳).</li>', html, flags=re.S)
+        assert n == 1
     html = cut(html, r'\s*<p class="small">검증 결과 전체는.*?</p>', "검증 보고서 안내")
     html = html.replace(" 교사용 메모는 PDF에 넣지 않았습니다.", "")
     for word in ("errors.html", "errors.pdf", "verification", "교사용 메모", "2015 개정 자료"):
