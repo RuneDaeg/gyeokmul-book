@@ -330,6 +330,97 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
 
 <section class="slide">
   <div class="sl">
+    <header><p class="kicker">심화 · 교과서 밖 · 시공간 간격 · 교과서 238~240쪽 연계</p><h2>시공간 간격: 모든 관찰자가 같은 값을 얻는 양</h2></header>
+    <div class="body cols wide-l">
+      <div>
+        <p>사건은 '언제, 어디서'가 정해진 시공간의 한 점입니다. 두 사건의 시간 차가 $\Delta t$, 공간 거리가 $\Delta r$ 이면 시공간 간격은</p>
+        <div class="eq">$$\Delta s^2 = c^2\Delta t^2 - \Delta r^2,\qquad \Delta r^2 = \Delta x^2 + \Delta y^2 + \Delta z^2$$</div>
+        <p>$\Delta t$ 와 $\Delta r$ 는 관찰자마다 다르지만(시간 지연, 길이 수축, 동시성의 상대성), 이 조합은 어느 관성계에서 재도 같습니다.</p>
+        <div class="box def"><span class="tag">보통 거리와 비교</span>
+          <p>평면에서 축을 돌려도 $\Delta x^2 + \Delta y^2$ 은 그대로입니다. 시공간에서는 기준계를 바꾸는 것이 축을 돌리는 것이고, 그대로인 양이 $\Delta s^2$ 입니다. 시간 항과 공간 항의 <strong>부호만 반대</strong>여서 원 대신 쌍곡선을 따라 돕니다.</p>
+        </div>
+      </div>
+      <figure class="fig">{{fig:interval_dia}}<figcaption>점선은 $v = 0.5c$ 로 움직이는 기준계의 축입니다. A 와 A′, B 와 B′ 는 각각 같은 쌍곡선 위에 있어 원점 O 와의 간격이 같습니다.</figcaption></figure>
+      <aside class="note tip">'거리'라는 이름 때문에 자로 재는 길이로 오해하기 쉽습니다. 시간과 공간을 묶은 양이고 값이 0 이거나 음수일 수도 있으니 '간격'이라고 부르는 편이 낫습니다. 부호 규약은 교재마다 $c^2\Delta t^2 - \Delta r^2$ 와 $\Delta r^2 - c^2\Delta t^2$ 가 섞여 있으니 처음에 하나로 정해 주세요.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
+    <header><p class="kicker">심화 · 교과서 밖 · 시공간 간격의 분류</p><h2>시간꼴, 빛꼴, 공간꼴: 부호가 인과 관계를 정한다</h2></header>
+    <div class="body">
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>$\Delta s^2$</th><th>이름</th><th>두 사건의 관계</th><th>값의 뜻</th></tr></thead>
+        <tbody>
+          <tr><td class="nw">$\gt 0$</td><td class="nw">시간꼴</td><td>빛보다 느린 신호로 이을 수 있다. 원인과 결과가 될 수 있고, 순서가 모든 관찰자에게 같다</td><td>두 사건이 같은 자리에서 일어나는 기준계가 있다. $\Delta s / c$ = 고유 시간 $\Delta t_0$</td></tr>
+          <tr><td class="nw">$= 0$</td><td class="nw">빛꼴</td><td>빛으로 딱 이어진다</td><td>빛에게는 고유 시간이 흐르지 않는다</td></tr>
+          <tr><td class="nw">$\lt 0$</td><td class="nw">공간꼴</td><td>빛으로도 이을 수 없어 서로 영향을 줄 수 없다. 관찰자에 따라 순서가 바뀔 수 있다</td><td>두 사건이 동시인 기준계가 있다. $\sqrt{-\Delta s^2}$ = 고유 거리</td></tr>
+        </tbody>
+      </table></div>
+      <p>$\Delta s^2$ 이 불변이므로 이 분류도 관찰자와 무관합니다. 그래서 '어떤 관찰자에게는 결과가 원인보다 먼저 일어난다' 같은 일은 생기지 않습니다. 순서가 바뀔 수 있는 것은 서로 영향을 줄 수 없는 공간꼴 사건뿐입니다 (동시성의 상대성).</p>
+      <p class="small">시간과 공간은 관찰자마다 다르게 나뉘지만, 둘을 묶은 시공간 간격은 모두에게 같습니다. 상대성 이론에서 '상대적'인 것과 '절대적'인 것을 가르는 기준이 이것입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 시공간 간격의 불변 · 교과서 238쪽 빛 시계 연계</p><h2>빛 시계와 로런츠 변환으로 간격이 같음을 보이기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <ol class="steps">
+        <li><p>우주선 안 빛 시계에서 '빛이 출발한다'와 '빛이 돌아온다'를 두 사건으로 잡는다. 우주선 기준으로는 같은 자리에서 일어난다.</p><div class="eq">$$\Delta x_0 = 0,\qquad \Delta t = \Delta t_0\ (\text{고유 시간})$$</div></li>
+        <li><p>지구 기준으로는 시계가 움직여 두 사건 사이가 $v\Delta t$ 떨어지고, 빛은 비스듬히 간다. 피타고라스 정리에서</p><div class="eq">$$(c\Delta t)^2 = (c\Delta t_0)^2 + (v\Delta t)^2,\qquad \Delta x = v\Delta t$$</div></li>
+        <li><p>정리하면 좌변은 지구에서 잰 값, 우변은 우주선에서 잰 값이다. 시간 지연 유도의 식을 다르게 읽은 것이다.</p><div class="eq">$$c^2\Delta t^2 - \Delta x^2 = c^2\Delta t_0^2 = c^2\Delta t_0^2 - \Delta x_0^2$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 시공간 간격의 불변 · 교과서 238쪽 빛 시계 연계</p><h2>빛 시계와 로런츠 변환으로 간격이 같음을 보이기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">임의의 두 사건에서도 성립하는지 로런츠 변환을 넣어 확인한다 ($\beta = v/c$, $\gamma = 1/\sqrt{1 - \beta^2}$).</p>
+      <ol start="4" class="steps">
+        <li><p>로런츠 변환을 $ct$ 와 $x$ 로 쓴다.</p><div class="eq">$$x' = \gamma(x - \beta ct),\qquad ct' = \gamma(ct - \beta x)$$</div></li>
+        <li><p>제곱해서 뺀다. 교차항 $-2\beta ctx$ 와 $+2\beta ctx$ 가 지워진다.</p><div class="eq">$$c^2t'^2 - x'^2 = \gamma^2\big[(ct - \beta x)^2 - (x - \beta ct)^2\big] = \gamma^2(1 - \beta^2)(c^2t^2 - x^2)$$</div></li>
+        <li><p>$\gamma^2(1 - \beta^2) = 1$ 이므로 간격이 그대로다.</p><div class="eq">$$c^2t'^2 - x'^2 = c^2t^2 - x^2$$</div></li>
+      </ol>
+      <aside class="note tip">더 깊이 가려면: 빛꼴 사건은 모든 기준계에서 간격이 0(광속 불변)이고 변환이 일차식이므로 $\Delta s'^2 = k\,\Delta s^2$ 이며, 등방성과 역변환에서 $k = 1$ 이 나옵니다. 거꾸로 $\cosh^2\varphi - \sinh^2\varphi = 1$ 을 써서 간격을 지키는 변환을 만들고 $\tanh\varphi = \beta$ 로 두면 로런츠 변환이 됩니다 (시공간의 '쌍곡 회전').</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 심화 · 교과서 밖 · 시공간 간격 · 교과서 239~240쪽 뮤온 연계</p><h2>간격 하나로 뮤온의 고유 시간 구하기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <p>뮤온이 지구에서 보아 10 km 를 34 μs 동안 날아갔다. 뮤온 자신의 시계로는 얼마가 흘렀을까?</p>
+      <ol class="steps">
+        <li><p>지구에서 잰 두 사건(생성, 지표 도착)의 시간 항.</p><div class="eq">$$c\Delta t = (2.998\times10^8)(34\times10^{-6}) = 10.193\ \text{km}$$</div></li>
+        <li><p>공간 거리는 10 km. 간격을 구한다 (시간꼴이다).</p><div class="eq">$$\Delta s = \sqrt{(10.193)^2 - (10)^2}\ \text{km} = 1.97\ \text{km}$$</div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">풀이 · 심화 · 교과서 밖 · 시공간 간격 · 교과서 239~240쪽 뮤온 연계</p><h2>간격 하나로 뮤온의 고유 시간 구하기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">뮤온이 지구에서 보아 10 km 를 34 μs 동안 날아갔다. 뮤온 자신의 시계로는 얼마가 흘렀을까?</p>
+      <ol start="3" class="steps">
+        <li><p>뮤온 기준에서는 두 사건이 같은 자리에서 일어나므로 간격을 $c$ 로 나눈 것이 고유 시간이다.</p><div class="eq">$$\Delta t_0 = \frac{\Delta s}{c} = \frac{1.97\times10^3}{2.998\times10^8} = 6.6\ \mu\text{s}$$</div></li>
+        <li><p>검산: 시간 지연으로 구해도 같다. $v = 10\ \text{km}/34\ \mu\text{s} = 0.981c$ 이면</p><div class="eq">$$\gamma = \frac{1}{\sqrt{1 - 0.981^2}} = 5.16,\qquad \Delta t_0 = \frac{34\ \mu\text{s}}{5.16} = 6.6\ \mu\text{s}$$</div></li>
+      </ol>
+      <p class="small">속력이나 $\gamma$ 를 몰라도 지구에서 잰 시간과 거리만으로 고유 시간이 나옵니다. 지구의 34 μs 와 뮤온의 6.6 μs 는 같은 간격을 두 관찰자가 다르게 나눈 것입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="sl">
     <header><p class="kicker">심화 · 교과서 밖 · 쌍둥이 역설</p><h2>왜 우주선에 탄 쪽이 젊은가</h2></header>
     <div class="body cols">
       <div>

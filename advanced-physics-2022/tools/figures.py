@@ -746,6 +746,51 @@ def cradle():
     return svg(w, h, "\n".join(inner), "뉴턴의 요람: 왼쪽 구슬 하나를 놓으면 오른쪽 끝 구슬 하나만 같은 높이까지 튀어나오는 그림")
 
 
+
+def interval_dia():
+    """시공간 도표: 빛꼴 경계(45°), 시간꼴·공간꼴 영역, c²t² − x² 가 일정한 쌍곡선, β = 0.5 인 기준계의 축."""
+    p = Plot(400, 300, (-2.2, 2.8), (0, 3.4), pad=(30, 14, 14, 30))
+    b = 0.5
+    g = 1 / math.sqrt(1 - b * b)
+    X, Y = p.X, p.Y
+    top = 3.4
+    R = 2.8
+    inner = [
+        # 시간꼴(미래) 영역과 공간꼴 영역
+        f'<path class="fA" d="M{X(0):.1f},{Y(0):.1f} L{X(R):.1f},{Y(R):.1f} L{X(R):.1f},{Y(top):.1f} L{X(-2.2):.1f},{Y(top):.1f} L{X(-2.2):.1f},{Y(2.2):.1f} Z"/>',
+        f'<path class="fW" d="M{X(0):.1f},{Y(0):.1f} L{X(R):.1f},{Y(R):.1f} L{X(R):.1f},{Y(0):.1f} Z"/>',
+        f'<path class="fW" d="M{X(0):.1f},{Y(0):.1f} L{X(-2.2):.1f},{Y(2.2):.1f} L{X(-2.2):.1f},{Y(0):.1f} Z"/>',
+        p.axes("$x$", "$ct$", origin_y=0),
+        # 빛꼴 경계: 빛이 지나는 45° 선
+        f'<path class="c3" d="M{X(0):.1f},{Y(0):.1f} L{X(R):.1f},{Y(R):.1f} M{X(0):.1f},{Y(0):.1f} L{X(-2.2):.1f},{Y(2.2):.1f}"/>',
+        # 불변 쌍곡선: c²t² − x² = 1 (시간꼴), x² − c²t² = 1 (공간꼴)
+        p.curve(lambda x: math.sqrt(1 + x * x), cls="c1", n=200, xa=-2.2, xb=R),
+    ]
+    pts = [(X(math.sqrt(1 + y * y)), Y(y)) for y in [i * 2.6 / 100 for i in range(101)]]
+    inner.append(f'<path class="c4" d="{_path(pts)}"/>')
+    # 움직이는 기준계(β = 0.5)의 축: ct' (기울기 1/β), x' (기울기 β)
+    inner += [f'<path class="c2 dash" d="M{X(0):.1f},{Y(0):.1f} L{X(top * b):.1f},{Y(top):.1f}" style="stroke-width:1.4"/>',
+              f'<path class="c2 dash" d="M{X(0):.1f},{Y(0):.1f} L{X(R):.1f},{Y(R * b):.1f}" style="stroke-width:1.4"/>',
+              f'<text x="{X(top * b) + 6:.0f}" y="{Y(top) + 12:.0f}" class="t-ink">$ct\'$</text>',
+              f'<text x="{X(R) - 4:.0f}" y="{Y(R * b) - 8:.0f}" text-anchor="end" class="t-ink">$x\'$</text>']
+    # 같은 쌍곡선 위의 사건: 두 기준계에서 각각 '같은 자리' 또는 '동시'
+    for (ex, ey) in ((0, 1), (g * b, g)):
+        inner.append(f'<circle cx="{X(ex):.1f}" cy="{Y(ey):.1f}" r="4" class="fInk"/>')
+    for (ex, ey) in ((1, 0), (g, g * b)):
+        inner.append(f'<circle cx="{X(ex):.1f}" cy="{Y(ey):.1f}" r="4" class="fInk"/>')
+    inner += [f'<text x="{X(-0.08):.0f}" y="{Y(1.0) + 5:.0f}" text-anchor="end" class="t-ink">A</text>',
+              f'<text x="{X(g * b) - 7:.0f}" y="{Y(g) - 6:.0f}" text-anchor="end" class="t-ink">A\'</text>',
+              f'<text x="{X(1.0):.0f}" y="{Y(0) - 8:.0f}" text-anchor="middle" class="t-ink">B</text>',
+              f'<text x="{X(g) + 7:.0f}" y="{Y(g * b) + 4:.0f}" class="t-ink">B\'</text>',
+              f'<text x="{X(-0.25):.0f}" y="{Y(3.1):.0f}" text-anchor="end" class="t-ink">시간꼴</text>',
+              f'<text x="{X(-2.1):.0f}" y="{Y(0.55):.0f}" class="t-ink">공간꼴</text>',
+              f'<text x="{X(-1.55):.0f}" y="{Y(1.25):.0f}" text-anchor="end">빛꼴</text>',
+              f'<text x="{X(-2.12):.0f}" y="{Y(2.78):.0f}">$c^2t^2 - x^2 = 1$</text>',
+              f'<text x="{X(1.32):.0f}" y="{Y(0.16):.0f}">$x^2 - c^2t^2 = 1$</text>',
+              f'<text x="{X(0):.0f}" y="{p.h - 12}" text-anchor="middle">O</text>']
+    return p.svg("\n".join(inner), "시공간 도표: 빛꼴 경계와 시간꼴·공간꼴 영역, c²t² − x² 가 일정한 쌍곡선 위의 사건 A, A′ 와 B, B′")
+
+
 FIGS = {
     "traj": traj, "vterm": vterm, "potential": potential,
     "gauss_sphere": lambda: radial("E"), "ampere_cyl": lambda: radial("B"),
@@ -754,5 +799,5 @@ FIGS = {
     "blackbody": blackbody, "hlevels": hlevels, "box": box, "tunnel": tunnel,
     "bands": bands, "twin": twin,
     "ring_e": lambda: ring_field("E"), "ring_b": lambda: ring_field("B"), "disk_rings": disk_rings,
-    "biot_wire": biot_wire, "inertia_slices": inertia_slices, "cm_slices": cm_slices, "cradle": cradle,
+    "biot_wire": biot_wire, "inertia_slices": inertia_slices, "cm_slices": cm_slices, "cradle": cradle, "interval_dia": interval_dia,
 }

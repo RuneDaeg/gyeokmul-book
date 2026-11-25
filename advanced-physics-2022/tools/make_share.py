@@ -58,8 +58,9 @@ def index(html, student):
     if student:
         html = cut(html, r'\s*<li><strong>교사용 메모</strong>.*?</li>', "교사용 메모 안내")
     else:
+        tips = sum(f.read_text(encoding="utf-8").count('<aside class="note tip">') for f in SLIDES.glob("0*.html"))
         html, n = re.subn(r'<li><strong>교사용 메모</strong>.*?</li>',
-                          '<li><strong>수업 팁</strong>: 버튼이나 <kbd>N</kbd>. 헷갈리기 쉬운 규약과 개념, 진도 조정, 활동 제안 같은 수업 운영 팁이 해당 슬라이드 아래에 보입니다 (23곳).</li>', html, flags=re.S)
+                          '<li><strong>수업 팁</strong>: 버튼이나 <kbd>N</kbd>. 헷갈리기 쉬운 규약과 개념, 진도 조정, 활동 제안 같은 수업 운영 팁이 해당 슬라이드 아래에 보입니다 (TIPS곳).</li>'.replace("TIPS", str(tips)), html, flags=re.S)
         assert n == 1
     html = cut(html, r'\s*<p class="small">검증 결과 전체는.*?</p>', "검증 보고서 안내")
     html = html.replace(" 교사용 메모는 PDF에 넣지 않았습니다.", "")
