@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>고급 물리학 PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+/* PDF 보기: 아티팩트 보기 화면은 브라우저 PDF 뷰어를 막으므로 PDF.js 로 쪽마다 캔버스에 그린다 */
+.pv-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--page); border-bottom: 1px solid var(--line);
+  padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.pv-bar .in { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.pv-bar h1 { margin: 0; font: 700 18px/1.3 var(--f-display); color: var(--ink); }
+.pv-bar .crumb { font: 500 12px/1 var(--f-mono); letter-spacing: 0.06em; color: var(--muted); }
+.pv-bar .crumb a { color: inherit; }
+.pv-bar .sp { flex: 1; }
+.pv-bar .info { font: 500 12px/1 var(--f-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.pv-seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.pv-seg a { padding: 7px 12px; font: 500 13px/1 var(--f-body); color: var(--ink); text-decoration: none; background: var(--paper); }
+.pv-seg a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.pv-pages { max-width: 1120px; margin: 0 auto; padding-block: 20px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 16px; }
+.pv-page { position: relative; width: 100%; max-width: 100%; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.pv-page canvas { display: block; width: 100%; height: 100%; }
+.pv-msg { max-width: 720px; margin: 60px auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); color: var(--muted); line-height: 1.6; word-break: keep-all; }
+.pv-msg strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<header class="pv-bar"><div class="in">
+  <span class="crumb"><a href="index.html">고급 물리학 · 2022 개정</a></span>
+  <h1 id="pv-title">PDF</h1>
+  <span class="pv-seg" id="pv-kind" aria-label="판 고르기"></span>
+  <span class="sp"></span>
+  <span class="info" id="pv-info"></span>
+</div></header>
+<main>
+  <p class="pv-msg" id="pv-msg">PDF 를 불러오는 중입니다…</p>
+  <div class="pv-pages" id="pv-pages"></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  // 덱 이름과 제목. 주소의 #이름 으로 고른다 (예: pdf.html#01-mechanics, pdf.html#01-mechanics-student)
+  var DECKS = {
+    "00-ot-math": "OT 오리엔테이션과 물리 수학",
+    "01-mechanics": "Ⅰ 역학",
+    "02-electromagnetism": "Ⅱ 전자기학",
+    "03-optics": "Ⅲ 광학",
+    "04-modern-physics": "Ⅳ 현대 물리"
+  };
+  var pages = document.getElementById("pv-pages"), msg = document.getElementById("pv-msg");
+  var info = document.getElementById("pv-info"), kind = document.getElementById("pv-kind");
+  var loadId = 0, observer = null;
+  var STUDENT_ONLY = false;   // 학생용 판에서는 tools/make_share.py --student 가 true 로 바꾼다 (풀이 포함 PDF 가 없음)
+
+  function parse() {
+    var h = (location.hash || "").replace(/^#/, "");
+    var student = STUDENT_ONLY || /-student$/.test(h), base = h.replace(/-student$/, "");
+    if (!DECKS[base]) base = "01-mechanics";
+    return { base: base, student: student, file: "pdf/" + base + (student ? "-student" : "") + ".pdf" };
+  }
+  function fail(text) { msg.hidden = false; msg.innerHTML = text; }
+
+  function load() {
+    var sel = parse(), my = ++loadId;
+    document.getElementById("pv-title").textContent = DECKS[sel.base];
+    document.title = DECKS[sel.base] + " PDF";
+    kind.innerHTML = "";
+    kind.hidden = STUDENT_ONLY;
+    if (!STUDENT_ONLY) [["", "풀이 포함"], ["-student", "학생용"]].forEach(function (k) {
+      var a = document.createElement("a");
+      a.href = "#" + sel.base + k[0]; a.textContent = k[1];
+      if ((k[0] === "-student") === sel.student) a.setAttribute("aria-current", "page");
+      kind.appendChild(a);
+    });
+    pages.innerHTML = ""; info.textContent = ""; msg.hidden = false; msg.textContent = "PDF 를 불러오는 중입니다…";
+    if (observer) observer.disconnect();
+    if (!window.pdfjsLib) { fail("PDF 보기 프로그램(PDF.js)을 불러오지 못했습니다. 인터넷 연결을 확인하고 새로 고쳐 주세요."); return; }
+    // 작업자 스크립트를 위에서 미리 불러 두었으므로 PDF.js 는 별도 Worker 없이 이 페이지에서 그린다
+    fetch(sel.file).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.arrayBuffer();
+    }).then(function (buf) {
+      return pdfjsLib.getDocument({ data: new Uint8Array(buf), isEvalSupported: false }).promise;
+    }).then(function (doc) {
+      if (my !== loadId) return;
+      msg.hidden = true;
+      info.textContent = doc.numPages + "쪽";
+      return doc.getPage(1).then(function (p1) {
+        var vp = p1.getViewport({ scale: 1 }), ratio = vp.height / vp.width;
+        var holders = [];
+        for (var i = 1; i <= doc.numPages; i++) {
+          var d = document.createElement("div");
+          d.className = "pv-page"; d.style.aspectRatio = vp.width + " / " + vp.height;
+          d.dataset.page = i; d.setAttribute("role", "img"); d.setAttribute("aria-label", DECKS[sel.base] + " " + i + "쪽");
+          pages.appendChild(d); holders.push(d);
+        }
+        function render(d) {
+          if (d.dataset.done) return; d.dataset.done = "1";
+          doc.getPage(+d.dataset.page).then(function (pg) {
+            if (my !== loadId) return;
+            var w = d.clientWidth, dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+            var scale = w * dpr / pg.getViewport({ scale: 1 }).width, view = pg.getViewport({ scale: scale });
+            var cv = document.createElement("canvas"); cv.width = Math.round(view.width); cv.height = Math.round(view.height);
+            d.appendChild(cv);
+            return pg.render({ canvasContext: cv.getContext("2d"), viewport: view }).promise;
+          }).catch(function () { d.dataset.done = ""; });
+        }
+        if ("IntersectionObserver" in window) {
+          observer = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) render(e.target); }); }, { rootMargin: "800px 0px" });
+          holders.forEach(function (d) { observer.observe(d); });
+        } else holders.forEach(render);
+      });
+    }).catch(function (e) {
+      if (my === loadId) fail("PDF 를 열지 못했습니다 (" + (e && e.message ? e.message : e) + "). <strong>" + sel.file + "</strong> 파일이 이 페이지와 같은 곳에 있는지 확인하세요.");
+    });
+  }
+  window.addEventListener("hashchange", load);
+  load();
+})();
+</script>
+</body>
+</html>

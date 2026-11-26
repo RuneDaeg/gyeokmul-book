@@ -14,3 +14,7 @@ node tools/build.mjs "<격물치지-대문.html 경로>"
 `dist/index.html` 은 도름스 밖에서 열면 예시 데이터로 보여요.
 도름스 안에서는 MessagePort 다리로 실제 책 정보(실린 글, 쓰는 사람들)를 받아 그려요.
 바깥 글꼴·그림·스크립트를 부를 수 없는 곳이라 모든 그림은 SVG 로, 스타일과 스크립트는 따로 된 파일로 들어 있어요.
+
+## 고급 물리학 (2022 개정) 수업 자료
+
+`advanced-physics-2022/` 에 2015 개정 고급물리학 수업자료 검증 보고서와 2022 개정 수업 슬라이드(OT·역학·전자기학·광학·현대 물리)가 있어요. 자세한 내용은 [advanced-physics-2022/README.md](advanced-physics-2022/README.md) 를 보세요.
