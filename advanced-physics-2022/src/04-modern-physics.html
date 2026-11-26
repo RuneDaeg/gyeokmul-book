@@ -328,6 +328,36 @@ desc: 교과서 Ⅳ단원: 상대성 이론(관성력, 특수·일반 상대론)
   </div>
 </section>
 
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 로런츠 변환 · 교과서 236쪽 두 가정, 240쪽 '조사해 보자' 연계</p><h2>두 가정에서 로런츠 변환 끌어내기 <span class="part">1/2</span></h2></header>
+    <div class="body">
+      <p>기준계 S′ 이 S 에 대해 $+x$ 방향으로 속력 $v$ 로 움직이고, $t = t' = 0$ 에 두 원점이 겹친다.</p>
+      <ol class="steps">
+        <li><p>변환은 일차식이다(시공간이 균일). S′ 의 원점 $x' = 0$ 은 S 에서 $x = vt$ 로 움직이므로 $x - vt$ 에 비례한다. 상대성 원리에 따라 거꾸로 보면 $v$ 의 부호만 바뀐 같은 꼴이다.</p><div class="eq">$$x' = \gamma(x - vt),\qquad x = \gamma(x' + vt')$$</div></li>
+        <li><p>광속 불변: 원점에서 $t = t' = 0$ 에 낸 빛은 두 기준계에서 모두 속력 $c$ 로 간다.</p><div class="eq">$$x = ct,\qquad x' = ct'$$</div></li>
+        <li><p>2단계를 1단계의 두 식에 넣고 변끼리 곱한다. 양변의 $tt'$ 이 지워진다.</p><div class="eq">$$ct' = \gamma(c - v)\,t,\quad ct = \gamma(c + v)\,t'\ \Rightarrow\ c^2 = \gamma^2(c^2 - v^2)\ \Rightarrow\ \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$$</div></li>
+      </ol>
+      <aside class="note tip">1단계에서 두 식의 비례 상수 $\gamma$ 가 같은 이유는 상대성 원리입니다. 어느 기준계도 특별하지 않으므로, S 가 본 S′ 과 S′ 이 본 S 는 $v$ 의 방향만 다릅니다. $y' = y$, $z' = z$ 인 것도 같은 대칭에서 나옵니다 (운동에 수직인 길이가 줄면, 반대편 관찰자에게는 늘어나야 해서 모순).</aside>
+    </div>
+  </div>
+</section>
+
+<section class="slide derive">
+  <div class="sl">
+    <header><p class="kicker">유도 · 심화 · 교과서 밖 · 로런츠 변환 · 교과서 236쪽 두 가정, 240쪽 '조사해 보자' 연계</p><h2>두 가정에서 로런츠 변환 끌어내기 <span class="part">2/2</span></h2></header>
+    <div class="body">
+      <p class="recap">$x' = \gamma(x - vt)$, $x = \gamma(x' + vt')$, $\gamma = 1/\sqrt{1 - v^2/c^2}$ 에서 $t'$ 을 구한다.</p>
+      <ol start="4" class="steps">
+        <li><p>둘째 식을 $t'$ 에 대해 풀고 첫째 식을 넣는다. $\dfrac1\gamma - \gamma = -\gamma\dfrac{v^2}{c^2}$ 를 쓴다.</p><div class="eq">$$t' = \frac{x/\gamma - x'}{v} = \gamma t + \frac{x}{v}\Big(\frac1\gamma - \gamma\Big) = \gamma\Big(t - \frac{v}{c^2}x\Big)$$</div></li>
+        <li><p>점검: S′ 에 정지한 시계($x = vt$)는 $\gamma$ 배 느리게 가고, S′ 에 정지한 막대를 S 에서 동시에 재면 $1/\gamma$ 로 짧다.</p><div class="eq">$$t' = \gamma t\Big(1 - \frac{v^2}{c^2}\Big) = \frac{t}{\gamma},\qquad \Delta x' = \gamma\Delta x\ \Rightarrow\ \Delta x = \frac{L_0}{\gamma}$$</div></li>
+        <li><p>$v \ll c$ 이면 $\gamma \to 1$, $vx/c^2 \to 0$ 이 되어 갈릴레이 변환으로 돌아간다.</p><div class="eq">$$x' = x - vt,\qquad t' = t$$</div></li>
+      </ol>
+      <p class="small">$t'$ 식의 $-vx/c^2$ 항이 동시성의 상대성입니다. 같은 $t$ 라도 $x$ 가 다르면 $t'$ 이 다릅니다.</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide">
   <div class="sl">
     <header><p class="kicker">심화 · 교과서 밖 · 시공간 간격 · 교과서 238~240쪽 연계</p><h2>시공간 간격: 모든 관찰자가 같은 값을 얻는 양</h2></header>
